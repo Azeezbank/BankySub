@@ -74,10 +74,8 @@
 .main.with-margin {
   position: absolute;
   top: 0;
-  left: 203;
+  left: 1000;
   overflow: hidden;
-  
-  width: 100%;
 }
 .main.with-no-margin {
   position: absolute;
