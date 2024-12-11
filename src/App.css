@@ -42,6 +42,9 @@
 }
 .aside {
   display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
   background-color: #000;
   color: #ccc;
   height: 100vh;
@@ -49,6 +52,7 @@
   width: 200px;
   border-right: 3px solid grey;
   position: fixed;
+  z-index: 1000;
 }
 .aside.visible {
   transform: translateX(0);
