@@ -68,9 +68,11 @@
 }
 .main.with-margin {
   position: relative;
-  margin-left: 500px;
+  margin-left: 200px;
   top: 0;
   right: 0;
+  overflow: hidden;
+  width: 100%;
 }
 .main.with-no-margin {
   position: absolute;
