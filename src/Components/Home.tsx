@@ -18,7 +18,7 @@ const Home: React.FC = () => {
       .writeText(link)
       .then(() => setCopySuccess("Link copied!"))
       .catch(() => setCopySuccess("Failed to copy link"));
-    alert(copysuccess);
+    alert('Link copied');
   };
 
   return (
