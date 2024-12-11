@@ -67,6 +67,7 @@
 .main.with-margin {
   margin-left: 200px;
   flex: 1;
+  width: 100%;
 }
 .hero {
   padding: 60px 10px 30px 10px;
