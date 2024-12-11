@@ -70,8 +70,8 @@ nav {position: fixed; top: 0; width: 100%}
 .main.with-margin {
   position: absolute;
   top: 0;
-  left: 1000;
   right: 0;
+  width: 100vw;
 }
 .main.with-no-margin {
   position: absolute;
