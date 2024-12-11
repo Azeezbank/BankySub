@@ -43,14 +43,14 @@ const Home: React.FC = () => {
           </div>
         </nav>
         <div className="hero">
-          <h3>WELCOME TO TUBSTELECOM.COM.NG</h3>
-          <p>Welcome to tunsteecom.com.ng</p>
+          <h3>WELCOME TO TUNSTELECOM.COM.NG</h3>
+          <p>Welcome to tunstELecom.com.ng</p>
           <div className="grid_hero">
             <p>
-              Your plug for everything digital.we offer instant data, recharge
-              card, airtime,cable subscription,bill payment e.t.c. To enjoy from
-              our referral program, simply refer people,friends and family to
-              alrahuzdata.com.ng and Continue to received massive commissions
+              Your plug for everything digital. We offer instant data, recharge
+              card, airtime, cable subscription, bill payment e.t.c. To enjoy from
+              our referral program, simply refer people, friends and family to
+              Tunstelecom.com.ng and Continue to received massive commissions
               instantly on each successful data purchase made by your
               downliners(who you refered) on the portal. THIS IS CALLED SALARY
               FOR LIFE!

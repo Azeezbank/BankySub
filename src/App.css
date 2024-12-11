@@ -105,8 +105,8 @@
 .ash-background button {border-radius: 8px; width: 92px; font-size: small;}
 .tab-content img {width: 40px;}
 .generateNo {background: linear-gradient(to right, #2724af, #2327e9); color: white; padding: 4px; cursor: pointer;}
-.moniepoint {padding: 15px; background: linear-gradient(to bottom right, #a700ff 70%, #4a148c 30%); color: #fff;}
+.moniepoint {padding: 15px; background: linear-gradient(to bottom right, #a700ff 70%, #4a148c 30%); color: #fff; border-radius: 5px;}
 .decoration {text-decoration: none; font-size: small;}
 .bankN {margin-top: -20px; font-weight: bold;}
 .automatedF {font-size: small;}
-.wema {padding: 15px; background: linear-gradient(to bottom right, #d60be9 70%, #8b0597 30%); color: #fff;}
+.wema {padding: 15px; background: linear-gradient(to bottom right, #d60be9 70%, #8b0597 30%); color: #fff; border-radius: 5px;}
