@@ -67,8 +67,8 @@
   background: linear-gradient(to bottom right, #ff3c9d, #6a00f4);
 }
 .main.with-margin {
-  position: absolute;
-  left: 500;
+  position: relative;
+  margin-left: 500px;
   top: 0;
   right: 0;
 }
