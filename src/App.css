@@ -72,6 +72,12 @@
   top: 0;
   right: 0;
 }
+.main.with-no-margin {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+}
 .hero {
   padding: 60px 10px 30px 10px;
   color: #fff;
