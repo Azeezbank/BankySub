@@ -68,7 +68,7 @@ nav {position: fixed; top: 0; width: 100%}
   background: linear-gradient(to bottom right, #ff3c9d, #6a00f4);
 }
 .main.with-margin {
-  position: relative;
+  position: fixed;
   top: 0;
   left: 1000;
   right: 0;
