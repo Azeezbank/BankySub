@@ -44,7 +44,7 @@
   display: block;
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   background-color: #000;
   color: #ccc;
   height: 100vh;
