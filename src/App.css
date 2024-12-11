@@ -65,6 +65,7 @@
 }
 .main.with-margin {
   margin-left: 200px;
+  margin-right: -200px
   width: 100%;
 }
 .hero {
