@@ -69,7 +69,8 @@
 .main.with-margin {
   position: relative;
   margin-left: 200px;
-  top: 0;
+  overflow: hidden;
+  margin-top: 0px;
   right: 0;
   width: 100%;
 }
