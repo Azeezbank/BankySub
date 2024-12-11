@@ -59,6 +59,7 @@
 .aside.hidden {
   transform: translateY(100%);
   display: none;
+  z-index: 1000;
 }
 .main {
   background: linear-gradient(to bottom right, #ff3c9d, #6a00f4);
