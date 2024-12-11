@@ -39,8 +39,7 @@ nav {position: fixed; top: 0; width: 100%}
   margin-right: 15px;
 }
 .aside {
-  display: block;
-  position: absolute;
+  
   top: 0;
   left: 0;
   background-color: #000;
