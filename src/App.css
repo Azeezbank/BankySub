@@ -75,7 +75,6 @@ nav {position: fixed; top: 0; width: 100%; z-index: 1; overflow: hidden}
   width: 40vw;
   overflow: hidden;
   white-space: nowrap;
-  display: flex
 }
 .main.with-no-margin {
   position: absolute;
@@ -93,6 +92,8 @@ nav {position: fixed; top: 0; width: 100%; z-index: 1; overflow: hidden}
     display: grid;
     grid-template-columns: 80% 20%;
   }
+  .aside.visible { width: 20vw}
+  .main.with-margin { width: 80vw}
 }
 .bg-general {
   background: linear-gradient(135deg, #ff3c9d, #6a00f4);
