@@ -75,6 +75,7 @@ nav {position: fixed; top: 0; width: 100%; z-index: 1; overflow: hidden}
   width: 40vw;
   overflow: hidden;
   white-space: nowrap;
+  display: flex
 }
 .main.with-no-margin {
   position: absolute;
