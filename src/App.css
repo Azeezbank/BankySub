@@ -52,14 +52,14 @@
   width: 200px;
   border-right: 3px solid grey;
   position: fixed;
-  z-index: 1000;
+  z-index: 1;
   overflow: hidden;
 }
 .aside.visible {
   transform: translateX(0px);
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 1;
 }
 .aside.hidden {
   transform: translateY(-500px);
@@ -72,9 +72,8 @@
   background: linear-gradient(to bottom right, #ff3c9d, #6a00f4);
 }
 .main.with-margin {
-  position: relative;
-  margin-left: 203px
-  overflow: hidden;
+  position: absolute;
+  
 }
 .main.with-no-margin {
   position: absolute;
