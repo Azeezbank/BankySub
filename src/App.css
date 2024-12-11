@@ -71,6 +71,7 @@
 .hero {
   padding: 60px 10px 30px 10px;
   color: #fff;
+  width: 100%;
 }
 @media (min-width: 760px) {
   .grid_hero {
