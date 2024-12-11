@@ -66,7 +66,7 @@
 }
 .main.with-margin {
   margin-left: 200px;
-  margin-right: 0px;
+  margin-right: -200px;
 }
 .hero {
   padding: 60px 10px 30px 10px;
