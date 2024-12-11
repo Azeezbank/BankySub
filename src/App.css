@@ -66,11 +66,12 @@
 }
 .main.with-margin {
   margin-left: 200px;
+  margin-right: 0px;
+  width: 100%;
 }
 .hero {
   padding: 60px 10px 30px 10px;
   color: #fff;
-  width: 100%;
 }
 @media (min-width: 760px) {
   .grid_hero {
