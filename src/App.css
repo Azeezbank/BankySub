@@ -110,7 +110,7 @@ nav {
   .main.with-margin {
     width: 80vw;
   }
-  .grid-balance-section-m {margin-left: 20%}
+  .grid-balance-section-m {margin-left: 15%; margin-right: 15%}
 }
 .bg-general {
   background: linear-gradient(135deg, #ff3c9d, #6a00f4);
