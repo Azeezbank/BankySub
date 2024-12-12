@@ -26,7 +26,7 @@ const Home: React.FC = () => {
       <aside className={`aside ${isOpen ? "visible" : "hidden"}`}>
         <div>Welcome azeezbank</div>
       </aside>
-      <main className={`main ${isOpen ? "with-margin" : "with-no-margin"}`}>
+      <main className={`main ${isOpen ? "with-margin" : "with-no-margin"} `}>
         <nav>
           <div className="navbar">
             <div className="nav-menu" onClick={handleVisible}>
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
         </nav>
         <div className="hero">
           <h3>WELCOME TO TUNSTELECOM.COM.NG</h3>
-          <p>Welcome to tunstELecom.com.ng</p>
+          <p>Welcome to tunstelecom.com.ng</p>
           <div className="grid_hero">
             <p>
               Your plug for everything digital. We offer instant data, recharge
@@ -171,6 +171,60 @@ const Home: React.FC = () => {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="marqueeC">
+            <p className="marquee">Welcome to tunstelecom</p>
+            </div>
+            <div className="grid_histories">
+              <div className="d-flex purpleShadow" >
+                <p className="purple pb-2"><i className="bi bi-arrow-counterclockwise"></i></p>
+                <p className="ms-2 mt-2">Transactions</p>
+              </div>
+              <div className="d-flex purpleShadow" >
+                <p className="purple pb-2"><i className="bi bi-arrow-counterclockwise"></i></p>
+                <p className="ms-2 mt-2">Data Transactions</p>
+              </div>
+              <div className="d-flex purpleShadow" >
+                <p className="purple pb-2"><i className="bi bi-arrow-counterclockwise"></i></p>
+                <p className="ms-2 mt-2">Airtime-Top-Up Transactions</p>
+              </div>
+              <div className="d-flex purpleShadow" >
+                <p className="purple pb-2 bg-warning"><i className="bi bi-arrow-counterclockwise"></i></p>
+                <p className="ms-2 mt-2">Wallet Summary</p>
+              </div>
+              <div className="d-flex purpleShadow" >
+                <p className="purple pb-2"><i className="bi bi-arrow-counterclockwise"></i></p>
+                <p className="ms-2 mt-2">Data Wallet Summary</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="grid-balance-section">
+          <div className="balance-section">
+            <div>
+            <p className="balance-section-color"><i className="bi bi-calendar-event-fill bg-primary p-3"></i></p>
+            </div>
+            <div className="ps-2">
+            <p className="text-muted pt-2">Wallet balance</p>
+            <p className="amount"># 0</p>
+            </div>
+          </div>
+          <div className="balance-section">
+            <div>
+            <p className="balance-section-color"><i className="bi bi-calendar-event-fill bg-primary p-3"></i></p>
+            </div>
+            <div className="ps-2">
+            <p className="text-muted pt-2">Commissions</p>
+            <p className="amount"># 0</p>
+            </div>
+          </div>
+          <div className="balance-section">
+            <div>
+            <p className="balance-section-color"><i className="bi bi-calendar-event-fill bg-primary p-3"></i></p>
+            </div>
+            <div className="ps-2">
+            <p className="text-muted">My Total Referral</p>
+            <p>0</p>
             </div>
           </div>
         </div>
