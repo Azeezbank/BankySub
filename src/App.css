@@ -214,11 +214,11 @@ nav {
   gap: 25px;
 }
 .grid-balance-section {
-  margin: 15px
+  margin-left: 15px;
+  margin-right: 15px
   padding: 10px;
-  z-index: 1;
 }
 .balance-section-color {margin-top: 20px; color: white; border-radius: 8px;}
 .balance-section-color i {border-radius: 8px;}
-.balance-section {display: grid; grid-template-columns: auto auto; background-color: #fff; padding: 10px;}
+.balance-section {display: grid; grid-template-columns: auto auto; background-color: #fff; padding: 10px; margin: 15px 0px}
 .amount {margin-top: -10px;}
