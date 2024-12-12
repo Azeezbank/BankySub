@@ -199,6 +199,7 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
+        <div className='grid-balance-section-m'>
         <div className="grid-balance-section">
           <div className="balance-section">
             <div>
@@ -228,6 +229,7 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
+          </div>
       </main>
     </>
   );
