@@ -213,7 +213,7 @@ const Home: React.FC = () => {
             <div>
             <p className="balance-section-color"><i className="bi bi-database-fill bg-primary p-3"></i></p>
             </div>
-            <div className="ps-2">
+            <div className="ps-2 float-start">
             <p className="text-muted pt-2">Commissions</p>
             <p className="amount"># 0</p>
             </div>
@@ -222,7 +222,7 @@ const Home: React.FC = () => {
             <div>
             <p className="balance-section-color"><i className="bi bi-people-fill bg-primary p-3"></i></p>
             </div>
-            <div className="ps-2">
+            <div className="ps-2 text-start">
             <p className="text-muted">My Total Referral</p>
             <p>0</p>
             </div>
