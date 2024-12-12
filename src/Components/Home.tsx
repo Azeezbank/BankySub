@@ -211,7 +211,7 @@ const Home: React.FC = () => {
           </div>
           <div className="balance-section">
             <div>
-            <p className="balance-section-color"><i className="bi bi-calendar-event-fill bg-primary p-3"></i></p>
+            <p className="balance-section-color"><i className="bi bi-database-fill bg-primary p-3"></i></p>
             </div>
             <div className="ps-2">
             <p className="text-muted pt-2">Commissions</p>
@@ -220,7 +220,7 @@ const Home: React.FC = () => {
           </div>
           <div className="balance-section">
             <div>
-            <p className="balance-section-color"><i className="bi bi-calendar-event-fill bg-primary p-3"></i></p>
+            <p className="balance-section-color"><i className="bi bi-people-fill bg-primary p-3"></i></p>
             </div>
             <div className="ps-2">
             <p className="text-muted">My Total Referral</p>
