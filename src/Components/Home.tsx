@@ -24,12 +24,12 @@ const Home: React.FC = () => {
   return (
     <>
       <div className='flexEntire'>
-        <div>
+        <div className='flexAside'>
       <aside className={`aside ${isOpen ? "visible" : "hidden"}`}>
         <div>Welcome azeezbank</div>
       </aside>
           </div>
-        <div>
+        <div className='flexMain>
       <main className={`main ${isOpen ? "with-margin" : "with-no-margin"} `}>
         <nav>
           <div className="navbar">
