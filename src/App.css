@@ -8,7 +8,6 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1;
   overflow: hidden;
 }
 .navbar {
@@ -55,14 +54,12 @@ nav {
   width: 200px;
   border-right: 3px solid grey;
   position: fixed;
-  z-index: 1;
   overflow: hidden;
 }
 .aside.visible {
   transform: translateX(0px);
   position: fixed;
   top: 0;
-  z-index: 1;
   width: 60vw;
   overflow: hidden;
 }
@@ -71,15 +68,12 @@ nav {
   display: none;
   position: fixed;
   top: 0;
-  z-index: 1000;
 }
 .main {
   padding-bottom: 0px;
-  z-index: 1;
   background-color: #f4f7fa;
 }
 .main.with-margin {
-  position: absolute;
   top: 0;
   right: 0;
   width: 40vw;
@@ -87,7 +81,6 @@ nav {
   white-space: nowrap;
 }
 .main.with-no-margin {
-  position: absolute;
   left: 0;
   top: 0;
   right: 0;
