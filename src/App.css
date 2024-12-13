@@ -53,6 +53,7 @@ nav {
   border-right: 3px solid grey;
   position: fixed;
   overflow: hidden;
+  z-index: 1;
 }
 .aside.visible {
   display: block;
@@ -60,6 +61,7 @@ nav {
   position: fixed;
   top: 0;
   overflow: hidden;
+  width: 60vw;
 }
 .aside.hidden {
   display: none;
@@ -73,9 +75,11 @@ nav {
 }
 .main.with-margin {
   overflow: hidden;
+  width: 40vw
 }
 .main.with-no-margin {
   width: 100%;
+  
 }
 .hero {
   padding: 90px 10px 30px 10px;
