@@ -69,7 +69,6 @@ nav {
 }
 .main.with-margin {
   overflow: hidden;
-  flex-grow: 1;
   transition: margin-right 0.3s ease;
   margin-left: 60%;
   white-space: nowrap;
