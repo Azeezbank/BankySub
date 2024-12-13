@@ -45,26 +45,23 @@ nav {
   margin-right: 15px;
 }
 .aside {
-  display: none;
   background-color: #000;
   color: #ccc;
   height: 100vh;
   padding-top: 50px;
   border-right: 3px solid grey;
   position: fixed;
-  overflow: hidden;
+  top: 0;
+  transition: width 0.3s ease;
+  width: 0;
 }
 .aside.visible {
   display: block;
-  transform: translateX(0px);
-  position: fixed;
-  top: 0;
-  overflow: hidden;
+  width: 60%;
 }
 .aside.hidden {
   display: none;
-  transform: translateY(-500px);
-  position: fixed;
+  width: 0%;
 }
 .main {
   padding-bottom: 0px;
@@ -72,10 +69,12 @@ nav {
 }
 .main.with-margin {
   overflow: hidden;
-  white-space: nowrap;
+  flex-grow: 1;
+  transition: margin-right 0.3s ease;
+  margin-left: 60%
 }
 .main.with-no-margin {
-  
+  width: 100%;
 }
 .hero {
   padding: 90px 10px 30px 10px;
@@ -89,13 +88,13 @@ nav {
     grid-template-columns: 80% 20%;
     gap: 10px;
   }
-  {/*.aside.visible {
+  .aside.visible {
     width: 20%;
   }
   .main.with-margin {
-    flex-grow: 1;
-  }*/}
-  .flexEntire {display: grid; grid-template-columns: 20% 80%;}
+    width: 80%;
+    margin-left: 80%;
+  }
   .grid-balance-section-m {
     margin-left: 15%;
     margin-right: 15%;
@@ -229,4 +228,6 @@ nav {
 .amount {
   margin-top: -10px;
 }
-.flexEntire {display: grid; grid-template-columns: 60% 40%;}
+.flexEntire {display: flex;
+  position: relative;
+  overflow: hidden;}
