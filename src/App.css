@@ -121,8 +121,7 @@ nav {
   margin: -15px 2% 0px 2%;
   width: 96%;
   border-radius: 5px;
-  position: relative;
-  z-index: 10;
+  transform: translateY(-20px); 
 }
 .goolePlay {
   text-align: center;
