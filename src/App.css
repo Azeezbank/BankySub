@@ -79,7 +79,7 @@ nav {
   white-space: nowrap;
 }
 .main.with-no-margin {
-  
+  width: 100vw;
 }
 .hero {
   padding: 90px 10px 30px 10px;
