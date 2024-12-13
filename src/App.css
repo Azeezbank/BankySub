@@ -67,7 +67,7 @@ nav {
   display: none;
   transform: translateY(-500px);
   position: fixed;
-  top: 0;
+  width: 0vw;
 }
 .main {
   padding-bottom: 0px;
@@ -79,7 +79,7 @@ nav {
   white-space: nowrap;
 }
 .main.with-no-margin {
-  margin-left: -30px;
+  width: 100vw;
 }
 .hero {
   padding: 90px 10px 30px 10px;
@@ -234,4 +234,4 @@ nav {
 }
 .flexEntire {display: flex;}
 .flexAside{width: 200px}
-.flexMain{flex-grow: 1;}
+.flexMain{flex-grow: 1; width: 100vw}
