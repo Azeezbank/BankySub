@@ -233,4 +233,4 @@ nav {
 }
 .flexEntire {display: flex;}
 .flexAside{width: 200px}
-.flexMain{flex-grow: 1; width: 100vw}
+.flexMain{flex-grow: 1;}
