@@ -232,4 +232,4 @@ nav {
 .amount {
   margin-top: -10px;
 }
-.flexEntire {display: flex;}
+.flexEntire {display: grid; grid-template-columns: 200px auto;}
