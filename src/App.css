@@ -61,7 +61,7 @@ nav {
   position: fixed;
   top: 0;
   overflow: hidden;
-  width: 60vw;
+  width: 200px;
 }
 .aside.hidden {
   display: none;
@@ -74,7 +74,7 @@ nav {
 }
 .main.with-margin {
   overflow: hidden;
-  width: 40vw;
+  flex-grow: 1;
   white-space: nowrap;
 }
 .main.with-no-margin {
@@ -96,7 +96,7 @@ nav {
     width: 20%;
   }
   .main.with-margin {
-    width: 80%;
+    flex-grow: 1;
   }
   .grid-balance-section-m {
     margin-left: 15%;
@@ -232,5 +232,3 @@ nav {
   margin-top: -10px;
 }
 .flexEntire {display: flex; width: 100%}
-.flexAside{width: 200px}
-.flexMain{flex-grow: 1}
