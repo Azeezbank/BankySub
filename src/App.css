@@ -83,9 +83,7 @@ nav {
   white-space: nowrap;
 }
 .main.with-no-margin {
-  left: 0;
-  top: 0;
-  right: 0;
+  
 }
 .hero {
   padding: 90px 10px 30px 10px;
@@ -238,6 +236,6 @@ nav {
 .amount {
   margin-top: -10px;
 }
-.flexEntire {display: flex}
+.flexEntire {display: flex; width: 100%}
 .flexAside{width: 200px}
 .flexMain{flex-grow: 1;}
