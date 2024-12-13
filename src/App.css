@@ -75,13 +75,12 @@ nav {
   background-color: #f4f7fa;
 }
 .main.with-margin {
-  margin-left: -10px;
   width: 40vw;
   overflow: hidden;
   white-space: nowrap;
 }
 .main.with-no-margin {
-  
+  width: 100%;
 }
 .hero {
   padding: 90px 10px 30px 10px;
