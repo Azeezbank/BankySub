@@ -47,7 +47,7 @@ nav {
 .aside {
   background-color: #000;
   color: #ccc;
-  height: 100%;
+  min-height: 100%;
   padding-top: 50px;
   border-right: 3px solid grey;
   position: fixed;
@@ -82,6 +82,7 @@ nav {
   color: #fff;
   width: 100%;
   background: linear-gradient(to bottom right, #ff3c9d, #6a00f4);
+  margin-top: 0%;
 }
 @media (min-width: 760px) {
   .grid_hero {
@@ -96,6 +97,7 @@ nav {
     width: 80vw;
     margin-left: 20vw;
     white-space: nowrap;
+    margin-top: 0%
   }
   .grid-balance-section-m {
     margin-left: 15%;
@@ -121,6 +123,7 @@ nav {
   margin: -10px 2% 0px 2%;
   width: 96%;
   border-radius: 5px;
+  z-index: 1;
 }
 .goolePlay {
   text-align: center;
