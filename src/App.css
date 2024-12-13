@@ -238,3 +238,6 @@ nav {
 .amount {
   margin-top: -10px;
 }
+.flexEntire {display: flex}
+.flexAside{width: 200px}
+.flexMain{flex-grow: 1;}
