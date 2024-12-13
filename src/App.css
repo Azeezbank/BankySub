@@ -229,8 +229,6 @@ nav {
 .amount {
   margin-top: -10px;
 }
-.flexEntire {display: grid;
-  grid-template-columns: 200px 1fr;
-  width: 100%;}
-.flexAside{}
-.flexMain{}
+.flexEntire {display: flex;}
+.flexAside{width: 200px}
+.flexMain{flex-grow: 1}
