@@ -24,13 +24,13 @@ const Home: React.FC = () => {
   return (
     <>
       <div className='flexEntire'>
-        <div className='flexAside'>
-      <aside className={`aside ${isOpen ? "visible" : "hidden"}`}>
+        <div className={`aside ${isOpen ? "visible" : "hidden"} flexAside`}>
+      <aside>
         <div>Welcome azeezbank</div>
       </aside>
           </div>
-        <div className='flexMain'>
-      <main className={`main ${isOpen ? "with-margin" : "with-no-margin"} `}>
+        <div className={`main ${isOpen ? "with-margin" : "with-no-margin"} flexMain`}>
+      <main>
         <nav>
           <div className="navbar">
             <div className="nav-menu" onClick={handleVisible}>
