@@ -60,20 +60,21 @@ nav {
   transform: translateX(0px);
   position: fixed;
   top: 0;
-  width: 60vw;
+  width: 60%;
   overflow: hidden;
 }
 .aside.hidden {
   display: none;
   transform: translateY(-100%);
   position: fixed;
+  width: 0%;
 }
 .main {
   padding-bottom: 0px;
   background-color: #f4f7fa;
 }
 .main.with-margin {
-  width: 40vw;
+  width: 40%;
   overflow: hidden;
 }
 .main.with-no-margin {
@@ -92,10 +93,10 @@ nav {
     gap: 10px;
   }
   .aside.visible {
-    width: 20vw;
+    width: 20%;
   }
   .main.with-margin {
-    width: 80vw;
+    width: 80%;
   }
   .grid-balance-section-m {
     margin-left: 15%;
@@ -230,6 +231,6 @@ nav {
 .amount {
   margin-top: -10px;
 }
-.flexEntire {display: flex;}
+.flexEntire {display: flex; width: 100%}
 .flexAside{width: 200px}
 .flexMain{flex-grow: 1;}
