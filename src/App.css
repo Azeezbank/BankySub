@@ -60,7 +60,6 @@ nav {
   transform: translateX(0px);
   position: fixed;
   top: 0;
-  width: 60%;
   overflow: hidden;
 }
 .aside.hidden {
@@ -74,7 +73,6 @@ nav {
   background-color: #f4f7fa;
 }
 .main.with-margin {
-  width: 40%;
   overflow: hidden;
 }
 .main.with-no-margin {
@@ -231,6 +229,8 @@ nav {
 .amount {
   margin-top: -10px;
 }
-.flexEntire {display: flex; width: 100%}
-.flexAside{width: 200px}
-.flexMain{flex-grow: 1;}
+.flexEntire {display: grid;
+  grid-template-columns: 200px 1fr;
+  width: 100%;}
+.flexAside{}
+.flexMain{}
