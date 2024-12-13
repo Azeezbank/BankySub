@@ -65,9 +65,8 @@ nav {
 }
 .aside.hidden {
   display: none;
-  transform: translateY(-500px);
+  transform: translateY(-100%);
   position: fixed;
-  width: -50%;
 }
 .main {
   padding-bottom: 0px;
