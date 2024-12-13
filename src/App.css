@@ -114,13 +114,11 @@ nav {
 }
 .bg_light {
   background-color: #f4f7fa;
-  /* background-color: red; */
-  height: 1400px;
 }
 .greating-section {
   background-color: #fff;
   padding: 8px 8px 30px 8px;
-  margin: -50px 2% 0px 2%;
+  margin: -5px 2% 0px 2%;
   width: 96%;
   border-radius: 5px;
   z-index: 1;
