@@ -50,7 +50,6 @@ nav {
   color: #ccc;
   height: 100vh;
   padding-top: 50px;
-  width: 200px;
   border-right: 3px solid grey;
   position: fixed;
   overflow: hidden;
@@ -76,8 +75,7 @@ nav {
   background-color: #f4f7fa;
 }
 .main.with-margin {
-  top: 0;
-  right: 0;
+  margin-left: -10px;
   width: 40vw;
   overflow: hidden;
   white-space: nowrap;
