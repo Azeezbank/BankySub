@@ -62,7 +62,6 @@ nav {
   top: 0;
   width: 60vw;
   overflow: hidden;
-  z-index: 1;
 }
 .aside.hidden {
   display: none;
@@ -80,7 +79,7 @@ nav {
   white-space: nowrap;
 }
 .main.with-no-margin {
-  width: 100%;
+  
 }
 .hero {
   padding: 90px 10px 30px 10px;
