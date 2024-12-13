@@ -231,6 +231,6 @@ nav {
 .amount {
   margin-top: -10px;
 }
-.flexEntire {display: flex;
+.flexEntire {display: flex; width: 100%;
   position: relative;
   overflow: hidden;}
