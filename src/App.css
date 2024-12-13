@@ -60,7 +60,6 @@ nav {
   position: fixed;
   top: 0;
   overflow: hidden;
-  z-index: 1;
 }
 .aside.hidden {
   display: none;
@@ -96,7 +95,7 @@ nav {
   .main.with-margin {
     flex-grow: 1;
   }*/}
-  .flexEntire {display: grid; grid-template-columns: 200px auto;}
+  .flexEntire {display: grid; grid-template-columns: 20% 80%;}
   .grid-balance-section-m {
     margin-left: 15%;
     margin-right: 15%;
@@ -230,4 +229,4 @@ nav {
 .amount {
   margin-top: -10px;
 }
-.flexEntire {display: grid; grid-template-columns: 200px auto;}
+.flexEntire {display: grid; grid-template-columns: 60% 40%;}
