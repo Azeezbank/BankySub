@@ -67,7 +67,7 @@ nav {
   display: none;
   transform: translateY(-500px);
   position: fixed;
-  width: 0vw;
+  width: -50%;
 }
 .main {
   padding-bottom: 0px;
@@ -76,10 +76,9 @@ nav {
 .main.with-margin {
   width: 40vw;
   overflow: hidden;
-  white-space: nowrap;
 }
 .main.with-no-margin {
-  width: 100vw;
+  width: 100%;
 }
 .hero {
   padding: 90px 10px 30px 10px;
