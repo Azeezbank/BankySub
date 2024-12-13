@@ -29,7 +29,7 @@ const Home: React.FC = () => {
         <div>Welcome azeezbank</div>
       </aside>
           </div>
-        <div className='flexMain>
+        <div className='flexMain'>
       <main className={`main ${isOpen ? "with-margin" : "with-no-margin"} `}>
         <nav>
           <div className="navbar">
