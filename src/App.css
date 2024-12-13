@@ -73,6 +73,7 @@ nav {
   transition: margin-right 0.3s ease;
   margin-left: 60%;
   white-space: nowrap;
+  width: 20%;
 }
 .main.with-no-margin {
   width: 100%;
@@ -95,6 +96,7 @@ nav {
   .main.with-margin {
     width: 80%;
     margin-left: 20%;
+    white-space: nowrap;
   }
   .grid-balance-section-m {
     margin-left: 15%;
