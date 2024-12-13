@@ -53,7 +53,6 @@ nav {
   border-right: 3px solid grey;
   position: fixed;
   overflow: hidden;
-  z-index: 1;
 }
 .aside.visible {
   display: block;
@@ -61,7 +60,6 @@ nav {
   position: fixed;
   top: 0;
   overflow: hidden;
-  width: 60vw;
   z-index: 1;
 }
 .aside.hidden {
@@ -75,11 +73,10 @@ nav {
 }
 .main.with-margin {
   overflow: hidden;
-  flex-grow: 1;
   white-space: nowrap;
 }
 .main.with-no-margin {
-  flex-grow: 0;
+  
 }
 .hero {
   padding: 90px 10px 30px 10px;
@@ -93,12 +90,13 @@ nav {
     grid-template-columns: 80% 20%;
     gap: 10px;
   }
-  .aside.visible {
+  {/*.aside.visible {
     width: 20%;
   }
   .main.with-margin {
     flex-grow: 1;
-  }
+  }*/}
+  .flexEntire {display: grid; grid-template-columns: 200px auto;}
   .grid-balance-section-m {
     margin-left: 15%;
     margin-right: 15%;
