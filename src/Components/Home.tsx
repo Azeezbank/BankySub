@@ -23,9 +23,13 @@ const Home: React.FC = () => {
 
   return (
     <>
+      <div className='flexEntire'>
+        <div>
       <aside className={`aside ${isOpen ? "visible" : "hidden"}`}>
         <div>Welcome azeezbank</div>
       </aside>
+          </div>
+        <div>
       <main className={`main ${isOpen ? "with-margin" : "with-no-margin"} `}>
         <nav>
           <div className="navbar">
@@ -232,6 +236,8 @@ const Home: React.FC = () => {
         </div>
           </div>
       </main>
+          </div>
+        </div>
     </>
   );
 };
