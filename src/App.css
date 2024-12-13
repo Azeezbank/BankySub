@@ -74,7 +74,8 @@ nav {
 }
 .main.with-margin {
   overflow: hidden;
-  width: 40vw
+  width: 40vw;
+  white-space: nowrap;
 }
 .main.with-no-margin {
   flex-grow: 0;
