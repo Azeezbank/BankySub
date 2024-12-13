@@ -63,7 +63,7 @@ nav {
 }
 .aside.hidden {
   display: none;
-  transform: translateY(-100%);
+  transform: translateY(-500px);
   position: fixed;
 }
 .main {
