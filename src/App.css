@@ -45,8 +45,7 @@ nav {
   margin-right: 15px;
 }
 .aside {
-  top: 0;
-  left: 0;
+  display: none;
   background-color: #000;
   color: #ccc;
   height: 100vh;
@@ -55,17 +54,20 @@ nav {
   border-right: 3px solid grey;
   position: fixed;
   overflow: hidden;
+  z-index: 1;
 }
 .aside.visible {
+  display: block;
   transform: translateX(0px);
   position: fixed;
   top: 0;
   width: 60vw;
   overflow: hidden;
+  z-index: 1;
 }
 .aside.hidden {
-  transform: translateY(-500px);
   display: none;
+  transform: translateY(-500px);
   position: fixed;
   top: 0;
 }
