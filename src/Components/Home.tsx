@@ -114,6 +114,12 @@ const Home: React.FC = () => {
                 </h3>
                 <p className='ps-2'>Messages</p>
               </div>
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-cash"></i>
+                </h3>
+                <p className='ps-2'>Pricing</p>
+              </div>
             </div>
           </aside>
         </div>
