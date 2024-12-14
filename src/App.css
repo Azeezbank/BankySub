@@ -54,6 +54,7 @@ nav {
   top: 0;
   transition: width 0.3s ease;
   width: 0;
+  overflow-y: auto;
 }
 .aside.visible {
   display: block;
