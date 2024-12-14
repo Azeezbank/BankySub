@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import googlePlay from "../assets/google-play.png";
 import bank from "../assets/bank.png";
-import airtime from '../assets/airtime.svg';
-import data from '../assets/data.jpg';
-import airtimeTocash from '../assets/airtime2cash.jpg';
-import electricity from '../assets/utility.jpg';
-import cable from '../assets/cable.jpg';
-import bulk from '../assets/sms.png';
-import resultChecker from '../assets/resultchecker.png';
-import rechargeCard from '../assets/printer.jpg';
-import referal from '../assets/referral.png';
+import airtime from "../assets/airtime.svg";
+import data from "../assets/data.jpg";
+import airtimeTocash from "../assets/airtime2cash.jpg";
+import electricity from "../assets/utility.jpg";
+import cable from "../assets/cable.jpg";
+import bulk from "../assets/sms.png";
+import resultChecker from "../assets/resultchecker.png";
+import rechargeCard from "../assets/printer.jpg";
+import referal from "../assets/referral.png";
+import avatar from "../assets/avatar.png";
 
 const Home: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,85 @@ const Home: React.FC = () => {
       <div className="flexEntire">
         <div className={`aside ${isOpen ? "visible" : "hidden"} flexAside`}>
           <aside>
-            <div>Welcome azeezbank</div>
+            <div className="d-flex navUser">
+              <img className="navImg" src={avatar} alt="user" />
+              <div className="onlineSign">
+                <span></span>
+              </div>
+              <div>
+                <p className="ps-2">
+                  Username <br /> <span className="navBalance">balance: #</span>
+                </p>
+              </div>
+            </div>
+            <div className="grid-navDashh">
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-house-fill"></i>
+                </h3>
+                <p>Dashboard</p>
+              </div>
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-file-bar-graph"></i>
+                </h3>
+                <p>Buy Data</p>
+              </div>
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-telephone"></i>
+                </h3>
+                <p>Buy Data</p>
+              </div>
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
+                </h3>
+                <p>Utility Payment</p>
+              </div>
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-credit-card house-fill chat-dots"></i>
+                </h3>
+                <p>Buy Exam Pin</p>
+              </div>
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
+                </h3>
+                <p>Buy Recharge Cards</p>
+              </div>
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
+                </h3>
+                <p>Data Card</p>
+              </div>
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-chat-dots lightbulb house-fill credit-card"></i>
+                </h3>
+                <p>Bulk SMS</p>
+              </div>
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
+                </h3>
+                <p>Histories</p>
+              </div>
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
+                </h3>
+                <p>Statistics</p>
+              </div>
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
+                </h3>
+                <p>Messages</p>
+              </div>
+            </div>
           </aside>
         </div>
         <div
@@ -299,58 +378,97 @@ const Home: React.FC = () => {
                 </div>
                 <div className="service-grid mt-5">
                   <div className="service-grid-items">
-                    <img src={airtime} alt="airtime" style={{width: '100px'}} />
+                    <img
+                      src={airtime}
+                      alt="airtime"
+                      style={{ width: "100px" }}
+                    />
                     <p className="text-muted text-center">Airtime TopUp</p>
                   </div>
                   <div className="service-grid-items">
-                    <img src={data} alt="airtime" style={{width: '100px'}} />
+                    <img src={data} alt="airtime" style={{ width: "100px" }} />
                     <p className="text-muted">Buy Data</p>
                   </div>
                   <div className="service-grid-items">
-                    <img src={airtimeTocash} alt="airtime" style={{width: '100px'}} />
+                    <img
+                      src={airtimeTocash}
+                      alt="airtime"
+                      style={{ width: "100px" }}
+                    />
                     <p className="text-muted">Airtime To Cash</p>
                   </div>
                   <div className="service-grid-items">
-                    <img src={electricity} alt="airtime" style={{width: '100px'}} />
+                    <img
+                      src={electricity}
+                      alt="airtime"
+                      style={{ width: "100px" }}
+                    />
                     <p className="text-muted">Electricity Bills</p>
                   </div>
                   <div className="service-grid-items">
-                    <img src={cable} alt="airtime" style={{width: '100px'}} />
+                    <img src={cable} alt="airtime" style={{ width: "100px" }} />
                     <p className="text-muted">Cable Subscription</p>
                   </div>
                   <div className="service-grid-items">
-                    <img src={bulk} alt="airtime" style={{width: '100px'}} />
+                    <img src={bulk} alt="airtime" style={{ width: "100px" }} />
                     <p className="text-muted">Bulk SMS</p>
                   </div>
                   <div className="service-grid-items">
-                    <img src={resultChecker} alt="airtime" style={{width: '100px'}} />
+                    <img
+                      src={resultChecker}
+                      alt="airtime"
+                      style={{ width: "100px" }}
+                    />
                     <p className="text-muted pt-2">Result Checker</p>
                   </div>
                   <div className="service-grid-items">
-                    <img src={rechargeCard} alt="airtime" style={{width: '100px'}} />
+                    <img
+                      src={rechargeCard}
+                      alt="airtime"
+                      style={{ width: "100px" }}
+                    />
                     <p className="text-muted pt-1">Recharge Card Printing</p>
                   </div>
                   <div className="service-grid-items">
-                    <img src={referal} alt="airtime" style={{width: '100px'}} />
+                    <img
+                      src={referal}
+                      alt="airtime"
+                      style={{ width: "100px" }}
+                    />
                     <p className="text-muted">My Referrals</p>
                   </div>
                 </div>
               </div>
               <div className="statistics">
-                <h5>TRANSACTION STATISTICS</h5> <hr/>
+                <h5>TRANSACTION STATISTICS</h5> <hr />
                 <div className="grid-statistics">
-                <div className="gridStatistics">
-                  <h2 className="pt-1 text-warning text-center"><i className="bi bi-clock cash-coin x-circle"></i></h2>
-                  <h5 className="text-muted fontStat">WALLET BALANCE <br /> <span className="text-dark"> # 0 </span></h5>
-                </div>
-                <div className="gridStatistics borderSt">
-                  <h2 className="pt-1 text-success text-center"><i className="bi bi-cash-coin x-circle"></i></h2>
-                  <h5 className="text-muted fontStat">TRANSACTIONS <br /> <span className="text-dark"> # 0 </span></h5>
-                </div>
-                <div className="gridStatistics">
-                  <h2 className="pt-1 text-danger text-center"><i className="bi bi-x-circle"></i></h2>
-                  <h5 className="text-muted fontStat">TOTAL SPENT <br /> <span className="text-dark"> # 0 </span></h5>
-                </div>
+                  <div className="gridStatistics">
+                    <h2 className="pt-1 text-warning text-center">
+                      <i className="bi bi-clock cash-coin x-circle"></i>
+                    </h2>
+                    <h5 className="text-muted fontStat">
+                      WALLET BALANCE <br />{" "}
+                      <span className="text-dark"> # 0 </span>
+                    </h5>
+                  </div>
+                  <div className="gridStatistics borderSt">
+                    <h2 className="pt-1 text-success text-center">
+                      <i className="bi bi-cash-coin x-circle"></i>
+                    </h2>
+                    <h5 className="text-muted fontStat">
+                      TRANSACTIONS <br />{" "}
+                      <span className="text-dark"> # 0 </span>
+                    </h5>
+                  </div>
+                  <div className="gridStatistics">
+                    <h2 className="pt-1 text-danger text-center">
+                      <i className="bi bi-x-circle"></i>
+                    </h2>
+                    <h5 className="text-muted fontStat">
+                      TOTAL SPENT <br />{" "}
+                      <span className="text-dark"> # 0 </span>
+                    </h5>
+                  </div>
                 </div>
               </div>
             </div>

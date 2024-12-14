@@ -116,13 +116,21 @@ nav {
     gap: 20px;
     align-items: start;
   }
-  .gridStatistics {display: grid; grid-template-columns: 30% 70%;}
-  .grid-statistics {display: grid; grid-template-columns: auto auto auto;}
-  .borderSt {border-left: 0.5px solid rgb(245, 241, 241); border-right: 0.5px solid rgb(245, 241, 241);}
+  .gridStatistics {
+    display: grid;
+    grid-template-columns: 30% 70%;
+  }
+  .grid-statistics {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+  .borderSt {
+    border-left: 0.5px solid rgb(245, 241, 241);
+    border-right: 0.5px solid rgb(245, 241, 241);
+  }
 }
 @media (max-width: 760px) {
   .service-grid {
-
     display: grid;
     grid-template-columns: auto auto;
     align-items: start;
@@ -287,4 +295,39 @@ nav {
   border-radius: 8px;
 }
 
-.fontStat {font-family: 'Verdana, Geneva, Tahoma, sans-serif';}
+.fontStat {
+  font-family: "Verdana, Geneva, Tahoma, sans-serif";
+}
+
+/* navbar section */
+.navImg {
+  width: 50px;
+  height: 50px;
+}
+.navBalance {
+  color: #a59d9d;
+  padding-top: -10px;
+  font-size: smaller;
+}
+.onlineSign {
+  background-color: green;
+  width: 10px;
+  border-radius: 50%;
+  height: 10px;
+  z-index: 2;
+  margin-left: -10px;
+  margin-top: 35px;
+  border: 1px solid #fff;
+}
+.navUser {
+  margin-left: 30px;
+}
+.grid-navDashh {margin-left: 15px;
+  padding-top: 15px;
+  border-top: 0.5px solid rgb(92, 90, 90);}
+.grid-navDash {
+  display: grid;
+  grid-template-columns: 13% 87%;
+  color: #a59d9d;
+  padding-top: 15px;
+}
