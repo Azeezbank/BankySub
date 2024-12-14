@@ -80,7 +80,7 @@ const Home: React.FC = () => {
               </div>
               <div className="grid-navDash">
                 <h3>
-                  <i className="bi bi-lightbulb"></i>
+                  <i className="bi bi-envelope-paper"></i>
                 </h3>
                 <p className='ps-2'>Buy Recharge Cards</p>
               </div>
@@ -98,7 +98,7 @@ const Home: React.FC = () => {
               </div>
               <div className="grid-navDash">
                 <h3>
-                  <i className="bi bi-lightbulb"></i>
+                  <i className="bi bi-arrow-counterclockwise"></i>
                 </h3>
                 <p className='ps-2'>Histories</p>
               </div>
