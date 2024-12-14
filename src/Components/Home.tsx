@@ -70,49 +70,49 @@ const Home: React.FC = () => {
                 <h3>
                   <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
                 </h3>
-                <p>Utility Payment</p>
+                <p className='ps-2'>Utility Payment</p>
               </div>
               <div className="grid-navDash">
                 <h3>
                   <i className="bi bi-credit-card house-fill chat-dots"></i>
                 </h3>
-                <p>Buy Exam Pin</p>
+                <p className='ps-2'>Buy Exam Pin</p>
               </div>
               <div className="grid-navDash">
                 <h3>
                   <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
                 </h3>
-                <p>Buy Recharge Cards</p>
+                <p className='ps-2'>Buy Recharge Cards</p>
               </div>
               <div className="grid-navDash">
                 <h3>
                   <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
                 </h3>
-                <p>Data Card</p>
+                <p className='ps-2'>Data Card</p>
               </div>
               <div className="grid-navDash">
                 <h3>
                   <i className="bi bi-chat-dots lightbulb house-fill credit-card"></i>
                 </h3>
-                <p>Bulk SMS</p>
+                <p className='ps-2'>Bulk SMS</p>
               </div>
               <div className="grid-navDash">
                 <h3>
                   <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
                 </h3>
-                <p>Histories</p>
+                <p className='ps-2'>Histories</p>
               </div>
               <div className="grid-navDash">
                 <h3>
                   <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
                 </h3>
-                <p>Statistics</p>
+                <p className='ps-2'>Statistics</p>
               </div>
               <div className="grid-navDash">
                 <h3>
                   <i className="bi bi-lightbulb house-fill credit-card chat-dots"></i>
                 </h3>
-                <p>Messages</p>
+                <p className='ps-2'>Messages</p>
               </div>
             </div>
           </aside>
