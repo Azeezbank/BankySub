@@ -338,17 +338,19 @@ const Home: React.FC = () => {
               </div>
               <div className="statistics">
                 <p className="fw-bold">TRANSACTION STATISTICS</p> <hr/>
+                <div className="grid-statistics">
                 <div className="gridStatistics">
-                  <h2 className="pt-3 text-warning text-center"><i className="bi bi-clock cash-coin x-circle"></i></h2>
+                  <h2 className="pt-1 text-warning text-center"><i className="bi bi-clock cash-coin x-circle"></i></h2>
                   <h5 className="text-muted fontStat">WALLET BALANCE <br /> <span className="text-dark"> # 0 </span></h5>
                 </div>
-                <div className="gridStatistics">
-                  <h2 className="pt-3 text-success text-center"><i className="bi bi-cash-coin x-circle"></i></h2>
+                <div className="gridStatistics borderSt">
+                  <h2 className="pt-1 text-success text-center"><i className="bi bi-cash-coin x-circle"></i></h2>
                   <h5 className="text-muted fontStat">TRANSACTIONS <br /> <span className="text-dark"> # 0 </span></h5>
                 </div>
                 <div className="gridStatistics">
-                  <h2 className="pt-3 text-danger text-center"><i className="bi bi-x-circle"></i></h2>
+                  <h2 className="pt-1 text-danger text-center"><i className="bi bi-x-circle"></i></h2>
                   <h5 className="text-muted fontStat">TOTAL SPENT <br /> <span className="text-dark"> # 0 </span></h5>
+                </div>
                 </div>
               </div>
             </div>
