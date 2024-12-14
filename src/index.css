@@ -33,7 +33,7 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
+}*/
 
 button {
   border-radius: 8px;
@@ -55,14 +55,14 @@ button:focus-visible {
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
+  /*:root {
     color: #213547;
     background-color: #ffffff;
   }
   a:hover {
     color: #747bff;
-  }
+  }*/
   button {
     background-color: #f9f9f9;
   }
-}*/
+}
