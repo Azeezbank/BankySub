@@ -83,7 +83,6 @@ const Home: React.FC = () => {
                 width: "130px",
                 height: "40px",
                 margin: "5px",
-                paddingBottom: '10px',
               }}
             >
               Fund wallet
