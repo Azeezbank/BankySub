@@ -52,19 +52,19 @@ const Home: React.FC = () => {
                 <h3>
                   <i className="bi bi-house-fill"></i>
                 </h3>
-                <p>Dashboard</p>
+                <p className='ps-2'>Dashboard</p>
               </div>
               <div className="grid-navDash">
                 <h3>
                   <i className="bi bi-file-bar-graph"></i>
                 </h3>
-                <p>Buy Data</p>
+                <p className='ps-2'>Buy Data</p>
               </div>
               <div className="grid-navDash">
                 <h3>
                   <i className="bi bi-telephone"></i>
                 </h3>
-                <p>Buy Data</p>
+                <p className='ps-2'>Buy Data</p>
               </div>
               <div className="grid-navDash">
                 <h3>
