@@ -337,7 +337,7 @@ const Home: React.FC = () => {
                 </div>
               </div>
               <div className="statistics">
-                <p className="fw-bold">TRANSACTION STATISTICS</p> <hr/>
+                <h5>TRANSACTION STATISTICS</h5> <hr/>
                 <div className="grid-statistics">
                 <div className="gridStatistics">
                   <h2 className="pt-1 text-warning text-center"><i className="bi bi-clock cash-coin x-circle"></i></h2>
