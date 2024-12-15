@@ -8,7 +8,7 @@
   margin: -10px 10px 10px 10px; 
 
 }
-.transactionForm select {width: 100%; padding: 5px; border-radius: 4px; margin-bottom: 10px;}
+.transactionForm select {width: 100%; padding: 5px; border-radius: 4px; margin-bottom: 10px; background-color: #fff;}
 .transactionForm p {margin-bottom: 5px;}
 .transactionForm input {width: 100%; padding: 5px; border-radius: 4px; margin-bottom: 10px; border: none;}
 .input-group {margin-bottom: 10px;}
