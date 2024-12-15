@@ -114,7 +114,7 @@ const Data: React.FC = () => {
         >
           <main>
             <NavBar sideBarClickHandler={handleVisible} />
-            <div className="airtimeForm">
+            <div className="airtimeForm grid-balance-section-m">
               <p className="text-center pt-3">Buy Data</p>
               <form className="transactionForm">
                 <p>Network</p>
