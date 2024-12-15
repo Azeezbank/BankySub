@@ -49,7 +49,7 @@ nav {
   background-color: #000;
   color: #ccc;
   height: 100%;
-  padding-top: 25px;
+  padding-top: 10px;
   border-right: 3px solid grey;
   position: fixed;
   top: 0;
@@ -85,7 +85,6 @@ nav {
   color: #fff;
   width: 100%;
   background: linear-gradient(to bottom right, #ff3c9d, #6a00f4);
-  margin-top: 0%;
 }
 @media (min-width: 760px) {
   .service-grid {
@@ -327,12 +326,31 @@ nav {
 .navUser {
   margin-left: 30px;
 }
-.grid-navDashh {margin-left: 15px;
+.grid-navDashh {
+  margin-left: 15px;
   padding-top: 15px;
-  border-top: 0.5px solid rgb(92, 90, 90);}
+  border-top: 0.5px solid rgb(92, 90, 90);
+}
 .grid-navDash {
   display: grid;
   grid-template-columns: 13% 87%;
   color: #a59d9d;
   padding-top: 15px;
 }
+.logout {
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  margin-top: 41px;
+  padding: 5px;
+  background: linear-gradient(135deg, #ff3c9d, #6a00f4);
+  color: #fff;
+  border-top: 0.5px solid rgb(235, 82, 235);
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.logoutV.hidden {
+  display: none;
+}
+.Link {text-decoration: none; color: #a59d9d;}

@@ -10,7 +10,9 @@ import bulk from "../assets/sms.png";
 import resultChecker from "../assets/resultchecker.png";
 import rechargeCard from "../assets/printer.jpg";
 import referal from "../assets/referral.png";
-import avatar from "../assets/avatar.png";
+import avatar from '../assets/avatar.png';
+import NavBar from "./NavBar";
+import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +37,7 @@ const Home: React.FC = () => {
     <>
       <div className="flexEntire">
         <div className={`aside ${isOpen ? "visible" : "hidden"} flexAside`}>
-          <aside>
+        <aside>
             <div className="d-flex navUser">
               <img className="navImg" src={avatar} alt="user" />
               <div className="onlineSign">
@@ -52,19 +54,19 @@ const Home: React.FC = () => {
                 <h3>
                   <i className="bi bi-house-fill"></i>
                 </h3>
-                <p className='ps-2'>Dashboard</p>
+                <Link to={'/'} className="Link"> <p className='ps-2'>Dashboard</p> </Link>
               </div>
               <div className="grid-navDash">
                 <h3>
                   <i className="bi bi-reception-4"></i>
                 </h3>
-                <p className='ps-2'>Buy Data</p>
+                <Link to={'/vend=data'} className="Link"> <p className='ps-2'>Buy Data</p> </Link>
               </div>
               <div className="grid-navDash">
                 <h3>
                   <i className="bi bi-telephone"></i>
                 </h3>
-                <p className='ps-2'>Buy Data</p>
+                <Link to={'/vend=airtime'} className="Link"><p className='ps-2'>Buy Airtime</p></Link>
               </div>
               <div className="grid-navDash">
                 <h3>
@@ -129,21 +131,8 @@ const Home: React.FC = () => {
           } flexMain`}
         >
           <main>
-            <nav>
-              <div className="navbar">
-                <div className="nav-menu" onClick={handleVisible}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <div>Welcome</div>
-                <div className="handburger">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </nav>
+            <NavBar sideBarClickHandler={handleVisible} />
+
             <div className="hero">
               <h3>WELCOME TO TUNSTELECOM.COM.NG</h3>
               <p>Welcome to tunstelecom.com.ng</p>
@@ -383,6 +372,7 @@ const Home: React.FC = () => {
                   </div>
                 </div>
                 <div className="service-grid mt-5">
+                  <Link to={'/vend=airtime'} className="Link">
                   <div className="service-grid-items">
                     <img
                       src={airtime}
@@ -391,10 +381,12 @@ const Home: React.FC = () => {
                     />
                     <p className="text-muted text-center">Airtime TopUp</p>
                   </div>
+                  </Link>
+                  <Link to={'/vend=data'} className="Link">
                   <div className="service-grid-items">
                     <img src={data} alt="airtime" style={{ width: "100px" }} />
                     <p className="text-muted">Buy Data</p>
-                  </div>
+                  </div> </Link>
                   <div className="service-grid-items">
                     <img
                       src={airtimeTocash}
