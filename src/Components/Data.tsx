@@ -223,7 +223,6 @@ const Data: React.FC = () => {
                     type="text"
                     placeholder="Amount"
                     className="form-control"
-                    value={}
                     required
                     disabled
                   />
