@@ -1,14 +1,76 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import avatar from "../assets/avatar.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
+
+interface network {
+  d_id: number
+  name: string
+}
+
+interface dataType {
+  d_id: number
+  name: string
+}
+
+interface dataPlan {
+  d_id: number
+  name: string
+  price: number
+  network_name: string
+  data_type: string
+}
 const Data: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [networks, setNetworks] = useState<network[]>([]);
+  const [dataType, setDataType] = useState<dataType[]>([]);
+  const [dataPlan, setDataPlan] = useState<dataPlan[]>([]);
+  const [choosenNetwork, setChoodenNetwork] = useState('');
+  const [choosenDataType, setChoosenDataType] = useState('');
 
   const handleVisible = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    const fetchNetwork = async () => {
+      try {
+        const response = await axios.get<network[]>('http://localhost:3006/network')
+        if (response.status === 200) {
+        setNetworks(response.data);
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    fetchNetwork();
+  }, []);
+
+  //Fetch dataType
+    const fetchDataType = async () => {
+      try {
+        const response = await axios.post<dataType[]>('http://localhost:3006/data/types', {choosenNetwork});
+        if (response.status === 200) {
+        setDataType(response.data);
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    };
+
+    //Fetch data plans
+    const fetchDataPlan = async () => {
+      try {
+        const response = await axios.post<dataPlan[]>('http://localhost:3006/data/plans', {choosenNetwork, choosenDataType});
+        if (response.status === 200) {
+        setDataPlan(response.data);
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    };
 
   return (
     <>
@@ -118,27 +180,32 @@ const Data: React.FC = () => {
               <p className="text-center pt-3">Buy Data</p>
               <form className="transactionForm">
                 <p>Network</p>
-                <select>
+                <select onChange={(e) => setChoodenNetwork(e.target.value)}>
                   <option>---Select---</option>
-                  <option className="option">MTN</option>
-                  <option>Airtel</option>
-                  <option>GLO</option>
-                  <option>9Mobile</option>
+                  {networks.map((n) => (
+                    <option key={n.d_id as React.Key}>
+                      {n.name}
+                    </option>
+                  ))}
                 </select>
                 <p>Data Type</p>
-                <select>
+                <select onClick={fetchDataType} onChange={(e) => setChoosenDataType(e.target.value)}>
                   <option>---Select---</option>
-                  <option>SME</option>
-                  <option>SME 2</option>
-                  <option>Coporate Gigting</option>
+                  {dataType.map((d) => (
+                    <option key={d.d_id as React.Key}>
+                      {d.name}
+                    </option>
+                  ))} 
                 </select>{" "}
                 <br />
                 <p>Data Plan</p>
-                <select>
+                <select onClick={fetchDataPlan}>
                   <option>---Select---</option>
-                  <option>1 gig</option>
-                  <option>2 gig</option>
-                  <option>3 gig</option>
+                  {dataPlan.map((dp) => (
+                    <option key={dp.d_id}>
+                      {dp.name} {dp.data_type} = # {dp.price}
+                    </option>
+                  ))}
                 </select>{" "}
                 <br />
                 <label htmlFor={"phone"}>Phone</label> <br />
@@ -156,7 +223,9 @@ const Data: React.FC = () => {
                     type="text"
                     placeholder="Amount"
                     className="form-control"
+                    value={}
                     required
+                    disabled
                   />
                   <p className="input-group-text bg-light">.00</p>
                 </div>
