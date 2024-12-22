@@ -7,21 +7,26 @@ import axios from "axios";
 
 interface network {
   d_id: number
+  id: number
   name: string
 }
 
 interface dataType {
   d_id: number
+  id: number
   name: string
 }
 
 interface dataPlan {
   d_id: number
+  id: number
   name: string
   price: number
   network_name: string
   data_type: string
 }
+
+
 const Data: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [networks, setNetworks] = useState<network[]>([]);
@@ -29,9 +34,21 @@ const Data: React.FC = () => {
   const [dataPlan, setDataPlan] = useState<dataPlan[]>([]);
   const [choosenNetwork, setChoodenNetwork] = useState('');
   const [choosenDataType, setChoosenDataType] = useState('');
-
+  const [choosenDataPlan, setChoosenDataPlan] = useState({price: ''});
+  const [mobileNumber, setMobileNumber] = useState('');
+  
   const handleVisible = () => {
     setIsOpen(!isOpen);
+  };
+
+const DataPrice = choosenDataPlan.price;
+
+  const handlePrice = (e: any) => {
+    const newPrice = e.target.value;
+    setChoosenDataPlan((prev) => ({
+      ...prev, 
+      price: newPrice,
+    }));
   };
 
   useEffect(() => {
@@ -70,6 +87,19 @@ const Data: React.FC = () => {
       } catch (err) {
         console.error(err)
       }
+    };
+
+    const FetchDataBundle = async (e: any) => {
+      e.preventDefault();
+      try {
+        const response = await axios.post('http://localhost:3006/api/data=bundle', {DataPrice, mobileNumber, choosenNetwork});
+        if (response.status === 200) {
+          alert('Successful')
+        }
+      } catch (err) {
+        alert('Failed to fetch')
+        console.error(err)
+      };
     };
 
   return (
@@ -199,11 +229,11 @@ const Data: React.FC = () => {
                 </select>{" "}
                 <br />
                 <p>Data Plan</p>
-                <select onClick={fetchDataPlan}>
+                <select onClick={fetchDataPlan} onChange={handlePrice}>
                   <option>---Select---</option>
                   {dataPlan.map((dp) => (
-                    <option key={dp.d_id}>
-                      {dp.name} {dp.data_type} = # {dp.price}
+                    <option key={dp.d_id} value={dp.price}>
+                      {dp.name} {dp.data_type} = #{dp.price}
                     </option>
                   ))}
                 </select>{" "}
@@ -213,16 +243,19 @@ const Data: React.FC = () => {
                   type={"number"}
                   name="phone"
                   id="phone"
+                  onChange={(e) => setMobileNumber(e.target.value)}
                   placeholder="Phone Number"
                   required
                 />
                 <p>Origina Amount</p>
                 <div className="input-group">
                   <p className="input-group-text bg-light">NGN.</p>
+
                   <input
                     type="text"
                     placeholder="Amount"
                     className="form-control"
+                    value={choosenDataPlan.price}
                     required
                     disabled
                   />
@@ -245,7 +278,7 @@ const Data: React.FC = () => {
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>
-                <button type="submit">Purchase</button>
+                <button onClick={FetchDataBundle} type="submit">Purchase</button>
               </form>
             </div>
           </main>
