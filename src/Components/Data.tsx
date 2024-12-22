@@ -54,7 +54,7 @@ const DataPrice = choosenDataPlan.price;
   useEffect(() => {
     const fetchNetwork = async () => {
       try {
-        const response = await axios.get<network[]>('http://localhost:3006/network')
+        const response = await axios.get<network[]>('https://bankysub-api.onrender.com/network')
         if (response.status === 200) {
         setNetworks(response.data);
         }
@@ -68,7 +68,7 @@ const DataPrice = choosenDataPlan.price;
   //Fetch dataType
     const fetchDataType = async () => {
       try {
-        const response = await axios.post<dataType[]>('http://localhost:3006/data/types', {choosenNetwork});
+        const response = await axios.post<dataType[]>('https://bankysub-api.onrender.com/data/types', {choosenNetwork});
         if (response.status === 200) {
         setDataType(response.data);
         }
@@ -80,7 +80,7 @@ const DataPrice = choosenDataPlan.price;
     //Fetch data plans
     const fetchDataPlan = async () => {
       try {
-        const response = await axios.post<dataPlan[]>('http://localhost:3006/data/plans', {choosenNetwork, choosenDataType});
+        const response = await axios.post<dataPlan[]>('https://bankysub-api.onrender.com/data/plans', {choosenNetwork, choosenDataType});
         if (response.status === 200) {
         setDataPlan(response.data);
         }
