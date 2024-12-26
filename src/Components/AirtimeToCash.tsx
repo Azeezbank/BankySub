@@ -1,112 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NavBar from "./NavBar";
 import avatar from "../assets/avatar.png";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-
-interface network {
-  d_id: number
-  id: number
-  name: string
-}
-
-interface dataType {
-  d_id: number
-  id: number
-  name: string
-}
-
-interface dataPlan {
-  d_id: number
-  id: number
-  name: string
-  price: number
-  network_name: string
-  data_type: string
-}
-
-
-const Data: React.FC = () => {
+const Airtime: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [networks, setNetworks] = useState<network[]>([]);
-  const [dataType, setDataType] = useState<dataType[]>([]);
-  const [dataPlan, setDataPlan] = useState<dataPlan[]>([]);
-  const [choosenNetwork, setChoodenNetwork] = useState('');
-  const [choosenDataType, setChoosenDataType] = useState('');
-  const [choosenDataPlan, setChoosenDataPlan] = useState({price: ''});
-  const [mobileNumber, setMobileNumber] = useState('');
-  
+
   const handleVisible = () => {
     setIsOpen(!isOpen);
   };
 
-const DataPrice = choosenDataPlan.price;
 
-  const handlePrice = (e: any) => {
-    const newPrice = e.target.value;
-    setChoosenDataPlan((prev) => ({
-      ...prev, 
-      price: newPrice,
-    }));
-  };
-
-  useEffect(() => {
-    const fetchNetwork = async () => {
-      try {
-        const response = await axios.get<network[]>('http://localhost:3006/network')
-        if (response.status === 200) {
-        setNetworks(response.data);
-        }
-      } catch (err) {
-        console.error(err)
-      }
-    }
-    fetchNetwork();
-  }, []);
-
-  //Fetch dataType
-    const fetchDataType = async () => {
-      try {
-        const response = await axios.post<dataType[]>('http://localhost:3006/data/types', {choosenNetwork});
-        if (response.status === 200) {
-        setDataType(response.data);
-        }
-      } catch (err) {
-        console.error(err)
-      }
-    };
-
-    //Fetch data plans
-    const fetchDataPlan = async () => {
-      try {
-        const response = await axios.post<dataPlan[]>('http://localhost:3006/data/plans', {choosenNetwork, choosenDataType});
-        if (response.status === 200) {
-        setDataPlan(response.data);
-        }
-      } catch (err) {
-        console.error(err)
-      }
-    };
-
-    const FetchDataBundle = async (e: any) => {
-      e.preventDefault();
-      try {
-        const response = await axios.post('http://localhost:3006/api/data=bundle', {DataPrice, mobileNumber, choosenNetwork});
-        if (response.status === 200) {
-          alert('Successful')
-        }
-      } catch (err) {
-        alert('Failed to fetch')
-        console.error(err)
-      };
-    };
-
-    const handleNetworkType = (e: any) => {
-      setChoodenNetwork(e.target.value);
-    }
-
-console.log(choosenNetwork);
   return (
     <>
       <div className="flexEntire">
@@ -137,7 +41,10 @@ console.log(choosenNetwork);
                 <h3>
                   <i className="bi bi-reception-4"></i>
                 </h3>
-                <Link to={'/vend=data'} className="Link"> <p className="ps-2">Buy Data</p> </Link>
+                <Link to={"/vend=data"} className="Link">
+                  {" "}
+                  <p className="ps-2">Buy Data</p>
+                </Link>
               </div>
               <div className="grid-navDash">
                 <h3>
@@ -212,35 +119,17 @@ console.log(choosenNetwork);
           <main>
             <NavBar sideBarClickHandler={handleVisible} />
             <div className="airtimeForm grid-balance-section-m">
-              <p className="text-center pt-3">Buy Data</p>
+              <p className="text-center pt-3">Airtime TopUp</p>
               <form className="transactionForm">
                 <p>Network</p>
-                <select onChange={handleNetworkType}>
+                <select>
                   <option>---Select---</option>
-                  {networks.map((n) => (
-                    <option key={n.d_id as React.Key}>
-                      {n.name}
-                    </option>
-                  ))}
+                  <option className="option">MTN</option>
                 </select>
-                <p>Data Type</p>
-                <select onClick={fetchDataType} onChange={(e) => setChoosenDataType(e.target.value)}>
+                <p>Airtime Type</p>
+                <select>
                   <option>---Select---</option>
-                  {dataType.map((d) => (
-                    <option key={d.d_id as React.Key}>
-                      {d.name}
-                    </option>
-                  ))} 
-                </select>{" "}
-                <br />
-                <p>Data Plan</p>
-                <select onClick={fetchDataPlan} onChange={handlePrice}>
-                  <option>---Select---</option>
-                  {dataPlan.map((dp) => (
-                    <option key={dp.d_id} value={dp.price}>
-                      {dp.name} {dp.data_type} = #{dp.price}
-                    </option>
-                  ))}
+                  <option>VTU</option>
                 </select>{" "}
                 <br />
                 <label htmlFor={"phone"}>Phone</label> <br />
@@ -248,21 +137,17 @@ console.log(choosenNetwork);
                   type={"number"}
                   name="phone"
                   id="phone"
-                  onChange={(e) => setMobileNumber(e.target.value)}
                   placeholder="Phone Number"
                   required
                 />
                 <p>Origina Amount</p>
                 <div className="input-group">
                   <p className="input-group-text bg-light">NGN.</p>
-
                   <input
                     type="text"
                     placeholder="Amount"
                     className="form-control"
-                    value={choosenDataPlan.price}
                     required
-                    disabled
                   />
                   <p className="input-group-text bg-light">.00</p>
                 </div>
@@ -283,7 +168,7 @@ console.log(choosenNetwork);
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>
-                <button onClick={FetchDataBundle} type="submit">Purchase</button>
+                <button type="submit">Purchase</button>
               </form>
             </div>
           </main>
@@ -293,4 +178,4 @@ console.log(choosenNetwork);
   );
 };
 
-export default Data;
+export default Airtime;

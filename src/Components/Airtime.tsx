@@ -1,14 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import avatar from "../assets/avatar.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+interface AirtimeN {
+  d_id: number
+  id: number
+  name: string
+}
+
+interface AirtimeT {
+  d_id: number
+  name: string
+}
 
 const Airtime: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [networks, setNetworks] = useState<AirtimeN[]>([]);
+  const [airtimeT, setAirtimeT] = useState<AirtimeT[]>([])
+  // const [airtimeTChoosen, setaAirtimeTChoosen] = useState('');
 
   const handleVisible = () => {
     setIsOpen(!isOpen);
   };
+
+  // Fetch Airtime network
+  useEffect(() => {
+    const fetchAirtimeN = async () => {
+      try {
+        const response = await axios.get<AirtimeN[]>('http://localhost:3006/api/airtimeN');
+        if (response.status === 200) {
+        setNetworks(response.data);
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    fetchAirtimeN();
+  }, []);
+
+  //Fetch Airtime type
+  useEffect(() => {
+    const fetchAirtimeType = async () => {
+      try {
+      const response = await axios.get('http://localhost:3006/api/airtimeT');
+      if (response.status === 200) {
+        setAirtimeT(response.data);
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+    fetchAirtimeType();
+  }, []);
 
   return (
     <>
@@ -123,15 +168,20 @@ const Airtime: React.FC = () => {
                 <p>Network</p>
                 <select>
                   <option>---Select---</option>
-                  <option className="option">MTN</option>
-                  <option>Airtel</option>
-                  <option>GLO</option>
-                  <option>9Mobile</option>
+                  {networks.map((an) => (
+                  <option key={an.d_id as React.Key}>
+                    {an.name}
+                  </option>
+                  ))}
                 </select>
                 <p>Airtime Type</p>
                 <select>
                   <option>---Select---</option>
-                  <option>VTU</option>
+                  {airtimeT.map((at) => (
+                    <option key={at.d_id as React.Key}>
+                      {at.name}
+                    </option>
+                  ))}
                 </select>{" "}
                 <br />
                 <label htmlFor={"phone"}>Phone</label> <br />
