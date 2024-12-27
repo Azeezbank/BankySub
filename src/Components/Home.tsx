@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import googlePlay from "../assets/google-play.png";
 import bank from "../assets/bank.png";
 import airtime from "../assets/airtime.svg";
@@ -12,12 +12,15 @@ import rechargeCard from "../assets/printer.jpg";
 import referal from "../assets/referral.png";
 import avatar from '../assets/avatar.png';
 import NavBar from "./NavBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Home: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [copysuccess, setCopySuccess] = useState("");
+  const navigate = useNavigate();
   const link = "https://tunstelecom.com.ng?ref1";
+  
 
   const handleVisible = () => {
     setIsOpen(!isOpen);
@@ -32,6 +35,21 @@ const Home: React.FC = () => {
       .catch(() => setCopySuccess("Failed to copy link"));
     alert(copysuccess);
   };
+
+  useEffect(() => {
+    const ProtectPage = async () => {
+      try {
+        const response = await axios.get('http://localhost:3006/protected');
+        if (response.status === 200) {
+          console.log(response.data.message);
+        }
+      } catch (err: any) {
+        navigate('/login?');
+        console.error(err.response?.data.message)
+      }
+    }
+    ProtectPage();
+  }, []);
 
   return (
     <>

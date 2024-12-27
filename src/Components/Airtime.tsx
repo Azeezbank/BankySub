@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import avatar from "../assets/avatar.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 interface AirtimeN {
@@ -19,7 +19,11 @@ const Airtime: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [networks, setNetworks] = useState<AirtimeN[]>([]);
   const [airtimeT, setAirtimeT] = useState<AirtimeT[]>([])
-  // const [airtimeTChoosen, setaAirtimeTChoosen] = useState('');
+  const [airtimeNChoosen, setAirtimeNChoosen] = useState('');
+  const [airtimeTChoosen, setAirtimeTChoosen] = useState('');
+  const [mobileN, setMobileN] = useState('');
+  const [amount, setAmount] = useState('');
+  const navigate = useNavigate();
 
   const handleVisible = () => {
     setIsOpen(!isOpen);
@@ -54,6 +58,35 @@ const Airtime: React.FC = () => {
   }
     fetchAirtimeType();
   }, []);
+
+
+  //Purchase Airtime
+  const HandleAirtePurchase = async (e: any) => {
+    e.preventDefault();
+    try {
+    const response = await axios.post('http://localhost:3006/api/airtime/topup', {airtimeNChoosen, airtimeTChoosen, mobileN, amount});
+    if (response.status === 200) {
+      alert('Airtime topUp successfully');
+    }
+  } catch (err: any) {
+    console.error('Failed to purchase airtime');
+  };
+};
+
+useEffect(() => {
+  const ProtectPage = async () => {
+    try {
+      const response = await axios.get('http://localhost:3006/protected');
+      if (response.status === 200) {
+        console.log(response.data.message);
+      }
+    } catch (err: any) {
+      navigate('/login?');
+      console.error(err.response?.data.message)
+    }
+  }
+  ProtectPage();
+}, []);
 
   return (
     <>
@@ -166,16 +199,16 @@ const Airtime: React.FC = () => {
               <p className="text-center pt-3">Airtime TopUp</p>
               <form className="transactionForm">
                 <p>Network</p>
-                <select>
+                <select onChange={(e) => setAirtimeNChoosen(e.target.value)}>
                   <option>---Select---</option>
                   {networks.map((an) => (
-                  <option key={an.d_id as React.Key}>
+                  <option key={an.d_id as React.Key} value={an.id}>
                     {an.name}
                   </option>
                   ))}
                 </select>
                 <p>Airtime Type</p>
-                <select>
+                <select onChange={(e) => setAirtimeTChoosen(e.target.value)}>
                   <option>---Select---</option>
                   {airtimeT.map((at) => (
                     <option key={at.d_id as React.Key}>
@@ -188,6 +221,8 @@ const Airtime: React.FC = () => {
                 <input
                   type={"number"}
                   name="phone"
+                  value={mobileN}
+                  onChange={(e) => setMobileN(e.target.value)}
                   id="phone"
                   placeholder="Phone Number"
                   required
@@ -199,6 +234,8 @@ const Airtime: React.FC = () => {
                     type="text"
                     placeholder="Amount"
                     className="form-control"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
                     required
                   />
                   <p className="input-group-text bg-light">.00</p>
@@ -220,7 +257,7 @@ const Airtime: React.FC = () => {
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>
-                <button type="submit">Purchase</button>
+                <button type="submit" onClick={HandleAirtePurchase}>Purchase</button>
               </form>
             </div>
           </main>

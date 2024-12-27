@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import avatar from "../assets/avatar.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
@@ -36,6 +36,7 @@ const Data: React.FC = () => {
   const [choosenDataType, setChoosenDataType] = useState('');
   const [choosenDataPlan, setChoosenDataPlan] = useState({price: ''});
   const [mobileNumber, setMobileNumber] = useState('');
+  const navigate = useNavigate();
   
   const handleVisible = () => {
     setIsOpen(!isOpen);
@@ -104,9 +105,22 @@ const DataPrice = choosenDataPlan.price;
 
     const handleNetworkType = (e: any) => {
       setChoodenNetwork(e.target.value);
-    }
+    };
 
-console.log(choosenNetwork);
+    useEffect(() => {
+      const ProtectPage = async () => {
+        try {
+          const response = await axios.get('http://localhost:3006/protected');
+          if (response.status === 200) {
+            console.log(response.data.message);
+          }
+        } catch (err: any) {
+          navigate('/login?');
+          console.error(err.response?.data.message)
+        }
+      }
+      ProtectPage();
+    }, []);
   return (
     <>
       <div className="flexEntire">
@@ -279,7 +293,7 @@ console.log(choosenNetwork);
                 </div>
                 <div className="flex-bypass">
                   <p>
-                    <input type="checkbox" name="bypass" id="bypass" />
+                    <input type="checkbox" name="bypass" id="bypass" required />
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>
