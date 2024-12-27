@@ -110,7 +110,7 @@ const DataPrice = choosenDataPlan.price;
     useEffect(() => {
       const ProtectPage = async () => {
         try {
-          const response = await axios.get('http://localhost:3006/protected');
+          const response = await axios.get('http://localhost:3006/protected', {withCredentials: true});
           if (response.status === 200) {
             console.log(response.data.message);
           }

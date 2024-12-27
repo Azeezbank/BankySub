@@ -13,7 +13,7 @@ const Login: React.FC = () => {
     const handleLogin = async (e: any) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3006/login', {password, username});
+            const response = await axios.post('http://localhost:3006/login', {password, username}, {withCredentials: true});
             if (response.status === 200) {
                 navigate('/')
             }

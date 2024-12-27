@@ -36,10 +36,11 @@ const Home: React.FC = () => {
     alert(copysuccess);
   };
 
+  //Protect Route
   useEffect(() => {
     const ProtectPage = async () => {
       try {
-        const response = await axios.get('http://localhost:3006/protected');
+        const response = await axios.get('http://localhost:3006/protected', {withCredentials: true});
         if (response.status === 200) {
           console.log(response.data.message);
         }
@@ -50,6 +51,19 @@ const Home: React.FC = () => {
     }
     ProtectPage();
   }, []);
+
+  //Generate account number
+  const handleGenerateAcct = async (e: any) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:3006/dedicated/account', {});
+      if (response.status === 200) {
+        console.log('Account generated')
+      }
+    } catch (err: any) {
+      console.error('Error generating');
+    }
+  };
 
   return (
     <>
@@ -237,7 +251,7 @@ const Home: React.FC = () => {
                     <img src={bank} alt="Bank" />
                     <p className="pt-4 pb-3">
                       Account Number:{" "}
-                      <span className="generateNo">
+                      <span className="generateNo" onClick={handleGenerateAcct}>
                         <i className="bi bi-arrow-counterclockwise "></i>
                         Generate Account Number
                       </span>
