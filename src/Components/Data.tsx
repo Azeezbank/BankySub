@@ -60,7 +60,7 @@ const Data: React.FC = () => {
     const fetchNetwork = async () => {
       try {
         const response = await axios.get<network[]>(
-          "http://localhost:3006/network"
+          "https://bankysub-api.onrender.com/network"
         );
         if (response.status === 200) {
           setNetworks(response.data);
@@ -76,7 +76,7 @@ const Data: React.FC = () => {
   const fetchDataType = async () => {
     try {
       const response = await axios.post<dataType[]>(
-        "http://localhost:3006/data/types",
+        "https://bankysub-api.onrender.com/data/types",
         { choosenNetwork }
       );
       if (response.status === 200) {
@@ -91,7 +91,7 @@ const Data: React.FC = () => {
   const fetchDataPlan = async () => {
     try {
       const response = await axios.post<dataPlan[]>(
-        "http://localhost:3006/data/plans",
+        "https://bankysub-api.onrender.com/data/plans",
         { choosenNetwork, choosenDataType }
       );
       if (response.status === 200) {
@@ -114,7 +114,7 @@ const Data: React.FC = () => {
         return;
       }
       const response = await axios.post(
-        "http://localhost:3006/api/data=bundle",
+        "https://bankysub-api.onrender.com/api/data=bundle",
         { DataPrice, mobileNumber, choosenNetwork }
       );
       if (response.status === 200) {
@@ -134,7 +134,7 @@ const Data: React.FC = () => {
   useEffect(() => {
     const ProtectPage = async () => {
       try {
-        const response = await axios.get("http://localhost:3006/protected", {
+        const response = await axios.get("https://bankysub-api.onrender.com/protected", {
           withCredentials: true,
         });
         if (response.status === 200) {
@@ -153,7 +153,7 @@ const Data: React.FC = () => {
     const handleUserInfo = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3006/api/user_info",
+          "https://bankysub-api.onrender.com/api/user_info",
           { withCredentials: true }
         );
         if (response.status === 200) {

@@ -56,7 +56,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const ProtectPage = async () => {
       try {
-        const response = await axios.get('http://localhost:3006/protected', {withCredentials: true});
+        const response = await axios.get('https://bankysub-api.onrender.com/protected', {withCredentials: true});
         if (response.status === 200) {
           console.log(response.data.message);
         }
@@ -72,7 +72,7 @@ const Home: React.FC = () => {
   const handleGenerateAcct = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3006/dedicated/account', {}, {withCredentials: true});
+      const response = await axios.post('https://bankysub-api.onrender.com/dedicated/account', {}, {withCredentials: true});
       if (response.status === 200) {
         console.log('Account generated')
       }
@@ -85,7 +85,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const bankDetail = async () => {
       try {
-        const response = await axios.post<bank[]>('http://localhost:3006/api/user_account', {}, {withCredentials: true});
+        const response = await axios.post<bank[]>('https://bankysub-api.onrender.com/api/user_account', {}, {withCredentials: true});
         if (response.status === 200) {
           setBankDetails(response.data)
           setIsAcctN(true);
@@ -101,7 +101,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const handleUserInfo = async () => {
       try{
-      const response = await axios.get('http://localhost:3006/api/user_info', {withCredentials: true});
+      const response = await axios.get('https://bankysub-api.onrender.com/api/user_info', {withCredentials: true});
       if (response.status === 200) {
         setWalletBalance(response.data)
       }

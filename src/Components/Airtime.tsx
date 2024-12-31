@@ -39,7 +39,7 @@ const Airtime: React.FC = () => {
   useEffect(() => {
     const fetchAirtimeN = async () => {
       try {
-        const response = await axios.get<AirtimeN[]>('http://localhost:3006/api/airtimeN');
+        const response = await axios.get<AirtimeN[]>('https://bankysub-api.onrender.com/api/airtimeN');
         if (response.status === 200) {
         setNetworks(response.data);
         }
@@ -54,7 +54,7 @@ const Airtime: React.FC = () => {
   useEffect(() => {
     const fetchAirtimeType = async () => {
       try {
-      const response = await axios.get('http://localhost:3006/api/airtimeT');
+      const response = await axios.get('https://bankysub-api.onrender.com/api/airtimeT');
       if (response.status === 200) {
         setAirtimeT(response.data);
       }
@@ -75,7 +75,7 @@ const Airtime: React.FC = () => {
       alert('Low wallet balance, please fund your wallet');
       return;
     }
-    const response = await axios.post('http://localhost:3006/api/airtime/topup', {airtimeNChoosen, airtimeTChoosen, mobileN, amount});
+    const response = await axios.post('https://bankysub-api.onrender.com/api/airtime/topup', {airtimeNChoosen, airtimeTChoosen, mobileN, amount});
     if (response.status === 200) {
       alert('Airtime topUp successfully');
     }
@@ -87,7 +87,7 @@ const Airtime: React.FC = () => {
 useEffect(() => {
   const ProtectPage = async () => {
     try {
-      const response = await axios.get('http://localhost:3006/protected', {withCredentials: true});
+      const response = await axios.get('https://bankysub-api.onrender.com/protected', {withCredentials: true});
       if (response.status === 200) {
         console.log(response.data.message);
       }
@@ -103,7 +103,7 @@ useEffect(() => {
 useEffect(() => {
   const handleUserInfo = async () => {
     try{
-    const response = await axios.get('http://localhost:3006/api/user_info', {withCredentials: true});
+    const response = await axios.get('https://bankysub-api.onrender.com/api/user_info', {withCredentials: true});
     if (response.status === 200) {
       setWalletBalance(response.data)
     }

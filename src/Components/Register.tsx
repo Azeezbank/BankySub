@@ -39,7 +39,7 @@ const Register: React.FC = () => {
       return;
     } 
     try {
-    const response = await axios.post('http://localhost:3006/register', {password, username, email});
+    const response = await axios.post('https://bankysub-api.onrender.com/register', {password, username, email});
     if (response.status === 200) {
         alert(response.data.message);
         navigate('/login');
