@@ -14,10 +14,26 @@ import avatar from '../assets/avatar.png';
 import NavBar from "./NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import moniepoit from '../assets/monie.png';
+
+interface bank {
+  d_id: number
+  acctNo: number
+  acctName: string
+  bankName: string
+}
+
+interface walletInfo {
+  username: string
+  user_balance: string
+}
 
 const Home: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [copysuccess, setCopySuccess] = useState("");
+  const [bankDetails, setBankDetails] = useState<bank[]>([]);
+  const [isAcctN, setIsAcctN] = useState(false);
+  const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
   const navigate = useNavigate();
   const link = "https://tunstelecom.com.ng?ref1";
   
@@ -56,7 +72,7 @@ const Home: React.FC = () => {
   const handleGenerateAcct = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3006/dedicated/account', {});
+      const response = await axios.post('http://localhost:3006/dedicated/account', {}, {withCredentials: true});
       if (response.status === 200) {
         console.log('Account generated')
       }
@@ -64,6 +80,37 @@ const Home: React.FC = () => {
       console.error('Error generating');
     }
   };
+
+  //Fetch account details
+  useEffect(() => {
+    const bankDetail = async () => {
+      try {
+        const response = await axios.post<bank[]>('http://localhost:3006/api/user_account', {}, {withCredentials: true});
+        if (response.status === 200) {
+          setBankDetails(response.data)
+          setIsAcctN(true);
+        }
+      } catch (err: any) {
+        console.error(err.response?.data.message || err.message)
+      }
+    }
+    bankDetail();
+  });
+
+  //Fetch user information
+  useEffect(() => {
+    const handleUserInfo = async () => {
+      try{
+      const response = await axios.get('http://localhost:3006/api/user_info', {withCredentials: true});
+      if (response.status === 200) {
+        setWalletBalance(response.data)
+      }
+      } catch (err: any) {
+        console.error(err.response?.data.message || err.message)
+      }
+    }
+    handleUserInfo();
+  });
 
   return (
     <>
@@ -212,7 +259,7 @@ const Home: React.FC = () => {
               <div className="greating-section">
                 <p style={{ paddingBottom: "8px" }}>
                   Good morning,{" "}
-                  <span style={{ fontWeight: "bold" }}>Username</span>
+                  <span style={{ fontWeight: "bold" }}>{walletBalance.map(wallet => wallet.username)}</span>
                 </p>{" "}
                 <hr />
                 <div className="goolePlay">
@@ -235,8 +282,10 @@ const Home: React.FC = () => {
                       className="nav-link active"
                       data-bs-toggle="tab"
                       href="#moniepoint"
-                    >
-                      NULL
+                    >{isAcctN ? (
+                      <span>
+                      {bankDetails.map(bank => bank.bankName)}
+                      </span>) : ('NULL')}
                     </a>
                   </li>
                   <li className="nav-item">
@@ -248,20 +297,27 @@ const Home: React.FC = () => {
                 {/* tab panes */}
                 <div className="tab-content">
                   <div id="moniepoint" className=" tab-pane active moniepoint">
-                    <img src={bank} alt="Bank" />
+                  {isAcctN ? (
+                      <span>
+                    <img src={moniepoit} alt="Bank" /> </span>) : (<img src={bank} alt="Bank" />)}
                     <p className="pt-4 pb-3">
-                      Account Number:{" "}
+                      <strong>Account Number:</strong>{" "}
+                      {isAcctN ? (
+                        <span>
+                      {bankDetails.map(bank => bank.acctNo)} </span>) : (
                       <span className="generateNo" onClick={handleGenerateAcct}>
                         <i className="bi bi-arrow-counterclockwise "></i>
                         Generate Account Number
-                      </span>
+                      </span>)}
                     </p>
                     <div className="d-flex justify-content-between">
                       <div>
                         <p className="fw-bold">
-                          Account Name: Tunstelecom - NULL
+                          Account Name: Tunstelecom - {bankDetails.map(bank => bank.acctName)}
                         </p>
-                        <p className="bankN">Bank Name: NULL</p>
+                        <p className="bankN">Bank Name: {isAcctN ? (
+                          <span>
+                          {bankDetails.map(bank => bank.bankName)} </span>) : ('NULL')}</p>
                         <p className="automatedF">AUTOMATED BANK TRANSFER</p>
                         <p className="bankN automatedF">
                           Make transfer to this account to fund your wallet
@@ -347,7 +403,7 @@ const Home: React.FC = () => {
                     </div>
                     <div className="ps-2">
                       <p className="text-muted pt-2">Wallet balance</p>
-                      <p className="amount"># 0</p>
+                      <p className="amount"># {walletBalance.map(wallet => wallet.user_balance)}</p>
                     </div>
                   </div>
                   <div className="balance-section">

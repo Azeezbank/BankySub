@@ -15,6 +15,11 @@ interface AirtimeT {
   name: string
 }
 
+interface walletInfo {
+  username: string
+  user_balance: string
+}
+
 const Airtime: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [networks, setNetworks] = useState<AirtimeN[]>([]);
@@ -23,6 +28,7 @@ const Airtime: React.FC = () => {
   const [airtimeTChoosen, setAirtimeTChoosen] = useState('');
   const [mobileN, setMobileN] = useState('');
   const [amount, setAmount] = useState('');
+  const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
   const navigate = useNavigate();
 
   const handleVisible = () => {
@@ -64,6 +70,11 @@ const Airtime: React.FC = () => {
   const HandleAirtePurchase = async (e: any) => {
     e.preventDefault();
     try {
+      const isLesser = walletBalance.some(wallet => wallet.user_balance < amount);
+    if (isLesser) {
+      alert('Low wallet balance, please fund your wallet');
+      return;
+    }
     const response = await axios.post('http://localhost:3006/api/airtime/topup', {airtimeNChoosen, airtimeTChoosen, mobileN, amount});
     if (response.status === 200) {
       alert('Airtime topUp successfully');
@@ -87,6 +98,21 @@ useEffect(() => {
   }
   ProtectPage();
 }, []);
+
+//Fetch user information
+useEffect(() => {
+  const handleUserInfo = async () => {
+    try{
+    const response = await axios.get('http://localhost:3006/api/user_info', {withCredentials: true});
+    if (response.status === 200) {
+      setWalletBalance(response.data)
+    }
+    } catch (err: any) {
+      console.error(err.response?.data.message || err.message)
+    }
+  }
+  handleUserInfo();
+});
 
   return (
     <>

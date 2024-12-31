@@ -4,50 +4,54 @@ import avatar from "../assets/avatar.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
 interface network {
-  d_id: number
-  id: number
-  name: string
+  d_id: number;
+  id: number;
+  name: string;
 }
 
 interface dataType {
-  d_id: number
-  id: number
-  name: string
+  d_id: number;
+  id: number;
+  name: string;
 }
 
 interface dataPlan {
-  d_id: number
-  id: number
-  name: string
-  price: number
-  network_name: string
-  data_type: string
+  d_id: number;
+  id: number;
+  name: string;
+  price: number;
+  network_name: string;
+  data_type: string;
 }
 
+interface walletInfo {
+  username: string;
+  user_balance: string;
+}
 
 const Data: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [networks, setNetworks] = useState<network[]>([]);
   const [dataType, setDataType] = useState<dataType[]>([]);
   const [dataPlan, setDataPlan] = useState<dataPlan[]>([]);
-  const [choosenNetwork, setChoodenNetwork] = useState('');
-  const [choosenDataType, setChoosenDataType] = useState('');
-  const [choosenDataPlan, setChoosenDataPlan] = useState({price: ''});
-  const [mobileNumber, setMobileNumber] = useState('');
+  const [choosenNetwork, setChoodenNetwork] = useState("");
+  const [choosenDataType, setChoosenDataType] = useState("");
+  const [choosenDataPlan, setChoosenDataPlan] = useState({ price: "" });
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
   const navigate = useNavigate();
-  
+
   const handleVisible = () => {
     setIsOpen(!isOpen);
   };
 
-const DataPrice = choosenDataPlan.price;
+  const DataPrice = choosenDataPlan.price;
 
   const handlePrice = (e: any) => {
     const newPrice = e.target.value;
     setChoosenDataPlan((prev) => ({
-      ...prev, 
+      ...prev,
       price: newPrice,
     }));
   };
@@ -55,72 +59,112 @@ const DataPrice = choosenDataPlan.price;
   useEffect(() => {
     const fetchNetwork = async () => {
       try {
-        const response = await axios.get<network[]>('http://localhost:3006/network')
+        const response = await axios.get<network[]>(
+          "http://localhost:3006/network"
+        );
         if (response.status === 200) {
-        setNetworks(response.data);
+          setNetworks(response.data);
         }
       } catch (err) {
-        console.error(err)
+        console.error(err);
       }
-    }
+    };
     fetchNetwork();
   }, []);
 
   //Fetch dataType
-    const fetchDataType = async () => {
-      try {
-        const response = await axios.post<dataType[]>('http://localhost:3006/data/types', {choosenNetwork});
-        if (response.status === 200) {
+  const fetchDataType = async () => {
+    try {
+      const response = await axios.post<dataType[]>(
+        "http://localhost:3006/data/types",
+        { choosenNetwork }
+      );
+      if (response.status === 200) {
         setDataType(response.data);
-        }
-      } catch (err) {
-        console.error(err)
       }
-    };
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    //Fetch data plans
-    const fetchDataPlan = async () => {
-      try {
-        const response = await axios.post<dataPlan[]>('http://localhost:3006/data/plans', {choosenNetwork, choosenDataType});
-        if (response.status === 200) {
+  //Fetch data plans
+  const fetchDataPlan = async () => {
+    try {
+      const response = await axios.post<dataPlan[]>(
+        "http://localhost:3006/data/plans",
+        { choosenNetwork, choosenDataType }
+      );
+      if (response.status === 200) {
         setDataPlan(response.data);
-        }
-      } catch (err) {
-        console.error(err)
       }
-    };
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    const FetchDataBundle = async (e: any) => {
-      e.preventDefault();
+  //Purchase data bundle
+  const FetchDataBundle = async (e: any) => {
+    e.preventDefault();
+    try {
+      const isLesser = walletBalance.some(
+        (wallet) => wallet.user_balance < choosenDataPlan.price
+      );
+      if (isLesser) {
+        alert("Low wallet balance, please fund your wallet");
+        return;
+      }
+      const response = await axios.post(
+        "http://localhost:3006/api/data=bundle",
+        { DataPrice, mobileNumber, choosenNetwork }
+      );
+      if (response.status === 200) {
+        alert("Successful");
+      }
+    } catch (err) {
+      alert("Failed to fetch");
+      console.error(err);
+    }
+  };
+
+  const handleNetworkType = (e: any) => {
+    setChoodenNetwork(e.target.value);
+  };
+
+  //Protect the route
+  useEffect(() => {
+    const ProtectPage = async () => {
       try {
-        const response = await axios.post('http://localhost:3006/api/data=bundle', {DataPrice, mobileNumber, choosenNetwork});
+        const response = await axios.get("http://localhost:3006/protected", {
+          withCredentials: true,
+        });
         if (response.status === 200) {
-          alert('Successful')
+          console.log(response.data.message);
         }
-      } catch (err) {
-        alert('Failed to fetch')
-        console.error(err)
-      };
-    };
-
-    const handleNetworkType = (e: any) => {
-      setChoodenNetwork(e.target.value);
-    };
-
-    useEffect(() => {
-      const ProtectPage = async () => {
-        try {
-          const response = await axios.get('http://localhost:3006/protected', {withCredentials: true});
-          if (response.status === 200) {
-            console.log(response.data.message);
-          }
-        } catch (err: any) {
-          navigate('/login?');
-          console.error(err.response?.data.message)
-        }
+      } catch (err: any) {
+        navigate("/login?");
+        console.error(err.response?.data.message);
       }
-      ProtectPage();
-    }, []);
+    };
+    ProtectPage();
+  }, []);
+
+  //Fetch user information
+  useEffect(() => {
+    const handleUserInfo = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3006/api/user_info",
+          { withCredentials: true }
+        );
+        if (response.status === 200) {
+          setWalletBalance(response.data);
+        }
+      } catch (err: any) {
+        console.error(err.response?.data.message || err.message);
+      }
+    };
+    handleUserInfo();
+  });
   return (
     <>
       <div className="flexEntire">
@@ -151,7 +195,10 @@ const DataPrice = choosenDataPlan.price;
                 <h3>
                   <i className="bi bi-reception-4"></i>
                 </h3>
-                <Link to={'/vend=data'} className="Link"> <p className="ps-2">Buy Data</p> </Link>
+                <Link to={"/vend=data"} className="Link">
+                  {" "}
+                  <p className="ps-2">Buy Data</p>{" "}
+                </Link>
               </div>
               <div className="grid-navDash">
                 <h3>
@@ -232,19 +279,18 @@ const DataPrice = choosenDataPlan.price;
                 <select onChange={handleNetworkType}>
                   <option>---Select---</option>
                   {networks.map((n) => (
-                    <option key={n.d_id as React.Key}>
-                      {n.name}
-                    </option>
+                    <option key={n.d_id as React.Key}>{n.name}</option>
                   ))}
                 </select>
                 <p>Data Type</p>
-                <select onClick={fetchDataType} onChange={(e) => setChoosenDataType(e.target.value)}>
+                <select
+                  onClick={fetchDataType}
+                  onChange={(e) => setChoosenDataType(e.target.value)}
+                >
                   <option>---Select---</option>
                   {dataType.map((d) => (
-                    <option key={d.d_id as React.Key}>
-                      {d.name}
-                    </option>
-                  ))} 
+                    <option key={d.d_id as React.Key}>{d.name}</option>
+                  ))}
                 </select>{" "}
                 <br />
                 <p>Data Plan</p>
@@ -275,6 +321,7 @@ const DataPrice = choosenDataPlan.price;
                     placeholder="Amount"
                     className="form-control"
                     value={choosenDataPlan.price}
+                    onChange={(e) => setAmount(e.target.value)}
                     required
                     disabled
                   />
@@ -297,7 +344,9 @@ const DataPrice = choosenDataPlan.price;
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>
-                <button onClick={FetchDataBundle} type="submit">Purchase</button>
+                <button onClick={FetchDataBundle} type="submit">
+                  Purchase
+                </button>
               </form>
             </div>
           </main>
