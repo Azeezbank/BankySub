@@ -25,6 +25,7 @@ const Login: React.FC = () => {
   return (
     <>
       <div className="registration-bg">
+        <div className="form-container">
         <form onSubmit={handleLogin}>
             {loginError && <p className="errorMessage">{loginError}</p>}
           <div className="logodiv">
@@ -56,6 +57,7 @@ const Login: React.FC = () => {
             Dont't have an account yet? <Link to={'/register?'} className="Link"> <span>Sign up</span></Link>
           </p>
         </form>
+        </div>
       </div>
     </>
   );
