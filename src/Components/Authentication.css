@@ -2,6 +2,9 @@
   background-color: #e4dede;
   min-height: 100vh;
   padding: 50px 15px;
+  display: flex;
+  justify-content: center;
+    align-items: center;
 }
 .registration-bg form {
   background-color: #fff;
@@ -36,13 +39,3 @@
 .Link {text-decoration: none;}
 .errorMessage {background-color: red; color: #fff; padding: 15px 10px;}
 
-@media (min-width: 760px) {
-    .form-container {
-      margin-left: 30%;
-      margin-right: 30%;
-      width: 40%;
-      justify-content: center;
-      align-items: center;
-      
-    }
-}
