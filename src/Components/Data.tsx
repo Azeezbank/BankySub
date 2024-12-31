@@ -321,7 +321,6 @@ const Data: React.FC = () => {
                     placeholder="Amount"
                     className="form-control"
                     value={choosenDataPlan.price}
-                    onChange={(e) => setAmount(e.target.value)}
                     required
                     disabled
                   />
