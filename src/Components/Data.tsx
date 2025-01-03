@@ -23,6 +23,8 @@ interface dataPlan {
   price: number;
   network_name: string;
   data_type: string;
+  packag: string;
+  validity: string
 }
 
 interface walletInfo {
@@ -92,7 +94,7 @@ const Data: React.FC = () => {
     try {
       const response = await axios.post<dataPlan[]>(
         "https://bankysub-api.onrender.com/data/plans",
-        { choosenNetwork, choosenDataType }
+        { choosenNetwork, choosenDataType }, {withCredentials: true}
       );
       if (response.status === 200) {
         setDataPlan(response.data);
@@ -298,7 +300,7 @@ const Data: React.FC = () => {
                   <option>---Select---</option>
                   {dataPlan.map((dp) => (
                     <option key={dp.d_id} value={dp.price}>
-                      {dp.name} {dp.data_type} = #{dp.price}
+                      {dp.name} {dp.data_type} = #{dp.price} {dp.packag} {dp.validity}
                     </option>
                   ))}
                 </select>{" "}
