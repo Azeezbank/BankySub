@@ -312,7 +312,7 @@ const Data: React.FC = () => {
                   placeholder="Phone Number"
                   required
                 />
-                <p>Origina Amount</p>
+                <p>Amount</p>
                 <div className="input-group">
                   <p className="input-group-text bg-light">NGN.</p>
 
@@ -322,17 +322,6 @@ const Data: React.FC = () => {
                     className="form-control"
                     value={choosenDataPlan.price}
                     required
-                    disabled
-                  />
-                  <p className="input-group-text bg-light">.00</p>
-                </div>
-                <p>Amount To Pay</p>
-                <div className="input-group">
-                  <p className="input-group-text bg-light">NGN.</p>
-                  <input
-                    type="text"
-                    placeholder="Amount To Pay"
-                    className="form-control"
                     disabled
                   />
                   <p className="input-group-text bg-light">.00</p>

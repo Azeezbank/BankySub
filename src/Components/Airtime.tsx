@@ -75,7 +75,7 @@ const Airtime: React.FC = () => {
       alert('Low wallet balance, please fund your wallet');
       return;
     }
-    const response = await axios.post('https://bankysub-api.onrender.com/api/airtime/topup', {airtimeNChoosen, airtimeTChoosen, mobileN, amount});
+    const response = await axios.post('https://bankysub-api.onrender.com/api/airtime/topup', {airtimeNChoosen, airtimeTChoosen, mobileN, amount}, {withCredentials: true});
     if (response.status === 200) {
       alert('Airtime topUp successfully');
     }
@@ -253,7 +253,7 @@ useEffect(() => {
                   placeholder="Phone Number"
                   required
                 />
-                <p>Origina Amount</p>
+                <p>Amount</p>
                 <div className="input-group">
                   <p className="input-group-text bg-light">NGN.</p>
                   <input
@@ -263,17 +263,6 @@ useEffect(() => {
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     required
-                  />
-                  <p className="input-group-text bg-light">.00</p>
-                </div>
-                <p>Amount To Pay</p>
-                <div className="input-group">
-                  <p className="input-group-text bg-light">NGN.</p>
-                  <input
-                    type="text"
-                    placeholder="Amount To Pay"
-                    className="form-control"
-                    disabled
                   />
                   <p className="input-group-text bg-light">.00</p>
                 </div>
