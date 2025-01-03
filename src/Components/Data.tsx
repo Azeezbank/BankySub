@@ -300,7 +300,7 @@ const Data: React.FC = () => {
                   <option>---Select---</option>
                   {dataPlan.map((dp) => (
                     <option key={dp.d_id} value={dp.price}>
-                      {dp.name} {dp.data_type} = #{dp.price} {dp.packag} {dp.validity}
+                      {dp.name} {dp.data_type} = #{dp.price} {dp[packag]} {dp.validity}
                     </option>
                   ))}
                 </select>{" "}
