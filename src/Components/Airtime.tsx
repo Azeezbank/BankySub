@@ -39,7 +39,7 @@ const Airtime: React.FC = () => {
   useEffect(() => {
     const fetchAirtimeN = async () => {
       try {
-        const response = await axios.get<AirtimeN[]>('https://bankysub-api.onrender.com/api/airtimeN');
+        const response = await axios.get<AirtimeN[]>('https://bankysub-api.onrender.com/api/airtimeN', {withCredentials: true});
         if (response.status === 200) {
         setNetworks(response.data);
         }
@@ -54,7 +54,7 @@ const Airtime: React.FC = () => {
   useEffect(() => {
     const fetchAirtimeType = async () => {
       try {
-      const response = await axios.get('https://bankysub-api.onrender.com/api/airtimeT');
+      const response = await axios.get('https://bankysub-api.onrender.com/api/airtimeT', {withCredentials: true});
       if (response.status === 200) {
         setAirtimeT(response.data);
       }

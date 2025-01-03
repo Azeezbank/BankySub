@@ -62,7 +62,7 @@ const Data: React.FC = () => {
     const fetchNetwork = async () => {
       try {
         const response = await axios.get<network[]>(
-          "https://bankysub-api.onrender.com/network"
+          "https://bankysub-api.onrender.com/network", {withCredentials: true}
         );
         if (response.status === 200) {
           setNetworks(response.data);
@@ -79,7 +79,7 @@ const Data: React.FC = () => {
     try {
       const response = await axios.post<dataType[]>(
         "https://bankysub-api.onrender.com/data/types",
-        { choosenNetwork }
+        { choosenNetwork }, {withCredentials: true}
       );
       if (response.status === 200) {
         setDataType(response.data);
@@ -117,7 +117,7 @@ const Data: React.FC = () => {
       }
       const response = await axios.post(
         "https://bankysub-api.onrender.com/api/data=bundle",
-        { DataPrice, mobileNumber, choosenNetwork }
+        { DataPrice, mobileNumber, choosenNetwork }, {withCredentials: true}
       );
       if (response.status === 200) {
         alert("Successful");
