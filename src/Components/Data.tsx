@@ -23,7 +23,7 @@ interface dataPlan {
   price: number;
   network_name: string;
   data_type: string;
-  packag: string;
+  user: string;
   validity: string
 }
 
