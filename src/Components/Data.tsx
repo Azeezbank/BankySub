@@ -24,6 +24,8 @@ interface dataPlan {
   network_name: string;
   data_type: string;
   user: string;
+  reseller: string
+  api: string
   validity: string
 }
 
@@ -300,7 +302,7 @@ const Data: React.FC = () => {
                   <option>---Select---</option>
                   {dataPlan.map((dp) => (
                     <option key={dp.d_id} value={dp.price}>
-                      {dp.name} {dp.data_type} = #{dp.price} {dp.user} {dp.validity}
+                      {dp.name} {dp.data_type} = #{dp.price} {dp.user || dp.reseller || dp.api} {dp.validity}
                     </option>
                   ))}
                 </select>{" "}
