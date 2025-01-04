@@ -41,7 +41,7 @@ const Data: React.FC = () => {
   const [dataPlan, setDataPlan] = useState<dataPlan[]>([]);
   const [choosenNetwork, setChoodenNetwork] = useState("");
   const [choosenDataType, setChoosenDataType] = useState("");
-  const [choosenDataPlan, setChoosenDataPlan] = useState({ price: "" });
+  const [choosenDataPlan, setChoosenDataPlan] = useState('');
   const [mobileNumber, setMobileNumber] = useState("");
   const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
   const navigate = useNavigate();
@@ -50,14 +50,16 @@ const Data: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-  const DataPrice = choosenDataPlan.price;
+  const DataPrice = choosenDataPlan;
 
   const handlePrice = (e: any) => {
     const newPrice = e.target.value;
-    setChoosenDataPlan((prev) => ({
-      ...prev,
-      price: newPrice,
-    }));
+    setChoosenDataPlan(newPrice
+    //   (prev) => ({
+    //   ...prev,
+    //   price: newPrice,
+    // })
+  );
   };
 
   useEffect(() => {
@@ -301,8 +303,8 @@ const Data: React.FC = () => {
                 <select onClick={fetchDataPlan} onChange={handlePrice}>
                   <option>---Select---</option>
                   {dataPlan.map((dp) => (
-                    <option key={dp.d_id} value={dp.price}>
-                      {dp.name} {dp.data_type} = #{dp.price} {dp.user || dp.reseller || dp.api} {dp.validity}
+                    <option key={dp.d_id} value={dp.user || dp.reseller || dp.api}>
+                      {dp.name} {dp.data_type} = # {dp.user || dp.reseller || dp.api} {dp.validity}
                     </option>
                   ))}
                 </select>{" "}
@@ -324,7 +326,7 @@ const Data: React.FC = () => {
                     type="text"
                     placeholder="Amount"
                     className="form-control"
-                    value={choosenDataPlan.price}
+                    value={choosenDataPlan}
                     required
                     disabled
                   />
