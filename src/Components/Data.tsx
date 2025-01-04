@@ -20,7 +20,6 @@ interface dataPlan {
   d_id: number;
   id: number;
   name: string;
-  price: number;
   network_name: string;
   data_type: string;
   user: string;
@@ -113,7 +112,7 @@ const Data: React.FC = () => {
     e.preventDefault();
     try {
       const isLesser = walletBalance.some(
-        (wallet) => wallet.user_balance < choosenDataPlan.price
+        (wallet) => wallet.user_balance < choosenDataPlan
       );
       if (isLesser) {
         alert("Low wallet balance, please fund your wallet");
