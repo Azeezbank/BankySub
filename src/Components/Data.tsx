@@ -53,12 +53,7 @@ const Data: React.FC = () => {
 
   const handlePrice = (e: any) => {
     const newPrice = e.target.value;
-    setChoosenDataPlan(newPrice
-    //   (prev) => ({
-    //   ...prev,
-    //   price: newPrice,
-    // })
-  );
+    setChoosenDataPlan(newPrice);
   };
 
   useEffect(() => {
