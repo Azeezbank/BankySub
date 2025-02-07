@@ -3,15 +3,90 @@
 }
 .transactionForm {
   /* box-shadow: 0px 1px 7px rgb(207, 199, 199); */
-  border: 0.1px solid rgb(109, 101, 101); border-radius: 5px;
+  border: 0.1px solid rgb(109, 101, 101);
+  border-radius: 5px;
   padding: 15px 10px 20px 10px;
-  margin: -10px 10px 50px 10px; 
-
+  margin: -10px 10px 50px 10px;
 }
-.transactionForm select {width: 100%; padding: 5px; border-radius: 4px; margin-bottom: 10px; background-color: #fff;}
-.transactionForm p {margin-bottom: 5px;}
-.transactionForm input {width: 100%; padding: 5px; border-radius: 4px; margin-bottom: 10px; border: none;}
-.input-group {margin-bottom: 10px;}
-.flex-bypass {display: flex;}
-#bypass {margin-right: 10px;}
-.transactionForm button {margin-top: 15px; background-color: blue; width: 100%; color: #fff}
+.transactionForm select {
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+.transactionForm p {
+  margin-bottom: 5px;
+}
+.transactionForm input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border: none;
+}
+.input-group {
+  margin-bottom: 10px;
+}
+.flex-bypass {
+  display: flex;
+}
+#bypass {
+  margin-right: 10px;
+}
+.transactionForm button {
+  margin-top: 15px;
+  background-color: blue;
+  width: 100%;
+  color: #fff;
+}
+.meter-number {
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+.meter-number input {
+  padding: 15px;
+}
+.meter-number button {
+  background-color: purple;
+  padding: 2px;
+  margin: 8px 10px 16px 1px;
+}
+.modal-bg {
+  background-color: rgba(0, 255, 0, 0.3);
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.modall {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.bi-check2 {
+  border: 1px solid rgba(0, 255, 0, 0.5);
+  border-radius: 50%;
+  background-color: #fff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: green
+}
+.success-mark {
+  display: flex;
+  justify-content: center;
+}
+.modal-ok {
+  background-color: purple;
+  color: #fff;
+}

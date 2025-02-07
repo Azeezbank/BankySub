@@ -43,6 +43,8 @@ const Data: React.FC = () => {
   const [choosenDataPlan, setChoosenDataPlan] = useState('');
   const [mobileNumber, setMobileNumber] = useState("");
   const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
+  const [isModalSuccess, setIsModalSuccess] = useState(false);
+  const [isModalFail, setIsModalFail] = useState(false);
   const navigate = useNavigate();
 
   const handleVisible = () => {
@@ -118,11 +120,12 @@ const Data: React.FC = () => {
         { DataPrice, mobileNumber, choosenNetwork }, {withCredentials: true}
       );
       if (response.status === 200) {
-        alert("Successful");
+        setIsModalSuccess(true)
       }
     } catch (err) {
-      alert("Failed to fetch");
       console.error(err);
+      setIsModalSuccess(false);
+      setIsModalFail(true);
     }
   };
 
@@ -165,6 +168,9 @@ const Data: React.FC = () => {
     };
     handleUserInfo();
   });
+
+  // Modal
+
   return (
     <>
       <div className="flexEntire">
@@ -276,14 +282,14 @@ const Data: React.FC = () => {
               <p className="text-center pt-3">Buy Data</p>
               <form className="transactionForm">
                 <p>Network</p>
-                <select onChange={handleNetworkType}>
+                <select aria-label="choose nework" onChange={handleNetworkType}>
                   <option>---Select---</option>
                   {networks.map((n) => (
                     <option key={n.d_id as React.Key}>{n.name}</option>
                   ))}
                 </select>
                 <p>Data Type</p>
-                <select
+                <select aria-label="choose dataType"
                   onClick={fetchDataType}
                   onChange={(e) => setChoosenDataType(e.target.value)}
                 >
@@ -294,7 +300,7 @@ const Data: React.FC = () => {
                 </select>{" "}
                 <br />
                 <p>Data Plan</p>
-                <select onClick={fetchDataPlan} onChange={handlePrice}>
+                <select aria-label="choose dataPlan" onClick={fetchDataPlan} onChange={handlePrice}>
                   <option>---Select---</option>
                   {dataPlan.map((dp) => (
                     <option key={dp.d_id} value={dp.user || dp.reseller || dp.api}>
@@ -328,7 +334,7 @@ const Data: React.FC = () => {
                 </div>
                 <div className="flex-bypass">
                   <p>
-                    <input type="checkbox" name="bypass" id="bypass" required />
+                    <input aria-label="checkbox" type="checkbox" name="bypass" id="bypass" required />
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>
@@ -337,6 +343,37 @@ const Data: React.FC = () => {
                 </button>
               </form>
             </div>
+            {/* data success modal */}
+            {isModalSuccess? (
+            <div className="modal-bg">
+              <div>
+              <div className="modall">
+                <div>
+                <h1 className="success-mark"><i className="bi bi-check2 text-success"></i></h1>
+                <h4>Transaction Successful</h4>
+                <p>You've Sent {choosenNetwork} {choosenDataPlan} Data Plan To {mobileNumber}</p>
+                <button className="modal-ok" type="button" onClick={() => setIsModalSuccess(false)}>Okay</button>
+              </div>
+              </div>
+              </div>
+            </div>
+            ) : ('')}
+
+            {/* Failed mo dal */}
+           {isModalFail? (
+            <div className="modal-bg">
+              <div>
+              <div className="modall">
+                <div>
+                <h1 className="success-mark"><i className="bi bi-question-circle text-success"></i></h1>
+                <h4>Transaction Processing!</h4>
+                <p>Fund will be reverse if failed</p>
+                <button className="modal-ok" type="button" onClick={() => setIsModalFail(false)}>Okay</button>
+              </div>
+              </div>
+              </div>
+            </div>
+            ) : ('')}
           </main>
         </div>
       </div>

@@ -8,6 +8,8 @@ import Airtime from './Components/Airtime';
 import Data from './Components/Data';
 import Register from './Components/Register';
 import Login from './Components/Login';
+import Electricity from './Components/Electricity';
+import AdminDashBoard from './Components/AdminDashBoard';
 
 const App:React.FC = () => {
   return (
@@ -19,6 +21,8 @@ const App:React.FC = () => {
       <Route path='/vend=data' element={<Data />} />
       <Route path='/register?' element={<Register />} />
       <Route path='/login?' element={<Login />} />
+      <Route path='/vent=electicity-bill' element={<Electricity />} />
+      <Route path='/Admin' element={<AdminDashBoard />} />
     </Routes>
     </BrowserRouter>
     </>

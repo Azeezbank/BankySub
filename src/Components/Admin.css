@@ -1,0 +1,77 @@
+.admin-image {
+  display: flex;
+  padding: 10px;
+}
+.admin-image img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.admin-image p {
+  padding: 10px;
+  font-family: "Verdana, Geneva, Tahoma, sans-serif";
+}
+
+ul {
+  list-style: none;
+}
+.dashb {
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.history {
+  margin-left: -32px;
+  padding: 5px 10px 5px 10px;
+}
+.hover:hover {
+  cursor: pointer;
+  color: #fff;
+}
+.fund-hist {
+  margin-left: -70px;
+  margin-top: 2px;
+  padding: 4px 10px 4px 15px;
+}
+.successful {
+  margin-left: -70px;
+  padding: 4px 10px 4px 15px;
+  background-color: green;
+  margin-top: 3px;
+}
+.dashboard-bg {
+  margin-top: 60px;
+  padding: 10px 30px 10px 30px;
+}
+.grid-dash1 {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+}
+.flex-balance {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  margin-top: 10px;
+}
+.dash-emoji {
+  color: #fff;
+}
+.dash-emoji i {
+  border-radius: 50%;
+  padding: 5px;
+}
+.flex {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 8px;
+}
+.small-text {
+  font-size: 12px;
+}
+@media (max-width: 760px) {
+  .grid-dash1 {
+    display: grid;
+    grid-template-columns: auto;
+  }
+}

@@ -242,17 +242,31 @@ const Home: React.FC = () => {
                     Copy
                   </button>
                 </p>
+                <div>
                 <button
                   style={{
                     backgroundColor: "orange",
                     borderRadius: "20px",
-                    width: "130px",
+                    // width: "130px",
                     height: "40px",
                     margin: "5px",
                   }}
                 >
                   Fund wallet
                 </button>
+                <Link to={'/admin'} className="Link">
+                <button
+                  style={{
+                    backgroundColor: "orange",
+                    borderRadius: "20px",
+                    height: "40px",
+                    margin: "5px 10px 5px 5px",
+                  }}
+                >
+                  Admin Dashboard
+                </button>
+                </Link>
+                </div>
               </div>
             </div>
             <div className="bg_light">
@@ -483,16 +497,17 @@ const Home: React.FC = () => {
                     />
                     <p className="text-muted">Airtime To Cash</p>
                   </div>
+                  <Link to={'/vent=electicity-bill'} className="Link">
                   <div className="service-grid-items">
                     <img
                       src={electricity}
-                      alt="airtime"
+                      alt="Electricity"
                       style={{ width: "100px" }}
                     />
                     <p className="text-muted">Electricity Bills</p>
-                  </div>
+                  </div> </Link>
                   <div className="service-grid-items">
-                    <img src={cable} alt="airtime" style={{ width: "100px" }} />
+                    <img src={cable} alt="cable" style={{ width: "100px" }} />
                     <p className="text-muted">Cable Subscription</p>
                   </div>
                   <div className="service-grid-items">

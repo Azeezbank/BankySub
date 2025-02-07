@@ -96,7 +96,7 @@ nav {
   }
   .grid_hero {
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: auto auto;
     gap: 10px;
   }
   .aside.visible {
@@ -355,4 +355,7 @@ nav {
 .logoutV.hidden {
   display: none;
 }
-.Link {text-decoration: none; color: #a59d9d;}
+.Link {
+  text-decoration: none;
+  color: #a59d9d;
+}
