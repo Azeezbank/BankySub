@@ -360,9 +360,10 @@ nav {
   color: #a59d9d;
 }
 .orange {color: orange;}
+
 .copyClipboard { background-color: #000;
-  padding: "2px";
-  border-radius: "10px";
-  color: "#fff";
-  font-size: "small"
+  padding: 2px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: small
 }
