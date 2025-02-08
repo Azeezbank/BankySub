@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
 import logo from "../assets/SGN_09_08_2022_1662626364399.jpeg";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import "./Admin.css";
 
 type menuState = {
