@@ -225,7 +225,7 @@ useEffect(() => {
               <p className="text-center pt-3">Airtime TopUp</p>
               <form className="transactionForm">
                 <p>Network</p>
-                <select onChange={(e) => setAirtimeNChoosen(e.target.value)}>
+                <select aria-label="slect" onChange={(e) => setAirtimeNChoosen(e.target.value)}>
                   <option>---Select---</option>
                   {networks.map((an) => (
                   <option key={an.d_id as React.Key} value={an.id}>
@@ -234,7 +234,7 @@ useEffect(() => {
                   ))}
                 </select>
                 <p>Airtime Type</p>
-                <select onChange={(e) => setAirtimeTChoosen(e.target.value)}>
+                <select aria-label="selct" onChange={(e) => setAirtimeTChoosen(e.target.value)}>
                   <option>---Select---</option>
                   {airtimeT.map((at) => (
                     <option key={at.d_id as React.Key}>
@@ -268,7 +268,7 @@ useEffect(() => {
                 </div>
                 <div className="flex-bypass">
                   <p>
-                    <input type="checkbox" name="bypass" id="bypass" />
+                    <input aria-label="input" type="checkbox" name="bypass" id="bypass" />
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>

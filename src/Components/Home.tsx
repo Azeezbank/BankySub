@@ -231,19 +231,13 @@ const Home: React.FC = () => {
                   </a>{" "}
                   <button
                     onClick={copyClipboard}
-                    style={{
-                      backgroundColor: "#000",
-                      padding: "2px",
-                      borderRadius: "10px",
-                      color: "#fff",
-                      fontSize: "small",
-                    }}
+                    className="copyClipboard"
                   >
                     Copy
                   </button>
                 </p>
                 <div>
-                <button
+                <button 
                   style={{
                     backgroundColor: "orange",
                     borderRadius: "20px",
@@ -284,13 +278,13 @@ const Home: React.FC = () => {
                 <p className="text-center fw-bold">Package:</p>
                 <hr /> <hr />
                 <p className="ash-background">
-                  <span style={{ color: "orange" }}>**NEW**</span> Own a
+                  <span className="orange">**NEW**</span> Own a
                   TUNSTELECOM.COM.NG retailer website and retail all our
                   services; Such as DATA, Recharge cards printing, AIRTIME and
                   Bills Payment. <button>Click here</button>
                 </p>
                 {/* navbar tabs */}
-                <ul className="nav nav-tabs" role="tablist">
+                <ul className="nav nav-tabs">
                   <li className="nav-item">
                     <a
                       className="nav-link active"
