@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import logo from "../assets/SGN_09_08_2022_1662626364399.jpeg";
 //import { Link } from "react-router-dom";
 import "./Admin.css";
+import axios from "axios";
 
 type menuState = {
   [key: string]: boolean;
@@ -141,6 +142,99 @@ const AdminDashBoard: React.FC = () => {
     }
   };
 
+  interface items {
+    d_id: number
+    id: number
+    event_type: string
+    payment_ref: number
+    paid_on: any
+    amount: number
+    payment_method: string
+    payment_status: string
+    prev_balance: number
+    user_balance: number
+  }
+  //Fund page
+  const Fund = () => {
+    const [items, setItems] = useState<items[]>([]);
+    const [page, setPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(1);
+    const limit = 10;
+
+    useEffect(() => {
+      fetchItems();
+    });
+    const fetchItems = async () => {
+      try {
+        const response = await axios.get(
+          `https://bankysub-api.onrender.com/payment-history?page=${page}&limit${limit}`
+        );
+        setItems(response.data.data);
+        setTotalPage(response.data.totalPage);
+      } catch (err) {
+        console.error("Error fetching data", err);
+      }
+    };
+
+    const handlePage = (e: any) => {
+      setPage(Number(e.target.value))
+      console.log(page)
+    };
+    return (
+      <>
+        <div className="dashboard-bg bg-light">
+          <h5>Dashboard</h5>
+          <div className="bg-white p-3">
+            <p>User Wallet Funding Histories</p>
+            <div className="form-group">
+              <button className="btn">Page</button>
+              <select aria-label="s" onChange={handlePage}>
+              <option>1</option>
+              </select>
+              <div className="table">
+              <table className="table-data">
+                <thead>
+                    <th>id</th>
+                    <th>event_type</th>
+                    <th>payment_ref</th>
+                    <th>paid_on</th>
+                    <th>amount</th>
+                    <th>payment_method</th>
+                    <th>payment_status</th>
+                    <th>prev_balance</th>
+                    <th>user_balance</th>
+                </thead>
+                <tbody>
+                {items.map((item, index) => (
+                  <tr key={item.d_id} className={index % 2 === 0 ? 'bg-light' : 'bg-white'}>
+                    <td>{item.id}</td>
+                    <td>{item.event_type}</td>
+                    <td>{item.payment_ref}</td>
+                    <td>{item.paid_on}</td>
+                    <td>{item.amount}</td>
+                    <td>{item.payment_method}</td>
+                    <td>{item.payment_status}</td>
+                    <td>{item.prev_balance}</td>
+                    <td>{item.user_balance}</td>
+                  </tr>
+                ))}
+                </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+  //render fund
+  const renderFund = () => {
+    if (activeComponent === "FundH") {
+      return <Fund />;
+    }
+  };
+
   return (
     <>
       <div className="flexEntire">
@@ -175,7 +269,10 @@ const AdminDashBoard: React.FC = () => {
                 {isMenu.fund && (
                   <>
                     <ul>
-                      <li className="fund-hist hover">
+                      <li
+                        className="fund-hist hover"
+                        onClick={() => setActiveComponent("FundH")}
+                      >
                         <i className="bi bi-clipboard-minus"></i> Funds
                         Histories
                       </li>
@@ -192,12 +289,10 @@ const AdminDashBoard: React.FC = () => {
                         {isDropSub.Airtime && (
                           <>
                             <li className="successful hover">
-                              <i className="bi bi-question-circle"></i>{" "}
-                              Pending
+                              <i className="bi bi-question-circle"></i> Pending
                             </li>
                             <li className="successful hover">
-                              <i className="bi bi-check-circle"></i>{" "}
-                              Successful
+                              <i className="bi bi-check-circle"></i> Successful
                             </li>
                             <li className="successful hover">
                               <i className="bi bi-ban"></i> Failed
@@ -247,6 +342,7 @@ const AdminDashBoard: React.FC = () => {
           <main>
             <NavBar sideBarClickHandler={handleVisible} />
             <div>{renderComponent()}</div>
+            <div>{renderFund()}</div>
           </main>
         </div>
       </div>

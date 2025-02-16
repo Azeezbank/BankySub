@@ -75,3 +75,14 @@ ul {
     grid-template-columns: auto;
   }
 }
+.table {
+ overflow: auto;
+}
+.table-data {
+  border-collapse: collapse;
+  border: 1px solid grey;
+}
+.table-data th, .table-data td {
+  padding: 0px 8px;
+  border: 1px solid grey;
+}
