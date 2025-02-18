@@ -226,7 +226,7 @@ const Home: React.FC = () => {
                   portal. THIS IS CALLED SALARY FOR LIFE!
                   <br /> <br />
                   Referal Link:{" "}
-                  <a style={{ color: "#fff" }} href="#" className="decoration">
+                  <a href="#" className="decoration">
                     https://tunstelecom.com.ng?ref1
                   </a>{" "}
                   <button
@@ -237,25 +237,20 @@ const Home: React.FC = () => {
                   </button>
                 </p>
                 <div>
-                <button 
-                  style={{
-                    backgroundColor: "orange",
-                    borderRadius: "20px",
-                    // width: "130px",
-                    height: "40px",
-                    margin: "5px",
-                  }}
+                <button type="button"
+                  className="fund-wallet"
+                  //   backgroundColor: "orange",
+                  //   borderRadius: "20px",
+                  //   // width: "130px",
+                  //   height: "40px",
+                  //   margin: "5px",
+                  // }}
                 >
                   Fund wallet
                 </button>
                 <Link to={'/admin'} className="Link">
-                <button
-                  style={{
-                    backgroundColor: "orange",
-                    borderRadius: "20px",
-                    height: "40px",
-                    margin: "5px 10px 5px 5px",
-                  }}
+                <button type="button"
+                className="admin-dash"
                 >
                   Admin Dashboard
                 </button>
@@ -265,9 +260,9 @@ const Home: React.FC = () => {
             </div>
             <div className="bg_light">
               <div className="greating-section">
-                <p style={{ paddingBottom: "8px" }}>
+                <p className="greeting">
                   Good morning,{" "}
-                  <span style={{ fontWeight: "bold" }}>{walletBalance.map(wallet => wallet.username)}</span>
+                  <span  className="username">{walletBalance.map(wallet => wallet.username)}</span>
                 </p>{" "}
                 <hr />
                 <div className="goolePlay">
@@ -473,21 +468,21 @@ const Home: React.FC = () => {
                     <img
                       src={airtime}
                       alt="airtime"
-                      style={{ width: "100px" }}
+                      className="service-image"
                     />
                     <p className="text-muted text-center">Airtime TopUp</p>
                   </div>
                   </Link>
                   <Link to={'/vend=data'} className="Link">
                   <div className="service-grid-items">
-                    <img src={data} alt="airtime" style={{ width: "100px" }} />
+                    <img src={data} alt="airtime" className="service-image"/>
                     <p className="text-muted">Buy Data</p>
                   </div> </Link>
                   <div className="service-grid-items">
                     <img
                       src={airtimeTocash}
                       alt="airtime"
-                      style={{ width: "100px" }}
+                      className="service-image"
                     />
                     <p className="text-muted">Airtime To Cash</p>
                   </div>
@@ -496,23 +491,23 @@ const Home: React.FC = () => {
                     <img
                       src={electricity}
                       alt="Electricity"
-                      style={{ width: "100px" }}
+                      className="service-image"
                     />
                     <p className="text-muted">Electricity Bills</p>
                   </div> </Link>
                   <div className="service-grid-items">
-                    <img src={cable} alt="cable" style={{ width: "100px" }} />
+                    <img src={cable} alt="cable" className="service-image"/>
                     <p className="text-muted">Cable Subscription</p>
                   </div>
                   <div className="service-grid-items">
-                    <img src={bulk} alt="airtime" style={{ width: "100px" }} />
+                    <img src={bulk} alt="airtime" className="service-image"/>
                     <p className="text-muted">Bulk SMS</p>
                   </div>
                   <div className="service-grid-items">
                     <img
                       src={resultChecker}
                       alt="airtime"
-                      style={{ width: "100px" }}
+                      className="service-image"
                     />
                     <p className="text-muted pt-2">Result Checker</p>
                   </div>
@@ -520,7 +515,7 @@ const Home: React.FC = () => {
                     <img
                       src={rechargeCard}
                       alt="airtime"
-                      style={{ width: "100px" }}
+                      className="service-image"
                     />
                     <p className="text-muted pt-1">Recharge Card Printing</p>
                   </div>
@@ -528,7 +523,7 @@ const Home: React.FC = () => {
                     <img
                       src={referal}
                       alt="airtime"
-                      style={{ width: "100px" }}
+                      className="service-image"
                     />
                     <p className="text-muted">My Referrals</p>
                   </div>

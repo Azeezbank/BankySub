@@ -34,10 +34,15 @@ ul {
   padding: 4px 10px 4px 15px;
 }
 .successful {
-  margin-left: -70px;
+  margin-left: -96px;
   padding: 4px 10px 4px 15px;
   background-color: green;
   margin-top: 3px;
+}
+.nin {
+  margin-left: -96px;
+  padding: 2px 10px 4px 15px;
+  border-top: 1px solid grey;
 }
 .dashboard-bg {
   margin-top: 60px;
@@ -85,4 +90,20 @@ ul {
 .table-data th, .table-data td {
   padding: 0px 8px;
   border: 1px solid grey;
+}
+.contact-sec {
+  border: 1px solid grey;
+  background-color: #dedede;
+}
+.contact-input {
+  padding: 4px;
+}
+.textarea {
+  width: 100%;
+}
+.set-save-btn {
+  background-color: #e4117a;
+  border-radius: 8px;
+  margin-top: 15px;
+  color: #fff;
 }
