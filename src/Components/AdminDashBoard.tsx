@@ -16,6 +16,7 @@ const AdminDashBoard: React.FC = () => {
   const [isData, setIsData] = useState<menuState>({});
   const [isVerification, setIsVerification] = useState<menuState>({});
   const [isSetting, setIsSetting] = useState<menuState>({});
+  const [isUser, setIsUser] = useState<menuState>({});
   const [activeComponent, setActiveComponent] = useState("Dashboard");
 
   const handleVisible = () => {
@@ -54,6 +55,13 @@ const AdminDashBoard: React.FC = () => {
     setIsSetting((prevSet) => ({
       ...prevSet,
       [set]: !prevSet[set],
+    }));
+  };
+
+  const handleUser = (user: any) => {
+    setIsUser((prevUser) => ({
+      ...prevUser,
+      [user]: !prevUser[user],
     }));
   };
   //Dashboard component
@@ -174,8 +182,8 @@ const AdminDashBoard: React.FC = () => {
     const [items, setItems] = useState<items[]>([]);
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(1);
-    const limit = 10;
-    
+    const [pageNums, setPageNums] = useState<number[]>([]);
+    const [limit, setLimit] = useState(10);
 
     useEffect(() => {
       fetchItems();
@@ -194,7 +202,16 @@ const AdminDashBoard: React.FC = () => {
 
     const handlePage = (e: any) => {
       setPage(Number(e.target.value));
-      console.log(page);
+    };
+
+    //Set up page number
+    useEffect(() => {
+      const numList = Array.from({ length: totalPage }, (_, i) => i + 1);
+      setPageNums(numList);
+    }, []);
+
+    const handleLimitNum = (e: any) => {
+      setLimit(Number(e.target.value));
     };
     return (
       <>
@@ -202,48 +219,69 @@ const AdminDashBoard: React.FC = () => {
           <h5>Dashboard</h5>
           <div className="bg-white p-3">
             <p>User Wallet Funding Histories</p>
-            <div className="form-group">
-              <button className="btn">Page</button>
-              <select aria-label="s" onChange={handlePage}>
-                <option>1</option>
+            <div className="d-flex justify-content-between">
+            <div className="input-group">
+              <span className="input-group-text">Page</span>
+              <select className="inputFilter" aria-label="pageNum" onChange={handlePage}>
+                {pageNums.map((pageNum) => (
+                  <option key={pageNum}>{pageNum}</option>
+                ))}
               </select>
-              <div className="form-group">
-              <button className="btn">Total Page</button>
-              <button type="button" className="btn border">{totalPage}</button>
-              </div>
-              <div className="table">
-                <table className="table-data">
-                  <thead>
-                    <th>id</th>
-                    <th>event_type</th>
-                    <th>payment_ref</th>
-                    <th>paid_on</th>
-                    <th>amount</th>
-                    <th>payment_method</th>
-                    <th>payment_status</th>
-                    <th>prev_balance</th>
-                    <th>user_balance</th>
-                  </thead>
-                  <tbody>
-                    {items.map((item, index) => (
-                      <tr
-                        key={item.d_id}
-                        className={index % 2 === 0 ? "bg-light" : "bg-white"}
-                      >
-                        <td>{item.id}</td>
-                        <td>{item.event_type}</td>
-                        <td>{item.payment_ref}</td>
-                        <td>{item.paid_on}</td>
-                        <td>{item.amount}</td>
-                        <td>{item.payment_method}</td>
-                        <td>{item.payment_status}</td>
-                        <td>{item.prev_balance}</td>
-                        <td>{item.user_balance}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+            </div>
+
+            <div className="input-group">
+              <input className="inputFilter" aria-label="search" type="search" placeholder="Search By Payment_ref Number"/>
+              <button className="inputFilter" aria-label="search" type="button"><i className="bi bi-search"></i></button>
+            </div>
+
+            <div className="input-group">
+              <span className="input-group-text">Limit</span>
+              <select className="inputFilter" aria-label="limit" onChange={handleLimitNum}>
+                <option>10</option>
+                <option>20</option>
+                <option>30</option>
+                <option>40</option>
+                <option>50</option>
+                <option>60</option>
+                <option>70</option>
+                <option>80</option>
+                <option>90</option>
+                <option>100</option>
+              </select>
+            </div>
+            </div>
+            <div className="table">
+              <table className="table-data">
+                <thead>
+                  <th>id</th>
+                  <th>event_type</th>
+                  <th>payment_ref</th>
+                  <th>paid_on</th>
+                  <th>amount</th>
+                  <th>payment_method</th>
+                  <th>payment_status</th>
+                  <th>prev_balance</th>
+                  <th>user_balance</th>
+                </thead>
+                <tbody>
+                  {items.map((item, index) => (
+                    <tr
+                      key={item.d_id}
+                      className={index % 2 === 0 ? "bg-light" : "bg-white"}
+                    >
+                      <td>{item.id}</td>
+                      <td>{item.event_type}</td>
+                      <td>{item.payment_ref}</td>
+                      <td>{item.paid_on}</td>
+                      <td>{item.amount}</td>
+                      <td>{item.payment_method}</td>
+                      <td>{item.payment_status}</td>
+                      <td>{item.prev_balance}</td>
+                      <td>{item.user_balance}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -271,42 +309,48 @@ const AdminDashBoard: React.FC = () => {
                 Contact Information
               </p>
               <div className="contact-input">
-              <div className="input-group pb-2">
-                <span className="input-group-text">Phone +234(0)</span>
-                <input
-                  className="form-control"
-                  aria-label="num"
-                  type="number"
-                />
-              </div>
-              <div className="input-group pb-2">
-              <span className="input-group-text">WhatsApp +234(0)</span>
-                <input
-                  className="contact-input-field form-control"
-                  aria-label="num"
-                  type="number"
-                />
-              </div>
-              <div className="input-group pb-2">
-                <span className="input-group-text">WhatsApp Group Link</span>
-                <input
-                  className="form-control"
-                  aria-label="num"
-                  type="text"
-                />
-              </div>
+                <div className="input-group pb-2">
+                  <span className="input-group-text">Phone +234(0)</span>
+                  <input
+                    className="form-control"
+                    aria-label="num"
+                    type="number"
+                  />
+                </div>
+                <div className="input-group pb-2">
+                  <span className="input-group-text">WhatsApp +234(0)</span>
+                  <input
+                    className="contact-input-field form-control"
+                    aria-label="num"
+                    type="number"
+                  />
+                </div>
+                <div className="input-group pb-2">
+                  <span className="input-group-text">WhatsApp Group Link</span>
+                  <input
+                    className="form-control"
+                    aria-label="num"
+                    type="text"
+                  />
+                </div>
               </div>
             </div>
             <div className="contact-sec mt-3">
-              <p className="bg-white pt-3 pb-3 ps-2 pe-2">
-                Messages
+              <p className="bg-white pt-3 pb-3 ps-2 pe-2">Messages</p>
+              <p className="ps-3">
+                <strong>Message Your Users</strong>
               </p>
-              <p className="ps-3"><strong>Message Your Users</strong></p>
               <div className="contact-input">
-                <textarea className="textarea" aria-label="text" rows={2}></textarea>
+                <textarea
+                  className="textarea"
+                  aria-label="text"
+                  rows={2}
+                ></textarea>
               </div>
             </div>
-            <button type="button" className="set-save-btn float-end">Save</button>
+            <button type="button" className="set-save-btn float-end">
+              Save
+            </button>
           </div>
         </div>
       </>
@@ -319,6 +363,8 @@ const AdminDashBoard: React.FC = () => {
       return <Setting />;
     }
   };
+
+  //Users component
 
   return (
     <>
@@ -425,15 +471,16 @@ const AdminDashBoard: React.FC = () => {
                         {isVerification.verification && (
                           <ul>
                             <li className="nin hover">
-                              <i className="bi bi-people"></i> NIN
+                              <i className="bi bi-person-bounding-box"></i> NIN
                             </li>
                             <li className="nin hover">
-                              <i className="bi bi-people"></i> BVN
+                              <i className="bi bi-person-badge-fill"></i> BVN
                             </li>
                           </ul>
                         )}
                       </li>
                     </ul>
+
                     <ul className="list">
                       <li className="list-mar">
                         <div
@@ -450,6 +497,27 @@ const AdminDashBoard: React.FC = () => {
                               onClick={() => setActiveComponent("set")}
                             >
                               <i className="bi bi-upc-scan"></i> General
+                            </li>
+                          </ul>
+                        )}
+                      </li>
+                    </ul>
+                    <ul className="list">
+                      <li className="list-mar">
+                        <div
+                          className="bg-primary fund-hist hover"
+                          onClick={() => handleUser("user")}
+                        >
+                          <i className="bi bi-person-fill-gear"></i> Users
+                          <i className="bi bi-chevron-right float-end"></i>
+                        </div>
+                        {isUser.user && (
+                          <ul>
+                            <li
+                              className="successful hover"
+                              onClick={() => setActiveComponent("user")}
+                            >
+                              <i className="bi bi-infinity"></i> All
                             </li>
                           </ul>
                         )}

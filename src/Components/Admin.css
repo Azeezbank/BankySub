@@ -107,3 +107,8 @@ ul {
   margin-top: 15px;
   color: #fff;
 }
+.inputFilter {
+  border-radius: 8px;
+  padding: 0 5px;
+  border: 1px solid grey;
+}
