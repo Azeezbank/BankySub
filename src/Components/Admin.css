@@ -86,6 +86,7 @@ ul {
 .table-data {
   border-collapse: collapse;
   border: 1px solid grey;
+  width: 100%;
 }
 .table-data th, .table-data td {
   padding: 0px 8px;
@@ -111,4 +112,8 @@ ul {
   border-radius: 8px;
   padding: 0 5px;
   border: 1px solid grey;
+}
+.grid-fund-hist {
+  display: grid;
+  grid-template-columns: auto auto auto;
 }

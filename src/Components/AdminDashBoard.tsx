@@ -64,6 +64,7 @@ const AdminDashBoard: React.FC = () => {
       [user]: !prevUser[user],
     }));
   };
+
   //Dashboard component
   const Dashboard = () => {
     return (
@@ -219,36 +220,55 @@ const AdminDashBoard: React.FC = () => {
           <h5>Dashboard</h5>
           <div className="bg-white p-3">
             <p>User Wallet Funding Histories</p>
-            <div className="d-flex justify-content-between">
-            <div className="input-group">
-              <span className="input-group-text">Page</span>
-              <select className="inputFilter" aria-label="pageNum" onChange={handlePage}>
-                {pageNums.map((pageNum) => (
-                  <option key={pageNum}>{pageNum}</option>
-                ))}
-              </select>
-            </div>
+            <div className="grid-fund-hist justify-content-between">
+              <div className="input-group">
+                <span className="input-group-text">Page</span>
+                <select
+                  className="inputFilter"
+                  aria-label="pageNum"
+                  onChange={handlePage}
+                >
+                  {pageNums.map((pageNum) => (
+                    <option key={pageNum}>{pageNum}</option>
+                  ))}
+                </select>
+              </div>
 
-            <div className="input-group">
-              <input className="inputFilter" aria-label="search" type="search" placeholder="Search By Payment_ref Number"/>
-              <button className="inputFilter" aria-label="search" type="button"><i className="bi bi-search"></i></button>
-            </div>
+              <div className="input-group">
+                <input
+                  className="inputFilter"
+                  aria-label="search"
+                  type="search"
+                  placeholder="Search By Payment_ref Number"
+                />
+                <button
+                  className="inputFilter"
+                  aria-label="search"
+                  type="button"
+                >
+                  <i className="bi bi-search"></i>
+                </button>
+              </div>
 
-            <div className="input-group">
-              <span className="input-group-text">Limit</span>
-              <select className="inputFilter" aria-label="limit" onChange={handleLimitNum}>
-                <option>10</option>
-                <option>20</option>
-                <option>30</option>
-                <option>40</option>
-                <option>50</option>
-                <option>60</option>
-                <option>70</option>
-                <option>80</option>
-                <option>90</option>
-                <option>100</option>
-              </select>
-            </div>
+              <div className="input-group">
+                <span className="input-group-text">Limit</span>
+                <select
+                  className="inputFilter"
+                  aria-label="limit"
+                  onChange={handleLimitNum}
+                >
+                  <option>10</option>
+                  <option>20</option>
+                  <option>30</option>
+                  <option>40</option>
+                  <option>50</option>
+                  <option>60</option>
+                  <option>70</option>
+                  <option>80</option>
+                  <option>90</option>
+                  <option>100</option>
+                </select>
+              </div>
             </div>
             <div className="table">
               <table className="table-data">
@@ -365,6 +385,114 @@ const AdminDashBoard: React.FC = () => {
   };
 
   //Users component
+  interface userDetails {
+    d_id: number
+    id: number 
+    username: string 
+    user_email: string
+    user_balance: number
+    packages: number
+    Phone_number: number
+    Pin: number
+  }
+
+  const User = () => {
+    const [userDetails, setUserDetails] = useState<userDetails[]>([]);
+    useEffect(() => {
+      const handlFetchUser = async () => {
+        try {
+        const response = await axios.get<userDetails[]>('https://bankysub-api.onrender.com/users')
+        if (response.status === 200) {
+          setUserDetails(response.data);
+        }
+        } catch (err) {
+          console.error('Error selecting user information', err)
+        }
+      }
+      handlFetchUser();
+    })
+    return (
+      <>
+        <div className="dashboard-bg bg-light">
+          <h5>Dashboard</h5>
+          <div className="bg-white p-3">
+            <p>All Users</p>
+            <div className="grid-fund-hist justify-content-between">
+              <div className="input-group">
+                <span className="input-group-text">Page</span>
+                <select className="inputFilter" aria-label="pageNum"></select>
+              </div>
+
+              <div className="input-group">
+                <input
+                  className="inputFilter"
+                  aria-label="search"
+                  type="search"
+                  placeholder="Search By User Name"
+                />
+                <button
+                  className="inputFilter"
+                  aria-label="search"
+                  type="button"
+                >
+                  <i className="bi bi-search"></i>
+                </button>
+              </div>
+
+              <div className="input-group">
+                <span className="input-group-text">Limit</span>
+                <select className="inputFilter" aria-label="limit">
+                  <option>10</option>
+                  <option>20</option>
+                  <option>30</option>
+                  <option>40</option>
+                  <option>50</option>
+                  <option>60</option>
+                  <option>70</option>
+                  <option>80</option>
+                  <option>90</option>
+                  <option>100</option>
+                </select>
+              </div>
+            </div>
+            <div className="table">
+            <table className="table-data">
+              <thead>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Wallet Balance</th>
+                <th>Plan</th>
+                <th>Phone Number</th>
+                <th>Pin</th>
+              </thead>
+              <tbody>
+                  {userDetails.map((userD) => (
+                    <tr key={userD.d_id}>
+                      <td>{userD.id}</td>
+                      <td>{userD.user_email}</td>
+                      <td>{userD.username}</td>
+                      <td>{userD.user_balance}</td>
+                      <td>{userD.packages}</td>
+                      <td>{userD.Phone_number}</td>
+                      <td>{userD.Pin}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+  // Render user component
+  const renderUser = () => {
+    if (activeComponent === "user") {
+      return <User />;
+    }
+  };
 
   return (
     <>
@@ -388,6 +516,8 @@ const AdminDashBoard: React.FC = () => {
             <p className="dashb">
               <i className="bi bi-chat-left-text"></i> Messsages
             </p>
+
+            {/* Fund history */}
             <ul>
               <li>
                 <div
@@ -502,6 +632,8 @@ const AdminDashBoard: React.FC = () => {
                         )}
                       </li>
                     </ul>
+
+                    {/* User */}
                     <ul className="list">
                       <li className="list-mar">
                         <div
@@ -539,6 +671,7 @@ const AdminDashBoard: React.FC = () => {
             <div>{renderComponent()}</div>
             <div>{renderFund()}</div>
             <div>{renderSet()}</div>
+            <div>{renderUser()}</div>
           </main>
         </div>
       </div>
