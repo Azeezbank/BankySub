@@ -11,6 +11,7 @@ const Register: React.FC = () => {
   const [isPassMatch, setIsPassMatch] = useState(false);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState<number>();
 
   const navigate = useNavigate();
 
@@ -64,7 +65,7 @@ const Register: React.FC = () => {
           <label htmlFor="email">Email*</label> <br />
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           <label htmlFor="phone">Phone*</label> <br />
-          <input type="number" id="phone" required />
+          <input type="number" id="phone" value={phone} required onChange={(e) => setPhone(Number(e.target.value))}/>
           <label htmlFor="address">Address*</label> <br />
           <input type="text" id="address" required />
           <label htmlFor="referral">Referral username [optional]</label> <br />
@@ -93,7 +94,7 @@ const Register: React.FC = () => {
             required
           />
           {confirmPassError && (
-            <p style={{ color: "red" }}>{confirmPassError}</p>
+            <p className="confirmPass">{confirmPassError}</p>
           )}
           <span className="text-muted">Enter same password as before</span>{" "}
           <br />

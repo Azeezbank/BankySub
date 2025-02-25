@@ -22,7 +22,7 @@ const App:React.FC = () => {
       <Route path='/register?' element={<Register />} />
       <Route path='/login?' element={<Login />} />
       <Route path='/vent=electicity-bill' element={<Electricity />} />
-      <Route path='/Admin' element={<AdminDashBoard />} />
+      <Route path='/*' element={<AdminDashBoard />} />
     </Routes>
     </BrowserRouter>
     </>

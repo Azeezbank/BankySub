@@ -4,6 +4,9 @@ import logo from "../assets/SGN_09_08_2022_1662626364399.jpeg";
 //import { Link } from "react-router-dom";
 import "./Admin.css";
 import axios from "axios";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import UserInfo from './UserInfo';
+import { useParams } from "react-router-dom";
 
 type menuState = {
   [key: string]: boolean;
@@ -64,6 +67,10 @@ const AdminDashBoard: React.FC = () => {
       [user]: !prevUser[user],
     }));
   };
+
+  //User information
+    const navigate = useNavigate();
+    const {id} = useParams();
 
   //Dashboard component
   const Dashboard = () => {
@@ -401,7 +408,7 @@ const AdminDashBoard: React.FC = () => {
     useEffect(() => {
       const handlFetchUser = async () => {
         try {
-        const response = await axios.get<userDetails[]>('https://bankysub-api.onrender.com/users')
+        const response = await axios.get<userDetails[]>('https://bankysub-api.onrender.com/users');
         if (response.status === 200) {
           setUserDetails(response.data);
         }
@@ -410,7 +417,9 @@ const AdminDashBoard: React.FC = () => {
         }
       }
       handlFetchUser();
-    })
+    });
+
+    
     return (
       <>
         <div className="dashboard-bg bg-light">
@@ -465,6 +474,7 @@ const AdminDashBoard: React.FC = () => {
                 <th>Plan</th>
                 <th>Phone Number</th>
                 <th>Pin</th>
+                <th>Action</th>
               </thead>
               <tbody>
                   {userDetails.map((userD) => (
@@ -476,6 +486,7 @@ const AdminDashBoard: React.FC = () => {
                       <td>{userD.packages}</td>
                       <td>{userD.Phone_number}</td>
                       <td>{userD.Pin}</td>
+                      <td onClick={() => navigate(`/Admin/user=/${userD.d_id}`)} className="info" key={userD.d_id}>Info</td>
                     </tr>
                   ))}
               </tbody>
@@ -493,6 +504,7 @@ const AdminDashBoard: React.FC = () => {
       return <User />;
     }
   };
+
 
   return (
     <>
@@ -672,6 +684,9 @@ const AdminDashBoard: React.FC = () => {
             <div>{renderFund()}</div>
             <div>{renderSet()}</div>
             <div>{renderUser()}</div>
+            <Routes>
+              <Route path="/user=/:id" element={<UserInfo />} />
+            </Routes>
           </main>
         </div>
       </div>
