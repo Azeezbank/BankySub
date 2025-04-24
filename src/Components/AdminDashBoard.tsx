@@ -4,9 +4,10 @@ import logo from "../assets/SGN_09_08_2022_1662626364399.jpeg";
 //import { Link } from "react-router-dom";
 import "./Admin.css";
 import axios from "axios";
-import { Route, Routes, useNavigate } from "react-router-dom";
-import UserInfo from './UserInfo';
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import UserInfo from "./UserInfo";
 import { useParams } from "react-router-dom";
+import SmeDataComp from "./GatewayComponents/SmeDataComp";
 
 type menuState = {
   [key: string]: boolean;
@@ -20,6 +21,8 @@ const AdminDashBoard: React.FC = () => {
   const [isVerification, setIsVerification] = useState<menuState>({});
   const [isSetting, setIsSetting] = useState<menuState>({});
   const [isUser, setIsUser] = useState<menuState>({});
+  const [isGateway, setIsGateway] = useState<menuState>({});
+  const [isDataGate, setIsDataGate] = useState<menuState>({});
   const [activeComponent, setActiveComponent] = useState("Dashboard");
 
   const handleVisible = () => {
@@ -68,9 +71,23 @@ const AdminDashBoard: React.FC = () => {
     }));
   };
 
+  const handleIsGateay = (gate: any) => {
+    setIsGateway((prevGate) => ({
+      ...prevGate,
+      [gate]: !prevGate[gate],
+    }));
+  };
+
+  const handleDataGate = (dataGate: any) => {
+    setIsDataGate((prevDataGate) => ({
+      ...prevDataGate,
+      [dataGate]: !prevDataGate[dataGate]
+    }))
+  }
+
   //User information
-    const navigate = useNavigate();
-    const {id} = useParams();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   //Dashboard component
   const Dashboard = () => {
@@ -280,15 +297,17 @@ const AdminDashBoard: React.FC = () => {
             <div className="table">
               <table className="table-data">
                 <thead>
-                  <th>id</th>
-                  <th>event_type</th>
-                  <th>payment_ref</th>
-                  <th>paid_on</th>
-                  <th>amount</th>
-                  <th>payment_method</th>
-                  <th>payment_status</th>
-                  <th>prev_balance</th>
-                  <th>user_balance</th>
+                  <tr>
+                    <th>id</th>
+                    <th>event_type</th>
+                    <th>payment_ref</th>
+                    <th>paid_on</th>
+                    <th>amount</th>
+                    <th>payment_method</th>
+                    <th>payment_status</th>
+                    <th>prev_balance</th>
+                    <th>user_balance</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {items.map((item, index) => (
@@ -324,7 +343,51 @@ const AdminDashBoard: React.FC = () => {
   };
 
   //Setting component
+  interface AdminDetails {
+    whatsapp_phone: string;
+    whatsapp_link: string;
+    dash_message: string;
+  }
   const Setting = () => {
+   
+    const [info, setInfo] = useState<AdminDetails>({
+      whatsapp_phone: "",
+      whatsapp_link: "",
+      dash_message: "",
+    });
+
+    useEffect(() => {
+      const handleAdminDetailUpdate = async () => {
+        try {
+          const response = await axios.get(
+            "https://bankysub-api.onrender.com/api/admin-details"
+          );
+          if (response.status === 200) {
+            setInfo(response.data);
+            console.log("Updated");
+          }
+        } catch (err: any) {
+          console.error(err.response?.data?.message);
+        }
+      };
+      handleAdminDetailUpdate();
+    }, []);
+
+    const handleAdminDetails = async (e: any) => {
+      e.preventDefault();
+      try {
+        const response = await axios.put(
+          "https://bankysub-api.onrender.com/api/updated=setting=details",
+          info
+        );
+        if (response.status === 200) {
+          console.log("Updated");
+        }
+      } catch (err: any) {
+        console.error(err.response?.data?.message);
+      }
+    };
+
     return (
       <>
         <div className="dashboard-bg bg-light">
@@ -339,25 +402,37 @@ const AdminDashBoard: React.FC = () => {
                 <div className="input-group pb-2">
                   <span className="input-group-text">Phone +234(0)</span>
                   <input
+                    type="text"
                     className="form-control"
-                    aria-label="num"
-                    type="number"
+                    aria-label="phone"
+                    value={info.whatsapp_phone}
+                    onChange={(e) =>
+                      setInfo({ ...info, whatsapp_phone: e.target.value })
+                    }
                   />
                 </div>
                 <div className="input-group pb-2">
                   <span className="input-group-text">WhatsApp +234(0)</span>
                   <input
                     className="contact-input-field form-control"
-                    aria-label="num"
-                    type="number"
+                    aria-label="link"
+                    type="text"
+                    value={info.whatsapp_phone}
+                    onChange={(e) =>
+                      setInfo({ ...info, whatsapp_phone: e.target.value })
+                    }
                   />
                 </div>
                 <div className="input-group pb-2">
                   <span className="input-group-text">WhatsApp Group Link</span>
                   <input
                     className="form-control"
-                    aria-label="num"
+                    aria-label="link"
                     type="text"
+                    value={info.whatsapp_link}
+                    onChange={(e) =>
+                      setInfo({ ...info, whatsapp_link: e.target.value })
+                    }
                   />
                 </div>
               </div>
@@ -372,10 +447,18 @@ const AdminDashBoard: React.FC = () => {
                   className="textarea"
                   aria-label="text"
                   rows={2}
+                  value={info.dash_message}
+                  onChange={(e) =>
+                    setInfo({ ...info, dash_message: e.target.value })
+                  }
                 ></textarea>
               </div>
             </div>
-            <button type="button" className="set-save-btn float-end">
+            <button
+              type="button"
+              className="set-save-btn float-end"
+              onClick={handleAdminDetails}
+            >
               Save
             </button>
           </div>
@@ -393,33 +476,71 @@ const AdminDashBoard: React.FC = () => {
 
   //Users component
   interface userDetails {
-    d_id: number
-    id: number 
-    username: string 
-    user_email: string
-    user_balance: number
-    packages: number
-    Phone_number: number
-    Pin: number
+    d_id: number;
+    id: number;
+    username: string;
+    user_email: string;
+    user_balance: number;
+    packages: number;
+    Phone_number: number;
+    Pin: number;
   }
 
   const User = () => {
     const [userDetails, setUserDetails] = useState<userDetails[]>([]);
+    const [totalPage, setTotalPage] = useState(1);
+    const [pageNumber, setPageNumber] = useState<number[]>([]);
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(10);
+    const [searchValue, setSearchvalue] = useState<userDetails[]>([]);
+    const [searchTerm, setSearchTerm] = useState("");
+
     useEffect(() => {
       const handlFetchUser = async () => {
         try {
-        const response = await axios.get<userDetails[]>('https://bankysub-api.onrender.com/users');
-        if (response.status === 200) {
-          setUserDetails(response.data);
-        }
+          const response = await axios.get(
+            `https://bankysub-api.onrender.com/users?page=${page}&limit=${limit}`
+          );
+          if (response.status === 200) {
+            setUserDetails(response.data.data);
+            setSearchvalue(response.data.data);
+            setTotalPage(response.data.totalPage);
+          }
         } catch (err) {
-          console.error('Error selecting user information', err)
+          console.error("Error selecting user information", err);
         }
-      }
+      };
       handlFetchUser();
-    });
+    }, []);
 
-    
+    //Page number
+    useEffect(() => {
+      const numList = Array.from({ length: totalPage }, (_, i) => i + 1);
+      setPageNumber(numList);
+    }, [totalPage]);
+
+    const handlePage = (e: any) => {
+      setPage(Number(e.target.value));
+    };
+
+    //Number limit
+    const handleLimitNum = (e: any) => {
+      setLimit(Number(e.target.value));
+    };
+
+    //filter user by username
+    const handleSearch = (e: any) => {
+      e.preventDefault();
+      if (searchTerm.trim() === "") {
+        setSearchvalue(userDetails);
+      } else {
+        const filterUser = userDetails.filter((findUser) =>
+          findUser.username.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setSearchvalue(filterUser);
+      }
+    };
+
     return (
       <>
         <div className="dashboard-bg bg-light">
@@ -429,7 +550,15 @@ const AdminDashBoard: React.FC = () => {
             <div className="grid-fund-hist justify-content-between">
               <div className="input-group">
                 <span className="input-group-text">Page</span>
-                <select className="inputFilter" aria-label="pageNum"></select>
+                <select
+                  className="inputFilter"
+                  aria-label="pageNum"
+                  onChange={handlePage}
+                >
+                  {pageNumber.map((userD, index) => (
+                    <option key={index}>{userD}</option>
+                  ))}
+                </select>
               </div>
 
               <div className="input-group">
@@ -438,11 +567,14 @@ const AdminDashBoard: React.FC = () => {
                   aria-label="search"
                   type="search"
                   placeholder="Search By User Name"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <button
                   className="inputFilter"
                   aria-label="search"
                   type="button"
+                  onClick={handleSearch}
                 >
                   <i className="bi bi-search"></i>
                 </button>
@@ -450,7 +582,11 @@ const AdminDashBoard: React.FC = () => {
 
               <div className="input-group">
                 <span className="input-group-text">Limit</span>
-                <select className="inputFilter" aria-label="limit">
+                <select
+                  className="inputFilter"
+                  aria-label="limit"
+                  onChange={handleLimitNum}
+                >
                   <option>10</option>
                   <option>20</option>
                   <option>30</option>
@@ -465,19 +601,21 @@ const AdminDashBoard: React.FC = () => {
               </div>
             </div>
             <div className="table">
-            <table className="table-data">
-              <thead>
-                <th>ID</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>Wallet Balance</th>
-                <th>Plan</th>
-                <th>Phone Number</th>
-                <th>Pin</th>
-                <th>Action</th>
-              </thead>
-              <tbody>
-                  {userDetails.map((userD) => (
+              <table className="table-data">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Wallet Balance</th>
+                    <th>Plan</th>
+                    <th>Phone Number</th>
+                    <th>Pin</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {searchValue.map((userD) => (
                     <tr key={userD.d_id}>
                       <td>{userD.id}</td>
                       <td>{userD.user_email}</td>
@@ -486,11 +624,17 @@ const AdminDashBoard: React.FC = () => {
                       <td>{userD.packages}</td>
                       <td>{userD.Phone_number}</td>
                       <td>{userD.Pin}</td>
-                      <td onClick={() => navigate(`/Admin/user=/${userD.d_id}`)} className="info" key={userD.d_id}>Info</td>
+                      <td
+                        onClick={() => navigate(`/Admin/user=/${userD.d_id}`)}
+                        className="info"
+                        key={userD.d_id}
+                      >
+                        Info
+                      </td>
                     </tr>
                   ))}
-              </tbody>
-            </table>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -505,6 +649,12 @@ const AdminDashBoard: React.FC = () => {
     }
   };
 
+  // Render Sme Data Ggateway components
+  const renderSmeDataComp = () => {
+    if (activeComponent === 'sme') {
+       return <SmeDataComp />;
+    }
+  };
 
   return (
     <>
@@ -519,12 +669,14 @@ const AdminDashBoard: React.FC = () => {
               <img src={logo} alt="site logo" />
               <p>BANKYTECH</p>
             </div>
-            <p
-              className="dashb"
-              onClick={() => setActiveComponent("Dashboard")}
-            >
-              <i className="bi bi-columns-gap"></i> Dashboard
-            </p>
+            <Link to={"/"} className="Link">
+              <p
+                className="dashb"
+                onClick={() => setActiveComponent("Dashboard")}
+              >
+                <i className="bi bi-columns-gap"></i> Dashboard
+              </p>
+            </Link>
             <p className="dashb">
               <i className="bi bi-chat-left-text"></i> Messsages
             </p>
@@ -667,6 +819,37 @@ const AdminDashBoard: React.FC = () => {
                         )}
                       </li>
                     </ul>
+
+                    {/* gateway */}
+                    <ul className="list">
+                      <li className="list-mar">
+                        <div
+                          className="bg-primary fund-hist hover"
+                          onClick={() => handleIsGateay("gateWay")}
+                        >
+                          <i className="bi bi-backpack4"></i> Gateway
+                          <i className="bi bi-chevron-right float-end"></i>
+                        </div>
+                        {isGateway.gateWay && (
+                          <ul>
+                            <li
+                              className="successful hover"
+                              onClick={() => handleDataGate('dataGate')}
+                            >
+                              <i className="bi bi-wifi"></i> 
+                              <i className="bi bi-chevron-right float-end"></i> Data
+                            </li>
+                          </ul>
+                        )}
+                        {isDataGate.dataGate && (
+                          <ul>
+                            <li className="nin hover" onClick={() => setActiveComponent('sme')}>
+                              <i className="bi bi-sort-down"></i> All Data Plans
+                            </li>
+                          </ul>
+                        )}
+                      </li>
+                    </ul>
                   </>
                 )}
               </li>
@@ -684,8 +867,9 @@ const AdminDashBoard: React.FC = () => {
             <div>{renderFund()}</div>
             <div>{renderSet()}</div>
             <div>{renderUser()}</div>
+            <div>{renderSmeDataComp()}</div>
             <Routes>
-              <Route path="/user=/:id" element={<UserInfo />} />
+              <Route path={`/user=/:${id}`} element={<UserInfo />} />
             </Routes>
           </main>
         </div>

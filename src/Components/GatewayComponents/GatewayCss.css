@@ -1,0 +1,32 @@
+.bg-white-color {
+  background-color: #fff;
+  padding: 15px;
+  width: 100%;
+}
+.flex-status {
+  display: flex;
+  gap: 10px;
+}
+.header-color {
+  background-color: #6a00f4;
+}
+.input-table-container {
+  width: 100%;
+  overflow-x: hidden;
+}
+.id-row {
+  width: 100%;
+  /* border: 1px solid rgb(195, 191, 191); */
+  outline: none;
+    font-family: 'Georgia', 'Times' 'New Roman', 'Times', 'serif'
+}
+table {
+  border-collapse: collapse;
+}
+.update-save-button {
+  background-color: #e4117a; color: #fff; border-radius: 5px;
+  margin-top: 15px;
+}
+.update-save-button:hover {
+  background-color: #ce0b6c; color: #fff; border-radius: 5px;
+}

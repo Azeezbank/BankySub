@@ -122,12 +122,12 @@ const Airtime: React.FC = () => {
               <p className="text-center pt-3">Airtime TopUp</p>
               <form className="transactionForm">
                 <p>Network</p>
-                <select>
+                <select aria-label="select">
                   <option>---Select---</option>
                   <option className="option">MTN</option>
                 </select>
                 <p>Airtime Type</p>
-                <select>
+                <select aria-label="option">
                   <option>---Select---</option>
                   <option>VTU</option>
                 </select>{" "}
@@ -164,7 +164,7 @@ const Airtime: React.FC = () => {
                 </div>
                 <div className="flex-bypass">
                   <p>
-                    <input type="checkbox" name="bypass" id="bypass" />
+                    <input aria-label="input" type="checkbox" name="bypass" id="bypass" />
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>

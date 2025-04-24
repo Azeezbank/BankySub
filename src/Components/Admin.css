@@ -1,6 +1,6 @@
- /* {
+main {
   font-family: 'Times New Roman', Times, serif;
-} */
+}
 .admin-image {
   display: flex;
   padding: 10px;
@@ -89,6 +89,9 @@ ul {
 .table-data {
   border-collapse: collapse;
   border: 1px solid grey;
+  width: 100%;
+}
+.table-data-head {
   width: 100%;
 }
 .table-data th, .table-data td {

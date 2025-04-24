@@ -40,6 +40,9 @@
   width: 100%;
   color: #fff;
 }
+.transactionForm button:hover {
+  background-color: rgb(132, 9, 77);
+}
 .meter-number {
   display: grid;
   grid-template-columns: 80% 20%;

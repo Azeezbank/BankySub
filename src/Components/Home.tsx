@@ -28,12 +28,21 @@ interface walletInfo {
   user_balance: string
 }
 
+interface message {
+  dash_message: string
+  whatsapp_link: string
+}
+
 const Home: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [copysuccess, setCopySuccess] = useState("");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [copysuccess, setCopySuccess] = useState<string>("");
   const [bankDetails, setBankDetails] = useState<bank[]>([]);
   const [isAcctN, setIsAcctN] = useState(false);
   const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
+  const [dash_message, setDash_message] = useState<message>({
+    whatsapp_link: '',
+    dash_message: ''
+  });
   const navigate = useNavigate();
   const link = "https://tunstelecom.com.ng?ref1";
   
@@ -101,7 +110,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const handleUserInfo = async () => {
       try{
-      const response = await axios.get('https://bankysub-api.onrender.com/api/user_info', {withCredentials: true});
+      const response = await axios.get<walletInfo[]>('https://bankysub-api.onrender.com/api/user_info', {withCredentials: true});
       if (response.status === 200) {
         setWalletBalance(response.data)
       }
@@ -112,7 +121,22 @@ const Home: React.FC = () => {
     handleUserInfo();
   });
 
-  return (
+  //Fetch dasgboard message
+  useEffect(() => {
+    const handleMessage = async () => {
+      try {
+      const response = await axios.get('https://bankysub-api.onrender.com/api/dashboard-message');
+      if (response.status === 200) {
+        setDash_message(response.data)
+      }
+    } catch (err: any) {
+      console.error(err.response?.data.message || err.message)
+    }
+    }
+    handleMessage();
+  }, []);
+
+  return ( 
     <>
       <div className="flexEntire">
         <div className={`aside ${isOpen ? "visible" : "hidden"} flexAside`}>
@@ -124,7 +148,7 @@ const Home: React.FC = () => {
               </div>
               <div>
                 <p className="ps-2">
-                  Username <br /> <span className="navBalance">balance: #</span>
+                  Username <br /> <span className="navBalance">balance: # {walletBalance.map(wallet => wallet.user_balance)}</span>
                 </p>
               </div>
             </div>
@@ -239,12 +263,6 @@ const Home: React.FC = () => {
                 <div>
                 <button type="button"
                   className="fund-wallet"
-                  //   backgroundColor: "orange",
-                  //   borderRadius: "20px",
-                  //   // width: "130px",
-                  //   height: "40px",
-                  //   margin: "5px",
-                  // }}
                 >
                   Fund wallet
                 </button>
@@ -276,7 +294,7 @@ const Home: React.FC = () => {
                   <span className="orange">**NEW**</span> Own a
                   TUNSTELECOM.COM.NG retailer website and retail all our
                   services; Such as DATA, Recharge cards printing, AIRTIME and
-                  Bills Payment. <button>Click here</button>
+                  Bills Payment. <button type="button">Click here</button>
                 </p>
                 {/* navbar tabs */}
                 <ul className="nav nav-tabs">
@@ -360,7 +378,7 @@ const Home: React.FC = () => {
                   </div>
                 </div>
                 <div className="marqueeC">
-                  <h4 className="marquee">Welcome to tunstelecom</h4>
+                  <h4 className="marquee">{dash_message.dash_message}</h4>
                 </div>
                 <div className="grid_histories">
                   <div className="d-flex purpleShadow">
@@ -455,10 +473,12 @@ const Home: React.FC = () => {
                       <i className="bi bi-whatsapp"></i> Whatsapp us
                     </button>
                     <p>
+                      <a href={dash_message.whatsapp_link}>
                       <button className="btn bg-success text-white mt-3 text-start">
                         <i className="bi bi-whatsapp"></i> Join our whatsapp
                         group
                       </button>{" "}
+                      </a>
                     </p>
                   </div>
                 </div>

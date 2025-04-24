@@ -18,7 +18,7 @@ const NavBar:React.FC<Props> = ({sideBarClickHandler}) => {
   const handleLogOutUser = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://bankysub-api.onrender.com/logout', {});
+      const response = await axios.post('https://bankysub-api.onrender.com/logout', {}, {withCredentials: true});
       if (response.status === 200) {
         navigate('/login?');
       }

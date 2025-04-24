@@ -134,12 +134,12 @@ const Electricity: React.FC = () => {
               <p className="text-center pt-3">Pay Electricity Bill</p>
               <form className="transactionForm">
                 <p>Disco Type</p>
-                <select>
+                <select aria-label="select">
                   <option>---Select---</option>
                   <option className="option">MTN</option>
                 </select>
                 <p>Disco plan</p>
-                <select>
+                <select aria-label="select">
                   <option>---Select---</option>
                   <option>VTU</option>
                 </select>
