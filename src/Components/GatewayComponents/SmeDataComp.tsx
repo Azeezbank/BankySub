@@ -46,7 +46,7 @@ const SmeDataComp: React.FC = () => {
   const submitPlans = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.put("https://bankysub-api.onrender.com/update-sme", allPlan);
+      await axios.put("https://bankysub-api.onrender.com/update-data-plans", allPlan);
     } catch (err: any) {
       console.log(err);
     }
