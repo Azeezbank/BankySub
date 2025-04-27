@@ -7,6 +7,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [loginError, setLoginError] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
 
   const navigate = useNavigate();
 
@@ -18,6 +19,7 @@ const Login: React.FC = () => {
         { password, username },
         { withCredentials: true }
       );
+      setIsAuth(true);
       if (response.status === 200) {
         navigate("/");
       }
@@ -61,7 +63,9 @@ const Login: React.FC = () => {
               Don't have an account yet?{" "}
               <Link to={"/register?"} className="Link">
                 {" "}
+                {!isAuth ? (
                 <span>Sign up</span>
+                ) : (<span>Authenticating...</span>)}
               </Link>
             </p>
           </form>
