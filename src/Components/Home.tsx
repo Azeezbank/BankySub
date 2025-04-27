@@ -26,6 +26,7 @@ interface bank {
 interface walletInfo {
   username: string
   user_balance: string
+  packages: string
 }
 
 interface message {
@@ -288,7 +289,7 @@ const Home: React.FC = () => {
                     <img src={googlePlay} alt="Download our app" />
                   </a>
                 </div>
-                <p className="text-center fw-bold">Package:</p>
+                <p className="text-center fw-bold">Package: {walletBalance.map(packg => packg.packages)}</p>
                 <hr /> <hr />
                 <p className="ash-background">
                   <span className="orange">**NEW**</span> Own a

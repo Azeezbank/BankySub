@@ -117,7 +117,7 @@ const Data: React.FC = () => {
       }
       const response = await axios.post(
         "https://bankysub-api.onrender.com/api/data=bundle",
-        { DataPrice, mobileNumber, choosenNetwork }, {withCredentials: true}
+        { DataPrice, mobileNumber, choosenNetwork, choosenDataType }, {withCredentials: true}
       );
       if (response.status === 200) {
         setIsModalSuccess(true)
@@ -169,8 +169,6 @@ const Data: React.FC = () => {
     handleUserInfo();
   });
 
-  // Modal
-
   return (
     <>
       <div className="flexEntire">
@@ -183,7 +181,7 @@ const Data: React.FC = () => {
               </div>
               <div>
                 <p className="ps-2">
-                  Username <br /> <span className="navBalance">balance: #</span>
+                  {walletBalance.map(user => user.username)} <br /> <span className="navBalance">balance: #{walletBalance.map(user => user.user_balance)}</span>
                 </p>
               </div>
             </div>

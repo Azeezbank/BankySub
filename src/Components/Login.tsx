@@ -14,6 +14,7 @@ const Login: React.FC = () => {
   const handleLogin = async (e: any) => {
     e.preventDefault();
     try {
+      setIsAuth(true);
       const response = await axios.post(
         "https://bankysub-api.onrender.com/login",
         { password, username },
@@ -56,16 +57,20 @@ const Login: React.FC = () => {
             />
             <br />
             <br />
+            {!isAuth ? (
             <button className="RegButton" type="submit">
-              Sign In
+            Sign In
+          </button>
+            ) : (
+              <button className="RegButton" type="submit">
+              Authenticating...
             </button>
+            )}
             <p className="signIn">
               Don't have an account yet?{" "}
               <Link to={"/register?"} className="Link">
                 {" "}
-                {!isAuth ? (
                 <span>Sign up</span>
-                ) : (<span>Authenticating...</span>)}
               </Link>
             </p>
           </form>

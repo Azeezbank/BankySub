@@ -126,7 +126,7 @@ useEffect(() => {
               </div>
               <div>
                 <p className="ps-2">
-                  Username <br /> <span className="navBalance">balance: #</span>
+                  {walletBalance.map(user => user.username)} <br /> <span className="navBalance">balance: #{walletBalance.map(user => user.user_balance)}</span>
                 </p>
               </div>
             </div>
