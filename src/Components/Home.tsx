@@ -149,7 +149,7 @@ const Home: React.FC = () => {
               </div>
               <div>
                 <p className="ps-2">
-                  Username <br /> <span className="navBalance">balance: #{walletBalance.map(wallet => wallet.user_balance)}</span>
+                  {walletBalance.map(user => user.username)} <br /> <span className="navBalance">balance: #{walletBalance.map(wallet => wallet.user_balance)}</span>
                 </p>
               </div>
             </div>
