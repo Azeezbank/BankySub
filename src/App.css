@@ -60,7 +60,7 @@ nav {
 }
 .aside.visible {
   display: block;
-  width: 60vw;
+  width: 30vw;
 }
 .aside.hidden {
   display: none;
@@ -73,9 +73,9 @@ nav {
 .main.with-margin {
   overflow: hidden;
   transition: margin-right 0.3s ease;
-  margin-left: 60vw;
+  margin-left: 30vw;
   white-space: nowrap;
-  width: 40vw;
+  width: 70vw;
   overflow-y: auto;
 }
 .main.with-no-margin {
@@ -101,12 +101,12 @@ nav {
     gap: 10px;
   }
   .aside.visible {
-    width: 25vw;
+    width: 15vw;
     overflow-y: auto;
   }
   .main.with-margin {
-    width: 75vw;
-    margin-left: 25vw;
+    width: 85vw;
+    margin-left: 15vw;
     white-space: nowrap;
     margin-top: 0%;
     overflow-y: auto;

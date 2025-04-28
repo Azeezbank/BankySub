@@ -12,6 +12,7 @@ interface smeData {
   user: number;
   reseller: number;
   api: number;
+  is_active: string
 }
 
 const SmeDataComp: React.FC = () => {
@@ -69,70 +70,15 @@ const SmeDataComp: React.FC = () => {
             <table>
               <thead className="header-color">
                 <tr>
-                  <th>
-                    <input
-                      className="id-row"
-                      type="text"
-                      placeholder="id"
-                      disabled
-                    />
-                  </th>
-                  <th>
-                    <input
-                      className="id-row"
-                      type="text"
-                      placeholder="Name"
-                      disabled
-                    />
-                  </th>
-                  <th>
-                    <input
-                      className="id-row"
-                      type="text"
-                      placeholder="network_name"
-                      disabled
-                    />
-                  </th>
-                  <th>
-                    <input
-                      className="id-row"
-                      type="text"
-                      placeholder="data_type"
-                      disabled
-                    />
-                  </th>
-                  <th>
-                    <input
-                      className="id-row"
-                      type="text"
-                      placeholder="Validity"
-                      disabled
-                    />
-                  </th>
-                  <th>
-                    <input
-                      className="id-row"
-                      type="text"
-                      placeholder="User Price"
-                      disabled
-                    />
-                  </th>
-                  <th>
-                    <input
-                      className="id-row"
-                      type="text"
-                      placeholder="Reseller Price"
-                      disabled
-                    />
-                  </th>
-                  <th>
-                    <input
-                      className="id-row"
-                      type="text"
-                      placeholder="Api Price"
-                      disabled
-                    />
-                  </th>
+                  <th className="id-row">Id</th>
+                  <th className="id-row">Name</th>
+                  <th className="id-row"> Network Name</th>
+                  <th className="id-row"> Data_Type</th>
+                  <th className="id-row"> Validity</th>
+                  <th className="id-row"> User Price</th>
+                  <th className="id-row"> Reseller Price</th>
+                  <th className="id-row">Api Price</th>
+                  <th className="id-row">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -140,7 +86,7 @@ const SmeDataComp: React.FC = () => {
                   <tr key={index}>
                     <td>
                       <input
-                        className="id-row"
+                        className=" id"
                         type="text"
                         aria-label="input"
                         defaultValue={sme.id}
@@ -151,7 +97,7 @@ const SmeDataComp: React.FC = () => {
                     </td>
                     <td>
                       <input
-                        className="id-row"
+                        className="id"
                         type="text"
                         aria-label="input"
                         defaultValue={sme.name}
@@ -162,7 +108,7 @@ const SmeDataComp: React.FC = () => {
                     </td>
                     <td>
                       <input
-                        className="id-row"
+                        className="id"
                         type="text"
                         aria-label="input"
                         defaultValue={sme.network_name}
@@ -173,7 +119,7 @@ const SmeDataComp: React.FC = () => {
                     </td>
                     <td>
                       <input
-                        className="id-row"
+                        className="id"
                         type="text"
                         aria-label="input"
                         defaultValue={sme.data_type}
@@ -184,7 +130,7 @@ const SmeDataComp: React.FC = () => {
                     </td>
                     <td>
                       <input
-                        className="id-row"
+                        className="id"
                         type="text"
                         aria-label="input"
                         defaultValue={sme.validity}
@@ -195,7 +141,7 @@ const SmeDataComp: React.FC = () => {
                     </td>
                     <td>
                       <input
-                        className="id-row"
+                        className="id"
                         type="text"
                         aria-label="input"
                         defaultValue={sme.user}
@@ -206,7 +152,7 @@ const SmeDataComp: React.FC = () => {
                     </td>
                     <td>
                       <input
-                        className="id-row"
+                        className="id"
                         type="text"
                         aria-label="input"
                         defaultValue={sme.reseller}
@@ -217,7 +163,7 @@ const SmeDataComp: React.FC = () => {
                     </td>
                     <td>
                       <input
-                        className="id-row"
+                        className="id"
                         type="text"
                         aria-label="input"
                         defaultValue={sme.api}
@@ -225,6 +171,19 @@ const SmeDataComp: React.FC = () => {
                           handlePlans(index, "api", e.target.value)
                         }
                       />
+                    </td>
+                    <td>
+                    <select
+                        className="id"
+                        aria-label="select"
+                        defaultValue={sme.is_active}
+                        onChange={(e) =>
+                          handlePlans(index, "is_active", e.target.value)
+                        }
+                      >
+                        <option>active</option>
+                        <option>disabled</option>
+                      </select>
                     </td>
                   </tr>
                 ))}

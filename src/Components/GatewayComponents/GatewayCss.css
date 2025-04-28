@@ -8,16 +8,21 @@
   gap: 10px;
 }
 .header-color {
-  background-color: #6a00f4;
+  background-color: #e4117a;
+  height: 40px;
 }
 .input-table-container {
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: auto;
+}
+.id {
+  width: 100%;
+  outline: none;
 }
 .id-row {
-  width: 100%;
-  /* border: 1px solid rgb(195, 191, 191); */
-  outline: none;
+  width: fit-content;
+    padding: 0px 3px;
+    border-right: 2px solid grey;
     font-family: 'Georgia', 'Times' 'New Roman', 'Times', 'serif'
 }
 table {
