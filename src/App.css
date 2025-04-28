@@ -180,12 +180,12 @@ nav {
 .ash-background {
   background: linear-gradient(to right, #82b1ff, #4a148c);
   color: #fff;
-  padding: 10px 20px;
+  padding: 20px;
   border-radius: 10px;
 }
 .ash-background button {
   border-radius: 8px;
-  width: 92px;
+  width: fit-content;
   font-size: small;
 }
 .tab-content img {
