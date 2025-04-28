@@ -149,7 +149,7 @@ const Home: React.FC = () => {
               </div>
               <div>
                 <p className="ps-2">
-                  Username <br /> <span className="navBalance">balance: # {walletBalance.map(wallet => wallet.user_balance)}</span>
+                  Username <br /> <span className="navBalance">balance: #{walletBalance.map(wallet => wallet.user_balance)}</span>
                 </p>
               </div>
             </div>
@@ -254,7 +254,7 @@ const Home: React.FC = () => {
                   <a href="#" className="decoration">
                     https://tunstelecom.com.ng?ref1
                   </a>{" "}
-                  <button
+                  <button type="button"
                     onClick={copyClipboard}
                     className="copyClipboard"
                   >

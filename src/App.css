@@ -180,7 +180,7 @@ nav {
 .ash-background {
   background: linear-gradient(to right, #82b1ff, #4a148c);
   color: #fff;
-  padding: 20px;
+  padding: 10px 20px;
   border-radius: 10px;
 }
 .ash-background button {
