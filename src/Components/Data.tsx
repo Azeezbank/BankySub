@@ -107,6 +107,7 @@ const Data: React.FC = () => {
   //Purchase data bundle
   const FetchDataBundle = async (e: any) => {
     e.preventDefault();
+  
     try {
       const isLesser = walletBalance.some(
         (wallet) => wallet.user_balance < choosenDataPlan
@@ -119,6 +120,7 @@ const Data: React.FC = () => {
         "https://bankysub-api.onrender.com/api/data=bundle",
         { DataPrice, mobileNumber, choosenNetwork, choosenDataType }, {withCredentials: true}
       );
+  
       if (response.status === 200) {
         setIsModalSuccess(true)
       }
