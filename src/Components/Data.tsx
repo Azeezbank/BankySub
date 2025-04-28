@@ -105,7 +105,7 @@ const Data: React.FC = () => {
   };
 
   //Purchase data bundle
-  const FetchDataBundle = async (e: any) => {
+  const FetchDataBundle = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
   
     try {
