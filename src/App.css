@@ -60,7 +60,7 @@ nav {
 }
 .aside.visible {
   display: block;
-  width: 30vw;
+  width: 40vw;
 }
 .aside.hidden {
   display: none;
@@ -73,9 +73,9 @@ nav {
 .main.with-margin {
   overflow: hidden;
   transition: margin-right 0.3s ease;
-  margin-left: 30vw;
+  margin-left: 40vw;
   white-space: nowrap;
-  width: 70vw;
+  width: 60vw;
   overflow-y: auto;
 }
 .main.with-no-margin {
@@ -314,8 +314,8 @@ nav {
 
 /* navbar section */
 .navImg {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 .navBalance {
   color: #a59d9d;
