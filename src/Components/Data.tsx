@@ -117,7 +117,7 @@ const Data: React.FC = () => {
         return;
       }
       const response = await axios.post(
-        "https://bankysub-api.onrender.com/api/data=bundle",
+        "https://bankysub-api.onrender.com/api/data/bundle",
         { DataPrice, mobileNumber, choosenNetwork, choosenDataType }, {withCredentials: true}
       );
   
