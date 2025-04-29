@@ -23,9 +23,9 @@ interface dataPlan {
   network_name: string;
   data_type: string;
   user: string;
-  reseller: string
-  api: string
-  validity: string
+  reseller: string;
+  api: string;
+  validity: string;
 }
 
 interface walletInfo {
@@ -40,7 +40,7 @@ const Data: React.FC = () => {
   const [dataPlan, setDataPlan] = useState<dataPlan[]>([]);
   const [choosenNetwork, setChoodenNetwork] = useState("");
   const [choosenDataType, setChoosenDataType] = useState("");
-  const [choosenDataPlan, setChoosenDataPlan] = useState('');
+  const [choosenDataPlan, setChoosenDataPlan] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
   const [isModalSuccess, setIsModalSuccess] = useState(false);
@@ -62,7 +62,8 @@ const Data: React.FC = () => {
     const fetchNetwork = async () => {
       try {
         const response = await axios.get<network[]>(
-          "https://bankysub-api.onrender.com/network", {withCredentials: true}
+          "https://bankysub-api.onrender.com/network",
+          { withCredentials: true }
         );
         if (response.status === 200) {
           setNetworks(response.data);
@@ -79,7 +80,8 @@ const Data: React.FC = () => {
     try {
       const response = await axios.post<dataType[]>(
         "https://bankysub-api.onrender.com/data/types",
-        { choosenNetwork }, {withCredentials: true}
+        { choosenNetwork },
+        { withCredentials: true }
       );
       if (response.status === 200) {
         setDataType(response.data);
@@ -94,7 +96,8 @@ const Data: React.FC = () => {
     try {
       const response = await axios.post<dataPlan[]>(
         "https://bankysub-api.onrender.com/data/plans",
-        { choosenNetwork, choosenDataType }, {withCredentials: true}
+        { choosenNetwork, choosenDataType },
+        { withCredentials: true }
       );
       if (response.status === 200) {
         setDataPlan(response.data);
@@ -107,7 +110,7 @@ const Data: React.FC = () => {
   //Purchase data bundle
   const FetchDataBundle = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-  
+
     try {
       const isLesser = walletBalance.some(
         (wallet) => wallet.user_balance < choosenDataPlan
@@ -116,14 +119,15 @@ const Data: React.FC = () => {
         alert("Low wallet balance, please fund your wallet");
         return;
       }
-      const response = await axios.post(
+      await axios.post(
         "https://bankysub-api.onrender.com/api/data/bundle",
-        { DataPrice, mobileNumber, choosenNetwork, choosenDataType }, {withCredentials: true}
+        { DataPrice, mobileNumber, choosenNetwork, choosenDataType },
+        { withCredentials: true }
       );
-  
-      if (response.status === 200) {
-        setIsModalSuccess(true)
-      }
+
+      // if (response.status === 200) {
+        setIsModalSuccess(true);
+      // }
     } catch (err) {
       console.error(err);
       setIsModalSuccess(false);
@@ -139,9 +143,12 @@ const Data: React.FC = () => {
   useEffect(() => {
     const ProtectPage = async () => {
       try {
-        const response = await axios.get("https://bankysub-api.onrender.com/protected", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          "https://bankysub-api.onrender.com/protected",
+          {
+            withCredentials: true,
+          }
+        );
         if (response.status === 200) {
           console.log(response.data.message);
         }
@@ -183,7 +190,10 @@ const Data: React.FC = () => {
               </div>
               <div>
                 <p className="ps-2">
-                  {walletBalance.map(user => user.username)} <br /> <span className="navBalance">balance: #{walletBalance.map(user => user.user_balance)}</span>
+                  {walletBalance.map((user) => user.username)} <br />{" "}
+                  <span className="navBalance">
+                    balance: #{walletBalance.map((user) => user.user_balance)}
+                  </span>
                 </p>
               </div>
             </div>
@@ -289,7 +299,8 @@ const Data: React.FC = () => {
                   ))}
                 </select>
                 <p>Data Type</p>
-                <select aria-label="choose dataType"
+                <select
+                  aria-label="choose dataType"
                   onClick={fetchDataType}
                   onChange={(e) => setChoosenDataType(e.target.value)}
                 >
@@ -300,11 +311,19 @@ const Data: React.FC = () => {
                 </select>{" "}
                 <br />
                 <p>Data Plan</p>
-                <select aria-label="choose dataPlan" onClick={fetchDataPlan} onChange={handlePrice}>
+                <select
+                  aria-label="choose dataPlan"
+                  onClick={fetchDataPlan}
+                  onChange={handlePrice}
+                >
                   <option>---Select---</option>
                   {dataPlan.map((dp) => (
-                    <option key={dp.d_id} value={dp.user || dp.reseller || dp.api}>
-                      {dp.name} {dp.data_type} = # {dp.user || dp.reseller || dp.api} {dp.validity}
+                    <option
+                      key={dp.d_id}
+                      value={dp.user || dp.reseller || dp.api}
+                    >
+                      {dp.name} {dp.data_type} = #{" "}
+                      {dp.user || dp.reseller || dp.api} {dp.validity}
                     </option>
                   ))}
                 </select>{" "}
@@ -334,7 +353,13 @@ const Data: React.FC = () => {
                 </div>
                 <div className="flex-bypass">
                   <p>
-                    <input aria-label="checkbox" type="checkbox" name="bypass" id="bypass" required />
+                    <input
+                      aria-label="checkbox"
+                      type="checkbox"
+                      name="bypass"
+                      id="bypass"
+                      required
+                    />
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>
@@ -345,35 +370,58 @@ const Data: React.FC = () => {
             </div>
             {/* data success modal */}
             {isModalSuccess ? (
-            <div className="modal-bg">
-              <div>
-              <div className="modall">
+              <div className="modal-bg">
                 <div>
-                <h1 className="success-mark"><i className="bi bi-check2 text-success"></i></h1>
-                <h4>Transaction Successful</h4>
-                <p>You've Sent {choosenNetwork} {choosenDataPlan} Data Plan To {mobileNumber}</p>
-                <button className="modal-ok" type="button" onClick={() => setIsModalSuccess(false)}>Okay</button>
+                  <div className="modall">
+                    <div>
+                      <h1 className="success-mark">
+                        <i className="bi bi-check2 text-success"></i>
+                      </h1>
+                      <h4>Transaction Successful</h4>
+                      <p>
+                        You've Sent {choosenNetwork} {choosenDataPlan} Data Plan
+                        To {mobileNumber}
+                      </p>
+                      <button
+                        className="modal-ok"
+                        type="button"
+                        onClick={() => setIsModalSuccess(false)}
+                      >
+                        Okay
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              </div>
-              </div>
-            </div>
-            ) : ('')}
+            ) : (
+              ""
+            )}
 
             {/* Failed mo dal */}
-           {isModalFail? (
-            <div className="modal-bg">
-              <div>
-              <div className="modall">
+            {isModalFail ? (
+              <div className="modal-bg">
                 <div>
-                <h1 className="success-mark"><i className="bi bi-question-circle text-success"></i></h1>
-                <h4>Transaction Processing!</h4>
-                <p>Fund will be reverse if failed</p>
-                <button className="modal-ok" type="button" onClick={() => setIsModalFail(false)}>Okay</button>
+                  <div className="modall">
+                    <div>
+                      <h1 className="success-mark">
+                        <i className="bi bi-question-circle text-success"></i>
+                      </h1>
+                      <h4>Transaction Processing!</h4>
+                      <p>Fund will be reverse if failed</p>
+                      <button
+                        className="modal-ok"
+                        type="button"
+                        onClick={() => setIsModalFail(false)}
+                      >
+                        Okay
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              </div>
-              </div>
-            </div>
-            ) : ('')}
+            ) : (
+              ""
+            )}
           </main>
         </div>
       </div>
