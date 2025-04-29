@@ -227,19 +227,10 @@ nav {
   overflow: hidden;
 }
 .marquee {
-  animation: marquee 10s linear infinite;
   color: red;
   padding: 15px 0px 10px 0px;
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-100px);
-  }
-}
 .purple {
   background-color: #6a00f4;
   width: 40px;

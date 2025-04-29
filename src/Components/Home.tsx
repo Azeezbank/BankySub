@@ -15,6 +15,8 @@ import NavBar from "./NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import moniepoit from '../assets/monie.png';
+import Marquee from 'react-fast-marquee';
+import { Typewriter } from "react-simple-typewriter";
 
 interface bank {
   d_id: number
@@ -238,8 +240,18 @@ const Home: React.FC = () => {
             <NavBar sideBarClickHandler={handleVisible} />
 
             <div className="hero">
+              
               <h3>WELCOME TO TUNSTELECOM.COM.NG</h3>
-              <p>Welcome to tunstelecom.com.ng</p>
+              
+              <Typewriter
+              words={['WELCOME TO TUNSTELECOM.COM.NG']} 
+              loop={Infinity}
+              cursor
+              cursorStyle='_'
+              typeSpeed={100}
+              deleteSpeed={50}
+              delaySpeed={1000}
+              />
               <div className="grid_hero">
                 <p>
                   Your plug for everything digital. We offer instant data,
@@ -379,7 +391,9 @@ const Home: React.FC = () => {
                   </div>
                 </div>
                 <div className="marqueeC">
+                  <Marquee speed={80} gradient={false}>
                   <h4 className="marquee">{dash_message.dash_message}</h4>
+                  </Marquee>
                 </div>
                 <div className="grid_histories">
                   <div className="d-flex purpleShadow">
