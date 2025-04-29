@@ -344,7 +344,7 @@ const Data: React.FC = () => {
               </form>
             </div>
             {/* data success modal */}
-            {isModalSuccess? (
+            {isModalSuccess ? (
             <div className="modal-bg">
               <div>
               <div className="modall">

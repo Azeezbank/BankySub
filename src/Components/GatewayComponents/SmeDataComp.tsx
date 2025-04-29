@@ -17,6 +17,9 @@ interface smeData {
 
 const SmeDataComp: React.FC = () => {
   const [allPlan, setAlPlan] = useState<smeData[]>([]);
+  const [isSmeActive, setIsSmeActive] = useState('');
+  // const [isGiftingActive, setIsGiftingActive] = useState('');
+  // const [isCorporateActive, setIsCorporateActive] = useState('');
 
 
   // Fetch all data data plans
@@ -43,6 +46,7 @@ const SmeDataComp: React.FC = () => {
     };
     setAlPlan(newPlans);
   };
+
 // submit plan updating
   const submitPlans = async (e: any) => {
     e.preventDefault();
@@ -53,17 +57,45 @@ const SmeDataComp: React.FC = () => {
     }
   };
 
+  //Data plans status
+  const handlePlanStatus = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      await axios.put('https://bankysub-api.onrender.com/update/sme/data/status', { isSmeActive })
+    } catch (err: any) {
+      console.log(err)
+    }
+  }
+
   return (
     <>
       <div className="dashboard-bg bg-light">
         <h5>Dashboard</h5>
         <div className="bg-white-color">
+          <div>
           <div className="flex-status">
             <h6>SME Data Status</h6>{" "}
-            <select aria-label="select">
-              <option>active</option> <option>disabled</option>
+            <select aria-label="select" onChange={(e) => setIsSmeActive(e.target.value)}>
+              <option>active</option> <option>disabled</option>             
             </select>
           </div>
+          <div className="data_type_update">
+          <button type="button" onClick={handlePlanStatus}>Update</button>
+          </div>
+          </div>
+          {/* <div className="flex-status">
+            <h6>Gifting Data Status</h6>{" "}
+            <select aria-label="select" onChange={(e) => setIsGiftingActive(e.target.value)}>
+              <option>active</option> <option>disabled</option>
+            </select>
+          </div> */}
+
+          {/* <div className="flex-status">
+            <h6>Corporate Gifting Data Status</h6>{" "}
+            <select aria-label="select" onChange={(e) => setIsCorporateActive(e.target.value)}>
+              <option>active</option> <option>disabled</option>
+            </select>
+          </div> */}
 
           <h6 className="pt-4">ALL DATA PLAN</h6>
           <div className="input-table-container">
