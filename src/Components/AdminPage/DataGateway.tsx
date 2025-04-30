@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./GatewayCss.css";
 import axios from "axios";
+// import { data } from "react-router-dom";
 
 interface DataGate {
   d_id: number;
@@ -18,6 +19,8 @@ interface DataGate {
 const DataGateway: React.FC = () => {
   const [allPlan, setAlPlan] = useState<DataGate[]>([]);
   const [isSmeActive, setIsSmeActive] = useState("");
+  // const [choosenNetwork, setChoosenNetwork] = useState('');
+  // const [dataTypeStatus, setDataTypeStatus] = useState([]);
   // const [isGiftingActive, setIsGiftingActive] = useState('');
   // const [isCorporateActive, setIsCorporateActive] = useState('');
 
@@ -70,9 +73,22 @@ const DataGateway: React.FC = () => {
         { isSmeActive }
       );
     } catch (err: any) {
-      console.log(err);
+      console.error(err);
     }
   };
+
+  //Fetch data types status
+  // useEffect(() => {
+  //   const handleDataTypeStatus = async () => {
+  //     try {
+  //       const response = await axios.post('https://bankysub-api.onrender.com/data/types', {})
+  //       setDataTypeStatus(response.data);
+  //     } catch (err) {
+  //       console.error('Unable to check data type status', err)
+  //     }
+  //   }
+  //   handleDataTypeStatus();
+  // }, [isSmeActive]);
 
   return (
     <>
@@ -85,6 +101,7 @@ const DataGateway: React.FC = () => {
               <select
                 aria-label="select"
                 onChange={(e) => setIsSmeActive(e.target.value)}
+
               >
                 <option>active</option>
                 <option>disabled</option>

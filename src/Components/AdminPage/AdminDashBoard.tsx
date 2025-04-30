@@ -96,7 +96,6 @@ const AdminDashBoard: React.FC = () => {
             <Link to={"/admin/dashboard"} className="Link">
               <p
                 className="dashb"
-                onClick={() => setActiveComponent("Dashboard")}
               >
                 <i className="bi bi-columns-gap"></i> Dashboard
               </p>
@@ -121,7 +120,6 @@ const AdminDashBoard: React.FC = () => {
                       <Link to={"/admin/found/hist"} className="Link">
                         <li
                           className="fund-hist hover"
-                          onClick={() => setActiveComponent("Fund")}
                         >
                           <i className="bi bi-clipboard-minus"></i> Funds
                           Histories
@@ -199,7 +197,6 @@ const AdminDashBoard: React.FC = () => {
                     <Link to={"/admin/user"} className="Link">
                       <li
                         className="successful hover"
-                        onClick={() => setActiveComponent("user")}
                       >
                         <i className="bi bi-infinity"></i> All
                       </li>
@@ -246,7 +243,6 @@ const AdminDashBoard: React.FC = () => {
                     <Link to={"/admin/setting"} className="Link">
                       <li
                         className="nin hover"
-                        onClick={() => setActiveComponent("set")}
                       >
                         <i className="bi bi-upc-scan"></i> General
                       </li>
@@ -282,7 +278,6 @@ const AdminDashBoard: React.FC = () => {
                     <Link to={"/admin/data/gateway"} className="Link">
                       <li
                         className="nin hover"
-                        onClick={() => setActiveComponent("sme")}
                       >
                         <i className="bi bi-sort-down"></i> All Data Plans
                       </li>

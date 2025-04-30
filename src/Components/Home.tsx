@@ -306,7 +306,7 @@ const Home: React.FC = () => {
                   </button>
                   <Link to={"/admin/dashboard"} className="Link">
                     <button type="button" className="admin-dash">
-                      Admin Dashboard
+                      Admin Panel
                     </button>
                   </Link>
                 </div>
