@@ -10,7 +10,6 @@ const Airtime: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-
   return (
     <>
       <div className="flexEntire">
@@ -164,7 +163,12 @@ const Airtime: React.FC = () => {
                 </div>
                 <div className="flex-bypass">
                   <p>
-                    <input aria-label="input" type="checkbox" name="bypass" id="bypass" />
+                    <input
+                      aria-label="input"
+                      type="checkbox"
+                      name="bypass"
+                      id="bypass"
+                    />
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>

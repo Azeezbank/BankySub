@@ -21,19 +21,23 @@
 }
 .id-row {
   width: fit-content;
-    padding: 0px 3px;
-    border-right: 2px solid grey;
-    font-family: 'Georgia', 'Times' 'New Roman', 'Times', 'serif'
+  padding: 0px 3px;
+  border-right: 2px solid grey;
+  font-family: "Georgia", "Times" "New Roman", "Times", "serif";
 }
 table {
   border-collapse: collapse;
 }
 .update-save-button {
-  background-color: #ff3c9d; color: #fff; border-radius: 5px;
+  background-color: #ff3c9d;
+  color: #fff;
+  border-radius: 5px;
   margin-top: 15px;
 }
 .update-save-button:hover {
-  background-color: #ce0b6c; color: #fff; border-radius: 5px;
+  background-color: #ce0b6c;
+  color: #fff;
+  border-radius: 5px;
 }
 .data_type_update {
   display: flex;

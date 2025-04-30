@@ -10,6 +10,11 @@ import Register from './Components/Register';
 import Login from './Components/Login';
 import Electricity from './Components/Electricity';
 import AdminDashBoard from './Components/AdminPage/AdminDashBoard';
+import FundHist from './Components/AdminPage/FundHistory';
+import Dashboard from './Components/AdminPage/Dashboed';
+import Setting from './Components/AdminPage/Setting';
+import User from './Components/AdminPage/User';
+import DataGateway from './Components/AdminPage/DataGateway';
 
 const App:React.FC = () => {
   return (
@@ -22,7 +27,13 @@ const App:React.FC = () => {
       <Route path='/register?' element={<Register />} />
       <Route path='/login?' element={<Login />} />
       <Route path='/vent=electicity-bill' element={<Electricity />} />
-      <Route path='/*' element={<AdminDashBoard />} />
+      <Route path='/admin/*' element={<AdminDashBoard />} >
+      <Route path='dashboard' element={<Dashboard />} />
+      <Route path='found/hist' element={ <FundHist />} />
+      <Route path='user' element={<User />} />
+      <Route path='setting' element={<Setting />} />
+      <Route path='data/gateway' element={<DataGateway />} />
+      </Route>
     </Routes>
     </BrowserRouter>
     </>

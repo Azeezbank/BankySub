@@ -2,31 +2,32 @@ import React, { useEffect, useState } from "react";
 import "./GatewayCss.css";
 import axios from "axios";
 
-interface smeData {
+interface DataGate {
   d_id: number;
   id: number;
   name: string;
-  network_name: string
-  data_type: string
+  network_name: string;
+  data_type: string;
   validity: string;
   user: number;
   reseller: number;
   api: number;
-  is_active: string
+  is_active: string;
 }
 
-const SmeDataComp: React.FC = () => {
-  const [allPlan, setAlPlan] = useState<smeData[]>([]);
-  const [isSmeActive, setIsSmeActive] = useState('');
+const DataGateway: React.FC = () => {
+  const [allPlan, setAlPlan] = useState<DataGate[]>([]);
+  const [isSmeActive, setIsSmeActive] = useState("");
   // const [isGiftingActive, setIsGiftingActive] = useState('');
   // const [isCorporateActive, setIsCorporateActive] = useState('');
-
 
   // Fetch all data data plans
   useEffect(() => {
     const handleMSmeData = async () => {
       try {
-        const response = await axios.get("https://bankysub-api.onrender.com/all-data-plan");
+        const response = await axios.get(
+          "https://bankysub-api.onrender.com/all-data-plan"
+        );
         if (response.status === 200) {
           setAlPlan(response.data);
         }
@@ -37,8 +38,8 @@ const SmeDataComp: React.FC = () => {
     handleMSmeData();
   }, []);
 
-// handler updating allplan
-  const handlePlans = (index: number, field: keyof smeData, value: string) => {
+  // handler updating allplan
+  const handlePlans = (index: number, field: keyof DataGate, value: string) => {
     const newPlans = [...allPlan];
     newPlans[index] = {
       ...(newPlans[index] || {}),
@@ -47,11 +48,14 @@ const SmeDataComp: React.FC = () => {
     setAlPlan(newPlans);
   };
 
-// submit plan updating
+  // submit plan updating
   const submitPlans = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.put("https://bankysub-api.onrender.com/update-data-plans", allPlan);
+      await axios.put(
+        "https://bankysub-api.onrender.com/update-data-plans",
+        allPlan
+      );
     } catch (err: any) {
       console.log(err);
     }
@@ -61,11 +65,14 @@ const SmeDataComp: React.FC = () => {
   const handlePlanStatus = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      await axios.put('https://bankysub-api.onrender.com/update/sme/data/status', { isSmeActive })
+      await axios.put(
+        "https://bankysub-api.onrender.com/update/sme/data/status",
+        { isSmeActive }
+      );
     } catch (err: any) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   return (
     <>
@@ -73,15 +80,21 @@ const SmeDataComp: React.FC = () => {
         <h5>Dashboard</h5>
         <div className="bg-white-color">
           <div>
-          <div className="flex-status">
-            <h6>SME Data Status</h6>{" "}
-            <select aria-label="select" onChange={(e) => setIsSmeActive(e.target.value)}>
-              <option>active</option> <option>disabled</option>             
-            </select>
-          </div>
-          <div className="data_type_update">
-          <button type="button" onClick={handlePlanStatus}>Update</button>
-          </div>
+            <div className="flex-status">
+              <h6>SME Data Status</h6>{" "}
+              <select
+                aria-label="select"
+                onChange={(e) => setIsSmeActive(e.target.value)}
+              >
+                <option>active</option>
+                <option>disabled</option>
+              </select>
+            </div>
+            <div className="data_type_update">
+              <button type="button" onClick={handlePlanStatus}>
+                Update
+              </button>
+            </div>
           </div>
           {/* <div className="flex-status">
             <h6>Gifting Data Status</h6>{" "}
@@ -205,7 +218,7 @@ const SmeDataComp: React.FC = () => {
                       />
                     </td>
                     <td>
-                    <select
+                      <select
                         className="id"
                         aria-label="select"
                         defaultValue={sme.is_active}
@@ -222,7 +235,11 @@ const SmeDataComp: React.FC = () => {
               </tbody>
             </table>
           </div>
-          <button type="submit" onClick={submitPlans} className="update-save-button"> 
+          <button
+            type="submit"
+            onClick={submitPlans}
+            className="update-save-button"
+          >
             {" "}
             save
           </button>
@@ -232,4 +249,4 @@ const SmeDataComp: React.FC = () => {
   );
 };
 
-export default SmeDataComp;
+export default DataGateway;

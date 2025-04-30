@@ -126,7 +126,7 @@ const Data: React.FC = () => {
       );
 
       // if (response.status === 200) {
-        setIsModalSuccess(true);
+      setIsModalSuccess(true);
       // }
     } catch (err) {
       console.error(err);
