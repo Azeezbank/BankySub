@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import logo from "../../assets/SGN_09_08_2022_1662626364399.jpeg";
-//import { Link } from "react-router-dom";
 import "./Admin.css";
-// import axios from "axios";
 import { Link, Outlet, Route, Routes } from "react-router-dom";
 import UserInfo from "../UserInfo";
-// import { useParams } from "react-router-dom";
-import SmeDataComp from "./DataGateway";
 import NavBar from "../NavBar";
-import FundHist from "./FundHistory";
 
 type menuState = {
   [key: string]: boolean;
@@ -24,7 +19,6 @@ const AdminDashBoard: React.FC = () => {
   const [isUser, setIsUser] = useState<menuState>({});
   const [isGateway, setIsGateway] = useState<menuState>({});
   const [isDataGate, setIsDataGate] = useState<menuState>({});
-  const [activeComponent, setActiveComponent] = useState("Dashboard");
 
   const handleVisible = () => {
     setIsOpen(!isOpen);
