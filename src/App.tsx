@@ -9,7 +9,7 @@ import Data from './Components/Data';
 import Register from './Components/Register';
 import Login from './Components/Login';
 import Electricity from './Components/Electricity';
-import AdminDashBoard from './Components/AdminDashBoard';
+import AdminDashBoard from './Components/AdminPage/AdminDashBoard';
 
 const App:React.FC = () => {
   return (
