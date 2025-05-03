@@ -3,9 +3,13 @@
   padding: 15px;
   width: 100%;
 }
-.flex-status {
-  display: flex;
-  gap: 10px;
+
+.status-input select {
+  border-radius: 5px;
+  padding: 2px 5px;
+  outline: none;
+  border: 1px solid grey;
+  margin: 3px;
 }
 .header-color {
   background-color: #ff3c9d;
@@ -40,9 +44,9 @@ table {
   border-radius: 5px;
 }
 .data_type_update {
-  display: flex;
-  justify-content: center;
-  margin-top: 7px;
+  margin-bottom: 40px;
+  margin-top: 5px;
+  margin-left: 5%;
 }
 .data_type_update button {
   background-color: #ff3c9d;

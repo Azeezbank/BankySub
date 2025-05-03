@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./GatewayCss.css";
 import axios from "axios";
-// import { data } from "react-router-dom";
 
 interface DataGate {
   d_id: number;
@@ -18,11 +17,11 @@ interface DataGate {
 
 const DataGateway: React.FC = () => {
   const [allPlan, setAlPlan] = useState<DataGate[]>([]);
-  const [isSmeActive, setIsSmeActive] = useState("");
-  // const [choosenNetwork, setChoosenNetwork] = useState('');
+  // const [isSmeActive, setIsSmeActive] = useState("");
   // const [dataTypeStatus, setDataTypeStatus] = useState([]);
-  // const [isGiftingActive, setIsGiftingActive] = useState('');
-  // const [isCorporateActive, setIsCorporateActive] = useState('');
+  const [dataTypeNetworkName, setDataTypeNetworkName] = useState("");
+  const [dataTypeName, setDataTypeName] = useState("");
+  const [isDataTypeStatus, setIsDataTypeStatus] = useState("");
 
   // Fetch all data data plans
   useEffect(() => {
@@ -69,26 +68,13 @@ const DataGateway: React.FC = () => {
     e.preventDefault();
     try {
       await axios.put(
-        "https://bankysub-api.onrender.com/update/sme/data/status",
-        { isSmeActive }
+        "https://bankysub-api.onrender.com/update/data/types/status",
+        { dataTypeNetworkName, dataTypeName, isDataTypeStatus }
       );
     } catch (err: any) {
       console.error(err);
     }
   };
-
-  //Fetch data types status
-  // useEffect(() => {
-  //   const handleDataTypeStatus = async () => {
-  //     try {
-  //       const response = await axios.post('https://bankysub-api.onrender.com/data/types', {})
-  //       setDataTypeStatus(response.data);
-  //     } catch (err) {
-  //       console.error('Unable to check data type status', err)
-  //     }
-  //   }
-  //   handleDataTypeStatus();
-  // }, [isSmeActive]);
 
   return (
     <>
@@ -96,36 +82,42 @@ const DataGateway: React.FC = () => {
         <h5>Dashboard</h5>
         <div className="bg-white-color">
           <div>
-            <div className="flex-status">
-              <h6>SME Data Status</h6>{" "}
-              <select
-                aria-label="select"
-                onChange={(e) => setIsSmeActive(e.target.value)}
-
-              >
-                <option>active</option>
-                <option>disabled</option>
-              </select>
-            </div>
-            <div className="data_type_update">
-              <button type="button" onClick={handlePlanStatus}>
-                Update
-              </button>
-            </div>
+           
+              <h6>Data Status</h6>
+              <div className="d-flex status-input"> 
+                <select
+                  aria-label="network"
+                  onChange={(e) => setDataTypeNetworkName(e.target.value)}
+                >
+                  <option>SME</option>
+                  <option>GIFTING</option>
+                  <option>CORPORATE GIFTING</option>
+                </select>
+                <select
+                  aria-label="name"
+                  onChange={(e) => setDataTypeName(e.target.value)}
+                >
+                <option>MTN</option>
+                <option>AIRTEL</option>
+                <option>GLO</option>
+                <option>9MOBILE</option>
+                </select>
+                
+                <select
+                  aria-label="select"
+                  onChange={(e) => setIsDataTypeStatus(e.target.value)}
+                >
+                  <option>active</option>
+                  <option>disabled</option>
+                </select>
+              </div>
+              <div className="data_type_update">
+                <button type="button" onClick={handlePlanStatus}>
+                  Update
+                </button>
+              </div>
+            
           </div>
-          {/* <div className="flex-status">
-            <h6>Gifting Data Status</h6>{" "}
-            <select aria-label="select" onChange={(e) => setIsGiftingActive(e.target.value)}>
-              <option>active</option> <option>disabled</option>
-            </select>
-          </div> */}
-
-          {/* <div className="flex-status">
-            <h6>Corporate Gifting Data Status</h6>{" "}
-            <select aria-label="select" onChange={(e) => setIsCorporateActive(e.target.value)}>
-              <option>active</option> <option>disabled</option>
-            </select>
-          </div> */}
 
           <h6 className="pt-4">ALL DATA PLAN</h6>
           <div className="input-table-container">
