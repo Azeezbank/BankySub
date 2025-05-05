@@ -22,10 +22,11 @@ const Login: React.FC = () => {
       );
       setIsAuth(true);
       if (response.status === 200) {
-        navigate("/");
+        navigate("/user/dashboard");
       }
     } catch (err: any) {
       setLoginError(true);
+      setIsAuth(false);
       setLoginError(err.response?.data.message);
     }
   };
@@ -68,7 +69,7 @@ const Login: React.FC = () => {
             )}
             <p className="signIn">
               Don't have an account yet?{" "}
-              <Link to={"/register?"} className="Link">
+              <Link to={"/register"} className="Link">
                 {" "}
                 <span>Sign up</span>
               </Link>

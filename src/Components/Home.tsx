@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect} from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import googlePlay from "../assets/google-play.png";
 import bank from "../assets/bank.png";
 import airtime from "../assets/airtime.svg";
@@ -10,116 +12,73 @@ import bulk from "../assets/sms.png";
 import resultChecker from "../assets/resultchecker.png";
 import rechargeCard from "../assets/printer.jpg";
 import referal from "../assets/referral.png";
-import avatar from "../assets/avatar.png";
-import NavBar from "./NavBar";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import moniepoit from "../assets/monie.png";
 import Marquee from "react-fast-marquee";
 import { Typewriter } from "react-simple-typewriter";
 
+
+
 interface bank {
-  d_id: number;
-  acctNo: number;
-  acctName: string;
-  bankName: string;
-}
-
-interface walletInfo {
-  username: string;
-  user_balance: string;
-  packages: string;
-}
-
-interface message {
-  dash_message: string;
-  whatsapp_link: string;
-}
+    d_id: number;
+    acctNo: number;
+    acctName: string;
+    bankName: string;
+  }
+  
+  interface walletInfo {
+    username: string;
+    user_balance: string;
+    packages: string;
+    role: string
+  }
+  
+  interface message {
+    dash_message: string;
+    whatsapp_link: string;
+  }
 
 const Home: React.FC = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [copysuccess, setCopySuccess] = useState<string>("");
-  const [bankDetails, setBankDetails] = useState<bank[]>([]);
-  const [isAcctN, setIsAcctN] = useState(false);
-  const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
-  const [dash_message, setDash_message] = useState<message>({
-    whatsapp_link: "",
-    dash_message: "",
-  });
-  const navigate = useNavigate();
-  const link = "https://tunstelecom.com.ng?ref1";
+    const [bankDetails, setBankDetails] = useState<bank[]>([]);
+     const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
+    const [copysuccess, setCopySuccess] = useState<string>("");
+      const [isAcctN, setIsAcctN] = useState(false);
+      const [role, setRole] = useState(false);
+      const [dash_message, setDash_message] = useState<message>({
+          whatsapp_link: "",
+          dash_message: "",
+        });
 
-  const handleVisible = () => {
-    setIsOpen(!isOpen);
-  };
+        const link = "https://tunstelecom.com.ng?ref1";
 
-  //Copy referal link
-  const copyClipboard = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
-    navigator.clipboard
-      .writeText(link)
-      .then(() => setCopySuccess("Link copied!"))
-      .catch(() => setCopySuccess("Failed to copy link"));
-    alert(copysuccess);
-  };
+        //Copy referal link
+          const copyClipboard = (event: React.MouseEvent<HTMLButtonElement>): void => {
+            event.preventDefault();
+            navigator.clipboard
+              .writeText(link)
+              .then(() => setCopySuccess("Link copied!"))
+              .catch(() => setCopySuccess("Failed to copy link"));
+            alert(copysuccess);
+          };
 
-  //Protect Route
-  useEffect(() => {
-    const ProtectPage = async () => {
-      try {
-        const response = await axios.get(
-          "https://bankysub-api.onrender.com/protected",
-          { withCredentials: true }
-        );
-        if (response.status === 200) {
-          console.log(response.data.message);
-        }
-      } catch (err: any) {
-        navigate("/login?");
-        console.error(err.response?.data.message);
-      }
-    };
-    ProtectPage();
-  }, []);
 
-  //Generate account number
-  const handleGenerateAcct = async (e: any) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://bankysub-api.onrender.com/dedicated/account",
-        {},
-        { withCredentials: true }
-      );
-      if (response.status === 200) {
-        console.log("Account generated");
-      }
-    } catch (err: any) {
-      console.error("Error generating");
-    }
-  };
+          //Generate account number
+            const handleGenerateAcct = async (e: any) => {
+              e.preventDefault();
+              try {
+                const response = await axios.post(
+                  "https://bankysub-api.onrender.com/dedicated/account",
+                  {},
+                  { withCredentials: true }
+                );
+                if (response.status === 200) {
+                  console.log("Account generated");
+                }
+              } catch (err: any) {
+                console.error("Error generating");
+              }
+            };
 
-  //Fetch account details
-  useEffect(() => {
-    const bankDetail = async () => {
-      try {
-        const response = await axios.post<bank[]>(
-          "https://bankysub-api.onrender.com/api/user_account",
-          {},
-          { withCredentials: true }
-        );
-        if (response.status === 200) {
-          setBankDetails(response.data);
-          setIsAcctN(true);
-        }
-      } catch (err: any) {
-        console.error(err.response?.data.message || err.message);
-      }
-    };
-    bankDetail();
-  });
-
-  //Fetch user information
+             //Fetch user information
   useEffect(() => {
     const handleUserInfo = async () => {
       try {
@@ -137,136 +96,49 @@ const Home: React.FC = () => {
     handleUserInfo();
   });
 
-  //Fetch dasgboard message
-  useEffect(() => {
-    const handleMessage = async () => {
-      try {
-        const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/dashboard-message"
-        );
-        if (response.status === 200) {
-          setDash_message(response.data);
-        }
-      } catch (err: any) {
-        console.error(err.response?.data.message || err.message);
-      }
-    };
-    handleMessage();
-  }, []);
+            //Fetch account details
+              useEffect(() => {
+                const bankDetail = async () => {
+                  try {
+                    const response = await axios.post<bank[]>(
+                      "https://bankysub-api.onrender.com/api/user_account",
+                      {},
+                      { withCredentials: true }
+                    );
+                    if (response.status === 200) {
+                      setBankDetails(response.data);
+                      setIsAcctN(true);
+                    }
+                  } catch (err: any) {
+                    console.error(err.response?.data.message || err.message);
+                  }
+                };
+                bankDetail();
+              });
 
-  return (
-    <>
-      <div className="flexEntire">
-        <div className={`aside ${isOpen ? "visible" : "hidden"} flexAside`}>
-          <aside>
-            <div className="d-flex navUser">
-              <img className="navImg" src={avatar} alt="user" />
-              <div className="onlineSign">
-                <span></span>
-              </div>
-              <div>
-                <p className="ps-2">
-                  {walletBalance.map((user) => user.username)} <br />{" "}
-                  <span className="navBalance">
-                    balance: #
-                    {walletBalance.map((wallet) => wallet.user_balance)}
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div className="grid-navDashh">
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-house-fill"></i>
-                </h3>
-                <Link to={"/"} className="Link">
-                  {" "}
-                  <p className="ps-2">Dashboard</p>{" "}
-                </Link>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-reception-4"></i>
-                </h3>
-                <Link to={"/vend=data"} className="Link">
-                  {" "}
-                  <p className="ps-2">Buy Data</p>{" "}
-                </Link>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-telephone"></i>
-                </h3>
-                <Link to={"/vend=airtime"} className="Link">
-                  <p className="ps-2">Buy Airtime</p>
-                </Link>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-lightbulb"></i>
-                </h3>
-                <p className="ps-2">Utility Payment</p>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-mortarboard-fill"></i>
-                </h3>
-                <p className="ps-2">Buy Exam Pin</p>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-envelope-paper"></i>
-                </h3>
-                <p className="ps-2">Buy Recharge Cards</p>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-distribute-horizontal"></i>
-                </h3>
-                <p className="ps-2">Data Card</p>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-chat-dots"></i>
-                </h3>
-                <p className="ps-2">Bulk SMS</p>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-arrow-counterclockwise"></i>
-                </h3>
-                <p className="ps-2">Histories</p>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-graph-up-arrow credit-card"></i>
-                </h3>
-                <p className="ps-2">Statistics</p>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-envelope-fill"></i>
-                </h3>
-                <p className="ps-2">Messages</p>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-cash"></i>
-                </h3>
-                <p className="ps-2">Pricing</p>
-              </div>
-            </div>
-          </aside>
-        </div>
-        <div
-          className={`main ${
-            isOpen ? "with-margin" : "with-no-margin"
-          } flexMain`}
-        >
-          <main>
-            <NavBar sideBarClickHandler={handleVisible} />
-
-            <div className="hero">
+              //Fetch dasgboard message
+                useEffect(() => {
+                  const handleMessage = async () => {
+                    try {
+                      const response = await axios.get(
+                        "https://bankysub-api.onrender.com/api/dashboard-message"
+                      );
+                      if (response.status === 200) {
+                        setDash_message(response.data);
+                      }
+                    } catch (err: any) {
+                      console.error(err.response?.data.message || err.message);
+                    }
+                  };
+                  handleMessage();
+                }, []);
+            // Check role
+            if (walletBalance.some((role) => role.role === 'admin')) {
+              setRole(true);
+            };
+    return (
+        <>
+        <div className="hero">
               <h3>WELCOME TO TUNSTELECOM.COM.NG</h3>
 
               <Typewriter
@@ -304,11 +176,13 @@ const Home: React.FC = () => {
                   <button type="button" className="fund-wallet">
                     Fund wallet
                   </button>
+                  {!role ? ('') : (
                   <Link to={"/admin/dashboard"} className="Link">
                     <button type="button" className="admin-dash">
                       Admin Panel
                     </button>
                   </Link>
+                  )}
                 </div>
               </div>
             </div>
@@ -545,7 +419,7 @@ const Home: React.FC = () => {
                   </div>
                 </div>
                 <div className="service-grid mt-5">
-                  <Link to={"/vend=airtime"} className="Link">
+                  <Link to={"/user/airtime"} className="Link">
                     <div className="service-grid-items">
                       <img
                         src={airtime}
@@ -555,12 +429,13 @@ const Home: React.FC = () => {
                       <p className="text-muted text-center">Airtime TopUp</p>
                     </div>
                   </Link>
-                  <Link to={"/vend=data"} className="Link">
+                  <Link to={"/user/data"} className="Link">
                     <div className="service-grid-items">
                       <img src={data} alt="airtime" className="service-image" />
                       <p className="text-muted">Buy Data</p>
                     </div>{" "}
                   </Link>
+                  <Link to={'/user/airtime'}>
                   <div className="service-grid-items">
                     <img
                       src={airtimeTocash}
@@ -569,6 +444,7 @@ const Home: React.FC = () => {
                     />
                     <p className="text-muted">Airtime To Cash</p>
                   </div>
+                  </Link>
                   <Link to={"/vent=electicity-bill"} className="Link">
                     <div className="service-grid-items">
                       <img
@@ -646,11 +522,8 @@ const Home: React.FC = () => {
                 </div>
               </div>
             </div>
-          </main>
-        </div>
-      </div>
-    </>
-  );
+        </>
+    )
 };
 
 export default Home;

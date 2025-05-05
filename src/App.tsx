@@ -3,7 +3,7 @@ import './App.css';
 import '../src/Components/Transaction.css';
 import '../src/Components/Authentication.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Components/Home';
+import Home from './Components/Home'
 import Airtime from './Components/Airtime';
 import Data from './Components/Data';
 import Register from './Components/Register';
@@ -15,17 +15,20 @@ import Dashboard from './Components/AdminPage/Dashboed';
 import Setting from './Components/AdminPage/Setting';
 import User from './Components/AdminPage/User';
 import DataGateway from './Components/AdminPage/DataGateway';
+import HomeLayout from './Components/HomeLayout';
 
 const App:React.FC = () => {
   return (
     <>
     <BrowserRouter>
     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/vend=airtime' element={<Airtime />} />
-      <Route path='/vend=data' element={<Data />} />
-      <Route path='/register?' element={<Register />} />
-      <Route path='/login?' element={<Login />} />
+      <Route path='/user/*' element={<HomeLayout /> } >
+      <Route path='dashboard' element={<Home />} />
+      <Route path='data' element={<Data />} />
+      <Route path='airtime' element={<Airtime />} />
+      </Route>
+      <Route path='/register' element={<Register />} />
+      <Route path='/login' element={<Login />} />
       <Route path='/vent=electicity-bill' element={<Electricity />} />
       <Route path='/admin/*' element={<AdminDashBoard />} >
       <Route path='dashboard' element={<Dashboard />} />

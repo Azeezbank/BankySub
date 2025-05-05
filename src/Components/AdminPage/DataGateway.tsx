@@ -19,9 +19,9 @@ const DataGateway: React.FC = () => {
   const [allPlan, setAlPlan] = useState<DataGate[]>([]);
   // const [isSmeActive, setIsSmeActive] = useState("");
   // const [dataTypeStatus, setDataTypeStatus] = useState([]);
-  const [dataTypeNetworkName, setDataTypeNetworkName] = useState("");
-  const [dataTypeName, setDataTypeName] = useState("");
-  const [isDataTypeStatus, setIsDataTypeStatus] = useState("");
+  const [dataTypeNetworkName, setDataTypeNetworkName] = useState("MTN");
+  const [dataTypeName, setDataTypeName] = useState("SME");
+  const [isDataTypeStatus, setIsDataTypeStatus] = useState("active");
 
   // Fetch all data data plans
   useEffect(() => {
@@ -89,20 +89,21 @@ const DataGateway: React.FC = () => {
                   aria-label="network"
                   onChange={(e) => setDataTypeNetworkName(e.target.value)}
                 >
-                  <option>SME</option>
-                  <option>GIFTING</option>
-                  <option>CORPORATE GIFTING</option>
+                   <option>MTN</option>
+                <option>AIRTEL</option>
+                <option>GLO</option>
+                <option>9MOBILE</option>
+                 
                 </select>
                 <select
                   aria-label="name"
                   onChange={(e) => setDataTypeName(e.target.value)}
                 >
-                <option>MTN</option>
-                <option>AIRTEL</option>
-                <option>GLO</option>
-                <option>9MOBILE</option>
+                <option>SME</option>
+                  <option>GIFTING</option>
+                  <option>CORPORATE GIFTING</option>
                 </select>
-                
+
                 <select
                   aria-label="select"
                   onChange={(e) => setIsDataTypeStatus(e.target.value)}
