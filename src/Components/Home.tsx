@@ -42,7 +42,7 @@ const Home: React.FC = () => {
      const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
     const [copysuccess, setCopySuccess] = useState<string>("");
       const [isAcctN, setIsAcctN] = useState(false);
-      const [role, setRole] = useState(false);
+      const [role, setRole] = useState(true);
       const [dash_message, setDash_message] = useState<message>({
           whatsapp_link: "",
           dash_message: "",
@@ -133,9 +133,13 @@ const Home: React.FC = () => {
                   handleMessage();
                 }, []);
             // Check role
+            useEffect(() => {
             if (walletBalance.some((role) => role.role === 'admin')) {
+              setRole(false);
+            } else {
               setRole(true);
             };
+          }, [walletBalance])
     return (
         <>
         <div className="hero">
@@ -176,7 +180,7 @@ const Home: React.FC = () => {
                   <button type="button" className="fund-wallet">
                     Fund wallet
                   </button>
-                  {!role ? ('') : (
+                  {role ? ('') : (
                   <Link to={"/admin/dashboard"} className="Link">
                     <button type="button" className="admin-dash">
                       Admin Panel

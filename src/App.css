@@ -380,7 +380,8 @@ nav {
   background-color: orange;
   border-radius: 20px;
   height: 40px;
-  margin: "5px 20px 5px 5px";
+  /* margin: "5px 60px 5px 5px"; */
+  margin-right: 40px;
 }
 .service-image {
   width: 100px;
