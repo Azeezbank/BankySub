@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../assets/SGN_09_08_2022_1662626364399.jpeg";
+import logo from "../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
 
 const Login: React.FC = () => {
   const [password, setPassword] = useState("");
@@ -37,7 +37,7 @@ const Login: React.FC = () => {
           <form onSubmit={handleLogin}>
             {loginError && <p className="errorMessage">{loginError}</p>}
             <div className="logodiv">
-              <img src={logo} alt="Company logo" className="logo" />
+              <img src={logo} alt="Company logo" className="logo bg-white" />
               <h5>Sign In</h5>
             </div>
             <label htmlFor="Username">Username*</label> <br />

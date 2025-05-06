@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import logo from "../assets/SGN_09_08_2022_1662626364399.jpeg";
+import logo from "../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register: React.FC = () => {
@@ -55,7 +55,7 @@ const Register: React.FC = () => {
       <div className="registration-bg">
         <form onSubmit={handleRegister}>
           <div className="logodiv">
-            <img src={logo} alt="Company logo" className="logo" />
+            <img src={logo} alt="Company logo" className="logo bg-white" />
             <h5>Create Account</h5>
           </div>
           <label htmlFor="FullName">FullName*</label> <br />
