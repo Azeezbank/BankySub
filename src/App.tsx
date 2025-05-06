@@ -16,12 +16,14 @@ import Setting from './Components/AdminPage/Setting';
 import User from './Components/AdminPage/User';
 import DataGateway from './Components/AdminPage/DataGateway';
 import HomeLayout from './Components/HomeLayout';
+import LandinpPage from './Components/LandingPage/LandingPage';
 
 const App:React.FC = () => {
   return (
     <>
     <BrowserRouter>
     <Routes>
+      <Route path='/' element={<LandinpPage />} />
       <Route path='/user/*' element={<HomeLayout /> } >
       <Route path='dashboard' element={<Home />} />
       <Route path='data' element={<Data />} />
