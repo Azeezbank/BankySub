@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/SGN_09_08_2022_1662626364399.jpeg";
+import logo from "../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
 import "./Admin.css";
 import { Link, Outlet, Route, Routes } from "react-router-dom";
 import UserInfo from "../UserInfo";
@@ -90,7 +90,7 @@ const AdminDashBoard: React.FC = () => {
         >
           <aside>
             <div className="admin-image">
-              <img src={logo} alt="site logo" />
+              <img src={logo} alt="site logo" className="bg-white" />
               <p>BANKYTECH</p>
             </div>
             <Link to={"/admin/dashboard"} className="Link">
