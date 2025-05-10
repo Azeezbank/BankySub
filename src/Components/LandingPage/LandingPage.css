@@ -1,92 +1,150 @@
 nav {
-    background-color: #000;
-    height: 60px;
-    display: flex;
-    padding-left: 50px;
-    border-bottom: 1px solid grey;
+  background-color: #000;
+  height: 60px;
+  display: flex;
+  padding-left: 50px;
+  border-bottom: 1px solid grey;
+  z-index: 2;
 }
 .BrandLogo {
-    background-color: #ff3c9d;
-    width: 30px;
-    height:  30px;
-    border-radius: 50%;
-    margin-top: 2px;
+  background-color: #ff3c9d;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-top: 2px;
 }
 .Brand {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .fontBrand {
-    font-family: system-ui, '-apple-system', BlinkMacSystemFont, 'Segoe UI', 'Roboto', Oxygen, Ubuntu, Cantarell, Open Sans, 'Helvetica Neue', sans-serif;
-    margin-left: 10px;
-    margin-top: 5px;
+  font-family: system-ui, "-apple-system", BlinkMacSystemFont, "Segoe UI",
+    "Roboto", Oxygen, Ubuntu, Cantarell, Open Sans, "Helvetica Neue", sans-serif;
+  margin-left: 10px;
+  margin-top: 5px;
 }
 .heroBgImg {
-    position: fixed;
-    background-color: #000;
-    width: 100%;
-height: 400px;    
+  position: fixed;
+  background-color: #000;
+  width: 100%;
+  height: 400px;
 }
 .body {
-    position: absolute;
-    top: 120px;
-    left: 0;
-    margin: 0px 15px 0px 15px;
-    z-index: 1;
-    background-color: transparent;
-    color: #fff;
-    font-family: 'sans-serif';
+  position: absolute;
+  top: 120px;
+  left: 0;
+  z-index: 1;
+  background-color: transparent;
+  color: #fff;
+  font-family: "sans-serif";
 }
 .availability {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #fff;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #fff;
+  width: fit-content;
 }
 .heroBrandName {
-    -webkit-text-stroke: 0.7px #ff3c9d;
-    color: transparent;
-    font-size: 30px;
-    position: relative;
-    padding: 0;
-    margin: 0;
+  font-size: 35px;
+  background: linear-gradient(to right, #ff3c9d 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0%;
+  -webkit-background-clip: text;
+  background-clip: calc();
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #ff3c9d;
+  animation: animate-text 5s linear infinite;
 }
-    .heroBrandName::before {
-        content: 'BankyConnect';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 100%;
-        /* background: green; */
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.5s linear;
-        animation: fillClear 2s linear infinite;
-        z-index: -1;
-      }
-      .heroBrandName:hover {
-        color: #fff;
-      }
-      
-      @keyframes fillClear {
-        0% {
-          transform: scaleX(0);
-        }
-        50% {
-          transform: scaleX(1);
-        }
-        100% {
-          transform: scaleX(0);
-        }
-      }
+@keyframes animate-text {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: -100% 0%;
+  }
+}
+.login-btn {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.login-btn button {
+  background-color: #ff3c9d;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  color: #fff;
+}
+.login-btn button:hover {
+  background-color: #ea0f7d;
+}
+.BussSellerImg {
+  display: none;
+}
+.marquee-offer-con {
+  z-index: 1;
+  margin-top: 70px;
+}
+.marquee-offer {
+  background-color: #ff3c9d;
+  font-size: 30px;
+  padding: 5px;
+}
+.marquee-offer img {
+  width: 30px;
+}
+.body-element-margin {
+  padding: 0px 20px;
+}
+.about-section {
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  margin-top: -6px;
+}
+.body-font {
+  font-family: "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue",
+    "sans-serif";
+}
+.animate-start {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease-in-out;
+}
+.animate-start.anim {
+  opacity: 1;
+  transform: translateY(0px);
+}
 @media (min-width: 650px) {
-    .body {
-        position: absolute;
+  .body {
+    position: absolute;
     top: 120px;
-    left: 0;
     z-index: 1;
     background-color: transparent;
     color: #fff;
-    font-family: 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', 'sans-serif';
-    margin: 0px 10% 0px 10%
-    }
+    font-family: "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI",
+      "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue",
+      "sans-serif";
+  }
+  .body-element-margin {
+    padding: 0px 15% 0px 15%;
+  }
+  .bodyHero {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 20px;
+  }
+  .BussSellerImg {
+    display: block;
+    margin-left: 40%;
+    margin-top: -60px;
+    width: 300px;
+    height: 300px;
+  }
+  .marquee-offer-con {
+    z-index: 1;
+    margin-top: 0px;
+  }
+  .body-font {
+    font-size: 20px;
+  }
 }
