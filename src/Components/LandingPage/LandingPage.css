@@ -77,11 +77,11 @@ nav {
   background-color: #ea0f7d;
 }
 .BussSellerImg {
-  display: none;
+  width: 100px;
 }
 .marquee-offer-con {
   z-index: 1;
-  margin-top: 70px;
+  margin-top: 50px;
 }
 .marquee-offer {
   background-color: #ff3c9d;
@@ -114,6 +114,18 @@ nav {
   opacity: 1;
   transform: translateY(0px);
 }
+@media (max-width: 650px) {
+  .bodyHero {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    gap: 20px;
+  }
+  .BussSellerImg {
+    width: 100%;
+    margin-top: 100px;
+    float: right;
+  }
+}
 @media (min-width: 650px) {
   .body {
     position: absolute;
@@ -135,8 +147,9 @@ nav {
   }
   .BussSellerImg {
     display: block;
-    margin-left: 40%;
+    margin-left: 40px;
     margin-top: -60px;
+    float: right;
     width: 300px;
     height: 300px;
   }
