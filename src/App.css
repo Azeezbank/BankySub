@@ -8,17 +8,17 @@
 nav {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
   z-index: 1;
 }
 .navbar {
   display: flex;
-  justify-content: center;
-  padding: 0.5rem;
+  width: 100vw;
   background: linear-gradient(135deg, #ff3c9d, #6a00f4);
   color: #fff;
   justify-content: space-between;
+  margin-left: -50px;
 }
 .nav-menu {
   display: flex;
@@ -87,6 +87,39 @@ nav {
   width: 100%;
   background: linear-gradient(to bottom right, #ff3c9d, #6a00f4);
 }
+.ninForm {
+  display: flex;
+  justify-content: center;
+}
+.ninFormSelect {
+  min-width: 100px;
+  height: 30px;
+  padding: 5px;
+}
+.ninFormInput {
+  height: 30px;
+  padding: 5px;
+}
+.verifyPge {
+  padding-top: 100px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 150px;
+}
+.verify-form {
+  background-color: #fff;
+  border-radius: 8px;
+  padding-bottom: 30px;
+}
+.verifybtn {
+  background-color: #ff3c9d;
+  margin-top: 15px;
+  border-radius: 8px;
+  color: #fff;
+}
+.verifybtn:hover {
+  background-color: #8b0597;
+}
 @media (min-width: 760px) {
   .service-grid {
     display: grid;
@@ -150,6 +183,12 @@ nav {
     padding: 10px 20px 10px 20px;
     align-items: start;
   }
+  .ninForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px
+}
 }
 .bg-general {
   background: linear-gradient(135deg, #ff3c9d, #6a00f4);
@@ -341,7 +380,7 @@ nav {
   display: flex;
   justify-content: center;
   z-index: 1;
-  margin-top: 41px;
+  margin-top: 55px;
   padding: 5px;
   background: linear-gradient(135deg, #ff3c9d, #6a00f4);
   color: #fff;

@@ -193,7 +193,7 @@ const Home: React.FC = () => {
             <div className="bg_light">
               <div className="greating-section">
                 <p className="greeting">
-                  Good morning,{" "}
+                  You Are Welcome,{" "}
                   <span className="username">
                     {walletBalance.map((wallet) => wallet.username)}
                   </span>

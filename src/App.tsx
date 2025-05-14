@@ -17,6 +17,7 @@ import User from './Components/AdminPage/User';
 import DataGateway from './Components/AdminPage/DataGateway';
 import HomeLayout from './Components/HomeLayout';
 import LandinpPage from './Components/LandingPage/LandingPage';
+import Verify from './Components/Verify';
 
 const App:React.FC = () => {
   return (
@@ -28,6 +29,7 @@ const App:React.FC = () => {
       <Route path='dashboard' element={<Home />} />
       <Route path='data' element={<Data />} />
       <Route path='airtime' element={<Airtime />} />
+      <Route path='verify' element={<Verify />} />
       </Route>
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />

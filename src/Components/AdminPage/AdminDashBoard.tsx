@@ -288,7 +288,7 @@ const AdminDashBoard: React.FC = () => {
             </ul>
 
             {/* link to home page */}
-            <Link to={"/"} className="Link">
+            <Link to={"/user/dashboard"} className="Link">
               <div>
                 <p className="navhome">
                   <i className="bi bi-house-fill"></i> Home Page
