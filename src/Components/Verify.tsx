@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Verify: React.FC = () => {
   const [verificationType, setVerificationType] = useState<string>("");
-  const [verificationNumber, setVerificationNumber] = useState<number>();
+  const [verificationNumber, setVerificationNumber] = useState<number>(0);
 
   const handleVerify = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const Verify: React.FC = () => {
         console.log(response.data.message);
       }
     } catch (err: any) {
-      console.error('Error', err.response.data.message || err.message);
+      console.error('Error', err?.response?.data?.message || err.message);
     }
   };
   return (
