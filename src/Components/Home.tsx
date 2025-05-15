@@ -152,7 +152,6 @@ const Home: React.FC = () => {
                 cursorStyle="_"
                 typeSpeed={100}
                 deleteSpeed={50}
-                delaySpeed={1000}
               />
               <div className="grid_hero">
                 <p>
