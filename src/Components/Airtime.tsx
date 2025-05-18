@@ -29,11 +29,11 @@ const Airtime: React.FC = () => {
   const [amount, setAmount] = useState("");
   const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
   const [actualAmount, setActualAmount] = useState<number>();
+  const [isModalSuccess, setIsModalSuccess] = useState<boolean>(false);
+  const [isModalFail, setIsModalFail] = useState<boolean>(false);
+  const [isProcessing, setIsProcessing] = useState<boolean>(true);
   const navigate = useNavigate();
 
-  // const handleVisible = () => {
-  //   setIsOpen(!isOpen);
-  // };
 
   // Fetch Airtime network
   useEffect(() => {
@@ -75,6 +75,7 @@ const Airtime: React.FC = () => {
   const HandleAirtePurchase = async (e: any) => {
     e.preventDefault();
     try {
+      setIsProcessing(false);
       const isLesser = walletBalance.some(
         (wallet) => wallet.user_balance < amount
       );
@@ -88,10 +89,14 @@ const Airtime: React.FC = () => {
         { withCredentials: true }
       );
       if (response.status === 200) {
-        alert("Airtime topUp successfully");
+        setIsModalSuccess(true);
+        setIsProcessing(true);
       }
     } catch (err: any) {
       console.error("Failed to purchase airtime");
+      setIsModalSuccess(false);
+      setIsModalFail(true);
+      setIsProcessing(true);
     }
   };
 
@@ -216,11 +221,67 @@ setAmount(strToPay)
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>
+                {isProcessing? (
                 <button type="submit" onClick={HandleAirtePurchase}>
                   Purchase
                 </button>
+                ) : (
+                  <button type="submit" onClick={HandleAirtePurchase}>
+                  <span className="spinner-border spinner-border-sm" role="status"><span className="visually-hidden"></span></span> Proccessing...
+                </button>
+                )}
               </form>
             </div>
+
+            {/* airtime success modal */}
+            {isModalSuccess && (
+              <div className="modal-bg">
+                <div>
+                  <div className="modall">
+                    <div>
+                      <h1 className="success-mark">
+                        <i className="bi bi-check2 text-success"></i>
+                      </h1>
+                      <h4>Transaction Successful</h4>
+                      <p>
+                        You've Successfully Sent Airtime Of {actualAmount} To {mobileN}. Thanks
+                      </p>
+                      <button
+                        className="modal-ok"
+                        type="button"
+                        onClick={() => setIsModalSuccess(false)}
+                      >
+                        Okay
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Failed airtime modal */}
+            {isModalFail && (
+              <div className="modal-bg">
+                <div>
+                  <div className="modall">
+                    <div>
+                      <h1 className="success-mark">
+                        <i className="bi bi-question-circle text-success"></i>
+                      </h1>
+                      <h4>Transaction Processing!</h4>
+                      <p>Fund will be reverse if failed</p>
+                      <button
+                        className="modal-ok"
+                        type="button"
+                        onClick={() => setIsModalFail(false)}
+                      >
+                        Okay
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )};
           </main>
     </>
   );

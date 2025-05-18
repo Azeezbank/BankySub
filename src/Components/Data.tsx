@@ -263,7 +263,7 @@ const Data: React.FC = () => {
                 </button>
                 ) : (
                   <button onClick={FetchDataBundle} type="submit">
-                  Processing...
+                 <span className="spinner-border spinner-border-sm" role="status"><span className="visually-hidden"></span></span> Processing...
                 </button>
                 )}
               </form>
