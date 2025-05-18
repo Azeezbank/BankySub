@@ -21,7 +21,6 @@ interface walletInfo {
 }
 
 const Airtime: React.FC = () => {
-  // const [isOpen, setIsOpen] = useState(false);
   const [networks, setNetworks] = useState<AirtimeN[]>([]);
   const [airtimeT, setAirtimeT] = useState<AirtimeT[]>([]);
   const [airtimeNChoosen, setAirtimeNChoosen] = useState("");
@@ -29,6 +28,7 @@ const Airtime: React.FC = () => {
   const [mobileN, setMobileN] = useState("");
   const [amount, setAmount] = useState("");
   const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
+  const [actualAmount, setActualAmount] = useState<number>();
   const navigate = useNavigate();
 
   // const handleVisible = () => {
@@ -131,6 +131,13 @@ const Airtime: React.FC = () => {
     handleUserInfo();
   });
 
+// update airtime amount to pay
+  useEffect(() => {
+const toPay = Number(actualAmount) - (Number(actualAmount) * 0.02);
+const strToPay = toPay.toString();
+setAmount(strToPay)
+  }, [actualAmount]);
+
   return (
     <>
           <main>
@@ -177,9 +184,24 @@ const Airtime: React.FC = () => {
                     type="text"
                     placeholder="Amount"
                     className="form-control"
+                    value={actualAmount}
+                    onChange={(e) => setActualAmount(Number(e.target.value))}
+                    required
+                  />
+                  <p className="input-group-text bg-light">.00</p>
+                </div>
+                {/* amount to pay */}
+                <p>Amount To Pay</p>
+                <div className="input-group">
+                  <p className="input-group-text bg-light">NGN.</p>
+                  <input
+                    type="text"
+                    placeholder="Amount"
+                    className="form-control"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     required
+                    disabled
                   />
                   <p className="input-group-text bg-light">.00</p>
                 </div>

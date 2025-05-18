@@ -17,11 +17,11 @@ interface DataGate {
 
 const DataGateway: React.FC = () => {
   const [allPlan, setAlPlan] = useState<DataGate[]>([]);
-  // const [isSmeActive, setIsSmeActive] = useState("");
-  // const [dataTypeStatus, setDataTypeStatus] = useState([]);
   const [dataTypeNetworkName, setDataTypeNetworkName] = useState("MTN");
   const [dataTypeName, setDataTypeName] = useState("SME");
   const [isDataTypeStatus, setIsDataTypeStatus] = useState("active");
+  const [isSaving, setIsSaving] = useState<boolean>(true);
+  const [isUpdate, setIsUpdate] = useState<boolean>(true);
 
   // Fetch all data data plans
   useEffect(() => {
@@ -54,12 +54,15 @@ const DataGateway: React.FC = () => {
   const submitPlans = async (e: any) => {
     e.preventDefault();
     try {
+      setIsSaving(false)
       await axios.put(
         "https://bankysub-api.onrender.com/update-data-plans",
         allPlan
       );
+      setIsSaving(true)
     } catch (err: any) {
       console.log(err);
+      setIsSaving(true)
     }
   };
 
@@ -67,12 +70,15 @@ const DataGateway: React.FC = () => {
   const handlePlanStatus = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
+      setIsUpdate(false)
       await axios.put(
         "https://bankysub-api.onrender.com/update/data/types/status",
         { dataTypeNetworkName, dataTypeName, isDataTypeStatus }
       );
+      setIsUpdate(true);
     } catch (err: any) {
       console.error(err);
+      setIsUpdate(true);
     }
   };
 
@@ -113,9 +119,15 @@ const DataGateway: React.FC = () => {
                 </select>
               </div>
               <div className="data_type_update">
+                {isUpdate? (
                 <button type="button" onClick={handlePlanStatus}>
                   Update
                 </button>
+                ) : (
+                  <button type="button" onClick={handlePlanStatus}>
+                  Updating...
+                </button>
+                )}
               </div>
             
           </div>
@@ -236,6 +248,7 @@ const DataGateway: React.FC = () => {
                           handlePlans(index, "is_active", e.target.value)
                         }
                       >
+                        <option>{sme.is_active}</option>
                         <option>active</option>
                         <option>disabled</option>
                       </select>
@@ -245,14 +258,26 @@ const DataGateway: React.FC = () => {
               </tbody>
             </table>
           </div>
+
+          {isSaving ? (
           <button
             type="submit"
             onClick={submitPlans}
             className="update-save-button"
           >
             {" "}
-            save
+            Save
           </button>
+          ) : (
+            <button
+            type="submit"
+            onClick={submitPlans}
+            className="update-save-button"
+          >
+            {" "}
+            Saving...
+          </button>
+          )}
         </div>
       </div>
     </>

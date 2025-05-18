@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import NavBar from "./NavBar";
-// import avatar from "../assets/avatar.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -34,7 +32,6 @@ interface walletInfo {
 }
 
 const Data: React.FC = () => {
-  // const [isOpen, setIsOpen] = useState(false);
   const [networks, setNetworks] = useState<network[]>([]);
   const [dataType, setDataType] = useState<dataType[]>([]);
   const [dataPlan, setDataPlan] = useState<dataPlan[]>([]);
@@ -43,8 +40,9 @@ const Data: React.FC = () => {
   const [choosenDataPlan, setChoosenDataPlan] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
-  const [isModalSuccess, setIsModalSuccess] = useState(false);
-  const [isModalFail, setIsModalFail] = useState(false);
+  const [isModalSuccess, setIsModalSuccess] = useState<boolean>(false);
+  const [isModalFail, setIsModalFail] = useState<boolean>(false);
+  const [isProcessing, setIsProcessing] = useState<boolean>(true);
   const navigate = useNavigate();
 
   // const handleVisible = () => {
@@ -112,6 +110,7 @@ const Data: React.FC = () => {
     e.preventDefault();
 
     try {
+      setIsProcessing(false);
       const isLesser = walletBalance.some(
         (wallet) => wallet.user_balance < choosenDataPlan
       );
@@ -132,6 +131,8 @@ const Data: React.FC = () => {
       console.error(err);
       setIsModalSuccess(false);
       setIsModalFail(true);
+      setIsProcessing(true);
+
     }
   };
 
@@ -256,13 +257,19 @@ const Data: React.FC = () => {
                   </p>{" "}
                   <label htmlFor={"bypass"}>Bypass Number Validator</label>
                 </div>
+                {isProcessing ? (
                 <button onClick={FetchDataBundle} type="submit">
                   Purchase
                 </button>
+                ) : (
+                  <button onClick={FetchDataBundle} type="submit">
+                  Processing...
+                </button>
+                )}
               </form>
             </div>
             {/* data success modal */}
-            {isModalSuccess ? (
+            {isModalSuccess && (
               <div className="modal-bg">
                 <div>
                   <div className="modall">
@@ -286,12 +293,10 @@ const Data: React.FC = () => {
                   </div>
                 </div>
               </div>
-            ) : (
-              ""
             )}
 
             {/* Failed mo dal */}
-            {isModalFail ? (
+            {isModalFail && (
               <div className="modal-bg">
                 <div>
                   <div className="modall">
@@ -312,9 +317,7 @@ const Data: React.FC = () => {
                   </div>
                 </div>
               </div>
-            ) : (
-              ""
-            )}
+            )};
           </main>
     </>
   );

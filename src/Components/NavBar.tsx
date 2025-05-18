@@ -24,7 +24,7 @@ const NavBar: React.FC<Props> = ({ sideBarClickHandler }) => {
         { withCredentials: true }
       );
       if (response.status === 200) {
-        navigate("/login?");
+        navigate("/");
       }
     } catch (err: any) {
       console.error("Failed to logout");

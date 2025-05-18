@@ -1,5 +1,6 @@
 .airtimeForm {
-  margin-top: 41px;
+  margin-top: 60px;
+  height: 100vh;
 }
 .transactionForm {
   /* box-shadow: 0px 1px 7px rgb(207, 199, 199); */
@@ -61,7 +62,7 @@
   text-align: center;
   display: flex;
   justify-content: center;
-  min-height: 100%;
+  min-height: 100vh;
   position: absolute;
   top: 0;
   right: 0;
@@ -73,6 +74,7 @@
   display: flex;
   justify-content: center;
   padding: 10px;
+  border-radius: 5px;
 }
 .bi-check2 {
   border: 1px solid rgba(0, 255, 0, 0.5);
