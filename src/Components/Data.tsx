@@ -43,6 +43,7 @@ const Data: React.FC = () => {
   const [isModalSuccess, setIsModalSuccess] = useState<boolean>(false);
   const [isModalFail, setIsModalFail] = useState<boolean>(false);
   const [isProcessing, setIsProcessing] = useState<boolean>(true);
+  const [plan, setPlan] = useState('');
   const navigate = useNavigate();
 
   // const handleVisible = () => {
@@ -54,6 +55,7 @@ const Data: React.FC = () => {
   const handlePrice = (e: any) => {
     const newPrice = e.target.value;
     setChoosenDataPlan(newPrice);
+    setPlan(e.target.selectedOptions[0].text)
   };
 
   useEffect(() => {
@@ -120,7 +122,7 @@ const Data: React.FC = () => {
       }
       await axios.post(
         "https://bankysub-api.onrender.com/api/data/bundle",
-        { DataPrice, mobileNumber, choosenNetwork, choosenDataType },
+        { plan, DataPrice, mobileNumber, choosenNetwork, choosenDataType },
         { withCredentials: true }
       );
 
@@ -132,7 +134,6 @@ const Data: React.FC = () => {
       setIsModalSuccess(false);
       setIsModalFail(true);
       setIsProcessing(true);
-
     }
   };
 

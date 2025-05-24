@@ -18,6 +18,8 @@ import DataGateway from './Components/AdminPage/DataGateway';
 import HomeLayout from './Components/HomeLayout';
 import LandinpPage from './Components/LandingPage/LandingPage';
 import Verify from './Components/Verify';
+import DataHistory from './Components/Histories/DataHistory';
+import AirtimeHistory from './Components/Histories/AirtimeHistory';
 
 const App:React.FC = () => {
   return (
@@ -30,6 +32,8 @@ const App:React.FC = () => {
       <Route path='data' element={<Data />} />
       <Route path='airtime' element={<Airtime />} />
       <Route path='verify' element={<Verify />} />
+      <Route path='data/history' element={<DataHistory />} />
+      <Route path='airtime/history' element={<AirtimeHistory />} />
       </Route>
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
