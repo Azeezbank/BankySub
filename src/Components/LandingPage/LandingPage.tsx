@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BusLogo from "../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
 import "./LandingPage.css";
 import hero_img from "../../assets/Download-Dark-Wallpapers-HD.png";
@@ -17,7 +17,19 @@ import cable from "../../assets/cable.jpg";
 import exam from "../../assets/resultchecker.png";
 import electricity from "../../assets/utility.jpg";
 import contact_img from "../../assets/project-need-dee85a1f.png";
+import mtn from "../../assets/mtn.jfif";
+import axios from "axios";
 
+interface plan {
+  d_id: number;
+  name: string;
+  data_type: string;
+  network_name: string;
+  validity: string;
+  user: string;
+  reseller: string;
+  api: string;
+}
 const LandinpPage: React.FC = () => {
   const [ref1, view1] = useInView({ threshold: 1, triggerOnce: false });
   const [ref2, view2] = useInView({ threshold: 1, triggerOnce: false });
@@ -28,6 +40,24 @@ const LandinpPage: React.FC = () => {
   const [ref7, view7] = useInView({ threshold: 1, triggerOnce: true });
   const [ref8, view8] = useInView({ threshold: 1, triggerOnce: true });
   const [ref9, view9] = useInView({ threshold: 1, triggerOnce: true });
+  const [plans, setPlans] = useState<plan[]>([]);
+
+  useEffect(() => {
+    const fetchDataPlans = async () => {
+      try {
+        const response = await axios.get(
+          "https://bankysub-api.onrender.com/data/plan",
+          { withCredentials: true }
+        );
+        if (response.status === 200) {
+          setPlans(response.data.mtn);
+        }
+      } catch (err: any) {
+        console.error("Faild To Fetch Data Plans", err.message);
+      }
+    };
+    fetchDataPlans();
+  }, [plans]);
   return (
     <>
       <nav>
@@ -330,10 +360,43 @@ const LandinpPage: React.FC = () => {
         <div className="bg-black">
           <div className="plans servicess">
             <span className="line1"></span>
-            <h4 className="line_text">Our Data Bundle Price List</h4>
+            <h4 className="line_text">Our Data Price List</h4>
             <span className="line2"></span>
           </div>
-          <h3 className="need-a-service">Our Special Price For Your Bussiness Development</h3>
+          <h3 className="need-a-service">
+            Our Special Price For Your Bussiness Development
+          </h3>
+
+          <div className="plansPP">
+            <div className="plan-color">
+              <img src={mtn} alt="mtn" className="mtn-logo" />
+              <h3 className="mtn-plans">MTN PLAN</h3>
+              <table>
+                <thead className="tablehead">
+                  <th>Network</th>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Validity</th>
+                  <th>User Price</th>
+                  <th>Reseller Price</th>
+                  <th>Api Price</th>
+                </thead>
+                {plans.map((plan) => (
+                  <tbody>
+                    <tr key={plan.d_id} className="tablehead">
+                      <td>{plan.network_name}</td>
+                      <td>{plan.name}</td>
+                      <td>{plan.data_type}</td>
+                      <td>{plan.validity}</td>
+                      <td>{plan.user}</td>
+                      <td>{plan.reseller}</td>
+                      <td>{plan.api}</td>
+                    </tr>
+                  </tbody>
+                ))}
+              </table>
+            </div>
+          </div>
         </div>
       </body>
     </>

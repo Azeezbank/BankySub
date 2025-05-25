@@ -280,6 +280,37 @@ nav {
 .need_help {
   padding-top: 30px;
 }
+.mtn-logo {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border: 2px solid #ff3c9d;
+}
+.plansPP {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  text-align: center;
+}
+.mtn-plans {
+  letter-spacing: 2px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+.plan-color {
+  background-color: rgb(255, 255, 0);
+  color: #000;
+  margin: 0px 15px;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: 'Arial', 'sans-serif';
+}
+.tablehead th {
+  font-family: 'Arial', 'sans-serif';
+}
+.tablehead td {
+  font-family: 'Arial', 'sans-serif';
+}
 @media (max-width: 650px) {
   .bodyHero {
     display: grid;
