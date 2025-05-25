@@ -9,13 +9,14 @@ import star from "../../assets/download.png";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import personalInfo from "../../assets/personal-infothumb-2653662e.png";
-import { Typewriter } from "react-simple-typewriter";
+// import { Typewriter } from "react-simple-typewriter";
 import Data from "../../assets/data.jpg";
 import Airtime from "../../assets/airtime.svg";
-import cash from '../../assets/airtime2cash.jpg';
-import cable from '../../assets/cable.jpg';
-import exam from '../../assets/resultchecker.png';
-import electricity from '../../assets/utility.jpg'
+import cash from "../../assets/airtime2cash.jpg";
+import cable from "../../assets/cable.jpg";
+import exam from "../../assets/resultchecker.png";
+import electricity from "../../assets/utility.jpg";
+import contact_img from "../../assets/project-need-dee85a1f.png";
 
 const LandinpPage: React.FC = () => {
   const [ref1, view1] = useInView({ threshold: 1, triggerOnce: false });
@@ -221,50 +222,118 @@ const LandinpPage: React.FC = () => {
             <h3 className="line_text">Our Services</h3>
             <span className="line2"></span>
           </div>
-          <h2 className="bg-black text-center pt-4 pb-3 ">Look At What We Offer</h2>
+          <h2 className="bg-black text-center pt-4 pb-3">
+            Look At What We Offer
+          </h2>
           <div className="grid-thumbnail">
             <div className="thumbnail-image">
               <img src={Data} alt="Data" />
-              <h4 className="pt-2">
+              <h3 className="service-title">Data Bundle</h3>
+              <h4 className="pt-2 ps-1 pe-1">
                 Start enjoying this very low rates Data plan for your internet
                 browsing databundle.
               </h4>
             </div>
             <div className="thumbnail-image">
-              <img src={Airtime} alt="Data"/>
-              <h4 className="pt-2">
-                Start enjoying super low rates on airtime for all your calls and top-ups!
+              <img src={Airtime} alt="Data" />
+              <h3 className="service-title">Airtime Top-Up</h3>
+              <h4 className="pt-2 ps-1 pe-1">
+                Start enjoying super low rates on airtime for all your calls and
+                top-ups!
               </h4>
             </div>
             <div className="thumbnail-image">
               <img src={cash} alt="Data" />
-              <h4 className="pt-2">
-                Exchange airtime for cash with ease — secure and instant payouts guaranteed.
+              <h3 className="service-title">Airtime To Cash</h3>
+              <h4 className="pt-2 ps-1 pe-1">
+                Exchange airtime for cash with ease — secure and instant payouts
+                guaranteed.
               </h4>
             </div>
             <div className="thumbnail-image">
               <img src={electricity} alt="Data" />
-              <h4 className="pt-2">
-                Never miss a light again! Pay your electricity bills anytime, anywhere!
+              <h3 className="service-title">Electricity Bill Payment</h3>
+              <h4 className="pt-2 ps-1 pe-1">
+                Never miss a light again! Pay your electricity bills anytime,
+                anywhere!
               </h4>
             </div>
             <div className="thumbnail-image">
               <img src={cable} alt="Data" />
-              <h4 className="pt-2">
-                Renew your cable TV subscription instantly — no delays, no hassle!
+              <h3 className="service-title">Cable Tv Subscription</h3>
+              <h4 className="pt-2 ps-1 pe-1">
+                Renew your cable TV subscription instantly — no delays, no
+                hassle!
               </h4>
             </div>
             <div className="thumbnail-image">
               <img src={exam} alt="Data" />
-              <h4 className="pt-2">
-                Get your WAEC, NECO, or JAMB exam card in minutes — no long wait!
+              <h3 className="service-title">Result Checker Card</h3>
+              <h4 className="pt-2 ps-1 pe-1">
+                Get your WAEC, NECO, or JAMB exam card in minutes — no long
+                wait!
               </h4>
             </div>
-            <div className="circle-click">
-              <span className="circle1"></span>
-              <span className="circle2"></span>
+          </div>
+          <div className="circle-click">
+            <span className="circle1"></span>
+            <span className="circle2"></span>
+            <div>
+              <h5>
+                <i className="bi bi-arrow-right circle-arrow"></i>
+              </h5>{" "}
+              <br />
+              <h4 className="circle-text">Click To Login</h4>
             </div>
           </div>
+        </div>
+        <div className="bg-dark">
+          <div className="need_help">
+            <div>
+              <div className="contact-for-service">
+                <span></span>
+                <h4>Need A Sercive ?</h4>
+              </div>
+              <h3 className="need-a-service">
+                Let's work together. fixed a meeting
+              </h3>
+
+              <div className="contact-div">
+                <h3>
+                  <i className="bi bi-envelope-at envelope-bg"></i>
+                </h3>
+                <div>
+                  <h3 className="email-c">Email</h3>
+                  <h4>
+                    <a
+                      className="email-c-a"
+                      href="mailto:Bankoleazeezb@gmail.com"
+                    >
+                      Bankoleazeezb@gmail.com
+                    </a>
+                  </h4>
+                </div>
+              </div>
+              <div className="contact-div">
+                <h3>
+                  <i className="bi bi-geo-alt envelope-bg"></i>
+                </h3>
+                <div>
+                  <h3 className="email-c">Location</h3>
+                  <h4>Iragbiji, Osun State, Nigeria.</h4>
+                </div>
+              </div>
+            </div>
+            <img src={contact_img} alt="need help" className="contact-image" />
+          </div>
+        </div>
+        <div className="bg-black">
+          <div className="plans servicess">
+            <span className="line1"></span>
+            <h4 className="line_text">Our Data Bundle Price List</h4>
+            <span className="line2"></span>
+          </div>
+          <h3 className="need-a-service">Our Special Price For Your Bussiness Development</h3>
         </div>
       </body>
     </>
