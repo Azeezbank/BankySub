@@ -310,6 +310,7 @@ nav {
 }
 .tablehead td {
   font-family: 'Arial', 'sans-serif';
+  border-top: 1px solid #a8a3a3;
 }
 @media (max-width: 650px) {
   .bodyHero {

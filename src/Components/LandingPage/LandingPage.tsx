@@ -31,6 +31,8 @@ interface plan {
   api: string;
 }
 const LandinpPage: React.FC = () => {
+   const [plans, setPlans] = useState<plan[]>([]);
+   const [airtelPlan, setAirtelPlan] = useState<plan[]>([]);
   const [ref1, view1] = useInView({ threshold: 1, triggerOnce: false });
   const [ref2, view2] = useInView({ threshold: 1, triggerOnce: false });
   const [ref3, view3] = useInView({ threshold: 1, triggerOnce: true });
@@ -40,7 +42,6 @@ const LandinpPage: React.FC = () => {
   const [ref7, view7] = useInView({ threshold: 1, triggerOnce: true });
   const [ref8, view8] = useInView({ threshold: 1, triggerOnce: true });
   const [ref9, view9] = useInView({ threshold: 1, triggerOnce: true });
-  const [plans, setPlans] = useState<plan[]>([]);
 
   useEffect(() => {
     const fetchDataPlans = async () => {
@@ -51,6 +52,7 @@ const LandinpPage: React.FC = () => {
         );
         if (response.status === 200) {
           setPlans(response.data.mtn);
+          setAirtelPlan(response.data.airtel)
         }
       } catch (err: any) {
         console.error("Faild To Fetch Data Plans", err.message);
@@ -373,6 +375,7 @@ const LandinpPage: React.FC = () => {
               <h3 className="mtn-plans">MTN PLAN</h3>
               <table>
                 <thead className="tablehead">
+                <tr>
                   <th>Network</th>
                   <th>Name</th>
                   <th>Type</th>
@@ -380,6 +383,37 @@ const LandinpPage: React.FC = () => {
                   <th>User Price</th>
                   <th>Reseller Price</th>
                   <th>Api Price</th>
+                  </tr>
+                </thead>
+                {airtelPlan.map((air) => (
+                  <tbody>
+                    <tr key={air.d_id} className="tablehead">
+                      <td>{air.network_name}</td>
+                      <td>{air.name}</td>
+                      <td>{air.data_type}</td>
+                      <td>{air.validity}</td>
+                      <td>{air.user}</td>
+                      <td>{air.reseller}</td>
+                      <td>{air.api}</td>
+                    </tr>
+                  </tbody>
+                ))}
+              </table>
+            </div>
+            <div className="plan-color">
+              <img src={mtn} alt="mtn" className="mtn-logo" />
+              <h3 className="mtn-plans">AIRTEL PLAN</h3>
+              <table>
+                <thead className="tablehead">
+                <tr>
+                  <th>Network</th>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Validity</th>
+                  <th>User Price</th>
+                  <th>Reseller Price</th>
+                  <th>Api Price</th>
+                  </tr>
                 </thead>
                 {plans.map((plan) => (
                   <tbody>
