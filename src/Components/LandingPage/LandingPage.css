@@ -185,6 +185,9 @@ nav {
   border-top-left-radius: 8px;
   border-bottom: 1px solid #fff;
 }
+.thumbnail-image h4 {
+  font-size: 13px;
+}
 .circle-click {
   display: flex;
   justify-content: center;
