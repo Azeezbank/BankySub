@@ -101,6 +101,7 @@ const Data: React.FC = () => {
       );
       if (response.status === 200) {
         setDataPlan(response.data);
+        setIsProcessing(true)
       }
     } catch (err) {
       console.error(err);
@@ -280,7 +281,7 @@ const Data: React.FC = () => {
                       </h1>
                       <h4>Transaction Successful</h4>
                       <p>
-                        You've Sent {choosenNetwork} {choosenDataPlan} Data Plan
+                        You've Sent {choosenNetwork} {plan} Data Plan
                         To {mobileNumber}
                       </p>
                       <button
