@@ -101,7 +101,7 @@ const Data: React.FC = () => {
       );
       if (response.status === 200) {
         setDataPlan(response.data);
-        setIsProcessing(true)
+        setIsProcessing(true);
       }
     } catch (err) {
       console.error(err);
