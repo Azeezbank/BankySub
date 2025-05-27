@@ -18,9 +18,9 @@ import exam from "../../assets/resultchecker.png";
 import electricity from "../../assets/utility.jpg";
 import contact_img from "../../assets/project-need-dee85a1f.png";
 import mtn from "../../assets/mtn.jfif";
-import airtel from '../../assets/80-806745_airtel-data-plan-airtel-logo-new.png';
-import glo from '../../assets/OIP.jfif';
-import nimobile from '../../assets/R.jfif';
+import airtel from "../../assets/80-806745_airtel-data-plan-airtel-logo-new.png";
+import glo from "../../assets/OIP.jfif";
+import nimobile from "../../assets/R.jfif";
 import axios from "axios";
 
 interface plan {
@@ -34,10 +34,10 @@ interface plan {
   api: string;
 }
 const LandinpPage: React.FC = () => {
-   const [plans, setPlans] = useState<plan[]>([]);
-   const [airtelPlan, setAirtelPlan] = useState<plan[]>([]);
-   const [gloPlan, setGloPlans] = useState<plan[]>([]);
-   const [mobile, setMobile] = useState<plan[]>([]);
+  const [plans, setPlans] = useState<plan[]>([]);
+  const [airtelPlan, setAirtelPlan] = useState<plan[]>([]);
+  const [gloPlan, setGloPlans] = useState<plan[]>([]);
+  const [mobile, setMobile] = useState<plan[]>([]);
   const [ref1, view1] = useInView({ threshold: 1, triggerOnce: false });
   const [ref2, view2] = useInView({ threshold: 1, triggerOnce: false });
   const [ref3, view3] = useInView({ threshold: 1, triggerOnce: true });
@@ -366,7 +366,7 @@ const LandinpPage: React.FC = () => {
             <img src={contact_img} alt="need help" className="contact-image" />
           </div>
         </div>
-        <div className="bg-black ps-1 pe-1">
+        <div className="bg-black">
           <div className="plans servicess">
             <span className="line1"></span>
             <h4 className="line_text">Our Data Price List</h4>
@@ -379,122 +379,122 @@ const LandinpPage: React.FC = () => {
           <div className="plansPP">
             <div className="grid-plans self">
               <div>
-            <div className="plan-color">
-              <img src={mtn} alt="mtn" className="mtn-logo" />
-              <h3 className="mtn-plans">MTN PLAN</h3>
-              <table>
-                <thead className="tablehead">
-                <tr>
-                  <th>Network</th>
-                  <th>Plan</th>
-                  <th>Type</th>
-                  <th>User Price</th>
-                  <th>Reseller Price</th>
-                  <th>Api Price</th>
-                  </tr>
-                </thead>
-                {plans.map((air) => (
-                  <tbody>
-                    <tr key={air.d_id} className="tablehead">
-                      <td>{air.network_name}</td>
-                      <td>{air.name}</td>
-                      <td>{air.data_type}</td>
-                      <td>{air.user}</td>
-                      <td>{air.reseller}</td>
-                      <td>{air.api}</td>
-                    </tr>
-                  </tbody>
-                ))}
-              </table>
-            </div>
-             <div className="glo-color">
-              <img src={glo} alt="mtn" className="mtn-logo" />
-              <h3 className="mtn-plans">GLO PLAN</h3>
-              <table>
-                <thead className="tablehead">
-                <tr>
-                  <th>Network</th>
-                  <th>Plan</th>
-                  <th>Type</th>
-                  <th>User Price</th>
-                  <th>Reseller Price</th>
-                  <th>Api Price</th>
-                  </tr>
-                </thead>
-                {gloPlan.map((plan) => (
-                  <tbody>
-                    <tr key={plan.d_id} className="tablehead">
-                      <td>{plan.network_name}</td>
-                      <td>{plan.name}</td>
-                      <td>{plan.data_type}</td>
-                      <td>{plan.user}</td>
-                      <td>{plan.reseller}</td>
-                      <td>{plan.api}</td>
-                    </tr>
-                  </tbody>
-                ))}
-              </table>
-            </div>
-            </div>
+                <div className="plan-color">
+                  <img src={mtn} alt="mtn" className="mtn-logo" />
+                  <h3 className="mtn-plans">MTN PLAN</h3>
+                  <table>
+                    <thead className="tablehead">
+                      <tr>
+                        <th>Network</th>
+                        <th>Plan</th>
+                        <th>Type</th>
+                        <th>User Price</th>
+                        <th>Reseller Price</th>
+                        <th>Api Price</th>
+                      </tr>
+                    </thead>
+                    {plans.map((air) => (
+                      <tbody>
+                        <tr key={air.d_id} className="tablehead">
+                          <td>{air.network_name}</td>
+                          <td>{air.name}</td>
+                          <td>{air.data_type}</td>
+                          <td>{air.user}</td>
+                          <td>{air.reseller}</td>
+                          <td>{air.api}</td>
+                        </tr>
+                      </tbody>
+                    ))}
+                  </table>
+                </div>
+                <div className="glo-color">
+                  <img src={glo} alt="mtn" className="mtn-logo" />
+                  <h3 className="mtn-plans">GLO PLAN</h3>
+                  <table>
+                    <thead className="tablehead">
+                      <tr>
+                        <th>Network</th>
+                        <th>Plan</th>
+                        <th>Type</th>
+                        <th>User Price</th>
+                        <th>Reseller Price</th>
+                        <th>Api Price</th>
+                      </tr>
+                    </thead>
+                    {gloPlan.map((plan) => (
+                      <tbody>
+                        <tr key={plan.d_id} className="tablehead">
+                          <td>{plan.network_name}</td>
+                          <td>{plan.name}</td>
+                          <td>{plan.data_type}</td>
+                          <td>{plan.user}</td>
+                          <td>{plan.reseller}</td>
+                          <td>{plan.api}</td>
+                        </tr>
+                      </tbody>
+                    ))}
+                  </table>
+                </div>
+              </div>
 
-            <div>
-            <div className="airtel-color">
-              <img src={airtel} alt="mtn" className="mtn-logo" />
-              <h3 className="mtn-plans">AIRTEL PLAN</h3>
-              <table>
-                <thead className="tablehead">
-                <tr>
-                  <th>Network</th>
-                  <th>Plan</th>
-                  <th>Type</th>
-                  <th>User Price</th>
-                  <th>Reseller Price</th>
-                  <th>Api Price</th>
-                  </tr>
-                </thead>
-                {airtelPlan.map((plan) => (
-                  <tbody>
-                    <tr key={plan.d_id} className="tablehead">
-                      <td>{plan.network_name}</td>
-                      <td>{plan.name}</td>
-                      <td>{plan.data_type}</td>
-                      <td>{plan.user}</td>
-                      <td>{plan.reseller}</td>
-                      <td>{plan.api}</td>
-                    </tr>
-                  </tbody>
-                ))}
-              </table>
-            </div>
-            <div className="mobile-color">
-              <img src={nimobile} alt="mtn" className="mtn-logo" />
-              <h3 className="mtn-plans">9MOBILE PLAN</h3>
-              <table>
-                <thead className="tablehead">
-                <tr>
-                  <th>Network</th>
-                  <th>Plan</th>
-                  <th>Type</th>
-                  <th>User Price</th>
-                  <th>Reseller Price</th>
-                  <th>Api Price</th>
-                  </tr>
-                </thead>
-                {mobile.map((plan) => (
-                  <tbody>
-                    <tr key={plan.d_id} className="tablehead">
-                      <td>{plan.network_name}</td>
-                      <td>{plan.name}</td>
-                      <td>{plan.data_type}</td>
-                      <td>{plan.user}</td>
-                      <td>{plan.reseller}</td>
-                      <td>{plan.api}</td>
-                    </tr>
-                  </tbody>
-                ))}
-              </table>
-            </div>
-            </div>
+              <div>
+                <div className="airtel-color">
+                  <img src={airtel} alt="mtn" className="mtn-logo" />
+                  <h3 className="mtn-plans">AIRTEL PLAN</h3>
+                  <table>
+                    <thead className="tablehead">
+                      <tr>
+                        <th>Network</th>
+                        <th>Plan</th>
+                        <th>Type</th>
+                        <th>User Price</th>
+                        <th>Reseller Price</th>
+                        <th>Api Price</th>
+                      </tr>
+                    </thead>
+                    {airtelPlan.map((plan) => (
+                      <tbody>
+                        <tr key={plan.d_id} className="tablehead">
+                          <td>{plan.network_name}</td>
+                          <td>{plan.name}</td>
+                          <td>{plan.data_type}</td>
+                          <td>{plan.user}</td>
+                          <td>{plan.reseller}</td>
+                          <td>{plan.api}</td>
+                        </tr>
+                      </tbody>
+                    ))}
+                  </table>
+                </div>
+                <div className="mobile-color">
+                  <img src={nimobile} alt="mtn" className="mtn-logo" />
+                  <h3 className="mtn-plans">9MOBILE PLAN</h3>
+                  <table>
+                    <thead className="tablehead">
+                      <tr>
+                        <th>Network</th>
+                        <th>Plan</th>
+                        <th>Type</th>
+                        <th>User Price</th>
+                        <th>Reseller Price</th>
+                        <th>Api Price</th>
+                      </tr>
+                    </thead>
+                    {mobile.map((plan) => (
+                      <tbody>
+                        <tr key={plan.d_id} className="tablehead">
+                          <td>{plan.network_name}</td>
+                          <td>{plan.name}</td>
+                          <td>{plan.data_type}</td>
+                          <td>{plan.user}</td>
+                          <td>{plan.reseller}</td>
+                          <td>{plan.api}</td>
+                        </tr>
+                      </tbody>
+                    ))}
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
