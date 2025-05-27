@@ -130,9 +130,9 @@ const LandinpPage: React.FC = () => {
             <div className="text-center">
               <motion.img
                 ref={ref1}
-                initial={{ opacity: 0, y: -30 }}
+                initial={{ opacity: 0, y: -20 }}
                 transition={{ duration: 1, ease: "easeIn" }}
-                animate={{ opacity: view1 ? 1 : 0, y: view1 ? 0 : -50 }}
+                animate={{ opacity: view1 ? 1 : 0, y: view1 ? 0 : -20 }}
                 src={star}
                 alt="star"
                 width={40}
