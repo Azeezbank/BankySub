@@ -366,7 +366,7 @@ const LandinpPage: React.FC = () => {
             <img src={contact_img} alt="need help" className="contact-image" />
           </div>
         </div>
-        <div className="bg-black">
+        <div className="bg-black ps-1 pe-1">
           <div className="plans servicess">
             <span className="line1"></span>
             <h4 className="line_text">Our Data Price List</h4>
