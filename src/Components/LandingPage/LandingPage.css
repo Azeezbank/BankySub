@@ -38,6 +38,7 @@ nav {
   color: #fff;
   font-family: "sans-serif";
   width: 100%;
+  overflow-x: hidden;
 }
 .availability {
   padding-bottom: 10px;
