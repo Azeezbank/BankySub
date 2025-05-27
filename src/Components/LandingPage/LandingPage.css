@@ -311,6 +311,7 @@ nav {
   padding-top: 10px;
   color: #000;
   height: fit-content;
+  margin: 0px 15px;
 }
 .plan-color {
   background-color: rgb(255, 255, 0);
