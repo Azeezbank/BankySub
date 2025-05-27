@@ -298,6 +298,7 @@ nav {
   justify-content: center;
   padding-top: 30px;
   text-align: center;
+  width: 100%;
 }
 .self {
   align-items: start;
