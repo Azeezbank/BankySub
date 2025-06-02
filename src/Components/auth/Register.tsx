@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import logo from "../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
+import logo from "../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register: React.FC = () => {

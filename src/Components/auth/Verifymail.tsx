@@ -1,70 +1,62 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
+import logo from '../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png';
 
 const Login: React.FC = () => {
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [loginError, setLoginError] = useState(false);
+  
+  const [otp, setOtp] = useState('');
   const [isAuth, setIsAuth] = useState(false);
+  const [message, setMessage] = useState('')
 
   const navigate = useNavigate();
 
-  const handleLogin = async (e: any) => {
+  const handleverification = async (e: any) => {
     e.preventDefault();
     try {
       setIsAuth(true);
       const response = await axios.post(
-        "https://bankysub-api.onrender.com/login",
-        { password, username },
+        "https://bankysub-api.onrender.com/verify/mail",
+        { otp },
         { withCredentials: true }
       );
-      setIsAuth(true);
       if (response.status === 200) {
-        navigate("/user/dashboard");
-      }
+        navigate("/login");
+        setIsAuth(false);
+      };
+
     } catch (err: any) {
-      setLoginError(true);
       setIsAuth(false);
-      setLoginError(err.response?.data.message);
+      setMessage(err.response?.data.message);
     }
   };
   return (
     <>
       <div className="registration-bg">
         <div className="form-container">
-          <form onSubmit={handleLogin}>
-            {loginError && <p className="errorMessage">{loginError}</p>}
+          <form onSubmit={handleverification}>
+            <p className="errorMessage">{message}</p>
             <div className="logodiv">
               <img src={logo} alt="Company logo" className="logo bg-white" />
-              <h5>Sign In</h5>
+              <h5>Verify Your Mail</h5>
             </div>
-            <label htmlFor="Username">Username*</label> <br />
+            <label htmlFor="otp">Input Verification Code Sent To Your Mail</label> <br />
             <input
               type="text"
-              id="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-            <label htmlFor="password">Password*</label> <br />
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              id="otp"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
               required
             />
             <br />
             <br />
             {!isAuth ? (
             <button className="RegButton" type="submit">
-            Sign In
+            Verify
           </button>
             ) : (
               <button className="RegButton" type="submit">
-              Authenticating...
+              Verifying...
             </button>
             )}
             <p className="signIn">

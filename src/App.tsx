@@ -6,8 +6,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Components/Home'
 import Airtime from './Components/Airtime';
 import Data from './Components/Data';
-import Register from './Components/Register';
-import Login from './Components/Login';
+import Register from './Components/auth/Register';
+import Login from './Components/auth/Login';
 import Electricity from './Components/Electricity';
 import AdminDashBoard from './Components/AdminPage/AdminDashBoard';
 import FundHist from './Components/AdminPage/FundHistory';
@@ -20,6 +20,7 @@ import LandinpPage from './Components/LandingPage/LandingPage';
 import Verify from './Components/Verify';
 import DataHistory from './Components/Histories/DataHistory';
 import AirtimeHistory from './Components/Histories/AirtimeHistory';
+import Verifymail from './Components/auth/Verifymail';
 
 const App:React.FC = () => {
   return (
@@ -37,7 +38,8 @@ const App:React.FC = () => {
       </Route>
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/vent=electicity-bill' element={<Electricity />} />
+      <Route path='/verifymail' element={<Verifymail />} />
+      <Route path='/vend/electicity/bill' element={<Electricity />} />
       <Route path='/admin/*' element={<AdminDashBoard />} >
       <Route path='dashboard' element={<Dashboard />} />
       <Route path='found/hist' element={ <FundHist />} />
