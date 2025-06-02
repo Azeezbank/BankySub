@@ -7,6 +7,7 @@ const Login: React.FC = () => {
   
   const [otp, setOtp] = useState('');
   const [isAuth, setIsAuth] = useState(false);
+  const [isMessage, setIsMessage] = useState(false);
   const [message, setMessage] = useState('')
 
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const Login: React.FC = () => {
       };
 
     } catch (err: any) {
+      setIsMessage(true);
       setIsAuth(false);
       setMessage(err.response?.data.message);
     }
@@ -35,7 +37,7 @@ const Login: React.FC = () => {
       <div className="registration-bg">
         <div className="form-container">
           <form onSubmit={handleverification}>
-            <p className="errorMessage">{message}</p>
+            {isMessage && <p className="errorMessage">{message}</p> }
             <div className="logodiv">
               <img src={logo} alt="Company logo" className="logo bg-white" />
               <h5>Verify Your Mail</h5>
