@@ -6,8 +6,9 @@ import logo from "../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png
 const Login: React.FC = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [loginError, setLoginError] = useState(false);
+  const [loginError, setLoginError] = useState('');
   const [isAuth, setIsAuth] = useState(false);
+  const [isError, setIsError] = usestate(false);
 
   const navigate = useNavigate();
 
@@ -20,16 +21,17 @@ const Login: React.FC = () => {
         { password, username },
         { withCredentials: true }
       );
-      setIsAuth(true);
       if (response.status === 200) {
         navigate("/user/dashboard");
-      } else if (response.status === 503) {
-        navigate('/verifymail')
-      }
+      } 
     } catch (err: any) {
-      setLoginError(true);
+      setIsError(true);
       setIsAuth(false);
-      setLoginError(err.response?.data.message);
+      if (err.response?.status === 503) {
+    navigate("/verify/mail");
+  } else {
+    setLoginError(err.response?.data.message || "Login failed");
+      }
     }
   };
   return (
@@ -37,7 +39,7 @@ const Login: React.FC = () => {
       <div className="registration-bg">
         <div className="form-container">
           <form onSubmit={handleLogin}>
-            {loginError && <p className="errorMessage">{loginError}</p>}
+            {isError && <p className="errorMessage">{loginError}</p>}
             <div className="logodiv">
               <img src={logo} alt="Company logo" className="logo bg-white" />
               <h5>Sign In</h5>
