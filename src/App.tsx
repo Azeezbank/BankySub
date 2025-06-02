@@ -38,7 +38,7 @@ const App:React.FC = () => {
       </Route>
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/verifymail' element={<Verifymail />} />
+      <Route path='/verify/mail' element={<Verifymail />} />
       <Route path='/vend/electicity/bill' element={<Electricity />} />
       <Route path='/admin/*' element={<AdminDashBoard />} >
       <Route path='dashboard' element={<Dashboard />} />
