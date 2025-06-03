@@ -329,15 +329,15 @@ const Home: React.FC = () => {
                     <p className="purple pb-2">
                       <i className="bi bi-arrow-counterclockwise"></i>
                     </p>
-                    <p className="ms-2 mt-2">Data Transactions</p>
+                    <p className="ms-2 mt-2 text-black">Data Transactions</p>
                      </Link>
                   </div>
                   <div className="d-flex purpleShadow">
-                    <Link to={'/user/airtime/history'} className="Link text-black">
+                    <Link to={'/user/airtime/history'} className="Link">
                     <p className="purple pb-2">
                       <i className="bi bi-arrow-counterclockwise"></i>
                     </p>
-                    <p className="ms-2 mt-2">Airtime-Top-Up Transactions</p>
+                    <p className="ms-2 mt-2 text-black">Airtime-Top-Up Transactions</p>
                     </Link>
                   </div>
                   <div className="d-flex purpleShadow">
