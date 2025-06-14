@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// New page of users
-
-// const { id } = useParams();
-
 interface userDetails {
   d_id: number;
   id: number;
@@ -157,7 +153,7 @@ const User: React.FC = () => {
                     <td>{userD.Phone_number}</td>
                     <td>{userD.Pin}</td>
                     <td
-                      onClick={() => navigate(`/Admin/user=/${userD.d_id}`)}
+                      onClick={() => navigate(`/Admin/UserInfo/${userD.d_id}`)}
                       className="info"
                       key={userD.d_id}
                     >

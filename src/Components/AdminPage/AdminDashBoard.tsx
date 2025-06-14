@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
 import "./Admin.css";
-import { Link, Outlet, Route, Routes } from "react-router-dom";
-import UserInfo from "../UserInfo";
+import { Link, Outlet } from "react-router-dom";
 import NavBar from "../NavBar";
 
 type menuState = {
@@ -194,7 +193,7 @@ const AdminDashBoard: React.FC = () => {
                 </div>
                 {isUser.user && (
                   <ul>
-                    <Link to={"/admin/user"} className="Link">
+                    <Link to={"/admin/users"} className="Link">
                       <li
                         className="successful hover"
                       >
@@ -305,10 +304,6 @@ const AdminDashBoard: React.FC = () => {
           <main>
             <NavBar sideBarClickHandler={handleVisible} />
             <Outlet />
-            {/* <div>{renderFund()}</div> */}
-            <Routes>
-              <Route path={`/user=/:id`} element={<UserInfo />} />
-            </Routes>
           </main>
         </div>
       </div>

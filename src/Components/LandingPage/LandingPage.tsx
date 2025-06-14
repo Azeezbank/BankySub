@@ -87,7 +87,7 @@ const LandinpPage: React.FC = () => {
             </h4>
             <h2>
               Top Up Made Easy With <br />{" "}
-              <h2 className="heroBrandName">BankyConnect</h2>
+              <p className="heroBrandName">BankyConnect</p>
             </h2>
 
             <div className="login-btn">

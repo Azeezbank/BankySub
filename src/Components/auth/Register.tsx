@@ -12,6 +12,7 @@ const Register: React.FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState<number>();
+  const [fullName, setFullname] = useState<string>('')
 
   const navigate = useNavigate();
 
@@ -40,7 +41,7 @@ const Register: React.FC = () => {
       return;
     } 
     try {
-    const response = await axios.post('https://bankysub-api.onrender.com/register', {password, username, email});
+    const response = await axios.post('https://bankysub-api.onrender.com/register', {password, username, email, fullName, phone});
     if (response.status === 200) {
         alert(response.data.message);
         navigate('/verify/mail');
@@ -59,7 +60,7 @@ const Register: React.FC = () => {
             <h5>Create Account</h5>
           </div>
           <label htmlFor="FullName">FullName*</label> <br />
-          <input type="text" id="FullName" required /> <br />
+          <input type="text" id="FullName" value={fullName} onChange={(e) => setFullname(e.target.value)} required /> <br />
           <label htmlFor="Username">Username*</label> <br />
           <input type="text" id="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
           <label htmlFor="email">Email*</label> <br />
@@ -81,7 +82,7 @@ const Register: React.FC = () => {
           />
           <span className="text-danger">{passError}</span> <br />
           <span className="text-muted">
-            Min_length-8 mix characters [i.e Abdul1234]
+            Min_length-8 mix characters [i.e 37865strongPassword8452]
           </span>{" "}
           <br />
           <label htmlFor="confirmPass">Confirm Password*</label> <br />

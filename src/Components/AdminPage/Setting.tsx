@@ -4,16 +4,19 @@ import axios from "axios";
 interface AdminDetails {
   whatsapp_phone: string;
   whatsapp_link: string;
+  whatsapp_number: string
   dash_message: string;
 }
 
 const Setting: React.FC = () => {
   const [info, setInfo] = useState<AdminDetails>({
     whatsapp_phone: "",
+    whatsapp_number: "",
     whatsapp_link: "",
     dash_message: "",
   });
 
+  //Fetch admin details on component mount
   useEffect(() => {
     const handleAdminDetailUpdate = async () => {
       try {
@@ -31,11 +34,13 @@ const Setting: React.FC = () => {
     handleAdminDetailUpdate();
   }, []);
 
+
+  //Update details
   const handleAdminDetails = async (e: any) => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        "https://bankysub-api.onrender.com/api/updated=setting=details",
+        "https://bankysub-api.onrender.com/api/updated/setting/details",
         info
       );
       if (response.status === 200) {
@@ -71,11 +76,11 @@ const Setting: React.FC = () => {
                 <span className="input-group-text">WhatsApp +234(0)</span>
                 <input
                   className="contact-input-field form-control"
-                  aria-label="link"
+                  aria-label="whatsappNumber"
                   type="text"
-                  value={info.whatsapp_phone}
+                  value={info.whatsapp_number}
                   onChange={(e) =>
-                    setInfo({ ...info, whatsapp_phone: e.target.value })
+                    setInfo({ ...info, whatsapp_number: e.target.value })
                   }
                 />
               </div>

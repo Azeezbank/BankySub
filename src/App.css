@@ -38,6 +38,7 @@ nav {
   flex-direction: column;
   cursor: pointer;
   gap: 0.3rem;
+  margin-right: 20px;
 }
 .handburger span {
   width: 5px;

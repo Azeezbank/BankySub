@@ -11,9 +11,9 @@ import Login from './Components/auth/Login';
 import Electricity from './Components/Electricity';
 import AdminDashBoard from './Components/AdminPage/AdminDashBoard';
 import FundHist from './Components/AdminPage/FundHistory';
-import Dashboard from './Components/AdminPage/Dashboed';
+import Dashboard from './Components/AdminPage/Dashbord';
 import Setting from './Components/AdminPage/Setting';
-import User from './Components/AdminPage/User';
+import Users from './Components/AdminPage/users/Users';
 import DataGateway from './Components/AdminPage/DataGateway';
 import HomeLayout from './Components/HomeLayout';
 import LandinpPage from './Components/LandingPage/LandingPage';
@@ -21,6 +21,7 @@ import Verify from './Components/Verify';
 import DataHistory from './Components/Histories/DataHistory';
 import AirtimeHistory from './Components/Histories/AirtimeHistory';
 import Verifymail from './Components/auth/Verifymail';
+import UserInfo from './Components/AdminPage/users/UserInfo';
 
 const App:React.FC = () => {
   return (
@@ -40,10 +41,12 @@ const App:React.FC = () => {
       <Route path='/login' element={<Login />} />
       <Route path='/verify/mail' element={<Verifymail />} />
       <Route path='/vend/electicity/bill' element={<Electricity />} />
+      
       <Route path='/admin/*' element={<AdminDashBoard />} >
       <Route path='dashboard' element={<Dashboard />} />
       <Route path='found/hist' element={ <FundHist />} />
-      <Route path='user' element={<User />} />
+      <Route path='users' element={<Users />} />
+      <Route path='UserInfo/:id' element={<UserInfo />} />
       <Route path='setting' element={<Setting />} />
       <Route path='data/gateway' element={<DataGateway />} />
       </Route>
