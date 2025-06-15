@@ -543,9 +543,9 @@ const LandinpPage: React.FC = () => {
 
               <div className="workprocess-box">
                 <div className="WorkP-content">
-                <h3><span className="wproHB me-2"></span>Build in Webflow (or Code)</h3>
+                <h3><span className="wproHB me-2"></span>Build in Code</h3>
                 <p><span className="wproCont me-2"></span> Convert design into a fully functional, responsive website</p>
-                <p><span className="wproCont me-2"></span>Use Webflow (or hand-code with HTML/CSS/JS) for custom development </p>
+                <p><span className="wproCont me-2"></span>Use hand-code for custom development </p>
                 <p><span className="wproCont me-2"></span>Add animations, forms, CMS (blog or dynamic content)</p>
                 <p><span className="wproCont me-2"></span>Optimize for SEO, fast load time, and all device sizes</p>
                 </div>

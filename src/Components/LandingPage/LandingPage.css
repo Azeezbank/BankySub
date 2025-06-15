@@ -406,7 +406,7 @@ nav {
 .wproHB {
   width: 20px;
   height: 20px;
-  background-color: #ff3c9d;
+  background-color: #ea0f7d;
   border-radius: 50%;
   
 }
@@ -421,13 +421,14 @@ nav {
   display: flex;
   align-items: center;
   letter-spacing: 2px;
-  color: #a8a3a3;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
+   margin-top: 15px;
 }
 .wproCont {
   width: 10px;
   height: 10px;
-  background-color: #ff3c9d;
+  background-color: #ea0f7d;
   border-radius: 50%;
 }
 .quarter-circle {
@@ -436,7 +437,7 @@ nav {
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: #6a00f4;
+  background-color: #ff3c9d;
   transition: all 0.5s ease;
   border-top-left-radius: 50%;
   z-index: 0;
