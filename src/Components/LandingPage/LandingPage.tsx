@@ -260,7 +260,7 @@ const LandinpPage: React.FC = () => {
             </h5>
           </Marquee>
         </div>
-        <div className="bg-black">
+        <div className="offer-sec">
           <div className="bg-black servicess">
             <span className="line1"></span>
             <h3 className="line_text">Our Services</h3>
@@ -509,7 +509,7 @@ const LandinpPage: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="workProcess-section bg-dark">
+        <div className="workProcess-section bg-dark pb-3">
           <div className="workP-line">
             <span className="workpLine me-2"></span>
             <h4 className="line_text">Working Process</h4>
@@ -519,7 +519,7 @@ const LandinpPage: React.FC = () => {
             <h3 className="need-a-service">
               Your Dream Website In Just Few Steps
             </h3>
-            <div>
+            <div className="grid-workP">
               <div className="workprocess-box">
                 <div className="WorkP-content">
                 <h3><span className="wproHB me-2"></span>Discovery & Concept</h3>
@@ -527,30 +527,42 @@ const LandinpPage: React.FC = () => {
                 <p><span className="wproCont me-2"></span>Define project scope, key features, and number of pages</p>
                 <p><span className="wproCont me-2"></span>Research industry trends and gather design inspiration</p>
                 <p><span className="wproCont me-2"></span>Present moodboards or sample layouts for direction approval</p>
-                <h1 className="d-fle"><span className="quarter-circle"></span></h1>
                 </div>
+                <h1 className="d-fle"><span className="quarter-circle"></span></h1>
               </div>
-              <div>
-                <h3><span></span>Design & Wireframing</h3>
-                <p><span></span>Create clean, responsive wireframes to map structure</p>
-                <p><span></span>Design high-fidelity mockups using tools like Figma or Adobe XD</p>
-                <p><span></span>Incorporate your brand identity (colors, typography, logo)</p>
-                <p><span></span></p>
+
+              <div className="workprocess-box">
+                <div className="WorkP-content">
+                <h3><span className="wproHB me-2"></span>Design & Wireframing</h3>
+                <p><span className="wproCont me-2"></span> Create clean, responsive wireframes to map structure</p>
+                <p><span className="wproCont me-2"></span> Design high-fidelity mockups using tools like Figma or Adobe XD</p>
+                <p><span className="wproCont me-2"></span>Incorporate your brand identity (colors, typography, logo)</p>
+                </div>
+                <h1 className="d-fle"><span className="quarter-circle"></span></h1>
               </div>
-              <div>
-                <h3><span></span>Build in Webflow (or Code)</h3>
-                <p><span></span>Convert design into a fully functional, responsive website</p>
-                <p><span></span>Use Webflow (or hand-code with HTML/CSS/JS) for custom development</p>
-                <p><span></span>Add animations, forms, CMS (blog or dynamic content)</p>
-                <p><span></span>Optimize for SEO, fast load time, and all device sizes</p>
+
+              <div className="workprocess-box">
+                <div className="WorkP-content">
+                <h3><span className="wproHB me-2"></span>Build in Webflow (or Code)</h3>
+                <p><span className="wproCont me-2"></span> Convert design into a fully functional, responsive website</p>
+                <p><span className="wproCont me-2"></span>Use Webflow (or hand-code with HTML/CSS/JS) for custom development </p>
+                <p><span className="wproCont me-2"></span>Add animations, forms, CMS (blog or dynamic content)</p>
+                <p><span className="wproCont me-2"></span>Optimize for SEO, fast load time, and all device sizes</p>
+                </div>
+                <h1 className="d-fle"><span className="quarter-circle"></span></h1>
               </div>
-              <div>
-                <h3><span></span>Launch & Handoff</h3>
-                <p><span></span>Connect custom domain and set up hosting</p>
-                <p><span></span>Perform final testing and cross-browser checks</p>
-                <p><span></span>Deliver access, training (video or guide), and support options</p>
-                <p><span></span>Offer ongoing maintenance or future updates if needed</p>
+              
+              <div className="workprocess-box">
+                <div className="WorkP-content">
+                <h3><span className="wproHB me-2"></span>Launch & Handoff</h3>
+                <p><span className="wproCont me-2"></span> Connect custom domain and set up hosting</p>
+                <p><span className="wproCont me-2"></span> Perform final testing and cross-browser checks</p>
+                <p><span className="wproCont me-2"></span>Deliver access, training (video or guide), and support options</p>
+                <p><span className="wproCont me-2"></span>Offer ongoing maintenance or future updates if needed</p>
+                </div>
+                <h1 className="d-fle"><span className="quarter-circle"></span></h1>
               </div>
+              
             </div>
           </div>
         </div>
