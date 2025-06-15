@@ -89,6 +89,11 @@ nav {
   background-color: #ff3c9d;
   font-size: 30px;
   padding: 15px 5px 15px 5px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+.marquee-offer:hover{
+  background-color: #ea0f7d;
 }
 .marquee-offer img {
   width: 30px;
@@ -126,10 +131,10 @@ nav {
   background-color: #302c2c;
   padding: 15px;
   border-radius: 8px;
+  width: 100%;
 }
 .mail-container a {
   color: #fff;
-  width: 100%;
 }
 .mail-container:hover {
   border: 1px solid #ff3c9d;
@@ -144,6 +149,11 @@ nav {
   background-color: #ff3c9d;
   font-size: 30px;
   padding: 15px 5px 15px 5px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+.marquee-customer-head:hover {
+  background-color: #ea0f7d;
 }
 .marquee-customer-head img {
   width: 30px;
@@ -168,6 +178,8 @@ nav {
 }
 .line_text {
   font-style: italic;
+  letter-spacing: 3px;
+  color: #ff3c9d;
 }
 .line2 {
   margin-left: 20px;
@@ -248,7 +260,7 @@ nav {
 .need-a-service {
   font-family: 'Arial',  'sans-serif';
   text-align: center;
-  font-size: 20px;
+  font-size: 25px;
   letter-spacing: 2px;
   padding-bottom: 20px;
   border-bottom: 1px solid rgb(79, 75, 75);
@@ -359,7 +371,63 @@ nav {
   padding: 10px;
   font-family: 'Arial', 'sans-serif';
 }
-@media (max-width: 650px) {
+.workProcess-section {
+  padding: 0px 15px;
+}
+.workP-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+.workpLine {
+  width: 100px;
+  height: 2px;
+  background-color: #ff3c9d;
+}
+.workprocess-box {
+  border: 1px solid grey;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  position: relative;
+}
+.wproHB {
+  width: 20px;
+  height: 20px;
+  background-color: #ff3c9d;
+  border-radius: 50%
+}
+.WorkP-content h3 {
+  display: flex;
+  align-items: center;
+  letter-spacing: 2px;
+  padding-top: 15px;
+  margin-left: 15px;
+}
+.WorkP-content p {
+  display: flex;
+  align-items: center;
+  letter-spacing: 2px;
+  color: #a8a3a3;
+  font-size: 14px;
+}
+.wproCont {
+  width: 10px;
+  height: 10px;
+  background-color: #ff3c9d;
+  border-radius: 50%;
+}
+.quarter-circle {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: grey;
+  transition: all 0.5s ease;
+}
+@media (max-width: 750px) {
   .bodyHero {
     display: grid;
     grid-template-columns: 80% 20%;
@@ -385,7 +453,7 @@ nav {
     padding-bottom: 20px;
   }
 }
-@media (min-width: 650px) {
+@media (min-width: 750px) {
   .body {
     position: absolute;
     top: 120px;
@@ -430,8 +498,10 @@ nav {
   .gid-about-P {
     display: grid;
     grid-template-columns: auto auto;
-    gap: 20px;
+    gap: 10px;
     margin-top: 40px;
+    width: 100%;
+    position: relative;
   }
   .grid-thumbnail {
     display: grid;

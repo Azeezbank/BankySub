@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import bussiness_seller from "../../assets/young-guy-sitting-front-laptop-man-work-computer-freelancer_839035-119921-removebg-preview.png";
 import Marquee from "react-fast-marquee";
 import star from "../../assets/download.png";
-import { motion } from "framer-motion";
+import { easeIn, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import personalInfo from "../../assets/personal-infothumb-2653662e.png";
 // import { Typewriter } from "react-simple-typewriter";
@@ -47,6 +47,10 @@ const LandinpPage: React.FC = () => {
   const [ref7, view7] = useInView({ threshold: 1, triggerOnce: true });
   const [ref8, view8] = useInView({ threshold: 1, triggerOnce: true });
   const [ref9, view9] = useInView({ threshold: 1, triggerOnce: true });
+  const [ref10, view10] = useInView({ threshold: 1, triggerOnce: false});
+  const [ref11, view11] = useInView({triggerOnce: false, threshold: 1});
+  const [ref12, view12] = useInView({ threshold: 1, triggerOnce: false});
+  const [ref13, view13] = useInView({ threshold: 1, triggerOnce: false});
 
   useEffect(() => {
     const fetchDataPlans = async () => {
@@ -240,6 +244,7 @@ const LandinpPage: React.FC = () => {
                     <i className="bi bi-telegram fs-4 m-2"></i>
                   </div>
                 </motion.div>
+                
               </div>
             </div>
           </div>
@@ -329,13 +334,15 @@ const LandinpPage: React.FC = () => {
         <div className="bg-dark">
           <div className="need_help">
             <div>
-              <div className="contact-for-service">
-                <span></span>
+              <motion.div className="contact-for-service"
+              ref={ref10} initial={{opacity: 0, y: 100}} animate={view10? {opacity: 1, y: 0} : {opacity: 0, y: 100}} transition={{duration: 1, ease: easeIn, }}>
+                <span className="me-2"></span>
                 <h4>Need A Sercive ?</h4>
-              </div>
-              <h3 className="need-a-service">
+              </motion.div>
+              <motion.h3 className="need-a-service"
+              ref={ref11} initial={{opacity: 0, y: -100}} animate={view11? {opacity: 1, y: 0} : {opacity: 0, y: -100}} transition={{duration: 1, ease: easeIn, }}>
                 Let's work together. fixed a meeting
-              </h3>
+              </motion.h3>
 
               <div className="contact-div">
                 <h3>
@@ -367,14 +374,18 @@ const LandinpPage: React.FC = () => {
           </div>
         </div>
         <div className="planSection">
-          <div className="plans servicess">
+          <div>
+          <motion.div className="plans servicess"
+          ref={ref12} initial={{opacity: 0, y: -100}} animate={view12? {opacity: 1, y: 0} : {opacity: 0, y: -100}} transition={{duration: 1, ease: easeIn}}>
             <span className="line1"></span>
             <h4 className="line_text">Our Data Price List</h4>
             <span className="line2"></span>
+          </motion.div>
           </div>
-          <h3 className="need-a-service">
+          <motion.h3 className="need-a-service"
+          ref={ref13} initial={{opacity: 0, y: -100}} animate={view13? {opacity: 1, y: 0} : {opacity: 0, y: -100}} transition={{duration: 1, ease: easeIn, delay: 1}}>
             Our Special Price For Your Bussiness Development
-          </h3>
+          </motion.h3>
 
           <div className="plansPP">
             <div className="grid-plans self">
@@ -494,6 +505,51 @@ const LandinpPage: React.FC = () => {
                     ))}
                   </table>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="workProcess-section bg-dark">
+          <div className="workP-line">
+            <span className="workpLine me-2"></span>
+            <h4 className="line_text">Working Process</h4>
+            <span className="workpLine ms-2"></span>
+          </div>
+          <div>
+            <h3 className="need-a-service">
+              Your Dream Website In Just Few Steps
+            </h3>
+            <div>
+              <div className="workprocess-box">
+                <div className="WorkP-content">
+                <h3><span className="wproHB me-2"></span>Discovery & Concept</h3>
+                <p><span className="wproCont me-2"></span>Understand your business goals, audience, and brand voice</p>
+                <p><span className="wproCont me-2"></span>Define project scope, key features, and number of pages</p>
+                <p><span className="wproCont me-2"></span>Research industry trends and gather design inspiration</p>
+                <p><span className="wproCont me-2"></span>Present moodboards or sample layouts for direction approval</p>
+                <h1 className="d-fle"><span className="quarter-circle"></span></h1>
+                </div>
+              </div>
+              <div>
+                <h3><span></span>Design & Wireframing</h3>
+                <p><span></span>Create clean, responsive wireframes to map structure</p>
+                <p><span></span>Design high-fidelity mockups using tools like Figma or Adobe XD</p>
+                <p><span></span>Incorporate your brand identity (colors, typography, logo)</p>
+                <p><span></span></p>
+              </div>
+              <div>
+                <h3><span></span>Build in Webflow (or Code)</h3>
+                <p><span></span>Convert design into a fully functional, responsive website</p>
+                <p><span></span>Use Webflow (or hand-code with HTML/CSS/JS) for custom development</p>
+                <p><span></span>Add animations, forms, CMS (blog or dynamic content)</p>
+                <p><span></span>Optimize for SEO, fast load time, and all device sizes</p>
+              </div>
+              <div>
+                <h3><span></span>Launch & Handoff</h3>
+                <p><span></span>Connect custom domain and set up hosting</p>
+                <p><span></span>Perform final testing and cross-browser checks</p>
+                <p><span></span>Deliver access, training (video or guide), and support options</p>
+                <p><span></span>Offer ongoing maintenance or future updates if needed</p>
               </div>
             </div>
           </div>
