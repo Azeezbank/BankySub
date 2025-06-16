@@ -22,6 +22,7 @@ import airtel from "../../assets/80-806745_airtel-data-plan-airtel-logo-new.png"
 import glo from "../../assets/OIP.jfif";
 import nimobile from "../../assets/R.jfif";
 import axios from "axios";
+import animationV from '../../assets/dark_blue_bg_3.mp4';
 
 interface plan {
   d_id: number;
@@ -80,7 +81,11 @@ const LandinpPage: React.FC = () => {
         </div>
       </nav>
       <div>
-        <img src={hero_img} alt="Hero himage" className="heroBgImg" />
+        {/* <img src={hero_img} alt="Hero himage" className="heroBgImg" /> */}
+        <video
+        autoPlay loop muted playsInline className="">
+          <source src={animationV} type="video/mp4" />
+        </video>
       </div>
       <body className="body">
         <div className="bodyHero body-element-margin">
@@ -569,7 +574,7 @@ const LandinpPage: React.FC = () => {
         <div className="partner"> 
           <div className="workP-line mb-5 mt-3">
             <span className="workpLine me-2"></span>
-            <h4 className="line_text">Working Our Partner</h4>
+            <h4 className="line_text">Our Partners</h4>
             <span className="workpLine ms-2"></span>
           </div>
           <Marquee speed={30} gradient={false}>
@@ -586,7 +591,7 @@ const LandinpPage: React.FC = () => {
         </div>
 
         <footer>
-
+          <div></div>
         </footer>
       </body>
     </>
