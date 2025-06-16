@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BusLogo from "../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
 import "./LandingPage.css";
-// import hero_img from "../../assets/Download-Dark-Wallpapers-HD.png";
 import { Link } from "react-router-dom";
 import bussiness_seller from "../../assets/young-guy-sitting-front-laptop-man-work-computer-freelancer_839035-119921-removebg-preview.png";
 import Marquee from "react-fast-marquee";
@@ -9,7 +8,7 @@ import star from "../../assets/download.png";
 import { easeIn, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import personalInfo from "../../assets/personal-infothumb-2653662e.png";
-// import { Typewriter } from "react-simple-typewriter";
+import { Typewriter } from "react-simple-typewriter";
 import Data from "../../assets/data.jpg";
 import Airtime from "../../assets/airtime.svg";
 import cash from "../../assets/airtime2cash.jpg";
@@ -17,12 +16,13 @@ import cable from "../../assets/cable.jpg";
 import exam from "../../assets/resultchecker.png";
 import electricity from "../../assets/utility.jpg";
 import contact_img from "../../assets/project-need-dee85a1f.png";
-import mtn from "../../assets/mtn.jfif";
-import airtel from "../../assets/80-806745_airtel-data-plan-airtel-logo-new.png";
-import glo from "../../assets/OIP.jfif";
-import nimobile from "../../assets/R.jfif";
+import mtn from "../../assets/mtn.png";
+import airtel from "../../assets/airtel.png";
+import glo from "../../assets/glo.png";
+import nimobile from "../../assets/9mobile.png";
 import axios from "axios";
 import animationV from '../../assets/dark_blue_bg_3.mp4';
+import logo from '../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png';
 
 interface plan {
   d_id: number;
@@ -77,11 +77,22 @@ const LandinpPage: React.FC = () => {
       <nav>
         <div className="Brand">
           <img src={BusLogo} alt="Bussiness Logo" className="BrandLogo" />
-          <h2 className="text-white fontBrand">BankyConnect</h2>
+          <h2 className="text-white fontBrand">
+            <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'white' }}>
+            <Typewriter 
+              words={["BankyConnect"]}
+              loop={0}
+              cursor
+              cursorStyle="|"
+              typeSpeed={100}
+              deleteSpeed={50}
+              delaySpeed={1000}
+              />
+              </h1>
+            </h2>
         </div>
       </nav>
       <div className="animDiv">
-        {/* <img src={hero_img} alt="Hero himage" className="heroBgImg" /> */}
         <video
         autoPlay loop muted playsInline className="anime-video">
           <source src={animationV} type="video/mp4" />
@@ -89,7 +100,8 @@ const LandinpPage: React.FC = () => {
       </div>
       <body className="body">
         <div className="bodyHero body-element-margin">
-          <div>
+          <div className="pb-5 pt-3">
+            <h4 className="pb-3">WELCOME TO BANKYCONNECT</h4>
             <h4 className="availability">
               Currently Available For Virtual Top-Up <br /> Worldwide{" "}
               <i className="bi bi-arrow-up-right"></i>
@@ -242,11 +254,11 @@ const LandinpPage: React.FC = () => {
                 >
                   <h5>Follow</h5>
                   <div className="d-flex">
-                    <i className="bi bi-linkedin fs-4 m-2"></i>
-                    <i className="bi bi-whatsapp fs-4 m-2"></i>
-                    <i className="bi bi-facebook fs-4 m-2"></i>
-                    <i className="bi bi-twitter fs-4 m-2"></i>
-                    <i className="bi bi-telegram fs-4 m-2"></i>
+                    <i className="bi bi-linkedin linkdIn fs-4 m-2"></i>
+                    <i className="bi bi-whatsapp whatsapp fs-4 m-2"></i>
+                    <i className="bi bi-facebook facebook fs-4 m-2"></i>
+                    <i className="bi bi-twitter twitter fs-4 m-2"></i>
+                    <i className="bi bi-telegram telegram fs-4 m-2"></i>
                   </div>
                 </motion.div>
                 
@@ -591,7 +603,17 @@ const LandinpPage: React.FC = () => {
         </div>
 
         <footer>
-          <div></div>
+          <div>
+            <h3 className="foot-b">Bankyconnect</h3>
+            <p>Your reliable plug for virtual top up, data subscription, 
+              online payment and subscription system in Nigeria..</p>
+              <div>
+                <i className="bi bi-twitter twitter fs-2 me-3"></i>
+                <i className="bi bi-whatsapp whatsapp fs-2 me-3"></i>
+                <i className="bi bi-facebook facebook fs-2 me-3"></i>
+                <i className="bi bi-linkedin linkdIn fs-2"></i>
+              </div>
+          </div>
         </footer>
       </body>
     </>
