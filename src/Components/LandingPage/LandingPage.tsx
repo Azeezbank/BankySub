@@ -566,6 +566,28 @@ const LandinpPage: React.FC = () => {
             </div>
           </div>
         </div>
+        <div className="partner"> 
+          <div className="workP-line mb-5 mt-3">
+            <span className="workpLine me-2"></span>
+            <h4 className="line_text">Working Our Partner</h4>
+            <span className="workpLine ms-2"></span>
+          </div>
+          <Marquee speed={30} gradient={false}>
+            <img src={mtn} alt="mtn" className="partner-logo" />
+            <img src={airtel} alt="airtel" className="partner-logo" />
+            <img src={glo} alt="glo" className="partner-logo" />
+            <img src={nimobile} alt="nimobile" className="partner-logo" />
+            <img src={mtn} alt="mtn" className="partner-logo" />
+            <img src={airtel} alt="airtel" className="partner-logo" />
+            <img src={glo} alt="glo" className="partner-logo" />
+            <img src={nimobile} alt="nimobile" className="partner-logo" />
+            <img src={airtel} alt="airtel" className="partner-logo" />
+            </Marquee>
+        </div>
+
+        <footer>
+
+        </footer>
       </body>
     </>
   );

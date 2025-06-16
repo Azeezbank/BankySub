@@ -447,6 +447,16 @@ nav {
   height: 100%;
   border-radius: 0;
 }
+.partner-logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-right: 50px;
+}
+.partner {
+  padding: 0px 15px 80px 15px
+}
 @media (max-width: 750px) {
   .bodyHero {
     display: grid;
@@ -544,6 +554,13 @@ nav {
   .grid-workP {
     display: grid;
     grid-template-columns: auto auto;
-    gap: 10px
+    gap: 10px;
+    padding: 0px 10%;
+  }
+  .partner {
+    /* padding: 0px 10%; */
+    padding-bottom: 80px;
+    padding-left: 10%;
+    padding-right: 10%;
   }
 }
