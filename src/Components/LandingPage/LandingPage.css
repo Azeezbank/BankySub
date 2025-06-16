@@ -494,6 +494,7 @@ footer img {
   font-size: 22px;
   font-style: italic;
   letter-spacing: 3px;
+  padding-top: 10px;
 }
 @media (max-width: 750px) {
   .bodyHero {

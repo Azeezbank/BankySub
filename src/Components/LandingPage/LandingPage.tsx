@@ -22,7 +22,6 @@ import glo from "../../assets/glo.png";
 import nimobile from "../../assets/9mobile.png";
 import axios from "axios";
 import animationV from '../../assets/dark_blue_bg_3.mp4';
-import logo from '../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png';
 
 interface plan {
   d_id: number;
