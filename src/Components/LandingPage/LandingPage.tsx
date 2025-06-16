@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BusLogo from "../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
 import "./LandingPage.css";
-import hero_img from "../../assets/Download-Dark-Wallpapers-HD.png";
+// import hero_img from "../../assets/Download-Dark-Wallpapers-HD.png";
 import { Link } from "react-router-dom";
 import bussiness_seller from "../../assets/young-guy-sitting-front-laptop-man-work-computer-freelancer_839035-119921-removebg-preview.png";
 import Marquee from "react-fast-marquee";
@@ -80,10 +80,10 @@ const LandinpPage: React.FC = () => {
           <h2 className="text-white fontBrand">BankyConnect</h2>
         </div>
       </nav>
-      <div>
+      <div className="animDiv">
         {/* <img src={hero_img} alt="Hero himage" className="heroBgImg" /> */}
         <video
-        autoPlay loop muted playsInline className="">
+        autoPlay loop muted playsInline className="anime-video">
           <source src={animationV} type="video/mp4" />
         </video>
       </div>
