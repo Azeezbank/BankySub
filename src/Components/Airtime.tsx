@@ -85,7 +85,7 @@ const Airtime: React.FC = () => {
       }
       const response = await axios.post(
         "https://bankysub-api.onrender.com/api/airtime/topup",
-        { airtimeNChoosen, airtimeTChoosen, mobileN, amount },
+        { airtimeNChoosen, airtimeTChoosen, mobileN, amount, actualAmount },
         { withCredentials: true }
       );
       if (response.status === 200) {
