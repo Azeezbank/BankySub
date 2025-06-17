@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface items {
   d_id: number;
@@ -15,9 +16,29 @@ interface items {
 //Fund page
 const DataHistory: React.FC = () => {
   const [histories, setHistories] = useState<items[]>([]);
+  const navigate = useNavigate();
+
+  //Protect the page
+  useEffect(() => {
+    const ProtectPage = async () => {
+      try {
+        const response = await axios.get(
+          "https://bankysub-api.onrender.com/protected",
+          { withCredentials: true }
+        );
+        if (response.status === 200) {
+          console.log(response.data.message);
+        }
+      } catch (err: any) {
+        navigate("/login?");
+        console.error(err.response?.data.message);
+      }
+    };
+    ProtectPage();
+  }, []);
 
 
-
+  //Fetch data histories
   useEffect(() => {
     fetchItems();
   });
@@ -25,7 +46,7 @@ const DataHistory: React.FC = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        'https://bankysub-api.onrender.com/api/data/history', {withCredentials: true}
+        'https://bankysub-api.onrender.com/api/data/history', { withCredentials: true }
       );
       setHistories(response.data);
     } catch (err) {
@@ -33,7 +54,7 @@ const DataHistory: React.FC = () => {
     }
   };
 
-  
+
   return (
     <>
       <div className="dashboard-bg bg-light">
@@ -54,7 +75,7 @@ const DataHistory: React.FC = () => {
               </button>
             </div>
 
-            
+
           </div>
           <div className="table">
             <table className="table-data">

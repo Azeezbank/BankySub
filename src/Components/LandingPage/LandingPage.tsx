@@ -47,10 +47,10 @@ const LandinpPage: React.FC = () => {
   const [ref7, view7] = useInView({ threshold: 1, triggerOnce: true });
   const [ref8, view8] = useInView({ threshold: 1, triggerOnce: true });
   const [ref9, view9] = useInView({ threshold: 1, triggerOnce: true });
-  const [ref10, view10] = useInView({ threshold: 1, triggerOnce: false});
-  const [ref11, view11] = useInView({triggerOnce: false, threshold: 1});
-  const [ref12, view12] = useInView({ threshold: 1, triggerOnce: false});
-  const [ref13, view13] = useInView({ threshold: 1, triggerOnce: false});
+  const [ref10, view10] = useInView({ threshold: 1, triggerOnce: false });
+  const [ref11, view11] = useInView({ triggerOnce: false, threshold: 1 });
+  const [ref12, view12] = useInView({ threshold: 1, triggerOnce: false });
+  const [ref13, view13] = useInView({ threshold: 1, triggerOnce: false });
 
   useEffect(() => {
     const fetchDataPlans = async () => {
@@ -78,22 +78,22 @@ const LandinpPage: React.FC = () => {
           <img src={BusLogo} alt="Bussiness Logo" className="BrandLogo" />
           <h2 className="text-white fontBrand">
             <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'white' }}>
-            <Typewriter 
-              words={["BankyConnect"]}
-              loop={0}
-              cursor
-              cursorStyle="|"
-              typeSpeed={100}
-              deleteSpeed={50}
-              delaySpeed={1000}
+              <Typewriter
+                words={["BankyConnect"]}
+                loop={0}
+                cursor
+                cursorStyle="|"
+                typeSpeed={100}
+                deleteSpeed={50}
+                delaySpeed={1000}
               />
-              </h1>
-            </h2>
+            </h1>
+          </h2>
         </div>
       </nav>
       <div className="animDiv">
         <video
-        autoPlay loop muted playsInline className="anime-video">
+          autoPlay loop muted playsInline className="anime-video">
           <source src={animationV} type="video/mp4" />
         </video>
       </div>
@@ -159,9 +159,8 @@ const LandinpPage: React.FC = () => {
               />
               <motion.p
                 ref={ref2}
-                className={`animate-start body-element-margin body-font pt-4 pb-2 ${
-                  view2 ? "anim" : " "
-                }`}
+                className={`animate-start body-element-margin body-font pt-4 pb-2 ${view2 ? "anim" : " "
+                  }`}
               >
                 My name is Banky, I Providing virtual top-up services including
                 Data Bundles, Airtime, Electricity Tokens, and Cable TV
@@ -260,7 +259,7 @@ const LandinpPage: React.FC = () => {
                     <i className="bi bi-telegram telegram fs-4 m-2"></i>
                   </div>
                 </motion.div>
-                
+
               </div>
             </div>
           </div>
@@ -351,12 +350,12 @@ const LandinpPage: React.FC = () => {
           <div className="need_help">
             <div>
               <motion.div className="contact-for-service"
-              ref={ref10} initial={{opacity: 0, y: 100}} animate={view10? {opacity: 1, y: 0} : {opacity: 0, y: 100}} transition={{duration: 1, ease: easeIn, }}>
+                ref={ref10} initial={{ opacity: 0, y: 100 }} animate={view10 ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }} transition={{ duration: 1, ease: easeIn, }}>
                 <span className="me-2"></span>
                 <h4>Need A Sercive ?</h4>
               </motion.div>
               <motion.h3 className="need-a-service"
-              ref={ref11} initial={{opacity: 0, y: -100}} animate={view11? {opacity: 1, y: 0} : {opacity: 0, y: -100}} transition={{duration: 1, ease: easeIn, }}>
+                ref={ref11} initial={{ opacity: 0, y: -100 }} animate={view11 ? { opacity: 1, y: 0 } : { opacity: 0, y: -100 }} transition={{ duration: 1, ease: easeIn, }}>
                 Let's work together. fixed a meeting
               </motion.h3>
 
@@ -391,15 +390,15 @@ const LandinpPage: React.FC = () => {
         </div>
         <div className="planSection">
           <div>
-          <motion.div className="plans servicess"
-          ref={ref12} initial={{opacity: 0, y: -100}} animate={view12? {opacity: 1, y: 0} : {opacity: 0, y: -100}} transition={{duration: 1, ease: easeIn}}>
-            <span className="line1"></span>
-            <h4 className="line_text">Our Data Price List</h4>
-            <span className="line2"></span>
-          </motion.div>
+            <motion.div className="plans servicess"
+              ref={ref12} initial={{ opacity: 0, y: -100 }} animate={view12 ? { opacity: 1, y: 0 } : { opacity: 0, y: -100 }} transition={{ duration: 1, ease: easeIn }}>
+              <span className="line1"></span>
+              <h4 className="line_text">Our Data Price List</h4>
+              <span className="line2"></span>
+            </motion.div>
           </div>
           <motion.h3 className="need-a-service"
-          ref={ref13} initial={{opacity: 0, y: -100}} animate={view13? {opacity: 1, y: 0} : {opacity: 0, y: -100}} transition={{duration: 1, ease: easeIn, delay: 1}}>
+            ref={ref13} initial={{ opacity: 0, y: -100 }} animate={view13 ? { opacity: 1, y: 0 } : { opacity: 0, y: -100 }} transition={{ duration: 1, ease: easeIn, delay: 1 }}>
             Our Special Price For Your Bussiness Development
           </motion.h3>
 
@@ -538,51 +537,51 @@ const LandinpPage: React.FC = () => {
             <div className="grid-workP">
               <div className="workprocess-box">
                 <div className="WorkP-content">
-                <h3><span className="wproHB me-2"></span>Discovery & Concept</h3>
-                <p><span className="wproCont me-2"></span>Understand your business goals, audience, and brand voice</p>
-                <p><span className="wproCont me-2"></span>Define project scope, key features, and number of pages</p>
-                <p><span className="wproCont me-2"></span>Research industry trends and gather design inspiration</p>
-                <p><span className="wproCont me-2"></span>Present moodboards or sample layouts for direction approval</p>
+                  <h3><span className="wproHB me-2"></span>Discovery & Concept</h3>
+                  <p><span className="wproCont me-2"></span>Understand your business goals, audience, and brand voice</p>
+                  <p><span className="wproCont me-2"></span>Define project scope, key features, and number of pages</p>
+                  <p><span className="wproCont me-2"></span>Research industry trends and gather design inspiration</p>
+                  <p><span className="wproCont me-2"></span>Present moodboards or sample layouts for direction approval</p>
                 </div>
                 <h1 className="d-fle"><span className="quarter-circle"></span></h1>
               </div>
 
               <div className="workprocess-box">
                 <div className="WorkP-content">
-                <h3><span className="wproHB me-2"></span>Design & Wireframing</h3>
-                <p><span className="wproCont me-2"></span> Create clean, responsive wireframes to map structure</p>
-                <p><span className="wproCont me-2"></span> Design high-fidelity mockups using tools like Figma or Adobe XD</p>
-                <p><span className="wproCont me-2"></span>Incorporate your brand identity (colors, typography, logo)</p>
+                  <h3><span className="wproHB me-2"></span>Design & Wireframing</h3>
+                  <p><span className="wproCont me-2"></span> Create clean, responsive wireframes to map structure</p>
+                  <p><span className="wproCont me-2"></span> Design high-fidelity mockups using tools like Figma or Adobe XD</p>
+                  <p><span className="wproCont me-2"></span>Incorporate your brand identity (colors, typography, logo)</p>
                 </div>
                 <h1 className="d-fle"><span className="quarter-circle"></span></h1>
               </div>
 
               <div className="workprocess-box">
                 <div className="WorkP-content">
-                <h3><span className="wproHB me-2"></span>Build in Code</h3>
-                <p><span className="wproCont me-2"></span> Convert design into a fully functional, responsive website</p>
-                <p><span className="wproCont me-2"></span>Use hand-code for custom development </p>
-                <p><span className="wproCont me-2"></span>Add animations, forms, CMS (blog or dynamic content)</p>
-                <p><span className="wproCont me-2"></span>Optimize for SEO, fast load time, and all device sizes</p>
+                  <h3><span className="wproHB me-2"></span>Build in Code</h3>
+                  <p><span className="wproCont me-2"></span> Convert design into a fully functional, responsive website</p>
+                  <p><span className="wproCont me-2"></span>Use hand-code for custom development </p>
+                  <p><span className="wproCont me-2"></span>Add animations, forms, CMS (blog or dynamic content)</p>
+                  <p><span className="wproCont me-2"></span>Optimize for SEO, fast load time, and all device sizes</p>
                 </div>
                 <h1 className="d-fle"><span className="quarter-circle"></span></h1>
               </div>
-              
+
               <div className="workprocess-box">
                 <div className="WorkP-content">
-                <h3><span className="wproHB me-2"></span>Launch & Handoff</h3>
-                <p><span className="wproCont me-2"></span> Connect custom domain and set up hosting</p>
-                <p><span className="wproCont me-2"></span> Perform final testing and cross-browser checks</p>
-                <p><span className="wproCont me-2"></span>Deliver access, training (video or guide), and support options</p>
-                <p><span className="wproCont me-2"></span>Offer ongoing maintenance or future updates if needed</p>
+                  <h3><span className="wproHB me-2"></span>Launch & Handoff</h3>
+                  <p><span className="wproCont me-2"></span> Connect custom domain and set up hosting</p>
+                  <p><span className="wproCont me-2"></span> Perform final testing and cross-browser checks</p>
+                  <p><span className="wproCont me-2"></span>Deliver access, training (video or guide), and support options</p>
+                  <p><span className="wproCont me-2"></span>Offer ongoing maintenance or future updates if needed</p>
                 </div>
                 <h1 className="d-fle"><span className="quarter-circle"></span></h1>
               </div>
-              
+
             </div>
           </div>
         </div>
-        <div className="partner"> 
+        <div className="partner">
           <div className="workP-line mb-5 mt-3">
             <span className="workpLine me-2"></span>
             <h4 className="line_text">Our Partners</h4>
@@ -598,20 +597,20 @@ const LandinpPage: React.FC = () => {
             <img src={glo} alt="glo" className="partner-logo" />
             <img src={nimobile} alt="nimobile" className="partner-logo" />
             <img src={airtel} alt="airtel" className="partner-logo" />
-            </Marquee>
+          </Marquee>
         </div>
 
         <footer>
           <div>
             <h3 className="foot-b">Bankyconnect</h3>
-            <p>Your reliable plug for virtual top up, data subscription, 
+            <p>Your reliable plug for virtual top up, data subscription,
               online payment and subscription system in Nigeria..</p>
-              <div>
-                <i className="bi bi-twitter twitter fs-2 me-3"></i>
-                <i className="bi bi-whatsapp whatsapp fs-2 me-3"></i>
-                <i className="bi bi-facebook facebook fs-2 me-3"></i>
-                <i className="bi bi-linkedin linkdIn fs-2"></i>
-              </div>
+            <div>
+              <i className="bi bi-twitter twitter fs-2 me-3"></i>
+              <i className="bi bi-whatsapp whatsapp fs-2 me-3"></i>
+              <i className="bi bi-facebook facebook fs-2 me-3"></i>
+              <i className="bi bi-linkedin linkdIn fs-2"></i>
+            </div>
           </div>
         </footer>
       </body>

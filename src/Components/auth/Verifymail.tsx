@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png';
 
 const Login: React.FC = () => {
-  
+
   const [otp, setOtp] = useState('');
   const [isAuth, setIsAuth] = useState(false);
   const [isMessage, setIsMessage] = useState(false);
@@ -37,7 +37,7 @@ const Login: React.FC = () => {
       <div className="registration-bg">
         <div className="form-container">
           <form onSubmit={handleverification}>
-            {isMessage && <p className="errorMessage">{message}</p> }
+            {isMessage && <p className="errorMessage">{message}</p>}
             <div className="logodiv">
               <img src={logo} alt="Company logo" className="logo bg-white" />
               <h5>Verify Your Mail</h5>
@@ -53,13 +53,13 @@ const Login: React.FC = () => {
             <br />
             <br />
             {!isAuth ? (
-            <button className="RegButton" type="submit">
-            Verify
-          </button>
+              <button className="RegButton" type="submit">
+                Verify
+              </button>
             ) : (
               <button className="RegButton" type="submit">
-              Verifying...
-            </button>
+                Verifying...
+              </button>
             )}
             <p className="signIn">
               Don't have an account yet?{" "}

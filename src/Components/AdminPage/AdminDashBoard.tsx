@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
 import "./Admin.css";
 import { Link, Outlet } from "react-router-dom";
@@ -18,6 +20,7 @@ const AdminDashBoard: React.FC = () => {
   const [isUser, setIsUser] = useState<menuState>({});
   const [isGateway, setIsGateway] = useState<menuState>({});
   const [isDataGate, setIsDataGate] = useState<menuState>({});
+  const navigate = useNavigate();
 
   const handleVisible = () => {
     setIsOpen(!isOpen);
@@ -79,13 +82,31 @@ const AdminDashBoard: React.FC = () => {
     }));
   };
 
+  //Admin protected route
+  useEffect(() => {
+    const adminProtectPage = async () => {
+      try {
+        const response = await axios.get(
+          "https://bankysub-api.onrender.com/api/admin/route",
+          { withCredentials: true }
+        );
+        if (response.status === 200) {
+          console.log(response.data.message);
+        }
+      } catch (err: any) {
+        navigate("/login?");
+        console.error(err.response?.data.message);
+      }
+    };
+    adminProtectPage();
+  }, []);
+
   return (
     <>
       <div className="flexEntire">
         <div
-          className={`aside ${
-            isOpen ? "visible" : "hidden"
-          } flexAside admin-aside`}
+          className={`aside ${isOpen ? "visible" : "hidden"
+            } flexAside admin-aside`}
         >
           <aside>
             <div className="admin-image">
@@ -297,9 +318,8 @@ const AdminDashBoard: React.FC = () => {
           </aside>
         </div>
         <div
-          className={`main ${
-            isOpen ? "with-margin" : "with-no-margin"
-          } flexMain`}
+          className={`main ${isOpen ? "with-margin" : "with-no-margin"
+            } flexMain`}
         >
           <main>
             <NavBar sideBarClickHandler={handleVisible} />

@@ -46,9 +46,6 @@ const Data: React.FC = () => {
   const [plan, setPlan] = useState('');
   const navigate = useNavigate();
 
-  // const handleVisible = () => {
-  //   setIsOpen(!isOpen);
-  // };
 
   const DataPrice = choosenDataPlan;
 
@@ -58,6 +55,7 @@ const Data: React.FC = () => {
     setPlan(e.target.selectedOptions[0].text)
   };
 
+  //fetch network
   useEffect(() => {
     const fetchNetwork = async () => {
       try {
@@ -183,144 +181,144 @@ const Data: React.FC = () => {
 
   return (
     <>
-          <main>
-            <div className="airtimeForm grid-balance-section-m">
-              <p className="text-center pt-3">Buy Data</p>
-              <form className="transactionForm">
-                <p>Network</p>
-                <select aria-label="choose nework" onChange={handleNetworkType}>
-                  <option>---Select---</option>
-                  {networks.map((n) => (
-                    <option key={n.d_id as React.Key}>{n.name}</option>
-                  ))}
-                </select>
-                <p>Data Type</p>
-                <select
-                  aria-label="choose dataType"
-                  onClick={fetchDataType}
-                  onChange={(e) => setChoosenDataType(e.target.value)}
+      <main>
+        <div className="airtimeForm grid-balance-section-m">
+          <p className="text-center pt-3">Buy Data</p>
+          <form className="transactionForm">
+            <p>Network</p>
+            <select aria-label="choose nework" onChange={handleNetworkType}>
+              <option>---Select---</option>
+              {networks.map((n) => (
+                <option key={n.d_id as React.Key}>{n.name}</option>
+              ))}
+            </select>
+            <p>Data Type</p>
+            <select
+              aria-label="choose dataType"
+              onClick={fetchDataType}
+              onChange={(e) => setChoosenDataType(e.target.value)}
+            >
+              <option>---Select---</option>
+              {dataType.map((d) => (
+                <option key={d.d_id as React.Key}>{d.name}</option>
+              ))}
+            </select>{" "}
+            <br />
+            <p>Data Plan</p>
+            <select
+              aria-label="choose dataPlan"
+              onClick={fetchDataPlan}
+              onChange={handlePrice}
+            >
+              <option>---Select---</option>
+              {dataPlan.map((dp) => (
+                <option
+                  key={dp.d_id}
+                  value={dp.user || dp.reseller || dp.api}
                 >
-                  <option>---Select---</option>
-                  {dataType.map((d) => (
-                    <option key={d.d_id as React.Key}>{d.name}</option>
-                  ))}
-                </select>{" "}
-                <br />
-                <p>Data Plan</p>
-                <select
-                  aria-label="choose dataPlan"
-                  onClick={fetchDataPlan}
-                  onChange={handlePrice}
-                >
-                  <option>---Select---</option>
-                  {dataPlan.map((dp) => (
-                    <option
-                      key={dp.d_id}
-                      value={dp.user || dp.reseller || dp.api}
-                    >
-                      {dp.name} {dp.data_type} = #{" "}
-                      {dp.user || dp.reseller || dp.api} {dp.validity}
-                    </option>
-                  ))}
-                </select>{" "}
-                <br />
-                <label htmlFor={"phone"}>Phone</label> <br />
+                  {dp.name} {dp.data_type} = #{" "}
+                  {dp.user || dp.reseller || dp.api} {dp.validity}
+                </option>
+              ))}
+            </select>{" "}
+            <br />
+            <label htmlFor={"phone"}>Phone</label> <br />
+            <input
+              type={"number"}
+              name="phone"
+              id="phone"
+              onChange={(e) => setMobileNumber(e.target.value)}
+              placeholder="Phone Number"
+              required
+            />
+            <p>Amount</p>
+            <div className="input-group">
+              <p className="input-group-text bg-light">NGN.</p>
+
+              <input
+                type="text"
+                placeholder="Amount"
+                className="form-control"
+                value={choosenDataPlan}
+                required
+                disabled
+              />
+              <p className="input-group-text bg-light">.00</p>
+            </div>
+            <div className="flex-bypass">
+              <p>
                 <input
-                  type={"number"}
-                  name="phone"
-                  id="phone"
-                  onChange={(e) => setMobileNumber(e.target.value)}
-                  placeholder="Phone Number"
+                  aria-label="checkbox"
+                  type="checkbox"
+                  name="bypass"
+                  id="bypass"
                   required
                 />
-                <p>Amount</p>
-                <div className="input-group">
-                  <p className="input-group-text bg-light">NGN.</p>
-
-                  <input
-                    type="text"
-                    placeholder="Amount"
-                    className="form-control"
-                    value={choosenDataPlan}
-                    required
-                    disabled
-                  />
-                  <p className="input-group-text bg-light">.00</p>
-                </div>
-                <div className="flex-bypass">
-                  <p>
-                    <input
-                      aria-label="checkbox"
-                      type="checkbox"
-                      name="bypass"
-                      id="bypass"
-                      required
-                    />
-                  </p>{" "}
-                  <label htmlFor={"bypass"}>Bypass Number Validator</label>
-                </div>
-                {isProcessing ? (
-                <button onClick={FetchDataBundle} type="submit">
-                  Purchase
-                </button>
-                ) : (
-                  <button onClick={FetchDataBundle} type="submit">
-                 <span className="spinner-border spinner-border-sm" role="status"><span className="visually-hidden"></span></span> Processing...
-                </button>
-                )}
-              </form>
+              </p>{" "}
+              <label htmlFor={"bypass"}>Bypass Number Validator</label>
             </div>
-            {/* data success modal */}
-            {isModalSuccess && (
-              <div className="modal-bg">
-                <div>
-                  <div className="modall">
-                    <div>
-                      <h1 className="success-mark">
-                        <i className="bi bi-check2 text-success"></i>
-                      </h1>
-                      <h4>Transaction Successful</h4>
-                      <p>
-                        You've Sent {choosenNetwork} {plan} Data Plan
-                        To {mobileNumber}
-                      </p>
-                      <button
-                        className="modal-ok"
-                        type="button"
-                        onClick={() => setIsModalSuccess(false)}
-                      >
-                        Okay
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {isProcessing ? (
+              <button onClick={FetchDataBundle} type="submit">
+                Purchase
+              </button>
+            ) : (
+              <button onClick={FetchDataBundle} type="submit">
+                <span className="spinner-border spinner-border-sm" role="status"><span className="visually-hidden"></span></span> Processing...
+              </button>
             )}
-
-            {/* Failed mo dal */}
-            {isModalFail && (
-              <div className="modal-bg">
+          </form>
+        </div>
+        {/* data success modal */}
+        {isModalSuccess && (
+          <div className="modal-bg">
+            <div>
+              <div className="modall">
                 <div>
-                  <div className="modall">
-                    <div>
-                      <h1 className="success-mark">
-                        <i className="bi bi-question-circle text-success"></i>
-                      </h1>
-                      <h4>Transaction Processing!</h4>
-                      <p>Fund will be reverse if failed</p>
-                      <button
-                        className="modal-ok"
-                        type="button"
-                        onClick={() => setIsModalFail(false)}
-                      >
-                        Okay
-                      </button>
-                    </div>
-                  </div>
+                  <h1 className="success-mark">
+                    <i className="bi bi-check2 text-success"></i>
+                  </h1>
+                  <h4>Transaction Successful</h4>
+                  <p>
+                    You've Sent {choosenNetwork} {plan} Data Plan
+                    To {mobileNumber}
+                  </p>
+                  <button
+                    className="modal-ok"
+                    type="button"
+                    onClick={() => setIsModalSuccess(false)}
+                  >
+                    Okay
+                  </button>
                 </div>
               </div>
-            )};
-          </main>
+            </div>
+          </div>
+        )}
+
+        {/* Failed mo dal */}
+        {isModalFail && (
+          <div className="modal-bg">
+            <div>
+              <div className="modall">
+                <div>
+                  <h1 className="success-mark">
+                    <i className="bi bi-question-circle text-success"></i>
+                  </h1>
+                  <h4>Transaction Processing!</h4>
+                  <p>Fund will be reverse if failed</p>
+                  <button
+                    className="modal-ok"
+                    type="button"
+                    onClick={() => setIsModalFail(false)}
+                  >
+                    Okay
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )};
+      </main>
     </>
   );
 };

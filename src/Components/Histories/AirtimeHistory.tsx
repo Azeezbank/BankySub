@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 interface items {
@@ -16,9 +17,10 @@ interface items {
 //Fund page
 const AirtimeHistory: React.FC = () => {
   const [histories, setHistories] = useState<items[]>([]);
+  const navigate = useNavigate();
 
 
-
+  //Get Airtime Histories
   useEffect(() => {
     fetchItems();
   });
@@ -26,7 +28,7 @@ const AirtimeHistory: React.FC = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        'https://bankysub-api.onrender.com/api/airtime/history', {withCredentials: true}
+        'https://bankysub-api.onrender.com/api/airtime/history', { withCredentials: true }
       );
       setHistories(response.data);
     } catch (err) {
@@ -34,7 +36,25 @@ const AirtimeHistory: React.FC = () => {
     }
   };
 
-  
+  //Protect the page
+  useEffect(() => {
+    const ProtectPage = async () => {
+      try {
+        const response = await axios.get(
+          "https://bankysub-api.onrender.com/protected",
+          { withCredentials: true }
+        );
+        if (response.status === 200) {
+          console.log(response.data.message);
+        }
+      } catch (err: any) {
+        navigate("/login?");
+        console.error(err.response?.data.message);
+      }
+    };
+    ProtectPage();
+  }, []);
+
   return (
     <>
       <div className="dashboard-bg bg-light">
@@ -55,7 +75,7 @@ const AirtimeHistory: React.FC = () => {
               </button>
             </div>
 
-            
+
           </div>
           <div className="table">
             <table className="table-data">
@@ -79,9 +99,9 @@ const AirtimeHistory: React.FC = () => {
                     className={index % 2 === 0 ? "bg-light" : "bg-white"}
                   >
                     <td>{hist.d_id}</td>
-                            <td>{hist.network}</td>
-                                <td>{hist.airtimeType}</td>
-                            <td>{hist.amount}</td>
+                    <td>{hist.network}</td>
+                    <td>{hist.airtimeType}</td>
+                    <td>{hist.amount}</td>
                     <td>{hist.phone_number}</td>
                     <td>{hist.previous_balance}</td>
                     <td>{hist.new_balance}</td>

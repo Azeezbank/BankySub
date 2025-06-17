@@ -28,7 +28,7 @@ const DataGateway: React.FC = () => {
     const handleMSmeData = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/all/data/plan", {withCredentials: true}
+          "https://bankysub-api.onrender.com/all/data/plan", { withCredentials: true }
         );
         if (response.status === 200) {
           setAlPlan(response.data);
@@ -57,7 +57,7 @@ const DataGateway: React.FC = () => {
       setIsSaving(false)
       await axios.put(
         "https://bankysub-api.onrender.com/update-data-plans",
-        allPlan, {withCredentials: true}
+        allPlan, { withCredentials: true }
       );
       setIsSaving(true)
     } catch (err: any) {
@@ -73,7 +73,7 @@ const DataGateway: React.FC = () => {
       setIsUpdate(false)
       await axios.put(
         "https://bankysub-api.onrender.com/update/data/types/status",
-        { dataTypeNetworkName, dataTypeName, isDataTypeStatus }, {withCredentials: true}
+        { dataTypeNetworkName, dataTypeName, isDataTypeStatus }, { withCredentials: true }
       );
       setIsUpdate(true);
     } catch (err: any) {
@@ -88,48 +88,48 @@ const DataGateway: React.FC = () => {
         <h5>Dashboard</h5>
         <div className="bg-white-color">
           <div>
-           
-              <h6>Data Status</h6>
-              <div className="d-flex status-input"> 
-                <select
-                  aria-label="network"
-                  onChange={(e) => setDataTypeNetworkName(e.target.value)}
-                >
-                   <option>MTN</option>
+
+            <h6>Data Status</h6>
+            <div className="d-flex status-input">
+              <select
+                aria-label="network"
+                onChange={(e) => setDataTypeNetworkName(e.target.value)}
+              >
+                <option>MTN</option>
                 <option>AIRTEL</option>
                 <option>GLO</option>
                 <option>9MOBILE</option>
-                 
-                </select>
-                <select
-                  aria-label="name"
-                  onChange={(e) => setDataTypeName(e.target.value)}
-                >
-                <option>SME</option>
-                  <option>GIFTING</option>
-                  <option>CORPORATE GIFTING</option>
-                </select>
 
-                <select
-                  aria-label="select"
-                  onChange={(e) => setIsDataTypeStatus(e.target.value)}
-                >
-                  <option>active</option>
-                  <option>disabled</option>
-                </select>
-              </div>
-              <div className="data_type_update">
-                {isUpdate? (
+              </select>
+              <select
+                aria-label="name"
+                onChange={(e) => setDataTypeName(e.target.value)}
+              >
+                <option>SME</option>
+                <option>GIFTING</option>
+                <option>CORPORATE GIFTING</option>
+              </select>
+
+              <select
+                aria-label="select"
+                onChange={(e) => setIsDataTypeStatus(e.target.value)}
+              >
+                <option>active</option>
+                <option>disabled</option>
+              </select>
+            </div>
+            <div className="data_type_update">
+              {isUpdate ? (
                 <button type="button" onClick={handlePlanStatus}>
                   Update
                 </button>
-                ) : (
-                  <button type="button" onClick={handlePlanStatus}>
+              ) : (
+                <button type="button" onClick={handlePlanStatus}>
                   Updating...
                 </button>
-                )}
-              </div>
-            
+              )}
+            </div>
+
           </div>
 
           <h6 className="pt-4">ALL DATA PLAN</h6>
@@ -260,23 +260,23 @@ const DataGateway: React.FC = () => {
           </div>
 
           {isSaving ? (
-          <button
-            type="submit"
-            onClick={submitPlans}
-            className="update-save-button"
-          >
-            {" "}
-            Save
-          </button>
+            <button
+              type="submit"
+              onClick={submitPlans}
+              className="update-save-button"
+            >
+              {" "}
+              Save
+            </button>
           ) : (
             <button
-            type="submit"
-            onClick={submitPlans}
-            className="update-save-button"
-          >
-            {" "}
-            Saving...
-          </button>
+              type="submit"
+              onClick={submitPlans}
+              className="update-save-button"
+            >
+              {" "}
+              Saving...
+            </button>
           )}
         </div>
       </div>

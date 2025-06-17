@@ -23,35 +23,35 @@ import AirtimeHistory from './Components/Histories/AirtimeHistory';
 import Verifymail from './Components/auth/Verifymail';
 import UserInfo from './Components/AdminPage/users/UserInfo';
 
-const App:React.FC = () => {
+const App: React.FC = () => {
   return (
     <>
-    <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<LandinpPage />} />
-      <Route path='/user/*' element={<HomeLayout /> } >
-      <Route path='dashboard' element={<Home />} />
-      <Route path='data' element={<Data />} />
-      <Route path='airtime' element={<Airtime />} />
-      <Route path='verify' element={<Verify />} />
-      <Route path='data/history' element={<DataHistory />} />
-      <Route path='airtime/history' element={<AirtimeHistory />} />
-      </Route>
-      <Route path='/register' element={<Register />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/verify/mail' element={<Verifymail />} />
-      <Route path='/vend/electicity/bill' element={<Electricity />} />
-      
-      <Route path='/admin/*' element={<AdminDashBoard />} >
-      <Route path='dashboard' element={<Dashboard />} />
-      <Route path='found/hist' element={ <FundHist />} />
-      <Route path='users' element={<Users />} />
-      <Route path='UserInfo/:id' element={<UserInfo />} />
-      <Route path='setting' element={<Setting />} />
-      <Route path='data/gateway' element={<DataGateway />} />
-      </Route>
-    </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<LandinpPage />} />
+          <Route path='/user/*' element={<HomeLayout />} >
+            <Route path='dashboard' element={<Home />} />
+            <Route path='data' element={<Data />} />
+            <Route path='airtime' element={<Airtime />} />
+            <Route path='verify' element={<Verify />} />
+            <Route path='data/history' element={<DataHistory />} />
+            <Route path='airtime/history' element={<AirtimeHistory />} />
+          </Route>
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/verify/mail' element={<Verifymail />} />
+          <Route path='/vend/electicity/bill' element={<Electricity />} />
+
+          <Route path='/admin/*' element={<AdminDashBoard />} >
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='found/hist' element={<FundHist />} />
+            <Route path='users' element={<Users />} />
+            <Route path='UserInfo/:id' element={<UserInfo />} />
+            <Route path='setting' element={<Setting />} />
+            <Route path='data/gateway' element={<DataGateway />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 };

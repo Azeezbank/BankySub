@@ -11,43 +11,52 @@
   border: 1px solid grey;
   margin: 3px;
 }
+
 .header-color {
   background-color: #ff3c9d;
   height: 40px;
 }
+
 .input-table-container {
   width: 100%;
   overflow-x: auto;
 }
+
 .id {
   width: 100%;
   outline: none;
 }
+
 .id-row {
   width: fit-content;
   padding: 0px 3px;
   border-right: 2px solid grey;
   font-family: "Georgia", "Times" "New Roman", "Times", "serif";
 }
+
 table {
   border-collapse: collapse;
 }
+
 .update-save-button {
   background-color: #ff3c9d;
   color: #fff;
   border-radius: 5px;
   margin-top: 15px;
 }
+
 .update-save-button:hover {
   background-color: #ce0b6c;
   color: #fff;
   border-radius: 5px;
 }
+
 .data_type_update {
   margin-bottom: 40px;
   margin-top: 5px;
   margin-left: 5%;
 }
+
 .data_type_update button {
   background-color: #ff3c9d;
   border-radius: 8px;

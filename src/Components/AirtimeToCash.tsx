@@ -1,14 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import NavBar from "./NavBar";
 import avatar from "../assets/avatar.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Airtime: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleVisible = () => {
     setIsOpen(!isOpen);
   };
+
+  //Protect the page
+  useEffect(() => {
+    const ProtectPage = async () => {
+      try {
+        const response = await axios.get(
+          "https://bankysub-api.onrender.com/protected",
+          { withCredentials: true }
+        );
+        if (response.status === 200) {
+          console.log(response.data.message);
+        }
+      } catch (err: any) {
+        navigate("/login?");
+        console.error(err.response?.data.message);
+      }
+    };
+    ProtectPage();
+  }, []);
 
   return (
     <>
@@ -111,9 +133,8 @@ const Airtime: React.FC = () => {
           </aside>
         </div>
         <div
-          className={`main ${
-            isOpen ? "with-margin" : "with-no-margin"
-          } flexMain`}
+          className={`main ${isOpen ? "with-margin" : "with-no-margin"
+            } flexMain`}
         >
           <main>
             <NavBar sideBarClickHandler={handleVisible} />

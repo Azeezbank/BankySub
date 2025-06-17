@@ -6,6 +6,7 @@ nav {
   border-bottom: 1px solid grey;
   z-index: 2;
 }
+
 .BrandLogo {
   background-color: #ff3c9d;
   width: 30px;
@@ -13,27 +14,32 @@ nav {
   border-radius: 50%;
   margin-top: 2px;
 }
+
 .Brand {
   display: flex;
   align-items: center;
 }
+
 .fontBrand {
   font-family: system-ui, "-apple-system", BlinkMacSystemFont, "Segoe UI",
     "Roboto", Oxygen, Ubuntu, Cantarell, Open Sans, "Helvetica Neue", sans-serif;
   margin-left: 10px;
   margin-top: 5px;
 }
+
 .animDiv {
   width: 100%;
   height: 100vh;
   overflow: hidden;
   position: fixed;
 }
+
 .anime-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .body {
   position: absolute;
   top: 120px;
@@ -45,11 +51,13 @@ nav {
   width: 100%;
   overflow-x: hidden;
 }
+
 .availability {
   padding-bottom: 10px;
   border-bottom: 1px solid #fff;
   width: fit-content;
 }
+
 .heroBrandName {
   font-size: 35px;
   background: linear-gradient(to right, #ff3c9d 50%, transparent 50%);
@@ -61,35 +69,43 @@ nav {
   -webkit-text-stroke: 1px #ff3c9d;
   animation: animate-text 5s linear infinite;
 }
+
 @keyframes animate-text {
   0% {
     background-position: 100% 0%;
   }
+
   100% {
     background-position: -100% 0%;
   }
 }
+
 .login-btn {
   display: flex;
   gap: 10px;
   margin-top: 20px;
 }
+
 .login-btn button {
   background-color: #ff3c9d;
   border: 2px solid #fff;
   border-radius: 8px;
   color: #fff;
 }
+
 .login-btn button:hover {
   background-color: #ea0f7d;
 }
+
 .BussSellerImg {
   width: 100px;
 }
+
 .marquee-offer-con {
   z-index: 1;
   margin-top: 50px;
 }
+
 .marquee-offer {
   background-color: #ff3c9d;
   font-size: 30px;
@@ -97,59 +113,74 @@ nav {
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
 }
-.marquee-offer:hover{
+
+.marquee-offer:hover {
   background-color: #ea0f7d;
 }
+
 .marquee-offer img {
   width: 30px;
 }
+
 .body-element-margin {
   padding: 0px 20px;
 }
+
 .about-section {
   display: flex;
   justify-content: center;
   justify-content: center;
   margin-top: -6px;
 }
+
 .body-font {
   font-family: "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue",
     "sans-serif";
 }
+
 .animate-start {
   opacity: 0;
   transform: translateY(50%);
   transition: all 0.5s ease-in-out;
 }
+
 .animate-start.anim {
   opacity: 1;
   transform: translateY(0%);
 }
+
 .personalInfoImg {
   width: 100%;
 }
+
 .personalInfoSec {
   border-radius: 8px;
 }
+
 .mail-container {
   background-color: #302c2c;
   padding: 15px;
   border-radius: 8px;
   width: 100%;
 }
+
 .mail-container a {
   color: #fff;
 }
+
 .mail-container:hover {
   border: 1px solid #ff3c9d;
 }
+
 .mail-container h5 {
   color: #a8a3a3;
 }
+
 .marquee-customers {
   margin-bottom: -8px;
 }
+
 .marquee-customer-head {
   background-color: #ff3c9d;
   font-size: 30px;
@@ -157,30 +188,40 @@ nav {
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
 }
+
 .marquee-customer-head:hover {
   background-color: #ea0f7d;
 }
+
 .marquee-customer-head img {
   width: 30px;
 }
+
 .cater_text {
   overflow: hidden;
 }
+
 .linkdIn {
   color: rgb(77, 77, 217);
 }
+
 .whatsapp {
   color: green;
-  }
-.facebook {
-color: rgba(63, 63, 137, 0.792);
 }
+
+.facebook {
+  color: rgba(63, 63, 137, 0.792);
+}
+
 .twitter {
   color: rgb(26, 109, 168);
 }
+
 .telegram {
-  color: rgb(26, 109, 168);;
+  color: rgb(26, 109, 168);
+  ;
 }
+
 .servicess {
   display: flex;
   padding-top: 70px;
@@ -188,27 +229,33 @@ color: rgba(63, 63, 137, 0.792);
   justify-content: center;
   align-items: center;
 }
+
 .servicess span {
   background-color: #ff3c9d;
   width: 90px;
   height: 2px;
 }
+
 .offer-sec {
   background-color: #000;
   padding: 15px;
 }
+
 .line1 {
   margin-right: 20px;
 }
+
 .line_text {
   font-style: italic;
   letter-spacing: 3px;
   color: #ff3c9d;
   text-align: center;
 }
+
 .line2 {
   margin-left: 20px;
 }
+
 .thumbnail-image {
   background-color: #fff;
   text-align: center;
@@ -217,15 +264,18 @@ color: rgba(63, 63, 137, 0.792);
   border-top-left-radius: 8px;
   color: #000
 }
+
 .thumbnail-image img {
   width: 100%;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   border-bottom: 1px solid #fff;
 }
+
 .thumbnail-image h4 {
   font-size: 13px;
 }
+
 .circle-click {
   display: flex;
   justify-content: center;
@@ -233,6 +283,7 @@ color: rgba(63, 63, 137, 0.792);
   margin-top: 10px;
   padding: 50px;
 }
+
 .circle1 {
   background-color: transparent;
   width: 120px;
@@ -240,6 +291,7 @@ color: rgba(63, 63, 137, 0.792);
   border: 1px solid #ff3c9d;
   border-radius: 50%;
 }
+
 .circle2 {
   background-color: #ff3c9d;
   width: 120px;
@@ -247,26 +299,30 @@ color: rgba(63, 63, 137, 0.792);
   border-radius: 50%;
   margin-left: -110px;
   margin-top: -10px;
-  
+
 }
+
 .circle-arrow {
   margin-left: -80px;
   font-size: 25px;
   margin-top: -25px;
   color: #000;
 }
+
 .circle-text {
   margin-left: -110px;
   font-size: 15px;
   margin-top: -25px;
   color: #000;
 }
+
 .service-title {
   color: #ea0f7d;
   font-weight: bold;
   font-size: 16px;
-  padding:  0px 5px;
+  padding: 0px 5px;
 }
+
 .contact-for-service {
   display: flex;
   justify-content: center;
@@ -274,16 +330,19 @@ color: rgba(63, 63, 137, 0.792);
   padding-top: 40px;
   padding-bottom: 10px;
 }
+
 .contact-for-service span {
   background-color: #ff3c9d;
   width: 90px;
   height: 2px;
 }
+
 .contact-for-service h4 {
   font-style: italic;
 }
+
 .need-a-service {
-  font-family: 'Arial',  'sans-serif';
+  font-family: 'Arial', 'sans-serif';
   text-align: center;
   font-size: 25px;
   letter-spacing: 2px;
@@ -291,15 +350,18 @@ color: rgba(63, 63, 137, 0.792);
   border-bottom: 1px solid rgb(79, 75, 75);
   margin: 0px 15px;
 }
+
 .need-a-service:hover {
   border-bottom-color: #ff3c9d;
 }
+
 .envelope-bg {
   background-color: #ff3c9d;
   padding: 15px;
   border-radius: 50%;
   font-size: 20px;
 }
+
 .contact-div {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -309,41 +371,51 @@ color: rgba(63, 63, 137, 0.792);
   gap: 10px;
   align-items: center;
 }
+
 .contact-div:hover {
   border-bottom-color: #ff3c9d;
 }
+
 .email-c {
   color: #a8a3a3;
 }
+
 .email-c-a {
   color: #fff;
 }
+
 .contact-image {
   padding: 10px 15px 30px 15px;
   width: 100%;
 }
+
 .need_help {
   padding-top: 30px;
 }
+
 .mtn-logo {
   border-radius: 50%;
   width: 150px;
   height: 150px;
   border: 2px solid #ff3c9d;
 }
+
 .planSection {
   background-color: #000;
   padding: 15px;
 }
+
 .plansPP {
   display: flex;
   justify-content: center;
   padding-top: 30px;
   text-align: center;
 }
+
 .self {
   align-items: start;
 }
+
 .mtn-plans {
   letter-spacing: 2px;
   font-weight: bold;
@@ -352,6 +424,7 @@ color: rgba(63, 63, 137, 0.792);
   color: #000;
   height: fit-content;
 }
+
 .plan-color {
   background-color: rgb(255, 255, 0);
   color: #000;
@@ -360,17 +433,20 @@ color: rgba(63, 63, 137, 0.792);
   padding: 10px;
   font-family: 'Arial', 'sans-serif';
 }
+
 .tablehead th {
   font-family: 'Arial', 'sans-serif';
-   padding-right: 15px;
-   font-size: 15px;
-   padding-bottom: 10px;
+  padding-right: 15px;
+  font-size: 15px;
+  padding-bottom: 10px;
 }
+
 .tablehead td {
   font-family: 'Arial', 'sans-serif';
   border-top: 1px solid #a8a3a3;
   padding: 11px 10px 11px 0px;
 }
+
 .airtel-color {
   background-color: #ff0000;
   color: #000;
@@ -378,8 +454,9 @@ color: rgba(63, 63, 137, 0.792);
   border-radius: 8px;
   padding: 10px;
   font-family: 'Arial', 'sans-serif';
-   margin: 0px 15px 20px 15px;
+  margin: 0px 15px 20px 15px;
 }
+
 .glo-color {
   background-color: #00ff00;
   color: #000;
@@ -388,6 +465,7 @@ color: rgba(63, 63, 137, 0.792);
   padding: 10px;
   font-family: 'Arial', 'sans-serif';
 }
+
 .mobile-color {
   background-color: #abe23c;
   color: #000;
@@ -396,20 +474,24 @@ color: rgba(63, 63, 137, 0.792);
   padding: 10px;
   font-family: 'Arial', 'sans-serif';
 }
+
 .workProcess-section {
   padding: 0px 15px;
 }
+
 .workP-line {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 50px;
 }
+
 .workpLine {
   width: 100px;
   height: 2px;
   background-color: #ff3c9d;
 }
+
 .workprocess-box {
   border: 1px solid grey;
   margin-top: 10px;
@@ -418,18 +500,21 @@ color: rgba(63, 63, 137, 0.792);
   transition: background-color 0.3s ease;
   overflow: hidden;
 }
+
 .WorkP-content {
   position: relative;
   padding: 20px;
   z-index: 1;
 }
+
 .wproHB {
   width: 20px;
   height: 20px;
   background-color: #ea0f7d;
   border-radius: 50%;
-  
+
 }
+
 .WorkP-content h3 {
   display: flex;
   align-items: center;
@@ -437,20 +522,23 @@ color: rgba(63, 63, 137, 0.792);
   padding-top: 15px;
   margin-left: 15px;
 }
+
 .WorkP-content p {
   display: flex;
   align-items: center;
   letter-spacing: 2px;
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
-   margin-top: 15px;
+  margin-top: 15px;
 }
+
 .wproCont {
   width: 10px;
   height: 10px;
   background-color: #ea0f7d;
   border-radius: 50%;
 }
+
 .quarter-circle {
   width: 50px;
   height: 50px;
@@ -462,11 +550,13 @@ color: rgba(63, 63, 137, 0.792);
   border-top-left-radius: 50%;
   z-index: 0;
 }
+
 .workprocess-box:hover .quarter-circle {
   width: 100%;
   height: 100%;
   border-radius: 0;
 }
+
 .partner-logo {
   width: 150px;
   height: 150px;
@@ -474,21 +564,26 @@ color: rgba(63, 63, 137, 0.792);
   border: 2px solid #fff;
   margin-right: 50px;
 }
+
 .partner-logo:hover {
   border: 2px solid #ff3c9d;
 }
+
 .partner {
   padding: 0px 15px 80px 15px
 }
+
 footer {
   background-color: #000;
   padding: 20px 15px;
 }
+
 footer img {
   width: 60px;
   background-color: #ff3c9d;
   border-radius: 50%;
 }
+
 .foot-b {
   color: #ff3c9d;
   font-size: 22px;
@@ -496,6 +591,7 @@ footer img {
   letter-spacing: 3px;
   padding-top: 10px;
 }
+
 @media (max-width: 750px) {
   .bodyHero {
     display: grid;
@@ -504,29 +600,36 @@ footer img {
     padding-top: 50px;
     padding-bottom: 30px;
   }
+
   .BussSellerImg {
     display: none;
   }
+
   .mail-container {
-  margin-top: 20px;
+    margin-top: 20px;
   }
+
   .gid-about-P {
     margin-top: 40px;
   }
+
   .grid-thumbnail {
     display: grid;
     grid-template-columns: auto auto;
   }
+
   .thumbnail-image {
     margin: 15px 20px;
     padding-bottom: 20px;
   }
+
   footer {
     display: grid;
     grid-template-columns: 50% 50%;
     justify-content: center;
   }
 }
+
 @media (min-width: 750px) {
   .body {
     position: absolute;
@@ -538,9 +641,11 @@ footer img {
       "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue",
       "sans-serif";
   }
+
   .body-element-margin {
     padding: 0px 15% 0px 15%;
   }
+
   .bodyHero {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -548,6 +653,7 @@ footer img {
     padding-top: 50px;
     padding-bottom: 30px;
   }
+
   .BussSellerImg {
     display: block;
     margin-left: 40px;
@@ -556,19 +662,23 @@ footer img {
     width: 350px;
     height: 350px;
   }
+
   .marquee-offer-con {
     z-index: 1;
     margin-top: 0px;
   }
+
   .body-font {
     font-size: 20px;
   }
+
   .personalInfoSec {
     display: grid;
     grid-template-columns: 40% 60%;
     margin: 0% 10%;
     gap: 25px;
   }
+
   .gid-about-P {
     display: grid;
     grid-template-columns: auto auto;
@@ -577,35 +687,41 @@ footer img {
     width: 100%;
     position: relative;
   }
+
   .grid-thumbnail {
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 30px;
     margin: 0px 10%;
   }
+
   .need_help {
     display: grid;
     grid-template-columns: 60% 40%;
     gap: 15px;
     margin: 0px 10%;
   }
+
   .grid-plans {
     display: grid;
     grid-template-columns: auto auto;
     gap: 15px;
     margin: 0px 10%;
   }
+
   .grid-workP {
     display: grid;
     grid-template-columns: auto auto;
     gap: 10px;
     padding: 0px 10%;
   }
+
   .partner {
     padding-bottom: 80px;
     padding-left: 10%;
     padding-right: 10%;
   }
+
   footer {
     display: grid;
     grid-template-columns: auto auto auto;

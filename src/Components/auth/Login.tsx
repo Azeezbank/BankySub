@@ -23,14 +23,14 @@ const Login: React.FC = () => {
       );
       if (response.status === 200) {
         navigate("/user/dashboard");
-      } 
+      }
     } catch (err: any) {
       setIsError(true);
       setIsAuth(false);
       if (err.response?.status === 503) {
-    navigate("/verify/mail");
-  } else {
-    setLoginError(err.response?.data.message || "Login failed");
+        navigate("/verify/mail");
+      } else {
+        setLoginError(err.response?.data.message || "Login failed");
       }
     }
   };
@@ -63,13 +63,13 @@ const Login: React.FC = () => {
             <br />
             <br />
             {!isAuth ? (
-            <button className="RegButton" type="submit">
-            Sign In
-          </button>
+              <button className="RegButton" type="submit">
+                Sign In
+              </button>
             ) : (
               <button className="RegButton" type="submit">
-              Authenticating...
-            </button>
+                Authenticating...
+              </button>
             )}
             <p className="signIn">
               Don't have an account yet?{" "}

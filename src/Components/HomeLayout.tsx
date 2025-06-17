@@ -160,20 +160,19 @@ const HomeLayout: React.FC = () => {
                 <p className="ps-2">Pricing</p>
               </div>
               <Link to={'/user/verify'} className="Link">
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-lock"></i>
-                </h3>
-                <p className="ps-2">Account Verification</p>
-              </div>
+                <div className="grid-navDash">
+                  <h3>
+                    <i className="bi bi-lock"></i>
+                  </h3>
+                  <p className="ps-2">Account Verification</p>
+                </div>
               </Link>
             </div>
           </aside>
         </div>
         <div
-          className={`main ${
-            isOpen ? "with-margin" : "with-no-margin"
-          } flexMain`}
+          className={`main ${isOpen ? "with-margin" : "with-no-margin"
+            } flexMain`}
         >
           <main>
             <NavBar sideBarClickHandler={handleVisible} />

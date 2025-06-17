@@ -3,11 +3,13 @@
   min-height: 100vh;
   padding: 50px 15px;
 }
+
 .registration-bg form {
   background-color: #fff;
   padding: 10px 20px 30px 20px;
   border-radius: 5px;
 }
+
 .registration-bg input {
   border-radius: 5px;
   border: 1px solid grey;
@@ -23,32 +25,40 @@
 .registration-bg input:hover {
   border: 1px solid rgb(185, 43, 185);
 }
+
 .logo {
   width: 80px;
   border-radius: 50%;
 }
+
 .logodiv {
   text-align: center;
   padding: 40px;
 }
+
 .red {
   border: 1px solid red;
 }
+
 .RegButton {
   background-color: #e4117a;
   color: #fff;
   border-radius: 5px;
 }
+
 .signIn {
   margin-top: 30px;
   text-align: center;
 }
+
 .signIn span {
   color: rgba(21, 50, 177, 1);
 }
+
 .Link {
   text-decoration: none;
 }
+
 .errorMessage {
   background-color: red;
   color: #fff;
@@ -62,6 +72,7 @@
     align-items: center;
   }
 }
+
 .confirmPass {
   color: #ff0000;
 }

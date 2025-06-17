@@ -39,16 +39,16 @@ const Register: React.FC = () => {
       setIsPassMatch(true);
       setConfirmPassError("Password mismatch");
       return;
-    } 
+    }
     try {
-    const response = await axios.post('https://bankysub-api.onrender.com/register', {password, username, email, fullName, phone});
-    if (response.status === 200) {
+      const response = await axios.post('https://bankysub-api.onrender.com/register', { password, username, email, fullName, phone });
+      if (response.status === 200) {
         alert(response.data.message);
         navigate('/verify/mail');
-    } 
-} catch (err: any) {
-    console.error(err.response?.data.message)
-}
+      }
+    } catch (err: any) {
+      console.error(err.response?.data.message)
+    }
   };
 
   return (
@@ -66,7 +66,7 @@ const Register: React.FC = () => {
           <label htmlFor="email">Email*</label> <br />
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           <label htmlFor="phone">Phone*</label> <br />
-          <input type="number" id="phone" value={phone} required onChange={(e) => setPhone(Number(e.target.value))}/>
+          <input type="number" id="phone" value={phone} required onChange={(e) => setPhone(Number(e.target.value))} />
           <label htmlFor="address">Address*</label> <br />
           <input type="text" id="address" required />
           <label htmlFor="referral">Referral username [optional]</label> <br />
