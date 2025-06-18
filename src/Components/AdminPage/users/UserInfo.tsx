@@ -28,6 +28,7 @@ const UserInfo: React.FC = () => {
         fullName: ""
     });
     const [isloading, setIsLOading] = useState(true);
+    const [isBanning, setIsBanning] = useState(true);
     const { id } = useParams();
 
     //Fetch user details on component mount
@@ -71,7 +72,25 @@ const UserInfo: React.FC = () => {
             console.error("Error updating user wallet", err.message);
             setIsLOading(true);
         }
-    }
+    };
+
+    //Ban user
+    const handleBanUser = async () => {
+        try {
+            setIsBanning(false);
+            const response = await axios.put(`https://bankysub-api.onrender.com/api/ban/user/${id}`, {}, { withCredentials: true });
+            if (response.status === 200) {
+                console.log("User banned successfully");
+                alert("User has been banned successfully");
+                UserDetails(); // Refresh user details after banning
+                setIsBanning(true);
+            }
+        } catch (err: any) {
+            console.error("Error banning user", err.message);
+            setIsBanning(true);
+        }
+    };
+
     return (
         <>
             <div className="dashboard-bg bg-light">
@@ -83,9 +102,19 @@ const UserInfo: React.FC = () => {
                             <span>{userDetails.username}</span>
                         </h4>
                     </div>
-                    <ul className='nav nav-tabs mt-2'>
-                        <li className='active'> <a data-toggle="tab" href='#info' className='info-btn Link'> Information & Action</a></li>
-                    </ul>
+                    <div className='d-flex'>
+                        <ul className='nav nav-tabs mt-2'>
+                            <li className='active'> <a data-toggle="tab" href='#info' className='info-btn Link'> Information & Action</a></li>
+                        </ul>
+                        <div className='d-flex justify-content-end'>
+                            {isBanning ? (
+                            <button type='button' className='ban' onClick={handleBanUser}>Ban User</button>
+                            ) : (
+                            <button type='button' className='ban' onClick={handleBanUser}>Please Wait...</button>
+                            )}
+                        </div>
+                    </div>
+
                     <div className='nav-content'>
                         <div className='tab-pane fade-in active grid-userDetails' id='info'>
 

@@ -28,6 +28,19 @@
 .info-logo {
     font-size: 20px;
 }
+.ban {
+    background-color: rgba(255, 0, 0, 0.5);
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 8px;
+    color: #fff;
+    position: absolute;
+    right: 50px;
+    border: none;
+}
+.ban:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
 
 .adjust-header {
     margin-top: 40px;
@@ -53,7 +66,9 @@
 @media (min-width: 560px) {
     .grid-userDetails {
         display: grid;
-        grid-template-columns: auto auto;
+        position: relative;
+        grid-template-columns: 50% 50%;
         gap: 20px;
+        padding-right: 20px;
     }
 }
