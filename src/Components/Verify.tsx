@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Verify: React.FC = () => {
   const [verificationType, setVerificationType] = useState<string>("");
-  const [verificationNumber, setVerificationNumber] = useState<number>(0);
+  const [verificationNumber, setVerificationNumber] = useState<string>('');
 
   const handleVerify = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -42,11 +42,11 @@ const Verify: React.FC = () => {
             <div>
               <p>Input Your verification Number</p>
               <input
-                aria-label="number"
-                type="number"
+                aria-label="text"
+                type="text"
                 placeholder="Input Number"
                 className="ninFormSelect"
-                onChange={(e) => setVerificationNumber(Number(e.target.value))}
+                onChange={(e) => setVerificationNumber(e.target.value)}
               />
             </div>
           </form>
