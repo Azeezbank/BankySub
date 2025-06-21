@@ -10,7 +10,7 @@ const Verify: React.FC = () => {
     try {
       const response = await axios.post(
         "https://bankysub-api.onrender.com/verify/account",
-        { verificationType, verificationNumber }
+        { verificationType, verificationNumber }, {withCredentials: true}
       );
       if (response.status === 200) {
         alert('Success');

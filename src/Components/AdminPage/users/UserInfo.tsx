@@ -108,9 +108,9 @@ const UserInfo: React.FC = () => {
                         </ul>
                         <div className='d-flex justify-content-end'>
                             {isBanning ? (
-                            <button type='button' className='ban' onClick={handleBanUser}>Ban User</button>
+                                <button type='button' className='ban' onClick={handleBanUser}>Ban User</button>
                             ) : (
-                            <button type='button' className='ban' onClick={handleBanUser}>Please Wait...</button>
+                                <button type='button' className='ban' onClick={handleBanUser}>Please Wait...</button>
                             )}
                         </div>
                     </div>
