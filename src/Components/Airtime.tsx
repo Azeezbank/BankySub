@@ -44,7 +44,7 @@ const Airtime: React.FC = () => {
         if (response.status === 200) {
           setNetworks(response.data);
         }
-      } catch (err) {
+      } catch (err: any) {
         console.error(err);
       }
     };
@@ -91,7 +91,7 @@ const Airtime: React.FC = () => {
         setIsProcessing(true);
       }
     } catch (err: any) {
-      console.error("Failed to purchase airtime");
+      console.error("Failed to purchase airtime", err.message);
       setIsModalSuccess(false);
       setIsModalFail(true);
       setIsProcessing(true);
