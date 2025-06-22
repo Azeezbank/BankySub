@@ -74,7 +74,7 @@ const Home: React.FC = () => {
         console.log("Account generated");
       }
     } catch (err: any) {
-      console.error("Error generating");
+      console.error("Error generating", err.response?.data.message || err.message);
     }
   };
 

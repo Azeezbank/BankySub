@@ -4,20 +4,24 @@ import axios from "axios";
 const Verify: React.FC = () => {
   const [verificationType, setVerificationType] = useState<string>("");
   const [verificationNumber, setVerificationNumber] = useState<string>('');
+  const [isVerify, setIsVerify] = useState(true);
 
   const handleVerify = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setIsVerify(false);
     try {
       const response = await axios.post(
         "https://bankysub-api.onrender.com/verify/account",
         { verificationType, verificationNumber }, {withCredentials: true}
       );
       if (response.status === 200) {
-        alert('Success');
+        alert('Success, NIN submitted successfully');
         console.log(response.data.message);
+        setIsVerify(true);
       }
     } catch (err: any) {
       console.error('Error', err?.response?.data?.message || err.message);
+      setIsVerify(true);
     }
   };
   return (
@@ -50,7 +54,11 @@ const Verify: React.FC = () => {
               />
             </div>
           </form>
+          {isVerify? (
           <button type="submit" onClick={handleVerify} className="verifybtn">Submit</button>
+          ) : (
+            <button type="submit" onClick={handleVerify} className="verifybtn">Please Waity...</button>
+          )}
         </div>
       </div>
     </>

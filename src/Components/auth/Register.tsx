@@ -13,6 +13,7 @@ const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState<number>();
   const [fullName, setFullname] = useState<string>('')
+  const [isSubmit, setIsSubmit] = useState(true);
 
   const navigate = useNavigate();
 
@@ -29,6 +30,7 @@ const Register: React.FC = () => {
 
   const handlePassChange = (e: any) => {
     const value = e.target.value;
+    setIsSubmit(false);
     setPassword(value);
     validatePass(value);
   };
@@ -45,9 +47,11 @@ const Register: React.FC = () => {
       if (response.status === 200) {
         alert(response.data.message);
         navigate('/verify/mail');
+        setIsSubmit(true);
       }
     } catch (err: any) {
-      console.error(err.response?.data.message)
+      console.error(err.response?.data.message);
+      setIsSubmit(true);
     }
   };
 
@@ -107,9 +111,15 @@ const Register: React.FC = () => {
               I Agree with the terms and conditions
             </label>
           </div>{" "}
+          {isSubmit? (
           <button className="RegButton" type="submit">
             Sign Up
           </button>
+          ) : (
+            <button className="RegButton" type="submit">
+            Please Wait...
+          </button>
+          )}
           <p className="signIn">Already a member? <Link to={'/login'} className="Link"><span>Sign In</span></Link></p>
         </form>
       </div>
