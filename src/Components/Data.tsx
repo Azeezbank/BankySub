@@ -118,16 +118,16 @@ const Data: React.FC = () => {
         alert("Low wallet balance, please fund your wallet");
         return;
       }
-      await axios.post(
+      const response = await axios.post(
         "https://bankysub-api.onrender.com/api/data/bundle",
         { plan, DataPrice, mobileNumber, choosenNetwork, choosenDataType },
         { withCredentials: true }
       );
 
-      // if (response.status === 200) {
+      if (response.status === 200) {
       setIsModalSuccess(true);
       setIsProcessing(true);
-      // }
+      }
     } catch (err) {
       console.error(err);
       setIsModalSuccess(false);
