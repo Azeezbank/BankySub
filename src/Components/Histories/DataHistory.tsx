@@ -23,7 +23,7 @@ const DataHistory: React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/protected",
+          "https://bankysub-api.onrender.com/api/protected",
           { withCredentials: true }
         );
         if (response.status === 200) {

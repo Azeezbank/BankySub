@@ -25,7 +25,7 @@ const HomeLayout: React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/protected",
+          "https://bankysub-api.onrender.com/admin/protected",
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -45,7 +45,7 @@ const HomeLayout: React.FC = () => {
     const handleUserInfo = async () => {
       try {
         const response = await axios.get<walletInfo[]>(
-          "https://bankysub-api.onrender.com/api/user_info",
+          "https://bankysub-api.onrender.com/api/user/info",
           { withCredentials: true }
         );
         if (response.status === 200) {

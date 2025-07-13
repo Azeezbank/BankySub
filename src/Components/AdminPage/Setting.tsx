@@ -21,7 +21,7 @@ const Setting: React.FC = () => {
     const handleAdminDetailUpdate = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/admin-details"
+          "https://bankysub-api.onrender.com/api/admin/details"
         );
         if (response.status === 200) {
           setInfo(response.data);
@@ -40,7 +40,7 @@ const Setting: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        "https://bankysub-api.onrender.com/api/updated/setting/details",
+        "https://bankysub-api.onrender.com/api/admin/details/updated/setting",
         info
       );
       if (response.status === 200) {

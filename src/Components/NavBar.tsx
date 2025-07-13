@@ -19,7 +19,7 @@ const NavBar: React.FC<Props> = ({ sideBarClickHandler }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://bankysub-api.onrender.com/logout",
+        "https://bankysub-api.onrender.com/api/logout",
         {},
         { withCredentials: true }
       );

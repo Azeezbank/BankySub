@@ -17,7 +17,7 @@ const Login: React.FC = () => {
     try {
       setIsAuth(true);
       const response = await axios.post(
-        "https://bankysub-api.onrender.com/login",
+        "https://bankysub-api.onrender.com/api/auth/login",
         { password, username },
         { withCredentials: true }
       );

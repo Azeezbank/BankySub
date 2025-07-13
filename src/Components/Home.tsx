@@ -66,7 +66,7 @@ const Home: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://bankysub-api.onrender.com/dedicated/account",
+        "https://bankysub-api.onrender.com/api/monnify/dedicated/account",
         {},
         { withCredentials: true }
       );
@@ -83,7 +83,7 @@ const Home: React.FC = () => {
     const handleUserInfo = async () => {
       try {
         const response = await axios.get<walletInfo[]>(
-          "https://bankysub-api.onrender.com/api/user_info",
+          "https://bankysub-api.onrender.com/api/user/info",
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -101,7 +101,7 @@ const Home: React.FC = () => {
     const bankDetail = async () => {
       try {
         const response = await axios.post<bank[]>(
-          "https://bankysub-api.onrender.com/api/user_account",
+          "https://bankysub-api.onrender.com/api/user/bank/account",
           {},
           { withCredentials: true }
         );
@@ -121,7 +121,7 @@ const Home: React.FC = () => {
     const handleMessage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/dashboard-message"
+          "https://bankysub-api.onrender.com/api/admin/dashboard/message"
         );
         if (response.status === 200) {
           setDash_message(response.data);

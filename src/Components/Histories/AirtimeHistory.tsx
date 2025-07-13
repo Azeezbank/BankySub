@@ -41,14 +41,14 @@ const AirtimeHistory: React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/protected",
+          "https://bankysub-api.onrender.com/api/protected",
           { withCredentials: true }
         );
         if (response.status === 200) {
           console.log(response.data.message);
         }
       } catch (err: any) {
-        navigate("/login?");
+        navigate("/api/auth/login");
         console.error(err.response?.data.message);
       }
     };

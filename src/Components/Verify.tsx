@@ -11,7 +11,7 @@ const Verify: React.FC = () => {
     setIsVerify(false);
     try {
       const response = await axios.post(
-        "https://bankysub-api.onrender.com/verify/account",
+        "https://bankysub-api.onrender.com/api/verification/verify/account",
         { verificationType, verificationNumber }, {withCredentials: true}
       );
       if (response.status === 200) {

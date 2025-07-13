@@ -33,12 +33,31 @@ const Airtime: React.FC = () => {
   const navigate = useNavigate();
 
 
+
+  //Protect the page
+  useEffect(() => {
+    const ProtectPage = async () => {
+      try {
+        const response = await axios.get(
+          "https://bankysub-api.onrender.com/api/protected",
+          { withCredentials: true }
+        );
+        if (response.status === 200) {
+          console.log(response.data.message);
+        }
+      } catch (err: any) {
+        navigate("/api/auth/login");
+        console.error(err.response?.data.message);
+      }
+    };
+    ProtectPage();
+  }, []);
   // Fetch Airtime network
   useEffect(() => {
     const fetchAirtimeN = async () => {
       try {
         const response = await axios.get<AirtimeN[]>(
-          "https://bankysub-api.onrender.com/api/airtimeN",
+          "https://bankysub-api.onrender.com/api/airtime/networkN",
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -56,7 +75,7 @@ const Airtime: React.FC = () => {
     const fetchAirtimeType = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/airtimeT",
+          "https://bankysub-api.onrender.com/api/airtime/type",
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -98,31 +117,13 @@ const Airtime: React.FC = () => {
     }
   };
 
-  //Protect the page
-  useEffect(() => {
-    const ProtectPage = async () => {
-      try {
-        const response = await axios.get(
-          "https://bankysub-api.onrender.com/protected",
-          { withCredentials: true }
-        );
-        if (response.status === 200) {
-          console.log(response.data.message);
-        }
-      } catch (err: any) {
-        navigate("/login?");
-        console.error(err.response?.data.message);
-      }
-    };
-    ProtectPage();
-  }, []);
-
+ 
   //Fetch user information
   useEffect(() => {
     const handleUserInfo = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/user_info",
+          "https://bankysub-api.onrender.com/api/user/info",
           { withCredentials: true }
         );
         if (response.status === 200) {
