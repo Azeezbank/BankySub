@@ -27,7 +27,7 @@ const User: React.FC = () => {
     const handlFetchUser = async () => {
       try {
         const response = await axios.get(
-          `https://bankysub-api.onrender.com/api/user?page=${page}&limit=${limit}`
+          `https://bankysub-api.onrender.com/api/user?page=${page}&limit=${limit}`, { withCredentials: true}
         );
         if (response.status === 200) {
           setUserDetails(response.data.data);
