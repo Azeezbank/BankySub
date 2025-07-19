@@ -98,7 +98,7 @@ const ApiDocs: React.FC = () => {
           </div>
         </div>
         <div className="bg-white-color mt-2">
-          {apiDocs.map((api) => (
+          {apiDocs?.map((api) => (
           <div key={api.d_id} className='api-map'>
             <p className='bg-light p-2'>{api.service_type}</p>
             <p className='bg-light p-2'>{api.api_key}</p>
