@@ -22,6 +22,7 @@ import DataHistory from './Components/Histories/DataHistory';
 import AirtimeHistory from './Components/Histories/AirtimeHistory';
 import Verifymail from './Components/auth/Verifymail';
 import UserInfo from './Components/AdminPage/users/UserInfo';
+import ApiDocs from './Components/AdminPage/users/ApiDocs';
 
 const App: React.FC = () => {
   return (
@@ -49,6 +50,7 @@ const App: React.FC = () => {
             <Route path='UserInfo/:id' element={<UserInfo />} />
             <Route path='setting' element={<Setting />} />
             <Route path='data/gateway' element={<DataGateway />} />
+            <Route path='api/docs' element={<ApiDocs />} />
           </Route>
         </Routes>
       </BrowserRouter>

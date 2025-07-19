@@ -20,6 +20,7 @@ const AdminDashBoard: React.FC = () => {
   const [isUser, setIsUser] = useState<menuState>({});
   const [isGateway, setIsGateway] = useState<menuState>({});
   const [isDataGate, setIsDataGate] = useState<menuState>({});
+  const [isApiGate, setIsApiGate] = useState<menuState>({});
   const navigate = useNavigate();
 
   const handleVisible = () => {
@@ -79,6 +80,13 @@ const AdminDashBoard: React.FC = () => {
     setIsDataGate((prevDataGate) => ({
       ...prevDataGate,
       [dataGate]: !prevDataGate[dataGate],
+    }));
+  };
+
+  const handleApiGate = (apiGate: any) => {
+    setIsApiGate((prevApiGate) => ({
+      ...prevApiGate,
+      [apiGate]: !prevApiGate[apiGate],
     }));
   };
 
@@ -300,6 +308,29 @@ const AdminDashBoard: React.FC = () => {
                         className="nin hover"
                       >
                         <i className="bi bi-sort-down"></i> All Data Plans
+                      </li>
+                    </Link>
+                  </ul>
+                )}
+                {isGateway.gateWay && (
+                  <ul>
+                    <li
+                      className="successful hover"
+                      onClick={() => handleApiGate("ApiGate")}
+                    >
+                      <i className="bi bi-wifi"></i>
+                      <i className="bi bi-chevron-right float-end"></i> API
+                    </li>
+                  </ul>
+                )}
+                
+                {isApiGate.ApiGate && (
+                  <ul>
+                    <Link to={"/admin/api/docs"} className="Link">
+                      <li
+                        className="nin hover"
+                      >
+                        <i className="bi bi-sort-down"></i> API Docs
                       </li>
                     </Link>
                   </ul>

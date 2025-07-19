@@ -108,6 +108,9 @@ const DataGateway: React.FC = () => {
                 <option>SME</option>
                 <option>GIFTING</option>
                 <option>CORPORATE GIFTING</option>
+                <option>SME2</option>
+                <option>DATA SHARE</option>
+                <option>DATA COUPON</option>
               </select>
 
               <select
