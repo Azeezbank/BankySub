@@ -20,8 +20,10 @@ const ApiDocs: React.FC = () => {
   useEffect(() => {
     const fetchApiDocs = async () => {
       try {
-        const response = await axios.get('https://bankysub-api.onrender.com/api/admin/env', { withCredentials: true})
-        setApiDocs(response.data.result)
+        const response = await axios.get('https://bankysub-api.onrender.com/api/env', {withCredentials: true});
+        if (response.status === 200) {
+        setApiDocs(response.data);
+        }
       } catch (err: any) {
         console.error('Failed to fetch API docs', err.response?.data.message || err.message)
       }
@@ -35,7 +37,7 @@ const ApiDocs: React.FC = () => {
     setIsUpdate(true)
     try {
       const response = await axios.post(
-        'https://bankysub-api.onrender.com/api/admin/env', { service_type, api_key, api_url }, { withCredentials: true })
+        'https://bankysub-api.onrender.com/api/env', { service_type, api_key, api_url }, {withCredentials: true})
       if (response.status === 200) {
         setIsUpdate(false);
       }
@@ -63,6 +65,7 @@ const ApiDocs: React.FC = () => {
                   name='service_type'
                   onChange={(e) => setService_type(e.target.value)}
                 >
+                  <option>~~~</option>
                   <option>VTU</option>
                   <option>SME</option>
                   <option>GIFTING</option>
@@ -100,9 +103,9 @@ const ApiDocs: React.FC = () => {
         <div className="bg-white-color mt-2">
           {apiDocs?.map((api) => (
           <div key={api.d_id} className='api-map'>
-            <p className='bg-light p-2'>{api.service_type}</p>
-            <p className='bg-light p-2'>{api.api_key}</p>
-            <p className='bg-light p-2'>{api_url}</p>
+            <p className='bg-light p-1'>{api.service_type}</p>
+            <p className='bg-light p-1'>{api.api_key}</p>
+            <p className='bg-light p-1'>{api.api_url}</p>
           </div>
           ))}
         </div>

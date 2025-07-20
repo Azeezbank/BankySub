@@ -17,6 +17,15 @@
 .api-btn button {
     width: 100px;
 }
+.api-map {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    width: 100%;
+}
+.api-map p {
+    font-size: 9px;
+}
 
 @media (max-width: 750px) {
     .input-form-div, .api-map {
@@ -29,10 +38,5 @@
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 20px;
-}
-.api-map {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 20px
 }
 }

@@ -121,7 +121,7 @@ const Home: React.FC = () => {
     const handleMessage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/admin/dashboard/message"
+          "https://bankysub-api.onrender.com/api/admin/dashboard/message", { withCredentials: true}
         );
         if (response.status === 200) {
           setDash_message(response.data);

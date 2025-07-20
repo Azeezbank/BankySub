@@ -95,6 +95,7 @@ const DataGateway: React.FC = () => {
                 aria-label="network"
                 onChange={(e) => setDataTypeNetworkName(e.target.value)}
               >
+                <option>~~~</option>
                 <option>MTN</option>
                 <option>AIRTEL</option>
                 <option>GLO</option>
@@ -105,6 +106,7 @@ const DataGateway: React.FC = () => {
                 aria-label="name"
                 onChange={(e) => setDataTypeName(e.target.value)}
               >
+                <option>~~~</option>
                 <option>SME</option>
                 <option>GIFTING</option>
                 <option>CORPORATE GIFTING</option>
@@ -117,6 +119,7 @@ const DataGateway: React.FC = () => {
                 aria-label="select"
                 onChange={(e) => setIsDataTypeStatus(e.target.value)}
               >
+                <option>~~~</option>
                 <option>active</option>
                 <option>disabled</option>
               </select>
