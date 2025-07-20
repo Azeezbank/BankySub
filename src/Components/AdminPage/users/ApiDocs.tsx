@@ -21,7 +21,7 @@ const ApiDocs: React.FC = () => {
     const fetchApiDocs = async () => {
       try {
         const response = await axios.get('https://bankysub-api.onrender.com/api/admin/env', { withCredentials: true})
-        setApiDocs(response.data.result)
+        setApiDocs(response.data)
       } catch (err: any) {
         console.error('Failed to fetch API docs', err.response?.data.message || err.message)
       }
