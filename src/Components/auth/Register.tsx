@@ -52,7 +52,7 @@ const queryParams = new URLSearchParams(window.location.search);
       const response = await axios.post('https://bankysub-api.onrender.com/api/auth/register', { password, username, email, fullName, phone, referralUsername });
       if (response.status === 200) {
         alert(response.data.message);
-        navigate('/api/auth/verify/mail');
+        navigate('/verify/mail');
         setIsSubmit(true);
       }
     } catch (err: any) {
