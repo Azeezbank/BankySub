@@ -13,13 +13,14 @@ const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState<string>('');
   const [fullName, setFullname] = useState<string>('');
-  const [referralUsername, setReferralUsername] = useState<string>('');
+
+  const queryParams = new URLSearchParams(window.location.search);
+  const referral = queryParams.get('ref') || '';
+
+  const [referralUsername, setReferralUsername] = useState<string>(referral);
   const [isSubmit, setIsSubmit] = useState(true);
 
   const navigate = useNavigate();
-
-const queryParams = new URLSearchParams(window.location.search);
-  const referral = queryParams.get('ref') || '';
 
 
   const validatePass = (value: any) => {
@@ -49,7 +50,7 @@ const queryParams = new URLSearchParams(window.location.search);
       return;
     }
     try {
-      const response = await axios.post('https://bankysub-api.onrender.com/api/auth/register', { password, username, email, fullName, phone, referralUsername }, { withCredentials: true});
+      const response = await axios.post('https://bankysub-api.onrender.com/api/auth/register', { password, username, email, fullName, phone, referralUsername }, {withCredentials: true});
       if (response.status === 200) {
         alert(response.data.message);
         navigate('/verify/mail');
@@ -80,7 +81,7 @@ const queryParams = new URLSearchParams(window.location.search);
           <label htmlFor="address">Address*</label> <br />
           <input type="text" id="address" required />
           <label htmlFor="referral">Referral username [optional]</label> <br />
-          <input type="text" id="referral" value={referral} onChange={(e) => setReferralUsername(e.target.value)} />
+          <input type="text" id="referral" value={referralUsername} onChange={(e) => setReferralUsername(e.target.value)} />
           <span className="text-muted">Leave blank if no referral</span> <br />
           <label htmlFor="password">Password*</label> <br />
           <input
