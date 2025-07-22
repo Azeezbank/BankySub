@@ -366,7 +366,7 @@ const Home: React.FC = () => {
             <div className="balance-section">
               <div>
                 <p className="balance-section-color">
-                  <i className="bi bi-calendar-event-fill bg-primary p-3"></i>
+                  <h1><i className="bi bi-calendar-event-fill bg-primary p-4"></i></h1>
                 </p>
               </div>
               <div className="ps-2">
@@ -377,20 +377,20 @@ const Home: React.FC = () => {
               </div>
             </div>
             <div className="balance-section">
-              <div>
+              
                 <p className="balance-section-color">
-                  <i className="bi bi-database-fill bg-primary p-3"></i>
+                  <h1><i className="bi bi-database-fill bg-primary p-4"></i></h1>
                 </p>
-              </div>
+              
               <div className="ps-2">
-                <p className="text-muted pt-2">Cashback</p>
+                <p className="text-muted ">Cashback</p>
                 <p className="amount"># {walletBalance.map((cash) => (cash.cashback))}</p>
               </div>
             </div>
             <div className="balance-section">
               <div>
                 <p className="balance-section-color">
-                  <i className="bi bi-people-fill bg-primary p-3"></i>
+                  <h1><i className="bi bi-people-fill bg-primary p-4"></i></h1>
                 </p>
               </div>
               <div className="ps-2">
