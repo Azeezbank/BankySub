@@ -171,7 +171,7 @@ const Home: React.FC = () => {
             <br /> <br />
             Referal Link:{" "}
             <a href="#" className="decoration">
-              https://tunstelecom.com.ng?ref1
+              http://bankyconnect.com.ng/register?ref={user}
             </a>{" "}
             <button
               type="button"
