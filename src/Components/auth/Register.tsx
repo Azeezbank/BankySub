@@ -35,16 +35,17 @@ const Register: React.FC = () => {
 
   const handlePassChange = (e: any) => {
     const value = e.target.value;
-    setIsSubmit(false);
     setPassword(value);
     validatePass(value);
   };
 
   const handleRegister = async (e: any) => {
     e.preventDefault();
+    setIsSubmit(false);
     if (password !== confirmPass) {
       setIsPassMatch(true);
       setConfirmPassError("Password mismatch");
+      setIsSubmit(true);
       return;
     }
     try {
