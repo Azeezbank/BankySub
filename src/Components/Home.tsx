@@ -29,7 +29,9 @@ interface walletInfo {
   username: string;
   user_balance: string;
   packages: string;
-  role: string
+  role: string;
+  referree: number;
+  cashback: number
 }
 
 interface message {
@@ -48,7 +50,9 @@ const Home: React.FC = () => {
     dash_message: "",
   });
 
-  const link = "https://tunstelecom.com.ng?ref1";
+  const user = walletBalance[0]?.username ?? '';
+
+  const link = `http://localhost:5173/register?ref=${user}`;
 
   //Copy referal link
   const copyClipboard = (event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -379,8 +383,8 @@ const Home: React.FC = () => {
                 </p>
               </div>
               <div className="ps-2">
-                <p className="text-muted pt-2">Commissions</p>
-                <p className="amount"># 0</p>
+                <p className="text-muted pt-2">Cashback</p>
+                <p className="amount"># {walletBalance.map((cash) => (cash.cashback))}</p>
               </div>
             </div>
             <div className="balance-section">
@@ -391,7 +395,9 @@ const Home: React.FC = () => {
               </div>
               <div className="ps-2">
                 <p className="text-muted pt-2">My Total Referral</p>
-                <p>0</p>
+                <p className="amount">
+                  {walletBalance.map((refer) => (refer.referree))}
+                </p>
               </div>
             </div>
             <div className="notification-bg ">

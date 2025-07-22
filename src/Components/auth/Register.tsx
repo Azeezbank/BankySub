@@ -12,10 +12,15 @@ const Register: React.FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState<number>();
-  const [fullName, setFullname] = useState<string>('')
+  const [fullName, setFullname] = useState<string>('');
+
+  const queryParams = new URLSearchParams(window.location.search);
+  const referral = queryParams.get('ref') || '';
+  const [referralUsername, setReferralUsername] = useState<string>(referral);
   const [isSubmit, setIsSubmit] = useState(true);
 
   const navigate = useNavigate();
+
 
   const validatePass = (value: any) => {
     const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
@@ -43,7 +48,7 @@ const Register: React.FC = () => {
       return;
     }
     try {
-      const response = await axios.post('https://bankysub-api.onrender.com/api/auth/register', { password, username, email, fullName, phone });
+      const response = await axios.post('https://bankysub-api.onrender.com/api/auth/register', { password, username, email, fullName, phone, referralUsername });
       if (response.status === 200) {
         alert(response.data.message);
         navigate('/api/auth/verify/mail');
@@ -74,7 +79,7 @@ const Register: React.FC = () => {
           <label htmlFor="address">Address*</label> <br />
           <input type="text" id="address" required />
           <label htmlFor="referral">Referral username [optional]</label> <br />
-          <input type="text" id="referral" />
+          <input type="text" id="referral" value={referralUsername} onChange={(e) => setReferralUsername(e.target.value)} />
           <span className="text-muted">Leave blank if no referral</span> <br />
           <label htmlFor="password">Password*</label> <br />
           <input
@@ -86,7 +91,7 @@ const Register: React.FC = () => {
           />
           <span className="text-danger">{passError}</span> <br />
           <span className="text-muted">
-            Min_length-8 mix characters [i.e 37865strongPassword8452]
+            Min_length-8 mix characters [i.e 865strongPassword8452]
           </span>{" "}
           <br />
           <label htmlFor="confirmPass">Confirm Password*</label> <br />
@@ -111,14 +116,14 @@ const Register: React.FC = () => {
               I Agree with the terms and conditions
             </label>
           </div>{" "}
-          {isSubmit? (
-          <button className="RegButton" type="submit">
-            Sign Up
-          </button>
+          {isSubmit ? (
+            <button className="RegButton" type="submit">
+              Sign Up
+            </button>
           ) : (
             <button className="RegButton" type="submit">
-            Please Wait...
-          </button>
+              Please Wait...
+            </button>
           )}
           <p className="signIn">Already a member? <Link to={'/login'} className="Link"><span>Sign In</span></Link></p>
         </form>
