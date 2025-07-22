@@ -77,7 +77,7 @@ const Register: React.FC = () => {
           <label htmlFor="email">Email*</label> <br />
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           <label htmlFor="phone">Phone*</label> <br />
-          <input type="number" id="phone" value={phone} required onChange={(e) => setPhone(e.target.value)} />
+          <input type="text" id="phone" value={phone} required onChange={(e) => setPhone(e.target.value)} />
           <label htmlFor="address">Address*</label> <br />
           <input type="text" id="address" required />
           <label htmlFor="referral">Referral username [optional]</label> <br />
