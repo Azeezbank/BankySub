@@ -13,13 +13,13 @@ const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState<number>();
   const [fullName, setFullname] = useState<string>('');
-
-  const queryParams = new URLSearchParams(window.location.search);
-  const referral = queryParams.get('ref') || '';
-  const [referralUsername, setReferralUsername] = useState<string>(referral);
+  const [referralUsername, setReferralUsername] = useState<string>('');
   const [isSubmit, setIsSubmit] = useState(true);
 
   const navigate = useNavigate();
+
+const queryParams = new URLSearchParams(window.location.search);
+  const referral = queryParams.get('ref') || '';
 
 
   const validatePass = (value: any) => {
@@ -80,7 +80,7 @@ const Register: React.FC = () => {
           <label htmlFor="address">Address*</label> <br />
           <input type="text" id="address" required />
           <label htmlFor="referral">Referral username [optional]</label> <br />
-          <input type="text" id="referral" value={referralUsername} onChange={(e) => setReferralUsername(e.target.value)} />
+          <input type="text" id="referral" value={referral} onChange={(e) => setReferralUsername(e.target.value)} />
           <span className="text-muted">Leave blank if no referral</span> <br />
           <label htmlFor="password">Password*</label> <br />
           <input
