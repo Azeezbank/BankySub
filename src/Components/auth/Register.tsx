@@ -92,7 +92,7 @@ const Register: React.FC = () => {
           />
           <span className="text-danger">{passError}</span> <br />
           <span className="text-muted">
-            Min_length-8 mix characters [i.e 865strongPassword8452]
+            Min_length-8 mix characters [i.e &865strongPassword8452]
           </span>{" "}
           <br />
           <label htmlFor="confirmPass">Confirm Password*</label> <br />
