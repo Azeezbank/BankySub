@@ -27,7 +27,7 @@ const FundHist: React.FC = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        `https://bankysub-api.onrender.com/api/payment/history?page=${page}&limit=${limit}`, { withCredentials: true}
+        `https://bankysub-api-production.up.railway.app/api/payment/history?page=${page}&limit=${limit}`, { withCredentials: true}
       );
       setItems(response.data.data);
       setTotalPage(response.data.totalPage);

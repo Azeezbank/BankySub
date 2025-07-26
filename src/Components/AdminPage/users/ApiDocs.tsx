@@ -20,7 +20,7 @@ const ApiDocs: React.FC = () => {
   useEffect(() => {
     const fetchApiDocs = async () => {
       try {
-        const response = await axios.get('https://bankysub-api.onrender.com/api/env', {withCredentials: true});
+        const response = await axios.get('https://bankysub-api-production.up.railway.app/.app/api/env', {withCredentials: true});
         if (response.status === 200) {
         setApiDocs(response.data);
         }
@@ -37,7 +37,7 @@ const ApiDocs: React.FC = () => {
     setIsUpdate(true)
     try {
       const response = await axios.post(
-        'https://bankysub-api.onrender.com/api/env', { service_type, api_key, api_url }, {withCredentials: true})
+        'https://bankysub-api-production.up.railway.app//api/env', { service_type, api_key, api_url }, {withCredentials: true})
       if (response.status === 200) {
         setIsUpdate(false);
       }

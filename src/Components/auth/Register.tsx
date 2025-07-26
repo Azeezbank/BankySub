@@ -50,7 +50,7 @@ const Register: React.FC = () => {
       return;
     }
     try {
-      const response = await axios.post('https://bankysub-api.onrender.com/api/auth/register', { password, username, email, fullName, phone, referralUsername }, {withCredentials: true});
+      const response = await axios.post('https://bankysub-api-production.up.railway.app/api/auth/register', { password, username, email, fullName, phone, referralUsername }, {withCredentials: true});
       if (response.status === 200) {
         alert(response.data.message);
         navigate('/verify/mail');

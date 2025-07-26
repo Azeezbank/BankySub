@@ -21,7 +21,7 @@ const Setting: React.FC = () => {
     const handleAdminDetailUpdate = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/admin/details", { withCredentials: true}
+          "https://bankysub-api-production.up.railway.app/api/admin/details", { withCredentials: true}
         );
         if (response.status === 200) {
           setInfo(response.data);
@@ -40,7 +40,7 @@ const Setting: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        "https://bankysub-api.onrender.com/api/admin/details/updated/setting",
+        "https://bankysub-api-production.up.railway.app/api/admin/details/updated/setting",
         info, { withCredentials: true}
       );
       if (response.status === 200) {

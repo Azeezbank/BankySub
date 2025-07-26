@@ -23,7 +23,7 @@ const DataHistory: React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/protected",
+          "https://bankysub-api-production.up.railway.app/api/protected",
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -46,7 +46,7 @@ const DataHistory: React.FC = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        'https://bankysub-api.onrender.com/api/data/history', { withCredentials: true }
+        'https://bankysub-api-production.up.railway.app/api/data/history', { withCredentials: true }
       );
       setHistories(response.data);
     } catch (err) {

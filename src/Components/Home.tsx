@@ -52,7 +52,7 @@ const Home: React.FC = () => {
 
   const user = walletBalance[0]?.username ?? '';
 
-  const link = `http://localhost:5173/register?ref=${user}`;
+  const link = `https://bankysub-api-production.up.railway.app//register?ref=${user}`;
 
   //Copy referal link
   const copyClipboard = (event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -70,7 +70,7 @@ const Home: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://bankysub-api.onrender.com/api/monnify/dedicated/account",
+        "https://bankysub-api-production.up.railway.app/api/monnify/dedicated/account",
         {},
         { withCredentials: true }
       );
@@ -87,7 +87,7 @@ const Home: React.FC = () => {
     const handleUserInfo = async () => {
       try {
         const response = await axios.get<walletInfo[]>(
-          "https://bankysub-api.onrender.com/api/user/info",
+          "https://bankysub-api-production.up.railway.app/api/user/info",
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -105,7 +105,7 @@ const Home: React.FC = () => {
     const bankDetail = async () => {
       try {
         const response = await axios.post<bank[]>(
-          "https://bankysub-api.onrender.com/api/user/bank/account",
+          "https://bankysub-api-production.up.railway.app/api/user/bank/account",
           {},
           { withCredentials: true }
         );
@@ -125,7 +125,7 @@ const Home: React.FC = () => {
     const handleMessage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/admin/dashboard/message", { withCredentials: true}
+          "https://bankysub-api-production.up.railway.app/api/admin/dashboard/message", { withCredentials: true}
         );
         if (response.status === 200) {
           setDash_message(response.data);

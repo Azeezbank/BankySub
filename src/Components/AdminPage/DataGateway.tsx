@@ -28,7 +28,7 @@ const DataGateway: React.FC = () => {
     const handleMSmeData = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/data/all/plan", { withCredentials: true }
+          "https://bankysub-api-production.up.railway.app/api/data/all/plan", { withCredentials: true }
         );
         if (response.status === 200) {
           setAlPlan(response.data);
@@ -56,7 +56,7 @@ const DataGateway: React.FC = () => {
     try {
       setIsSaving(false)
       await axios.put(
-        "https://bankysub-api.onrender.com/api/data/update/plans",
+        "https://bankysub-api-production.up.railway.app/api/data/update/plans",
         allPlan, { withCredentials: true }
       );
       setIsSaving(true)
@@ -72,7 +72,7 @@ const DataGateway: React.FC = () => {
     try {
       setIsUpdate(false)
       await axios.put(
-        "https://bankysub-api.onrender.com/api/data/update/types/status",
+        "https://bankysub-api-production.up.railway.app/api/data/update/types/status",
         { dataTypeNetworkName, dataTypeName, isDataTypeStatus }, { withCredentials: true }
       );
       setIsUpdate(true);

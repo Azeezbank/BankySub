@@ -17,7 +17,7 @@ const Login: React.FC = () => {
     try {
       setIsAuth(true);
       const response = await axios.post(
-        "https://bankysub-api.onrender.com/api/auth/verify/mail",
+        "https://bankysub-api-production.up.railway.app/api/auth/verify/mail",
         { otp },
         { withCredentials: true }
       );

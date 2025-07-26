@@ -39,7 +39,7 @@ const Airtime: React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/protected",
+          "https://bankysub-api-production.up.railway.app/api/protected",
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -57,7 +57,7 @@ const Airtime: React.FC = () => {
     const fetchAirtimeN = async () => {
       try {
         const response = await axios.get<AirtimeN[]>(
-          "https://bankysub-api.onrender.com/api/airtime/networkN",
+          "https://bankysub-api-production.up.railway.app/api/airtime/networkN",
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -75,7 +75,7 @@ const Airtime: React.FC = () => {
     const fetchAirtimeType = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/airtime/type",
+          "https://bankysub-api-production.up.railway.app/api/airtime/type",
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -101,7 +101,7 @@ const Airtime: React.FC = () => {
         return;
       }
       const response = await axios.post(
-        "https://bankysub-api.onrender.com/api/airtime/topup",
+        "https://bankysub-api-production.up.railway.app/api/airtime/topup",
         { airtimeNChoosen, airtimeTChoosen, mobileN, amount, actualAmount },
         { withCredentials: true }
       );
@@ -123,7 +123,7 @@ const Airtime: React.FC = () => {
     const handleUserInfo = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api.onrender.com/api/user/info",
+          "https://bankysub-api-production.up.railway.app/api/user/info",
           { withCredentials: true }
         );
         if (response.status === 200) {
