@@ -56,7 +56,7 @@ const LandinpPage: React.FC = () => {
     const fetchDataPlans = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/data/plan",
+          "https://bankysub-api-production.up.railway.app/api/home/data/plan",
           { withCredentials: true }
         );
         if (response.status === 200) {
