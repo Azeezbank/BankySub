@@ -43,6 +43,7 @@ useEffect(() => {
 
   return (
     <>
+    <div className='pt-5 bg-light'>
     <div className="plansPP">
             <div className="grid-plans self">
               <div className="www">
@@ -163,6 +164,7 @@ useEffect(() => {
                 </div>
               </div>
             </div>
+          </div>
           </div>
     </>
   )

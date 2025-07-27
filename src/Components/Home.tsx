@@ -156,8 +156,6 @@ const Home: React.FC = () => {
         setBalanceColor('lowbalance');
       }  else if (Number(balance) < 500) {
         setBalanceColor('insulficientbalance')
-      } else {
-        console.log('No balance detected');
       }
     }
     handleblink();
