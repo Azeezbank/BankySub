@@ -38,7 +38,6 @@ const LandinpPage: React.FC = () => {
   const [airtelPlan, setAirtelPlan] = useState<plan[]>([]);
   const [gloPlan, setGloPlans] = useState<plan[]>([]);
   const [mobile, setMobile] = useState<plan[]>([]);
-  const [ref1, view1] = useInView({ threshold: 1, triggerOnce: false });
   const [ref2, view2] = useInView({ threshold: 1, triggerOnce: false });
   const [ref3, view3] = useInView({ threshold: 1, triggerOnce: true });
   const [ref4, view4] = useInView({ threshold: 1, triggerOnce: false });
@@ -149,10 +148,10 @@ const LandinpPage: React.FC = () => {
           <div className="about-section pt-5 pb-5">
             <div className="text-center">
               <motion.img
-                ref={ref1}
                 initial={{ opacity: 0, y: -20 }}
-                transition={{ duration: 1, ease: "easeIn" }}
-                animate={{ opacity: view1 ? 1 : 0, y: view1 ? 0 : -20 }}
+                whileInView={{opacity: 1, y: 0}}
+                viewport={{once: false}}
+                transition={{ duration: 1, ease: "easeIn"  }}
                 src={star}
                 alt="star"
                 width={40}

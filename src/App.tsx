@@ -23,6 +23,7 @@ import AirtimeHistory from './Components/Histories/AirtimeHistory';
 import Verifymail from './Components/auth/Verifymail';
 import UserInfo from './Components/AdminPage/users/UserInfo';
 import ApiDocs from './Components/AdminPage/users/ApiDocs';
+import Plans from './Components/plans';
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const App: React.FC = () => {
             <Route path='verify' element={<Verify />} />
             <Route path='data/history' element={<DataHistory />} />
             <Route path='airtime/history' element={<AirtimeHistory />} />
+            <Route path='plans' element={<Plans />} />
           </Route>
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />

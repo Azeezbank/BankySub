@@ -140,6 +140,42 @@ nav {
 .verifybtn:hover {
   background-color: #8b0597;
 }
+.balancediv {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.balancecolorAll {
+  display: flex;
+  position: absolute;
+  right: -15px;
+}
+.balancecolorAll span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.enoughbalance {
+  background-color: green;
+   border-radius: 50%;
+}
+.lowbalance {
+  background-color: yellow;
+   border-radius: 50%;
+}
+.insulficientbalance {
+  background-color: red;
+   border-radius: 50%;
+   animation: fund 1s infinite;
+}
+@keyframes fund {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
 
 @media (min-width: 760px) {
   .service-grid {

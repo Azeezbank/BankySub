@@ -95,7 +95,7 @@ const AdminDashBoard: React.FC = () => {
     const adminProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app//api/protected/admin/route",
+          "https://bankysub-api-production.up.railway.app/api/protected/admin/route",
           { withCredentials: true }
         );
         if (response.status === 200) {

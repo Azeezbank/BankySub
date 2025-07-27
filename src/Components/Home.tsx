@@ -49,6 +49,7 @@ const Home: React.FC = () => {
     whatsapp_link: "",
     dash_message: "",
   });
+  const [balanceColor, setBalanceColor] = useState('');
 
   const user = walletBalance[0]?.username ?? '';
 
@@ -144,6 +145,21 @@ const Home: React.FC = () => {
       setRole(true);
     };
   }, [walletBalance]);
+
+  //Add wallet status indicator
+  useEffect(() => {
+    const handleblink = () => {
+      const balance = walletBalance.map((amount) => amount.user_balance)[0];
+      if (Number(balance) >= 1000) {
+        setBalanceColor('enoughbalance');
+      } else if (Number(balance) < 1000 && Number(balance) > 500) {
+        setBalanceColor('lowbalance');
+      }  else {
+        setBalanceColor('insulficientbalance')
+      }
+    }
+    handleblink();
+  }, [balanceColor]);
 
   
   return (
@@ -370,7 +386,10 @@ const Home: React.FC = () => {
                 </p>
               </div>
               <div className="ps-2">
-                <p className="text-muted pt-2">Wallet balance</p>
+              <div className="balancediv">
+                <p className="text-muted pt-2">Wallet balance</p> 
+                <div className={`balancecolorAll ${balanceColor}`}><span></span></div>
+                </div>
                 <p className="amount">
                   # {walletBalance.map((wallet) => wallet.user_balance)}
                 </p>
@@ -450,7 +469,7 @@ const Home: React.FC = () => {
                 <p className="text-muted">Buy Data</p>
               </div>{" "}
             </Link>
-            <Link to={'/user/airtime'}>
+            <Link to={'/user/airtime'} className="Link">
               <div className="service-grid-items">
                 <img
                   src={airtimeTocash}
@@ -513,7 +532,7 @@ const Home: React.FC = () => {
               </h2>
               <h5 className="text-muted fontStat">
                 WALLET BALANCE <br />{" "}
-                <span className="text-dark"> # 0 </span>
+                <span className="text-secondary"> # {walletBalance.map(balance => balance.user_balance)} </span>
               </h5>
             </div>
             <div className="gridStatistics borderSt">
@@ -522,7 +541,7 @@ const Home: React.FC = () => {
               </h2>
               <h5 className="text-muted fontStat">
                 TRANSACTIONS <br />{" "}
-                <span className="text-dark"> # 0 </span>
+                <span className="text-secondary"> Await... </span>
               </h5>
             </div>
             <div className="gridStatistics">
@@ -531,7 +550,7 @@ const Home: React.FC = () => {
               </h2>
               <h5 className="text-muted fontStat">
                 TOTAL SPENT <br />{" "}
-                <span className="text-dark"> # 0 </span>
+                <span className="text-secondary"> Hidden </span>
               </h5>
             </div>
           </div>
