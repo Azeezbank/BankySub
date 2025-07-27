@@ -149,17 +149,19 @@ const Home: React.FC = () => {
   //Add wallet status indicator
   useEffect(() => {
     const handleblink = () => {
-      const balance = walletBalance.map((amount) => amount.user_balance)[0];
+      const balance = Number(walletBalance[0]?.user_balance);
       if (Number(balance) >= 1000) {
         setBalanceColor('enoughbalance');
       } else if (Number(balance) < 1000 && Number(balance) > 500) {
         setBalanceColor('lowbalance');
-      }  else {
+      }  else if (Number(balance) < 500) {
         setBalanceColor('insulficientbalance')
+      } else {
+        console.log('No balance detected');
       }
     }
     handleblink();
-  }, [balanceColor]);
+  }, [walletBalance]);
 
   
   return (
@@ -391,7 +393,7 @@ const Home: React.FC = () => {
                 <div className={`balancecolorAll ${balanceColor}`}><span></span></div>
                 </div>
                 <p className="amount">
-                  # {walletBalance.map((wallet) => wallet.user_balance)}
+                  # {walletBalance[0]?.user_balance}
                 </p>
               </div>
             </div>
@@ -532,7 +534,7 @@ const Home: React.FC = () => {
               </h2>
               <h5 className="text-muted fontStat">
                 WALLET BALANCE <br />{" "}
-                <span className="text-secondary"> # {walletBalance.map(balance => balance.user_balance)} </span>
+                <span className="text-secondary"> # {walletBalance[0]?.user_balance} </span>
               </h5>
             </div>
             <div className="gridStatistics borderSt">

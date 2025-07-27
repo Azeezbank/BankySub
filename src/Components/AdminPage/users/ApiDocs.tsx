@@ -37,7 +37,7 @@ const ApiDocs: React.FC = () => {
     setIsUpdate(true)
     try {
       const response = await axios.post(
-        'https://bankysub-api-production.up.railway.app//api/env', { service_type, api_key, api_url }, {withCredentials: true})
+        'https://bankysub-api-production.up.railway.app/api/env', { service_type, api_key, api_url }, {withCredentials: true})
       if (response.status === 200) {
         setIsUpdate(false);
       }
