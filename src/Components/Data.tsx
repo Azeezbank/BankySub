@@ -112,10 +112,11 @@ const Data: React.FC = () => {
     try {
       setIsProcessing(false);
       const isLesser = walletBalance.some(
-        (wallet) => wallet.user_balance < choosenDataPlan
+        (wallet) => parseFloat(wallet.user_balance) < parseFloat(choosenDataPlan)
       );
       if (isLesser) {
         alert("Low wallet balance, please fund your wallet");
+        setIsProcessing(true);
         return;
       }
       const response = await axios.post(
