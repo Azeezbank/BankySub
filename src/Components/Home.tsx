@@ -174,10 +174,10 @@ const Home: React.FC = () => {
   return (
     <>
       <div className="hero">
-        <h3>WELCOME TO TUNSTELECOM.COM.NG</h3>
+        <h3>WELCOME TO BANKYCONNECT.VERCEL.APP</h3>
 
         <Typewriter
-          words={["WELCOME TO TUNSTELECOM.COM.NG"]}
+          words={["POWERED BY TUNSTELECOM"]}
           loop={Infinity}
           cursor
           cursorStyle="_"
@@ -240,7 +240,7 @@ const Home: React.FC = () => {
           <hr /> <hr />
           <p className="ash-background">
             <span className="orange">**NEW**</span> Own a
-            TUNSTELECOM.COM.NG retailer website and retail all our
+            BANKYCONNECT.VERCEL.APP retailer website and retail all our
             services; Such as DATA, Recharge cards printing, AIRTIME and
             Bills Payment. <button type="button">Click here</button>
           </p>
@@ -436,7 +436,7 @@ const Home: React.FC = () => {
             <div className="notification-bg ">
               <h5>Notification</h5>
               <p><b>Welcome to BankyConnect</b> <br/> Note: On this platform, you can order for anything you like 
-              us to include, we are here to serve you better, and ensure all our goods with cheaper rate. This is powered by Tunstelecom, Thanks
+              us to include, we are here to serve you better, and enjoy all our goods with cheaper rate. This is powered by Tunstelecom, Thanks
               </p>
             </div>
             <div className="notification-bg">
