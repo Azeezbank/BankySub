@@ -15,6 +15,7 @@ import referal from "../assets/referral.png";
 import moniepoit from "../assets/monie.png";
 import Marquee from "react-fast-marquee";
 import { Typewriter } from "react-simple-typewriter";
+import Modal from './modal/modal';
 
 
 
@@ -50,6 +51,9 @@ const Home: React.FC = () => {
     dash_message: "",
   });
   const [balanceColor, setBalanceColor] = useState('');
+  const [notification, setNotification] = useState('');
+  const [isAcct, setIsAcct] = useState(true);
+  const [isErr, setIsErr] = useState(false);
 
   const user = walletBalance[0]?.username ?? '';
 
@@ -69,6 +73,7 @@ const Home: React.FC = () => {
   //Generate account number
   const handleGenerateAcct = async (e: any) => {
     e.preventDefault();
+    setIsAcct(false);
     try {
       const response = await axios.post(
         "https://bankysub-api-production.up.railway.app/api/monnify/dedicated/account",
@@ -77,9 +82,13 @@ const Home: React.FC = () => {
       );
       if (response.status === 200) {
         console.log("Account generated");
+        setIsAcct(true);
       }
     } catch (err: any) {
       console.error("Error generating", err.response?.data.message || err.message);
+      setIsErr(true);
+      setNotification(err.response?.data?.message);
+      setIsAcct(true);
     }
   };
 
@@ -275,8 +284,13 @@ const Home: React.FC = () => {
                     className="generateNo"
                     onClick={handleGenerateAcct}
                   >
+                    {isAcct? (
+                      <>
                     <i className="bi bi-arrow-counterclockwise "></i>
                     Generate Account Number
+                    </> ) : (
+                      <span className="spinner-border-sm">Please Wait...</span>
+                    )}
                   </span>
                 )}
               </p>
@@ -421,6 +435,9 @@ const Home: React.FC = () => {
             </div>
             <div className="notification-bg ">
               <h5>Notification</h5>
+              <p><b>Welcome to BankyConnect</b> <br/> Note: On this platform, you can order for anything you like 
+              us to include, we are here to serve you better, and ensure all our goods with cheaper rate. This is powered by Tunstelecom, Thanks
+              </p>
             </div>
             <div className="notification-bg">
               <h5>FAQ:</h5>
@@ -555,6 +572,9 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
+        {isErr? (
+        <Modal notification={notification}/>
+        ) : ('')}
       </div>
     </>
   )

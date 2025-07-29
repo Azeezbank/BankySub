@@ -37,7 +37,7 @@ const Data: React.FC = () => {
   const [dataPlan, setDataPlan] = useState<dataPlan[]>([]);
   const [choosenNetwork, setChoodenNetwork] = useState("");
   const [choosenDataType, setChoosenDataType] = useState("");
-  const [choosenDataPlan, setChoosenDataPlan] = useState("");
+  const [choosenDataPlan, setChoosenDataPlan] = useState('');
   const [mobileNumber, setMobileNumber] = useState("");
   const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
   const [isModalSuccess, setIsModalSuccess] = useState<boolean>(false);
@@ -225,7 +225,7 @@ const Data: React.FC = () => {
             <br />
             <label htmlFor={"phone"}>Phone</label> <br />
             <input
-              type={"number"}
+              type="tel"
               name="phone"
               id="phone"
               onChange={(e) => setMobileNumber(e.target.value)}

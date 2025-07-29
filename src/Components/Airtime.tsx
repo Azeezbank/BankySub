@@ -94,7 +94,7 @@ const Airtime: React.FC = () => {
     try {
       setIsProcessing(false);
       const isLesser = walletBalance.some(
-        (wallet) => wallet.user_balance < amount
+        (wallet) => parseFloat(wallet.user_balance) < parseFloat(amount)
       );
       if (isLesser) {
         alert("Low wallet balance, please fund your wallet");
