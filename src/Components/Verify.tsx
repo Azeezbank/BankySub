@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Modal from './modal/modal';
 
 const Verify: React.FC = () => {
   const [verificationType, setVerificationType] = useState<string>("");
   const [verificationNumber, setVerificationNumber] = useState<string>('');
   const [isVerify, setIsVerify] = useState(true);
+  const [notification, setNotification] = useState('');
+    const [isErr, setIsErr] = useState(false);
 
+
+    //Verify NIN or BVN
   const handleVerify = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsVerify(false);
@@ -22,6 +27,8 @@ const Verify: React.FC = () => {
     } catch (err: any) {
       console.error('Error', err?.response?.data?.message || err.message);
       setIsVerify(true);
+      setNotification(err.response?.data?.message);
+      setIsErr(true);
     }
   };
   return (
@@ -60,6 +67,9 @@ const Verify: React.FC = () => {
             <button type="submit" onClick={handleVerify} className="verifybtn">Please Waity...</button>
           )}
         </div>
+        {isErr? (
+        <Modal notification={notification}/>
+        ) : ('')}
       </div>
     </>
   );
