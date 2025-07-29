@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ModalWar } from "./modal/modal";
 
 interface AirtimeN {
   d_id: number;
@@ -30,6 +31,8 @@ const Airtime: React.FC = () => {
   const [isModalSuccess, setIsModalSuccess] = useState<boolean>(false);
   const [isModalFail, setIsModalFail] = useState<boolean>(false);
   const [isProcessing, setIsProcessing] = useState<boolean>(true);
+  const [infoWar, setInfoWar] = useState('');
+  const [warning, setWarning] = useState(false);
   const navigate = useNavigate();
 
 
@@ -97,7 +100,8 @@ const Airtime: React.FC = () => {
         (wallet) => parseFloat(wallet.user_balance) < parseFloat(amount)
       );
       if (isLesser) {
-        alert("Low wallet balance, please fund your wallet");
+        setInfoWar('Low wallet balance, please fund your wallet');
+        setWarning(true);
         return;
       }
       const response = await axios.post(
@@ -117,7 +121,7 @@ const Airtime: React.FC = () => {
     }
   };
 
- 
+
   //Fetch user information
   useEffect(() => {
     const handleUserInfo = async () => {
@@ -282,6 +286,10 @@ const Airtime: React.FC = () => {
             </div>
           </div>
         )};
+        {warning && (
+          <ModalWar warning={infoWar} />
+        )}
+
       </main>
     </>
   );

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ModalWar } from './modal/modal';
 
 interface network {
   d_id: number;
@@ -44,6 +45,8 @@ const Data: React.FC = () => {
   const [isModalFail, setIsModalFail] = useState<boolean>(false);
   const [isProcessing, setIsProcessing] = useState<boolean>(true);
   const [plan, setPlan] = useState('');
+  const [infoWar, setInfoWar] = useState('');
+  const [warning, setWarning] = useState(false);
   const navigate = useNavigate();
 
 
@@ -115,7 +118,8 @@ const Data: React.FC = () => {
         (wallet) => parseFloat(wallet.user_balance) < parseFloat(choosenDataPlan)
       );
       if (isLesser) {
-        alert("Low wallet balance, please fund your wallet");
+        setInfoWar('Low wallet balance, please fund your wallet');
+        setWarning(true);
         setIsProcessing(true);
         return;
       }
@@ -126,8 +130,8 @@ const Data: React.FC = () => {
       );
 
       if (response.status === 200) {
-      setIsModalSuccess(true);
-      setIsProcessing(true);
+        setIsModalSuccess(true);
+        setIsProcessing(true);
       }
     } catch (err: any) {
       console.error(err);
@@ -319,6 +323,9 @@ const Data: React.FC = () => {
             </div>
           </div>
         )};
+        {warning && (
+          <ModalWar warning={infoWar} />
+        )}
       </main>
     </>
   );

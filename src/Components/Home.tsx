@@ -15,7 +15,7 @@ import referal from "../assets/referral.png";
 import moniepoit from "../assets/monie.png";
 import Marquee from "react-fast-marquee";
 import { Typewriter } from "react-simple-typewriter";
-import Modal from './modal/modal';
+import { ModalErr } from './modal/modal';
 
 
 
@@ -572,9 +572,9 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-        {isErr? (
-        <Modal notification={notification}/>
-        ) : ('')}
+        {isErr && (
+        <ModalErr notification={notification}/>
+        )}
       </div>
     </>
   )
