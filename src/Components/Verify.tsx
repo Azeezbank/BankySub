@@ -74,10 +74,10 @@ const Verify: React.FC = () => {
           )}
         </div>
         {isErr && (
-          <ModalErr notification={notification} />
+          <ModalErr notification={notification} onButtonClick={() => setIsErr(false)}/>
         )}
         {isSus && (
-          <ModalSus notificationSus={notificationSus} />
+          <ModalSus notificationSus={notificationSus} onButtonClick={() => setIsSus(false)}/>
         )}
       </div>
     </>

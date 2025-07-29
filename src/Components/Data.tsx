@@ -114,9 +114,11 @@ const Data: React.FC = () => {
 
     try {
       setIsProcessing(false);
+
       const isLesser = walletBalance.some(
         (wallet) => parseFloat(wallet.user_balance) < parseFloat(choosenDataPlan)
       );
+      
       if (isLesser) {
         setInfoWar('Low wallet balance, please fund your wallet');
         setWarning(true);
@@ -324,7 +326,7 @@ const Data: React.FC = () => {
           </div>
         )};
         {warning && (
-          <ModalWar warning={infoWar} />
+          <ModalWar warning={infoWar} onButtonClick={() => setWarning(false)} />
         )}
       </main>
     </>

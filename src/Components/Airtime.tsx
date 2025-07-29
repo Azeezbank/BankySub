@@ -49,7 +49,7 @@ const Airtime: React.FC = () => {
           console.log(response.data.message);
         }
       } catch (err: any) {
-        navigate("/api/auth/login");
+        navigate("/login");
         console.error(err.response?.data.message);
       }
     };
@@ -96,12 +96,15 @@ const Airtime: React.FC = () => {
     e.preventDefault();
     try {
       setIsProcessing(false);
+
       const isLesser = walletBalance.some(
         (wallet) => parseFloat(wallet.user_balance) < parseFloat(amount)
       );
+
       if (isLesser) {
         setInfoWar('Low wallet balance, please fund your wallet');
         setWarning(true);
+        setIsProcessing(true);
         return;
       }
       const response = await axios.post(
@@ -287,7 +290,7 @@ const Airtime: React.FC = () => {
           </div>
         )};
         {warning && (
-          <ModalWar warning={infoWar} />
+          <ModalWar warning={infoWar} onButtonClick={() => setWarning(false)} />
         )}
 
       </main>

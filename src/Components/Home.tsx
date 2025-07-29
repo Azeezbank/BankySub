@@ -573,7 +573,7 @@ const Home: React.FC = () => {
           </div>
         </div>
         {isErr && (
-        <ModalErr notification={notification}/>
+        <ModalErr notification={notification} onButtonClick={() => setIsErr(false)}/>
         )}
       </div>
     </>
