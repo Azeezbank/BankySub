@@ -69,7 +69,7 @@ const UserInfo: React.FC = () => {
                 setIsLOading(true);
             }
         } catch (err: any) {
-            console.error("Error updating user wallet", err.message);
+            console.error("Error updating user wallet");
             setIsLOading(true);
         }
     };
