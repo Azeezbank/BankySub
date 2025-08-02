@@ -201,7 +201,7 @@ const Home: React.FC = () => {
             <button
               type="button"
               onClick={copyClipboard}
-              className="copyClipboard"
+              className="copyClipboard bg-balck text-white"
             >
               Copy
             </button>
@@ -242,7 +242,7 @@ const Home: React.FC = () => {
             <span className="orange">**NEW**</span> Own a
             BANKYCONNECT.VERCEL.APP retailer website and retail all our
             services; Such as DATA, Recharge cards printing, AIRTIME and
-            Bills Payment. <button type="button">Click here</button>
+            Bills Payment. <button type="button" className="bg-white text-black">Click here</button>
           </p>
           {/* navbar tabs */}
           <ul className="nav nav-tabs">
@@ -506,10 +506,12 @@ const Home: React.FC = () => {
                 <p className="text-muted">Electricity Bills</p>
               </div>{" "}
             </Link>
+            <Link to={'/user/cable'} className="Link">
             <div className="service-grid-items">
               <img src={cable} alt="cable" className="service-image" />
               <p className="text-muted">Cable Subscription</p>
             </div>
+            </Link>
             <div className="service-grid-items">
               <img src={bulk} alt="airtime" className="service-image" />
               <p className="text-muted">Bulk SMS</p>

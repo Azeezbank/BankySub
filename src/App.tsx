@@ -24,6 +24,7 @@ import Verifymail from './Components/auth/Verifymail';
 import UserInfo from './Components/AdminPage/users/UserInfo';
 import ApiDocs from './Components/AdminPage/users/ApiDocs';
 import Plans from './Components/plans';
+import Cable from './Components/Cable';
 
 const App: React.FC = () => {
   return (
@@ -35,6 +36,7 @@ const App: React.FC = () => {
             <Route path='dashboard' element={<Home />} />
             <Route path='data' element={<Data />} />
             <Route path='airtime' element={<Airtime />} />
+            <Route path='cable' element={<Cable />} />
             <Route path='verify' element={<Verify />} />
             <Route path='data/history' element={<DataHistory />} />
             <Route path='airtime/history' element={<AirtimeHistory />} />

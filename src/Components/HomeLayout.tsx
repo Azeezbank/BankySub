@@ -107,6 +107,14 @@ const HomeLayout: React.FC = () => {
               </div>
               <div className="grid-navDash">
                 <h3>
+                  <i className="bi bi-distribute-horizontal"></i>
+                </h3>
+                <Link to={'/user/cable'} className="Link">
+                <p className="ps-2">Cable Sub</p>
+                </Link>
+              </div>
+              <div className="grid-navDash">
+                <h3>
                   <i className="bi bi-lightbulb"></i>
                 </h3>
                 <p className="ps-2">Utility Payment</p>
@@ -122,12 +130,6 @@ const HomeLayout: React.FC = () => {
                   <i className="bi bi-envelope-paper"></i>
                 </h3>
                 <p className="ps-2">Buy Recharge Cards</p>
-              </div>
-              <div className="grid-navDash">
-                <h3>
-                  <i className="bi bi-distribute-horizontal"></i>
-                </h3>
-                <p className="ps-2">Data Card</p>
               </div>
               <div className="grid-navDash">
                 <h3>
