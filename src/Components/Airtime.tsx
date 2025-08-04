@@ -55,6 +55,7 @@ const Airtime: React.FC = () => {
     };
     ProtectPage();
   }, []);
+  
   // Fetch Airtime network
   useEffect(() => {
     const fetchAirtimeN = async () => {

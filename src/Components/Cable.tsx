@@ -14,7 +14,7 @@ interface provider {
 interface plan {
   d_id: number,
   id: number,
-  packages: string
+  cable_name: string
 }
 
 interface Info {
@@ -24,8 +24,10 @@ const Cable:React.FC = () => {
   const [providers, setProviders] = useState<provider[]>([]);
   const [plan, setPlan] = useState<plan[]>([]);
   const [userInfo, setUserInfo] = useState<Info[]>([]);
-  const [provider, setProvider] = useState('');
+  const [providerId, setProviderId] = useState('');
+  const [providerName, setProviderName] = useState('');
   const [cable_name, setCable_name] = useState('');
+  const [cable_planId, setCable_PlanId] = useState('');
   const [amount, setAmount] = useState('');
   const [number, setNumber] = useState('');
   const [customerName, setCustomerName] = useState('');
@@ -84,6 +86,7 @@ const Cable:React.FC = () => {
       const response = await axios.get('https://bankysub-api-production.up.railway.app/api/cable/provider', {withCredentials: true});
       if (response.status === 200) {
         setProviders(response.data);
+        console.log(response.data, 'data');
       }
     } catch (err: any) {
       console.error('Failed to select provider', err.response?.data?.message || err.message)
@@ -96,7 +99,7 @@ const Cable:React.FC = () => {
   useEffect(() => {
   const handleplans = async () => {
     try {
-      const response = await axios.post('https://bankysub-api-production.up.railway.app/api/cable/plan', {provider}, {withCredentials: true});
+      const response = await axios.post('https://bankysub-api-production.up.railway.app/api/cable/plan', {providerName}, {withCredentials: true});
       if (response.status === 200) {
         setPlan(response.data)
       }
@@ -105,7 +108,7 @@ const Cable:React.FC = () => {
     }
   };
   handleplans();
-}, []);
+}, [providers]);
 
   //Subscribe for cable
   const purchaseCable = async (e: any) => {
@@ -118,7 +121,7 @@ const Cable:React.FC = () => {
         setWarning(true);
         return;
       }
-      const response = await axios.post('https://bankysub-api-production.up.railway.app/api/cable/subscription', {provider, cable_name, amount, number, customerName, customerMail});
+      const response = await axios.post('https://bankysub-api-production.up.railway.app/api/cable/subscription', {providerId, cable_planId, cable_name, amount, number, customerName, customerMail, providerName});
       if (response.status === 200) {
         setIsProcessing(true);
         setIsModalSuccess(true);
@@ -137,7 +140,7 @@ const Cable:React.FC = () => {
     e.preventDefault();
     setIsValidate(false);
     try {
-      const response = await axios.get(`https://ncwallet.ng/api/cable/cable-validation?cable_id=${provider}&cable_number=${number}`);
+      const response = await axios.post('https://bankysub-api-production.up.railway.app/api/cable/verify/iuc', { providerId, number }, { withCredentials: true });
       setCustomerName(response.data?.customer_name);
       setIsValidate(true);
       console.log(response.data?.customer_name);
@@ -146,6 +149,20 @@ const Cable:React.FC = () => {
       setIsValidate(true);
     }
   };
+
+  //Set provider name
+  const handleProviderName = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    e.preventDefault();
+    setProviderId(e.target.value);
+    setProviderName(e.target.selectedOptions[0].text)
+  };
+
+  //Set cable plan Id
+  const handlePlanId = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    e.preventDefault();
+    setCable_PlanId(e.target.value);
+    setCable_name(e.target.selectedOptions[0].text);
+  }
 
     return (
         <>
@@ -156,7 +173,7 @@ const Cable:React.FC = () => {
                     <p>CableTv Provider</p>
                     <select
                       aria-label="slect"
-                      onChange={(e) => setProvider(e.target.value)}
+                      onChange={handleProviderName}
                     >
                       <option>---Select Provider---</option>
                       {providers.map((pro) => (
@@ -169,11 +186,11 @@ const Cable:React.FC = () => {
                     <p>Cable Plan</p>
                     <select
                       aria-label="selct"
-                    onChange={(e) => setCable_name(e.target.value)}
+                    onChange={handlePlanId}
                     >
                       <option>---Select---</option>
                       {plan.map((plan) => (
-                        <option key={plan.d_id as React.Key}>{plan.packages}</option>
+                        <option key={plan.d_id as React.Key} value={plan.id}>{plan.cable_name}</option>
                       ))}
                     </select>{" "}
                     <br />
@@ -257,7 +274,7 @@ const Cable:React.FC = () => {
                           </h1>
                           <h4>Transaction Successful</h4>
                           <p>
-                            You've Successfully Subscribed {provider} {cable_name} {amount} To {number}. <br/> Thanks.
+                            You've Successfully Subscribed {providerName} {cable_name} {amount} To {number}. <br/> Thanks.
                           </p>
                           <button
                             className="modal-ok"
