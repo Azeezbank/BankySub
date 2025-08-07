@@ -132,6 +132,7 @@ const Data: React.FC = () => {
       );
 
       if (response.status === 200) {
+        setIsModalFail(false);
         setIsModalSuccess(true);
         setIsProcessing(true);
       }
