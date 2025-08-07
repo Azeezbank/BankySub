@@ -316,7 +316,7 @@ const Home: React.FC = () => {
                   </p>
                 </div>
                 <div>
-                  <p className="text-end">1%</p>
+                  <p className="text-end">2%</p>
                   <p className="bankN automatedF">CHARGES</p>
                 </div>
               </div>
@@ -380,7 +380,9 @@ const Home: React.FC = () => {
               <p className="purple pb-2 bg-warning">
                 <i className="bi bi-arrow-counterclockwise"></i>
               </p>
-              <p className="ms-2 mt-2">Wallet Summary</p>
+              <Link to={'/user/fund/history'} className="Link">
+              <p className="ms-2 mt-2 text-black">Wallet Summary</p>
+              </Link>
             </div>
             <div className="d-flex purpleShadow">
               <p className="purple pb-2">

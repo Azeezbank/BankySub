@@ -25,6 +25,7 @@ import UserInfo from './Components/AdminPage/users/UserInfo';
 import ApiDocs from './Components/AdminPage/users/ApiDocs';
 import Plans from './Components/plans';
 import Cable from './Components/Cable';
+import UserFundHistory from './Components/Histories/UserFundHistory';
 
 const App: React.FC = () => {
   return (
@@ -40,6 +41,7 @@ const App: React.FC = () => {
             <Route path='verify' element={<Verify />} />
             <Route path='data/history' element={<DataHistory />} />
             <Route path='airtime/history' element={<AirtimeHistory />} />
+            <Route path='fund/history' element={<UserFundHistory />} />
             <Route path='plans' element={<Plans />} />
           </Route>
           <Route path='/register' element={<Register />} />
