@@ -317,7 +317,7 @@ const Data: React.FC = () => {
                   </button>
                   ) : (
                     <button className="modal-ok" type="button" disabled>
-                      <span className="spinner-border"></span>Processing...
+                      <span className="spinner-border-sm"></span>Processing...
                     </button>
                   )}
                   </div>
