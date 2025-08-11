@@ -137,6 +137,7 @@ const Data: React.FC = () => {
         setIsModalFail(false);
         setIsModalSuccess(true);
         setIsProcessing(true);
+        setIsModalConfirmation(false);
       }
     } catch (err: any) {
       console.error(err);
