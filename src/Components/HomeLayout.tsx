@@ -163,6 +163,14 @@ const HomeLayout: React.FC = () => {
                 <p className="ps-2">Pricing</p>
               </div>
               </Link>
+              <Link to={'/user/pin'} className="Link">
+              <div className="grid-navDash">
+                <h3>
+                  <i className="bi bi-cash"></i>
+                </h3>
+                <p className="ps-2">Pin</p>
+              </div>
+              </Link>
               <Link to={'/user/verify'} className="Link">
                 <div className="grid-navDash">
                   <h3>

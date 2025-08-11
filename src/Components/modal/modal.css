@@ -28,3 +28,31 @@
     height: 100vh;
     z-index: 1;
 }
+.confirm-element input {
+    width:  100%;
+    border: 1px solid grey;
+    outline: none;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+.confirm-element label {
+    display: flex;
+    justify-content: start;
+    margin-bottom: -15px;
+    margin-top: 15px;
+}
+
+.confirm-btn {
+    display:  flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+.confirm-btn button {
+    border-radius: 5px;
+}
+
+@media (min-width: 760px) {
+    .confirm {
+        width: 500px;
+    }
+}

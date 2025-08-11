@@ -46,7 +46,9 @@ const Data: React.FC = () => {
   const [isProcessing, setIsProcessing] = useState<boolean>(true);
   const [plan, setPlan] = useState('');
   const [infoWar, setInfoWar] = useState('');
+  const [isModalConfirmation, setIsModalConfirmation] = useState<boolean>(false);
   const [warning, setWarning] = useState(false);
+  const [pin, setPin] = useState<string>('');
   const navigate = useNavigate();
 
 
@@ -127,7 +129,7 @@ const Data: React.FC = () => {
       }
       const response = await axios.post(
         "https://bankysub-api-production.up.railway.app/api/data/purchase/bundle",
-        { plan, DataPrice, mobileNumber, choosenNetwork, choosenDataType },
+        { plan, DataPrice, mobileNumber, choosenNetwork, choosenDataType, pin },
         { withCredentials: true }
       );
 
@@ -186,6 +188,16 @@ const Data: React.FC = () => {
     };
     handleUserInfo();
   });
+
+  const Purchase = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!choosenNetwork || !choosenDataType || !choosenDataPlan || !mobileNumber) {
+      setInfoWar('Please fill all fields');
+      setWarning(true);
+      return;
+    }
+      setIsModalConfirmation(true);
+  };
 
   return (
     <>
@@ -265,17 +277,55 @@ const Data: React.FC = () => {
               </p>{" "}
               <label htmlFor={"bypass"}>Bypass Number Validator</label>
             </div>
-            {isProcessing ? (
-              <button onClick={FetchDataBundle} type="submit">
+             
+              <button onClick={Purchase} type="submit">
                 Purchase
               </button>
-            ) : (
-              <button onClick={FetchDataBundle} type="submit">
-                <span className="spinner-border spinner-border-sm" role="status"><span className="visually-hidden"></span></span> Processing...
-              </button>
-            )}
+
           </form>
         </div>
+
+        {/* //Confirmation modal */}
+        {isModalConfirmation && (
+        <div className="modal-bg">
+            <div>
+              <div className="modall  confirm">
+                <div className="confirm-element">
+                  <h1 className="success-mark">
+                    <i className="bi bi-question-circle text-success"></i>
+                  </h1>
+                  <h4>Confirm Your Transaction of <br/> <small> {choosenNetwork} {choosenDataType} #{choosenDataPlan} to {mobileNumber}</small> </h4>
+                  <label htmlFor="pin">Input Your Transaction Pin </label> <br />
+                  <input type="tel" name="pin" id="pin" placeholder="Input Your 4 Digit Pin" onChange={(e)  => setPin(e.target.value)} /> <br/>
+                  <p className="text-danger">Note: This action cannot be undone</p>
+                  <div className="confirm-btn">
+                  <button
+                    className="modal-ok"
+                    type="button"
+                    onClick={() => setIsModalConfirmation(false)}
+                  >
+                    Oh! No
+                  </button>
+                  {isProcessing ? (
+                  <button
+                    className="modal-ok"
+                    type="button"
+                    onClick={FetchDataBundle}
+                  >
+                    Yes
+                  </button>
+                  ) : (
+                    <button className="modal-ok" type="button" disabled>
+                      <span className="spinner-border"></span>Processing...
+                    </button>
+                  )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* data success modal */}
         {isModalSuccess && (
           <div className="modal-bg">
@@ -302,7 +352,8 @@ const Data: React.FC = () => {
             </div>
           </div>
         )}
-
+      
+  
         {/* Failed mo dal */}
         {isModalFail && (
           <div className="modal-bg">

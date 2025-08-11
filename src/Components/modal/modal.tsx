@@ -14,14 +14,14 @@ interface infoWar {
     onButtonClick: () => void
 }
 
-export const ModalErr: React.FC<infoErr> = ({ notification }) => {
+export const ModalErr: React.FC<infoErr> = ({ notification, onButtonClick }) => {
     return (
         <>
         <div className='notificationDiv'>
             <div className='alert alert-danger alert-dismisible fade show notification'>
                 <div className='flex-ferr-alert'>
                 <h5 className='fw-bold'>Error!</h5>
-                <button type='button' className='btn-close ms-4' data-bs-dismiss='alert'></button>
+                <button type='button' className='btn-close ms-4' data-bs-dismiss='alert' onClick={onButtonClick}></button>
                 </div>
                 <p>{notification}</p>
             </div>

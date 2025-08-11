@@ -26,6 +26,7 @@ import ApiDocs from './Components/AdminPage/users/ApiDocs';
 import Plans from './Components/plans';
 import Cable from './Components/Cable';
 import UserFundHistory from './Components/Histories/UserFundHistory';
+import Pin from './Components/Pin';
 
 const App: React.FC = () => {
   return (
@@ -43,6 +44,7 @@ const App: React.FC = () => {
             <Route path='airtime/history' element={<AirtimeHistory />} />
             <Route path='fund/history' element={<UserFundHistory />} />
             <Route path='plans' element={<Plans />} />
+            <Route path='pin' element={<Pin />} />
           </Route>
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
