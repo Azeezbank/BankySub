@@ -79,6 +79,7 @@ const Data: React.FC = () => {
   }, []);
 
   //Fetch dataType
+  useEffect(() => {
   const fetchDataType = async () => {
     try {
       const response = await axios.post<dataType[]>(
@@ -93,8 +94,11 @@ const Data: React.FC = () => {
       console.error(err);
     }
   };
+  fetchDataType();
+}, [networks])
 
   //Fetch data plans
+  useEffect(() => {
   const fetchDataPlan = async () => {
     try {
       const response = await axios.post<dataPlan[]>(
@@ -109,6 +113,8 @@ const Data: React.FC = () => {
       console.error(err);
     }
   };
+  fetchDataPlan();
+}, [dataType])
 
   //Purchase data bundle
   const FetchDataBundle = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -200,6 +206,18 @@ const Data: React.FC = () => {
       setIsModalConfirmation(true);
   };
 
+  // replace +234
+  const handlePhoneNumber = (e: any) => {
+    e.preventDefault();
+
+    let value = e.target.value.trim();
+
+    // Replace +234 with 0
+  if (value.startsWith("+234")) {
+    value = "0" + value.slice(4);
+  }
+  setMobileNumber(value)
+  }
   return (
     <>
       <main>
@@ -216,7 +234,6 @@ const Data: React.FC = () => {
             <p>Data Type</p>
             <select
               aria-label="choose dataType"
-              onClick={fetchDataType}
               onChange={(e) => setChoosenDataType(e.target.value)}
             >
               <option>---Select---</option>
@@ -228,7 +245,6 @@ const Data: React.FC = () => {
             <p>Data Plan</p>
             <select
               aria-label="choose dataPlan"
-              onClick={fetchDataPlan}
               onChange={handlePrice}
             >
               <option>---Select---</option>
@@ -248,7 +264,7 @@ const Data: React.FC = () => {
               type="tel"
               name="phone"
               id="phone"
-              onChange={(e) => setMobileNumber(e.target.value)}
+              onChange={handlePhoneNumber}
               placeholder="Phone Number"
               required
             />
@@ -317,7 +333,7 @@ const Data: React.FC = () => {
                   </button>
                   ) : (
                     <button className="modal-ok" type="button" disabled>
-                      <span className="spinner-border-sm"></span>Processing...
+                      <span className="spinner-border"></span>Processing...
                     </button>
                   )}
                   </div>
