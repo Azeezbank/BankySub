@@ -79,7 +79,6 @@ const Data: React.FC = () => {
   }, []);
 
   //Fetch dataType
-  useEffect(() => {
   const fetchDataType = async () => {
     try {
       const response = await axios.post<dataType[]>(
@@ -94,11 +93,8 @@ const Data: React.FC = () => {
       console.error(err);
     }
   };
-  fetchDataType();
-}, [networks])
 
   //Fetch data plans
-  useEffect(() => {
   const fetchDataPlan = async () => {
     try {
       const response = await axios.post<dataPlan[]>(
@@ -113,8 +109,6 @@ const Data: React.FC = () => {
       console.error(err);
     }
   };
-  fetchDataPlan();
-}, [dataType])
 
   //Purchase data bundle
   const FetchDataBundle = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -234,6 +228,7 @@ const Data: React.FC = () => {
             <p>Data Type</p>
             <select
               aria-label="choose dataType"
+              onClick={fetchDataType}
               onChange={(e) => setChoosenDataType(e.target.value)}
             >
               <option>---Select---</option>
@@ -246,6 +241,7 @@ const Data: React.FC = () => {
             <select
               aria-label="choose dataPlan"
               onChange={handlePrice}
+              onClick={fetchDataPlan}
             >
               <option>---Select---</option>
               {dataPlan.map((dp) => (
