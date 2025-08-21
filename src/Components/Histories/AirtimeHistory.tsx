@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { apiUrl } from '../Home';
 
 interface items {
   d_id: number;
@@ -28,7 +29,7 @@ const AirtimeHistory: React.FC = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        'https://bankysub-api-production.up.railway.app/api/airtime/history', { withCredentials: true }
+        `${apiUrl}/api/airtime/history`, { withCredentials: true }
       );
       setHistories(response.data);
     } catch (err) {
@@ -41,7 +42,7 @@ const AirtimeHistory: React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/protected",
+          `${apiUrl}/api/protected`,
           { withCredentials: true }
         );
         if (response.status === 200) {

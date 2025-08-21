@@ -5,6 +5,7 @@ import logo from "../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png
 import "./Admin.css";
 import { Link, Outlet } from "react-router-dom";
 import NavBar from "../NavBar";
+import { apiUrl } from '../Home';
 
 type menuState = {
   [key: string]: boolean;
@@ -95,7 +96,7 @@ const AdminDashBoard: React.FC = () => {
     const adminProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/protected/admin/route",
+          `${apiUrl}/api/protected/admin/route`,
           { withCredentials: true }
         );
         if (response.status === 200) {

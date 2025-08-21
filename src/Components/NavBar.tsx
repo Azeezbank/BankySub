@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from './Home';
 
 type Props = {
   sideBarClickHandler: () => void;
@@ -19,7 +20,7 @@ const NavBar: React.FC<Props> = ({ sideBarClickHandler }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://bankysub-api-production.up.railway.app/api/logout",
+        `${apiUrl}/api/logout`,
         {},
         { withCredentials: true }
       );

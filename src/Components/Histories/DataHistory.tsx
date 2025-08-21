@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from '../Home';
 
 interface items {
   d_id: number;
@@ -23,7 +24,7 @@ const DataHistory: React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/protected",
+          `${apiUrl}/api/protected`,
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -46,7 +47,7 @@ const DataHistory: React.FC = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        'https://bankysub-api-production.up.railway.app/api/data/history', { withCredentials: true }
+        `${apiUrl}/api/data/history`, { withCredentials: true }
       );
       setHistories(response.data);
     } catch (err) {

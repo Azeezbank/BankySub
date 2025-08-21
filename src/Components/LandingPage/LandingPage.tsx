@@ -22,6 +22,7 @@ import glo from "../../assets/glo.png";
 import nimobile from "../../assets/9mobile.png";
 import axios from "axios";
 import animationV from '../../assets/dark_blue_bg_3.mp4';
+import { apiUrl } from '../Home';
 
 interface plan {
   d_id: number;
@@ -55,7 +56,7 @@ const LandinpPage: React.FC = () => {
     const fetchDataPlans = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/home/data/plan",
+          `${apiUrl}/api/home/data/plan`,
           { withCredentials: true }
         );
         if (response.status === 200) {

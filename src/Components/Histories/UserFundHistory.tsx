@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { apiUrl } from '../Home';
 
 interface items {
   d_id: number;
@@ -27,7 +28,7 @@ const UserFundHist: React.FC = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        `https://bankysub-api-production.up.railway.app/api/payment/history/user?page=${page}&limit=${limit}`, { withCredentials: true}
+        `${apiUrl}/api/payment/history/user?page=${page}&limit=${limit}`, { withCredentials: true}
       );
       setItems(response.data.data);
       setTotalPage(response.data.totalPage);

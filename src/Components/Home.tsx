@@ -40,6 +40,9 @@ interface message {
   whatsapp_link: string;
 }
 
+export const apiUrl = 'https://bankysub-api-production.up.railway.app';
+
+
 const Home: React.FC = () => {
   const [bankDetails, setBankDetails] = useState<bank[]>([]);
   const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
@@ -57,7 +60,7 @@ const Home: React.FC = () => {
 
   const user = walletBalance[0]?.username ?? '';
 
-  const link = `https://bankysub-api-production.up.railway.app//register?ref=${user}`;
+  const link = `${apiUrl}/register?ref=${user}`;
 
   //Copy referal link
   const copyClipboard = (event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -76,7 +79,7 @@ const Home: React.FC = () => {
     setIsAcct(false);
     try {
       const response = await axios.post(
-        "https://bankysub-api-production.up.railway.app/api/monnify/dedicated/account",
+        `${apiUrl}/api/monnify/dedicated/account`,
         {},
         { withCredentials: true }
       );
@@ -97,7 +100,7 @@ const Home: React.FC = () => {
     const handleUserInfo = async () => {
       try {
         const response = await axios.get<walletInfo[]>(
-          "https://bankysub-api-production.up.railway.app/api/user/info",
+          `${apiUrl}/api/user/info`,
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -115,7 +118,7 @@ const Home: React.FC = () => {
     const bankDetail = async () => {
       try {
         const response = await axios.post<bank[]>(
-          "https://bankysub-api-production.up.railway.app/api/user/bank/account",
+          `${apiUrl}/api/user/bank/account`,
           {},
           { withCredentials: true }
         );
@@ -135,7 +138,7 @@ const Home: React.FC = () => {
     const handleMessage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/admin/dashboard/message", { withCredentials: true}
+          `${apiUrl}/api/admin/dashboard/message`, { withCredentials: true}
         );
         if (response.status === 200) {
           setDash_message(response.data);

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ModalWar } from './modal/modal';
 import './cable.css';
+import { apiUrl } from './Home';
 
 
 interface provider {
@@ -47,7 +48,7 @@ const Cable:React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/protected",
+          `${apiUrl}/api/protected`,
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -66,7 +67,7 @@ const Cable:React.FC = () => {
     const handleUserInfo = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/user/info",
+          `${apiUrl}/api/user/info`,
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -83,7 +84,7 @@ const Cable:React.FC = () => {
   useEffect(() => {
   const handleProvider = async () => {
     try {
-      const response = await axios.get('https://bankysub-api-production.up.railway.app/api/cable/provider', {withCredentials: true});
+      const response = await axios.get(`${apiUrl}/api/cable/provider`, {withCredentials: true});
       if (response.status === 200) {
         setProviders(response.data);
         console.log(response.data, 'data');
@@ -96,10 +97,9 @@ const Cable:React.FC = () => {
 }, []);
 
   //Fetch cable plans
-  useEffect(() => {
   const handleplans = async () => {
     try {
-      const response = await axios.post('https://bankysub-api-production.up.railway.app/api/cable/plan', {providerName}, {withCredentials: true});
+      const response = await axios.post(`${apiUrl}/api/cable/plan`, {providerName}, {withCredentials: true});
       if (response.status === 200) {
         setPlan(response.data)
       }
@@ -107,8 +107,6 @@ const Cable:React.FC = () => {
       console.error('Failed to selct cable plans', err.response?.data?.message || err.message);
     }
   };
-  handleplans();
-}, [providers]);
 
   //Subscribe for cable
   const purchaseCable = async (e: any) => {
@@ -121,7 +119,7 @@ const Cable:React.FC = () => {
         setWarning(true);
         return;
       }
-      const response = await axios.post('https://bankysub-api-production.up.railway.app/api/cable/subscription', {providerId, cable_planId, cable_name, amount, number, customerName, customerMail, providerName});
+      const response = await axios.post(`${apiUrl}/api/cable/subscription`, {providerId, cable_planId, cable_name, amount, number, customerName, customerMail, providerName});
       if (response.status === 200) {
         setIsProcessing(true);
         setIsModalSuccess(true);
@@ -140,10 +138,10 @@ const Cable:React.FC = () => {
     e.preventDefault();
     setIsValidate(false);
     try {
-      const response = await axios.post('https://bankysub-api-production.up.railway.app/api/cable/verify/iuc', { providerId, number }, { withCredentials: true });
+      const response = await axios.post(`${apiUrl}/api/cable/verify/iuc`, { providerId, number }, { withCredentials: true });
       setCustomerName(response.data?.customer_name);
       setIsValidate(true);
-      console.log(response.data?.customer_name);
+      console.log(response.data);
     } catch (err: any) {
       console.error('Failed to validate cable number', err);
       setIsValidate(true);
@@ -186,6 +184,7 @@ const Cable:React.FC = () => {
                     <p>Cable Plan</p>
                     <select
                       aria-label="selct"
+                      onClick={handleplans}
                     onChange={handlePlanId}
                     >
                       <option>---Select---</option>

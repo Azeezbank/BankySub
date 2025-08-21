@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { apiUrl } from '../Home';
 
 interface AdminDetails {
   whatsapp_phone: string;
@@ -21,7 +22,7 @@ const Setting: React.FC = () => {
     const handleAdminDetailUpdate = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/admin/details", { withCredentials: true}
+          `${apiUrl}/api/admin/details`, { withCredentials: true}
         );
         if (response.status === 200) {
           setInfo(response.data);
@@ -40,7 +41,7 @@ const Setting: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        "https://bankysub-api-production.up.railway.app/api/admin/details/updated/setting",
+        `${apiUrl}/api/admin/details/updated/setting`,
         info, { withCredentials: true}
       );
       if (response.status === 200) {

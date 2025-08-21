@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { ModalErr, ModalSus } from './modal/modal';
+import { apiUrl } from './Home';
 
 const Pin: React.FC = () => {
   const [pin, setPin] = useState<string>('');
@@ -17,7 +18,7 @@ const Pin: React.FC = () => {
     setIsVerify(false);
     try {
       const response = await axios.put(
-        `https://bankysub-api-production.up.railway.app/api/user/pin`,
+        `${apiUrl}/api/user/pin`,
         { pin }, { withCredentials: true }
       );
       if (response.status === 200) {

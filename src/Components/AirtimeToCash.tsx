@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import avatar from "../assets/avatar.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from './Home';
 
 const Airtime: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ const Airtime: React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/protected",
+          `${apiUrl}/api/protected`,
           { withCredentials: true }
         );
         if (response.status === 200) {

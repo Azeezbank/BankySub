@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import logo from "../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png";
 import { Link, useNavigate } from "react-router-dom";
+import { apiUrl } from '../Home';
 
 const Register: React.FC = () => {
   const [passError, setPassError] = useState("");
@@ -50,7 +51,7 @@ const Register: React.FC = () => {
       return;
     }
     try {
-      const response = await axios.post('https://bankysub-api-production.up.railway.app/api/auth/register', { password, username, email, fullName, phone, referralUsername }, {withCredentials: true});
+      const response = await axios.post(`${apiUrl}/api/auth/register`, { password, username, email, fullName, phone, referralUsername }, {withCredentials: true});
       if (response.status === 200) {
         alert(response.data.message);
         navigate('/verify/mail');

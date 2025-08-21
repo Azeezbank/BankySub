@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./GatewayCss.css";
 import axios from "axios";
+import { apiUrl } from '../Home';
 
 interface DataGate {
   d_id: number;
@@ -28,7 +29,7 @@ const DataGateway: React.FC = () => {
     const handleMSmeData = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/data/all/plan", { withCredentials: true }
+          `${apiUrl}/api/data/all/plan`, { withCredentials: true }
         );
         if (response.status === 200) {
           setAlPlan(response.data);
@@ -56,7 +57,7 @@ const DataGateway: React.FC = () => {
     try {
       setIsSaving(false)
       await axios.put(
-        "https://bankysub-api-production.up.railway.app/api/data/update/plans",
+        `${apiUrl}/api/data/update/plans`,
         allPlan, { withCredentials: true }
       );
       setIsSaving(true)
@@ -72,7 +73,7 @@ const DataGateway: React.FC = () => {
     try {
       setIsUpdate(false)
       await axios.put(
-        "https://bankysub-api-production.up.railway.app/api/data/update/types/status",
+        `${apiUrl}/api/data/update/types/status`,
         { dataTypeNetworkName, dataTypeName, isDataTypeStatus }, { withCredentials: true }
       );
       setIsUpdate(true);

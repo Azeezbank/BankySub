@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './UserInfo.css';
+import { apiUrl } from '../../Home';
 
 interface UserInfo {
     d_id: number,
@@ -37,7 +38,7 @@ const UserInfo: React.FC = () => {
     }, [])
     const UserDetails = async () => {
         try {
-            const response = await axios.get(`https://bankysub-api-production.up.railway.app/api/user/info/${id}`, { withCredentials: true });
+            const response = await axios.get(`${apiUrl}/api/user/info/${id}`, { withCredentials: true });
             if (response.status === 200) {
                 setUserDetails(response.data);
             }
@@ -49,7 +50,7 @@ const UserInfo: React.FC = () => {
     //Update user details
     const handleUpdateUser = async (fieldName: any, value: any) => {
         try {
-            const response = await axios.put(`https://bankysub-api-production.up.railway.app/api/user/update/${id}`, { fieldName, value }, { withCredentials: true });
+            const response = await axios.put(`${apiUrl}/api/user/update/${id}`, { fieldName, value }, { withCredentials: true });
             if (response.status === 200) {
                 console.log("User details updated successfully");
                 UserDetails(); // Refresh user details after update
@@ -63,7 +64,7 @@ const UserInfo: React.FC = () => {
     const handleUpdateWallet = async () => {
         setIsLOading(false);
         try {
-            const response = await axios.post(`https://bankysub-api-production.up.railway.app/api/user/fund/${id}`, { amount }, { withCredentials: true });
+            const response = await axios.post(`${apiUrl}/api/user/fund/${id}`, { amount }, { withCredentials: true });
             if (response.status === 200) {
                 console.log("User wallet updated successfully");
                 setIsLOading(true);
@@ -78,7 +79,7 @@ const UserInfo: React.FC = () => {
     const handleBanUser = async () => {
         try {
             setIsBanning(false);
-            const response = await axios.put(`https://bankysub-api-production.up.railway.app/api/user/ban/${id}`, {}, { withCredentials: true });
+            const response = await axios.put(`${apiUrl}/api/user/ban/${id}`, {}, { withCredentials: true });
             if (response.status === 200) {
                 console.log("User banned successfully");
                 alert("User has been banned successfully");

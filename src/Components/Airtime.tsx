@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ModalWar } from "./modal/modal";
+import { apiUrl } from './Home';
 
 interface AirtimeN {
   d_id: number;
@@ -42,7 +43,7 @@ const Airtime: React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/protected",
+          `${apiUrl}/api/protected`,
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -61,7 +62,7 @@ const Airtime: React.FC = () => {
     const fetchAirtimeN = async () => {
       try {
         const response = await axios.get<AirtimeN[]>(
-          "https://bankysub-api-production.up.railway.app/api/airtime/networkN",
+          `${apiUrl}/api/airtime/networkN`,
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -79,7 +80,7 @@ const Airtime: React.FC = () => {
     const fetchAirtimeType = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/airtime/type",
+          `${apiUrl}/api/airtime/type`,
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -109,7 +110,7 @@ const Airtime: React.FC = () => {
         return;
       }
       const response = await axios.post(
-        "https://bankysub-api-production.up.railway.app/api/airtime/topup",
+        `${apiUrl}/api/airtime/topup`,
         { airtimeNChoosen, airtimeTChoosen, mobileN, amount, actualAmount },
         { withCredentials: true }
       );
@@ -131,7 +132,7 @@ const Airtime: React.FC = () => {
     const handleUserInfo = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/user/info",
+          `${apiUrl}/api/user/info`,
           { withCredentials: true }
         );
         if (response.status === 200) {

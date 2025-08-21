@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Outlet } from "react-router-dom";
+import { apiUrl } from './Home';
 
 interface walletInfo {
   username: string;
@@ -25,7 +26,7 @@ const HomeLayout: React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/protected",
+          `${apiUrl}/api/protected`,
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -45,7 +46,7 @@ const HomeLayout: React.FC = () => {
     const handleUserInfo = async () => {
       try {
         const response = await axios.get<walletInfo[]>(
-          "https://bankysub-api-production.up.railway.app/api/user/info",
+          `${apiUrl}/api/user/info`,
           { withCredentials: true }
         );
         if (response.status === 200) {

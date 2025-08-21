@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { ModalErr, ModalSus } from './modal/modal';
+import { apiUrl } from './Home';
 
 const Verify: React.FC = () => {
   const [verificationType, setVerificationType] = useState<string>("");
@@ -18,7 +19,7 @@ const Verify: React.FC = () => {
     setIsVerify(false);
     try {
       const response = await axios.post(
-        "https://bankysub-api-production.up.railway.app/api/verification/verify/account",
+        `${apiUrl}/api/verification/verify/account`,
         { verificationType, verificationNumber }, { withCredentials: true }
       );
       if (response.status === 200) {

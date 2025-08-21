@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { apiUrl } from '../../Home';
 
 interface userDetails {
   d_id: number;
@@ -27,7 +28,7 @@ const User: React.FC = () => {
     const handlFetchUser = async () => {
       try {
         const response = await axios.get(
-          `https://bankysub-api-production.up.railway.app/api/user?page=${page}&limit=${limit}`, { withCredentials: true}
+          `${apiUrl}/api/user?page=${page}&limit=${limit}`, { withCredentials: true}
         );
         if (response.status === 200) {
           setUserDetails(response.data.data);

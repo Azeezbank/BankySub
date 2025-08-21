@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ModalWar } from './modal/modal';
+import { apiUrl } from './Home';
 
 interface network {
   d_id: number;
@@ -65,7 +66,7 @@ const Data: React.FC = () => {
     const fetchNetwork = async () => {
       try {
         const response = await axios.get<network[]>(
-          "https://bankysub-api-production.up.railway.app/api/data/network",
+          `${apiUrl}/api/data/network`,
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -82,7 +83,7 @@ const Data: React.FC = () => {
   const fetchDataType = async () => {
     try {
       const response = await axios.post<dataType[]>(
-        "https://bankysub-api-production.up.railway.app/api/data/types",
+        `${apiUrl}/api/data/types`,
         { choosenNetwork },
         { withCredentials: true }
       );
@@ -98,7 +99,7 @@ const Data: React.FC = () => {
   const fetchDataPlan = async () => {
     try {
       const response = await axios.post<dataPlan[]>(
-        "https://bankysub-api-production.up.railway.app/api/data/plans",
+        `${apiUrl}/api/data/plans`,
         { choosenNetwork, choosenDataType },
         { withCredentials: true }
       );
@@ -128,7 +129,7 @@ const Data: React.FC = () => {
         return;
       }
       const response = await axios.post(
-        "https://bankysub-api-production.up.railway.app/api/data/purchase/bundle",
+        `${apiUrl}/api/data/purchase/bundle`,
         { plan, DataPrice, mobileNumber, choosenNetwork, choosenDataType, pin },
         { withCredentials: true }
       );
@@ -156,7 +157,7 @@ const Data: React.FC = () => {
     const ProtectPage = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/protected",
+          `${apiUrl}/api/protected`,
           {
             withCredentials: true,
           }
@@ -177,7 +178,7 @@ const Data: React.FC = () => {
     const handleUserInfo = async () => {
       try {
         const response = await axios.get(
-          "https://bankysub-api-production.up.railway.app/api/user/info",
+          `${apiUrl}/api/user/info`,
           { withCredentials: true }
         );
         if (response.status === 200) {
@@ -329,7 +330,7 @@ const Data: React.FC = () => {
                   </button>
                   ) : (
                     <button className="modal-ok" type="button" disabled>
-                      <span className="spinner-border"></span>Processing...
+                      <span className="spinner-border-sm"></span>Processing...
                     </button>
                   )}
                   </div>

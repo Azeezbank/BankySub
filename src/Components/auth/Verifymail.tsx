@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import logo from '../../assets/SGN_09_08_2022_1662626364399-removebg-preview.png';
+import { apiUrl } from '../Home';
 
 const Login: React.FC = () => {
 
@@ -17,7 +18,7 @@ const Login: React.FC = () => {
     try {
       setIsAuth(true);
       const response = await axios.post(
-        "https://bankysub-api-production.up.railway.app/api/auth/verify/mail",
+        `${apiUrl}/api/auth/verify/mail`,
         { otp },
         { withCredentials: true }
       );
