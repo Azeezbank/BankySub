@@ -40,7 +40,7 @@ interface message {
   whatsapp_link: string;
 }
 
-export const apiUrl = 'https://bankysub-api-production.up.railway.app';
+export const apiUrl = 'https://bankysub-api.onrender.com';
 
 
 const Home: React.FC = () => {
