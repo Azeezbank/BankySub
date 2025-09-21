@@ -40,7 +40,7 @@ interface message {
   whatsapp_link: string;
 }
 
-export const apiUrl = 'https://bankysub-connect.fly.dev/';
+export const apiUrl = 'https://bankysub-connect.fly.dev';
 
 
 const Home: React.FC = () => {
