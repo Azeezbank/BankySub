@@ -14,7 +14,7 @@ interface walletInfo {
 
 const HomeLayout: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
+  const [walletBalance, setWalletBalance] = useState<walletInfo>({username: '', user_balance: '', packages: ''});
   const navigate = useNavigate();
 
   const handleVisible = () => {
@@ -45,7 +45,7 @@ const HomeLayout: React.FC = () => {
   useEffect(() => {
     const handleUserInfo = async () => {
       try {
-        const response = await axios.get<walletInfo[]>(
+        const response = await axios.get<walletInfo>(
           `${apiUrl}/api/user/info`,
           { withCredentials: true }
         );
@@ -71,10 +71,10 @@ const HomeLayout: React.FC = () => {
               </div>
               <div>
                 <p className="ps-2">
-                  {walletBalance.map((user) => user.username)} <br />{" "}
+                  {walletBalance.username} <br />{" "}
                   <span className="navBalance">
                     balance: #
-                    {walletBalance.map((wallet) => wallet.user_balance)}
+                    {walletBalance.user_balance}
                   </span>
                 </p>
               </div>

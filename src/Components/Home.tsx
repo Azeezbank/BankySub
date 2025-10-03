@@ -44,21 +44,20 @@ export const apiUrl = 'https://bankysub-api.onrender.com';
 
 
 const Home: React.FC = () => {
-  const [bankDetails, setBankDetails] = useState<bank[]>([]);
-  const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
+  const [bankDetails, setBankDetails] = useState<bank>({ d_id: 0, acctNo: 0, acctName: '', bankName: ''});
+  const [walletBalance, setWalletBalance] = useState<walletInfo>({username: '', user_balance: '', role: '', packages: '', cashback: 0, referree: 0});
   const [copysuccess, setCopySuccess] = useState<string>("");
   const [isAcctN, setIsAcctN] = useState(false);
   const [role, setRole] = useState(true);
-  const [dash_message, setDash_message] = useState<message>({
-    whatsapp_link: "",
-    dash_message: "",
+  const [dash_message, setDash_message] = useState<message>({ whatsapp_link: "", dash_message: "",
   });
   const [balanceColor, setBalanceColor] = useState('');
   const [notification, setNotification] = useState('');
   const [isAcct, setIsAcct] = useState(true);
   const [isErr, setIsErr] = useState(false);
 
-  const user = walletBalance[0]?.username ?? '';
+
+  const user = walletBalance.username ?? '';
 
   const link = `${apiUrl}/register?ref=${user}`;
 
@@ -99,7 +98,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const handleUserInfo = async () => {
       try {
-        const response = await axios.get<walletInfo[]>(
+        const response = await axios.get<walletInfo>(
           `${apiUrl}/api/user/info`,
           { withCredentials: true }
         );
@@ -117,7 +116,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const bankDetail = async () => {
       try {
-        const response = await axios.post<bank[]>(
+        const response = await axios.post<bank>(
           `${apiUrl}/api/user/bank/account`,
           {},
           { withCredentials: true }
@@ -151,7 +150,7 @@ const Home: React.FC = () => {
   }, []);
   // Check role
   useEffect(() => {
-    if (walletBalance.some((role) => role.role === 'admin')) {
+    if (walletBalance.role === 'admin') {
       setRole(false);
     } else {
       setRole(true);
@@ -161,7 +160,7 @@ const Home: React.FC = () => {
   //Add wallet status indicator
   useEffect(() => {
     const handleblink = () => {
-      const balance = Number(walletBalance[0]?.user_balance);
+      const balance = Number(walletBalance.user_balance);
       if (Number(balance) >= 1000) {
         setBalanceColor('enoughbalance');
       } else if (Number(balance) < 1000 && Number(balance) > 500) {
@@ -228,7 +227,7 @@ const Home: React.FC = () => {
           <p className="greeting">
             You Are Welcome,{" "}
             <span className="username">
-              {walletBalance.map((wallet) => wallet.username)}
+              {walletBalance.username}
             </span>
           </p>{" "}
           <hr />
@@ -238,7 +237,7 @@ const Home: React.FC = () => {
             </a>
           </div>
           <p className="text-center fw-bold">
-            Package: {walletBalance.map((packg) => packg.packages)}
+            Package: {walletBalance.packages}
           </p>
           <hr /> <hr />
           <p className="ash-background">
@@ -256,7 +255,7 @@ const Home: React.FC = () => {
                 href="#moniepoint"
               >
                 {isAcctN ? (
-                  <span>{bankDetails.map((bank) => bank.bankName)}</span>
+                  <span>{bankDetails.bankName}</span>
                 ) : (
                   "NULL"
                 )}
@@ -281,7 +280,7 @@ const Home: React.FC = () => {
               <p className="pt-4 pb-3">
                 <strong>Account Number:</strong>{" "}
                 {isAcctN ? (
-                  <span>{bankDetails.map((bank) => bank.acctNo)} </span>
+                  <span>{bankDetails.acctNo} </span>
                 ) : (
                   <span
                     className="generateNo"
@@ -301,13 +300,13 @@ const Home: React.FC = () => {
                 <div>
                   <p className="fw-bold">
                     Account Name: Tunstelecom -{" "}
-                    {bankDetails.map((bank) => bank.acctName)}
+                    {bankDetails.acctName}
                   </p>
                   <p className="bankN">
                     Bank Name:{" "}
                     {isAcctN ? (
                       <span>
-                        {bankDetails.map((bank) => bank.bankName)}{" "}
+                        {bankDetails.bankName}{" "}
                       </span>
                     ) : (
                       "NULL"
@@ -410,7 +409,7 @@ const Home: React.FC = () => {
                 <div className={`balancecolorAll ${balanceColor}`}><span></span></div>
                 </div>
                 <p className="amount">
-                  # {walletBalance[0]?.user_balance}
+                  # {walletBalance.user_balance}
                 </p>
               </div>
             </div>
@@ -422,7 +421,7 @@ const Home: React.FC = () => {
               
               <div className="ps-2">
                 <p className="text-muted ">Cashback</p>
-                <p className="amount"># {walletBalance.map((cash) => (cash.cashback))}</p>
+                <p className="amount"># {walletBalance.cashback}</p>
               </div>
             </div>
             <div className="balance-section">
@@ -434,7 +433,7 @@ const Home: React.FC = () => {
               <div className="ps-2">
                 <p className="text-muted pt-2">My Total Referral</p>
                 <p className="amount">
-                  {walletBalance.map((refer) => (refer.referree))}
+                  {walletBalance.referree}
                 </p>
               </div>
             </div>
@@ -556,7 +555,7 @@ const Home: React.FC = () => {
               </h2>
               <h5 className="text-muted fontStat">
                 WALLET BALANCE <br />{" "}
-                <span className="text-secondary"> # {walletBalance[0]?.user_balance} </span>
+                <span className="text-secondary"> # {walletBalance.user_balance} </span>
               </h5>
             </div>
             <div className="gridStatistics borderSt">
