@@ -19,14 +19,7 @@ const UserInfo: React.FC = () => {
 
     const [amount, setAmount] = useState(0);
     const [userDetails, setUserDetails] = useState<UserInfo>({
-        d_id: 0,
-        username: "",
-        user_email: "",
-        user_balance: 0,
-        packages: "",
-        Phone_number: "",
-        Pin: 0,
-        fullName: ""
+        d_id: 0, username: "", user_email: "", user_balance: 0, packages: "", Phone_number: "", Pin: 0, fullName: ""
     });
     const [isloading, setIsLOading] = useState(true);
     const [isBanning, setIsBanning] = useState(true);
@@ -43,7 +36,7 @@ const UserInfo: React.FC = () => {
                 setUserDetails(response.data);
             }
         } catch (err: any) {
-            console.error("Error fetching user information", err.message);
+            console.error("Error fetching user information", err);
         }
     };
 
@@ -56,7 +49,7 @@ const UserInfo: React.FC = () => {
                 UserDetails(); // Refresh user details after update
             }
         } catch (err: any) {
-            console.error("Error updating user information", err.message);
+            console.error("Error updating user information", err);
         }
     };
 

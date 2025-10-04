@@ -22,9 +22,9 @@ interface dataPlan {
   name: string;
   network_name: string;
   data_type: string;
-  user: string;
-  reseller: string;
-  api: string;
+  USER: string;
+  RESELLER: string;
+  API: string;
   validity: string;
 }
 
@@ -248,10 +248,10 @@ const Data: React.FC = () => {
               {dataPlan.map((dp) => (
                 <option
                   key={dp.d_id}
-                  value={dp.user || dp.reseller || dp.api}
+                  value={dp.USER || dp.RESELLER || dp.API}
                 >
                   {dp.name} {dp.data_type} = #{" "}
-                  {dp.user || dp.reseller || dp.api} {dp.validity}
+                  {dp.USER || dp.RESELLER || dp.API} {dp.validity}
                 </option>
               ))}
             </select>{" "}
