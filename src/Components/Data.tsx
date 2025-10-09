@@ -41,7 +41,7 @@ const Data: React.FC = () => {
   const [choosenDataType, setChoosenDataType] = useState("");
   const [choosenDataPlan, setChoosenDataPlan] = useState('');
   const [mobileNumber, setMobileNumber] = useState("");
-  const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
+  const [walletBalance, setWalletBalance] = useState<walletInfo>({username: '', user_balance: ''});
   const [isModalSuccess, setIsModalSuccess] = useState<boolean>(false);
   const [isModalFail, setIsModalFail] = useState<boolean>(false);
   const [isProcessing, setIsProcessing] = useState<boolean>(true);
@@ -118,9 +118,7 @@ const Data: React.FC = () => {
     try {
       setIsProcessing(false);
 
-      const isLesser = walletBalance.some(
-        (wallet) => parseFloat(wallet.user_balance) < parseFloat(choosenDataPlan)
-      );
+      const isLesser = parseFloat(walletBalance.user_balance) < parseFloat(choosenDataPlan);
       
       if (isLesser) {
         setInfoWar('Low wallet balance, please fund your wallet');
