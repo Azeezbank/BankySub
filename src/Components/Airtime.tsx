@@ -27,7 +27,7 @@ const Airtime: React.FC = () => {
   const [airtimeTChoosen, setAirtimeTChoosen] = useState("");
   const [mobileN, setMobileN] = useState("");
   const [amount, setAmount] = useState("");
-  const [walletBalance, setWalletBalance] = useState<walletInfo[]>([]);
+  const [walletBalance, setWalletBalance] = useState<walletInfo>({username: '', user_balance: ''});
   const [actualAmount, setActualAmount] = useState<number>();
   const [isModalSuccess, setIsModalSuccess] = useState<boolean>(false);
   const [isModalFail, setIsModalFail] = useState<boolean>(false);
@@ -99,9 +99,7 @@ const Airtime: React.FC = () => {
     try {
       setIsProcessing(false);
 
-      const isLesser = walletBalance.some(
-        (wallet) => parseFloat(wallet.user_balance) < parseFloat(amount)
-      );
+      const isLesser = parseFloat(walletBalance.user_balance) < parseFloat(amount);
 
       if (isLesser) {
         setInfoWar('Low wallet balance, please fund your wallet');
