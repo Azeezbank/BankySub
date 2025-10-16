@@ -10,9 +10,9 @@ interface DataGate {
   network_name: string;
   data_type: string;
   validity: string;
-  user: number;
-  reseller: number;
-  api: number;
+  USER: number;
+  RESELLER: number;
+  API: number;
   is_active: string;
 }
 
@@ -218,9 +218,9 @@ const DataGateway: React.FC = () => {
                         className="id"
                         type="text"
                         aria-label="input"
-                        defaultValue={sme.user}
+                        defaultValue={sme.USER}
                         onChange={(e) =>
-                          handlePlans(index, "user", e.target.value)
+                          handlePlans(index, "USER", e.target.value)
                         }
                       />
                     </td>
@@ -229,9 +229,9 @@ const DataGateway: React.FC = () => {
                         className="id"
                         type="text"
                         aria-label="input"
-                        defaultValue={sme.reseller}
+                        defaultValue={sme.RESELLER}
                         onChange={(e) =>
-                          handlePlans(index, "reseller", e.target.value)
+                          handlePlans(index, "RESELLER", e.target.value)
                         }
                       />
                     </td>
@@ -240,9 +240,9 @@ const DataGateway: React.FC = () => {
                         className="id"
                         type="text"
                         aria-label="input"
-                        defaultValue={sme.api}
+                        defaultValue={sme.API}
                         onChange={(e) =>
-                          handlePlans(index, "api", e.target.value)
+                          handlePlans(index, "API", e.target.value)
                         }
                       />
                     </td>
