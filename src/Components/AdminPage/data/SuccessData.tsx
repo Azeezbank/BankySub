@@ -1,38 +1,62 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { apiUrl } from '../Home';
+import { useNavigate } from "react-router-dom";
+import { apiUrl } from '../../Home';
 
 interface items {
   d_id: number;
-  id: number;
-  event_type: string;
-  payment_ref: number;
-  paid_on: any;
+  plan: number;
+  phone_number: string;
   amount: number;
-  payment_method: string;
-  payment_status: string;
-  prev_balance: number;
+  balance_before: number;
+  balance_after: number;
+  status: string
   user_balance: number;
+  time: string
 }
 //Fund page
-const FundHist: React.FC = () => {
-  const [items, setItems] = useState<items[]>([]);
+const SuccessData: React.FC = () => {
+  const [histories, setHistories] = useState<items[]>([]);
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(1);
-  const [pageNums, setPageNums] = useState<number[]>([]);
-  const [limit, setLimit] = useState(10);
-  const [totalLimit, setTotalLimit] = useState(10);
-  const [limitNum, setlimitNum] = useState<number[]>([]);
+    const [totalPage, setTotalPage] = useState(1);
+    const [pageNums, setPageNums] = useState<number[]>([]);
+    const [limit, setLimit] = useState(10);
+    const [totalLimit, setTotalLimit] = useState(10);
+    const [limitNum, setlimitNum] = useState<number[]>([]);
+  
+  const navigate = useNavigate();
 
+  //Protect the page
+  useEffect(() => {
+    const ProtectPage = async () => {
+      try {
+        const response = await axios.get(
+          `${apiUrl}/api/protected`,
+          { withCredentials: true }
+        );
+        if (response.status === 200) {
+          console.log(response.data.message);
+        }
+      } catch (err: any) {
+        navigate("/login?");
+        console.error(err.response?.data.message);
+      }
+    };
+    ProtectPage();
+  }, []);
+
+
+  //Fetch data histories
   useEffect(() => {
     fetchItems();
   });
+
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        `${apiUrl}/api/payment/history?page=${page}&limit=${limit}`, { withCredentials: true }
+        `${apiUrl}/api/data/all/successful/data?page=${page}&limit=${limit}`, { withCredentials: true }
       );
-      setItems(response.data.data);
+      setHistories(response.data.result);
       setTotalPage(response.data.totalPage);
       setTotalLimit(response.data.total);
     } catch (err) {
@@ -40,24 +64,25 @@ const FundHist: React.FC = () => {
     }
   };
 
-  //Set up page number
-  useEffect(() => {
-    const numList = Array.from({ length: totalPage }, (_, i) => i + 1);
-    setPageNums(numList);
-  }, []);
+   //Set up page number
+    useEffect(() => {
+      const numList = Array.from({ length: totalPage }, (_, i) => i + 1);
+      setPageNums(numList);
+    }, []);
+  
+    //Set up limit number 
+    useEffect(() => {
+      const limitList = Array.from({ length: totalLimit }, (_, i) => (i + 1) * 10);
+      setlimitNum(limitList);
+    }, []);
 
-  //Set up limit number 
-  useEffect(() => {
-    const limitList = Array.from({ length: totalLimit }, (_, i) => (i + 1) * 10);
-    setlimitNum(limitList);
-  }, []);
 
   return (
     <>
       <div className="dashboard-bg bg-light">
-        <h5>Dashboard</h5>
+        <h5>My Records</h5>
         <div className="bg-white p-3">
-          <p>User Wallet Funding Histories</p>
+          <p>Data Transactions</p>
           <div className="grid-fund-hist justify-content-between">
             <div className="input-group">
               <span className="input-group-text">Page</span>
@@ -83,7 +108,6 @@ const FundHist: React.FC = () => {
                 <i className="bi bi-search"></i>
               </button>
             </div>
-
             <div className="input-group">
               <span className="input-group-text">Limit</span>
               <select
@@ -98,37 +122,36 @@ const FundHist: React.FC = () => {
 
               </select>
             </div>
+
           </div>
           <div className="table">
             <table className="table-data">
               <thead>
                 <tr>
-                  <th>id</th>
-                  <th>event_type</th>
-                  <th>payment_ref</th>
-                  <th>paid_on</th>
-                  <th>amount</th>
-                  <th>payment_method</th>
-                  <th>payment_status</th>
-                  <th>prev_balance</th>
-                  <th>user_balance</th>
+                  <th>Id</th>
+                  <th>Plan</th>
+                  <th>Phone_number</th>
+                  <th>Amount</th>
+                  <th>Balance Before</th>
+                  <th>New Balnce</th>
+                  <th>Status</th>
+                  <th>Created At</th>
                 </tr>
               </thead>
               <tbody>
-                {items.map((item, index) => (
+                {histories.map((hist, index) => (
                   <tr
-                    key={item.d_id}
+                    key={hist.d_id}
                     className={index % 2 === 0 ? "bg-light" : "bg-white"}
                   >
-                    <td>{item.id}</td>
-                    <td>{item.event_type}</td>
-                    <td>{item.payment_ref}</td>
-                    <td>{item.paid_on}</td>
-                    <td>{item.amount}</td>
-                    <td>{item.payment_method}</td>
-                    <td>{item.payment_status}</td>
-                    <td>{item.prev_balance}</td>
-                    <td>{item.user_balance}</td>
+                    <td>{hist.d_id}</td>
+                    <td>{hist.plan}</td>
+                    <td>{hist.phone_number}</td>
+                    <td>{hist.amount}</td>
+                    <td>{hist.balance_before}</td>
+                    <td>{hist.balance_after}</td>
+                    <td>{hist.status}</td>
+                    <td>{hist.time}</td>
                   </tr>
                 ))}
               </tbody>
@@ -140,4 +163,4 @@ const FundHist: React.FC = () => {
   );
 };
 
-export default FundHist;
+export default SuccessData;

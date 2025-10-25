@@ -27,6 +27,7 @@ import Plans from './Components/plans';
 import Cable from './Components/Cable';
 import UserFundHistory from './Components/Histories/UserFundHistory';
 import Pin from './Components/Pin';
+import SuccessData from './Components/AdminPage/data/SuccessData';
 
 const App: React.FC = () => {
   return (
@@ -59,6 +60,7 @@ const App: React.FC = () => {
             <Route path='setting' element={<Setting />} />
             <Route path='data/gateway' element={<DataGateway />} />
             <Route path='api/docs' element={<ApiDocs />} />
+            <Route path='data/successful' element={<SuccessData />} />
           </Route>
         </Routes>
       </BrowserRouter>
