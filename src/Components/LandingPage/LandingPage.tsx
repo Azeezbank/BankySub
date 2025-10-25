@@ -30,9 +30,9 @@ interface plan {
   data_type: string;
   network_name: string;
   validity: string;
-  user: string;
-  reseller: string;
-  api: string;
+  USER: string;
+  RESELLER: string;
+  API: string;
 }
 const LandinpPage: React.FC = () => {
   const [plans, setPlans] = useState<plan[]>([]);
@@ -425,9 +425,9 @@ const LandinpPage: React.FC = () => {
                           <td>{air.network_name}</td>
                           <td>{air.name}</td>
                           <td>{air.data_type}</td>
-                          <td>{air.user}</td>
-                          <td>{air.reseller}</td>
-                          <td>{air.api}</td>
+                          <td>{air.USER}</td>
+                          <td>{air.RESELLER}</td>
+                          <td>{air.API}</td>
                         </tr>
                       </tbody>
                     ))}
@@ -453,9 +453,9 @@ const LandinpPage: React.FC = () => {
                           <td>{plan.network_name}</td>
                           <td>{plan.name}</td>
                           <td>{plan.data_type}</td>
-                          <td>{plan.user}</td>
-                          <td>{plan.reseller}</td>
-                          <td>{plan.api}</td>
+                          <td>{plan.USER}</td>
+                          <td>{plan.RESELLER}</td>
+                          <td>{plan.API}</td>
                         </tr>
                       </tbody>
                     ))}
@@ -484,9 +484,9 @@ const LandinpPage: React.FC = () => {
                           <td>{plan.network_name}</td>
                           <td>{plan.name}</td>
                           <td>{plan.data_type}</td>
-                          <td>{plan.user}</td>
-                          <td>{plan.reseller}</td>
-                          <td>{plan.api}</td>
+                          <td>{plan.USER}</td>
+                          <td>{plan.RESELLER}</td>
+                          <td>{plan.API}</td>
                         </tr>
                       </tbody>
                     ))}
@@ -512,9 +512,9 @@ const LandinpPage: React.FC = () => {
                           <td>{plan.network_name}</td>
                           <td>{plan.name}</td>
                           <td>{plan.data_type}</td>
-                          <td>{plan.user}</td>
-                          <td>{plan.reseller}</td>
-                          <td>{plan.api}</td>
+                          <td>{plan.USER}</td>
+                          <td>{plan.RESELLER}</td>
+                          <td>{plan.API}</td>
                         </tr>
                       </tbody>
                     ))}
