@@ -195,12 +195,12 @@ const AdminDashBoard: React.FC = () => {
                               <i className="bi bi-question-circle ban check-circle"></i>{" "}
                               Pending
                             </li>
-                            <Link to={"/admin/data/successful"} className="Link">
                             <li className="successful hover">
+                              <Link to={"/admin/data/successful"} className="Link">
                               <i className="bi bi-check-circle ban"></i>{" "}
                               Successful
+                              </Link>
                             </li>
-                            </Link>
                             <li className="successful hover">
                               <i className="bi bi-ban"></i> Failed
                             </li>
