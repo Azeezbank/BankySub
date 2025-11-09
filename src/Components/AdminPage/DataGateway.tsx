@@ -157,7 +157,7 @@ const DataGateway: React.FC = () => {
               </thead>
               <tbody>
                 {allPlan.map((sme, index) => (
-                  <tr key={index}>
+                  <tr key={index} className={index % 2 === 0 ? "even-row" : "odd-row"}>
                     <td>
                       <input
                         className=" id"

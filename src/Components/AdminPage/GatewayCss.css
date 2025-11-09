@@ -25,17 +25,21 @@
 .id {
   width: 100%;
   outline: none;
+  border: none;
+  background-color: transparent;
+  text-align: center;
 }
 
 .id-row {
   width: fit-content;
   padding: 0px 3px;
   border-right: 2px solid grey;
-  font-family: "Georgia", "Times" "New Roman", "Times", "serif";
+  font-family: system-ui
 }
 
 table {
   border-collapse: collapse;
+  text-align: center;
 }
 
 .update-save-button {
@@ -61,4 +65,10 @@ table {
   background-color: #ff3c9d;
   border-radius: 8px;
   padding: 4px;
+}
+.even-row {
+  background-color: white;
+}
+.odd-row {
+  background-color: #dedede;
 }

@@ -192,18 +192,21 @@ const AdminDashBoard: React.FC = () => {
                         {isData.Data && (
                           <ul>
                             <li className="successful hover">
-                              <i className="bi bi-question-circle ban check-circle"></i>{" "}
-                              Pending
+                              <i className="bi bi-question-circle check-circle"></i>{" "}
+                              <span>Pending</span>
                             </li>
+                            <Link to={"/admin/data/successful"} className="Link">
                             <li className="successful hover">
-                              <Link to={"/admin/data/successful"} className="Link">
-                              <i className="bi bi-check-circle ban"></i>{" "}
-                              Successful
-                              </Link>
+                              <i className="bi bi-check-circle"></i>{" "}
+                              <span>Successful</span>
                             </li>
+                            </Link>
+                            <Link to={"/admin/data/failed"} className="Link">
                             <li className="successful hover">
-                              <i className="bi bi-ban"></i> Failed
+                              <i className="bi bi-ban"></i> 
+                              <span>Failed</span>
                             </li>
+                            </Link>
                           </ul>
                         )}
                       </li>
