@@ -74,6 +74,7 @@ const ApiDocs: React.FC = () => {
                   <option>DATA COUPON</option>
                   <option>DATA SHARE</option>
                   <option>SME2</option>
+                  <option>Gotv</option>
                 </select>
               </div>
 
