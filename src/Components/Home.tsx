@@ -110,7 +110,7 @@ const Home: React.FC = () => {
       }
     };
     handleUserInfo();
-  });
+  }, []);
 
   //Fetch account details
   useEffect(() => {
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
       }
     };
     bankDetail();
-  });
+  }, []);
 
   //Fetch dasgboard message
   useEffect(() => {
@@ -148,6 +148,7 @@ const Home: React.FC = () => {
     };
     handleMessage();
   }, []);
+  
   // Check role
   useEffect(() => {
     if (walletBalance.role === 'admin') {
